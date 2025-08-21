@@ -1,0 +1,79 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this blog"
+  },
+  {
+    "objectID": "posts/creating-a-document-driven-culture/index.html",
+    "href": "posts/creating-a-document-driven-culture/index.html",
+    "title": "Creating a Document-Driven Culture",
+    "section": "",
+    "text": "When I was interviewing at Code.org, I asked whether there was a document-driven culture, one where well-written documents were the primary mechanism for driving decisions in the organization. The answer was a resounding yes!\nWhat I found is that like many other organizations, Code.org had a lot of documents, but they were often short and used for brainstorming. While these can be useful for generating ideas, based on my prior experience at Amazon, I advocated for a truly document-driven culture. While we still have work to do, adopting this culture is helping us increase the quality of our documents, explore ideas in more depth, and reach quicker decisions and outcomes.\nIn this document, I’ll share my experience of working in - and creating - a document-driven culture. This includes the advantages I see within my own teams and the elements of the writing and reading culture. I will conclude by exploring how your organization might benefit from embracing a document-driven culture and share the next steps for adopting this within your teams."
+  },
+  {
+    "objectID": "posts/creating-a-document-driven-culture/index.html#deeper-thinking-ahead-of-proposing-ideas",
+    "href": "posts/creating-a-document-driven-culture/index.html#deeper-thinking-ahead-of-proposing-ideas",
+    "title": "Creating a Document-Driven Culture",
+    "section": "Deeper thinking ahead of proposing ideas",
+    "text": "Deeper thinking ahead of proposing ideas\nWriting is hard. It’s more challenging to write a document than it is to put together bullet points. A well-written document can take days and weeks of preparation and requires you to think deeply about the topic. Putting an idea into words often requires you to explore different angles, resulting in a higher quality and well-tested idea.\nA document also forces you to challenge your own assumptions. There have been several occasions when I’ve started a document only to give up halfway - or pivot to a different proposal - as I realized my original idea wasn’t as good as I had initially thought."
+  },
+  {
+    "objectID": "posts/creating-a-document-driven-culture/index.html#increased-employee-engagement-especially-in-a-remote-setting",
+    "href": "posts/creating-a-document-driven-culture/index.html#increased-employee-engagement-especially-in-a-remote-setting",
+    "title": "Creating a Document-Driven Culture",
+    "section": "Increased employee engagement, especially in a remote setting",
+    "text": "Increased employee engagement, especially in a remote setting\nIn today’s Zoom-based culture, it’s challenging to maintain engagement, especially when presenting an idea. Many of us are guilty of half-listening to a presentation on Zoom, while keeping up with Slack and Email, only to return after the meeting with questions that were already covered.\nA document-driven culture is not just about writing documents, but also has strict rituals on how to read them in a group. These rituals can feel strange when you first try them, but they increase engagement and focus from every participant."
+  },
+  {
+    "objectID": "posts/creating-a-document-driven-culture/index.html#getting-input-from-everyone-in-the-room",
+    "href": "posts/creating-a-document-driven-culture/index.html#getting-input-from-everyone-in-the-room",
+    "title": "Creating a Document-Driven Culture",
+    "section": "Getting input from everyone in the room",
+    "text": "Getting input from everyone in the room\nA slide deck (or a conversation without a document) can create meetings with power dynamics. If, as a manager, I’m trying to communicate a change in direction via a presentation, my reports may be hesitant to speak up or challenge some of my assumptions - or be unaware at what point in the conversation they can interrupt.\nA document-driven culture eliminates this by providing structured opportunities where everyone, regardless of seniority or title, has ample time to ask questions and provide feedback on a document."
+  },
+  {
+    "objectID": "posts/creating-a-document-driven-culture/index.html#resolute-decision-making",
+    "href": "posts/creating-a-document-driven-culture/index.html#resolute-decision-making",
+    "title": "Creating a Document-Driven Culture",
+    "section": "Resolute decision making",
+    "text": "Resolute decision making\nIn many organizations, conversations around a new idea don’t reach a decision point until after several meetings. Often, in many of these meetings, we’ll also discover we need additional data which requires yet another meeting.\nA well-written document avoids this plethora of meetings by including all data, options, and recommendations, which reduces ambiguity and provides a clearer outcome."
+  },
+  {
+    "objectID": "posts/creating-a-document-driven-culture/index.html#historical-knowledge-of-decisions",
+    "href": "posts/creating-a-document-driven-culture/index.html#historical-knowledge-of-decisions",
+    "title": "Creating a Document-Driven Culture",
+    "section": "Historical knowledge of decisions",
+    "text": "Historical knowledge of decisions\nFinally, a document-driven culture leaves a paper trail for others to follow in the future, explaining the rationale behind a decision or other options that were considered.\nWithout a document, others, especially new employees, lack the context of the conversation and data, and end up relying on folklore to understand how decisions were made."
+  },
+  {
+    "objectID": "posts/creating-a-document-driven-culture/index.html#opinionated-and-customer-focused-with-input-from-others",
+    "href": "posts/creating-a-document-driven-culture/index.html#opinionated-and-customer-focused-with-input-from-others",
+    "title": "Creating a Document-Driven Culture",
+    "section": "Opinionated and customer-focused, with input from others",
+    "text": "Opinionated and customer-focused, with input from others\nRegardless of the document format and length, the strongest documents have three core elements:\nFirst, documents should be opinionated. You shouldn’t create a document that presents three options and ask for a discussion. Instead, create a document that presents three options together with a recommendation. The resulting discussion is more effective and becomes a yes/no decision on whether this is the right approach and how to move forward.\nAn opinionated document has a second side-effect of leaving a good paper trail. With an opinionated document, employees can go back and understand which options the team considered, the trade-offs, and the final recommendation.\nSecond, your documents should always link back to the customer, even if the customer is internal, such as another group in your organization. Many of the best documents I’ve read are the ones that intimately connect back to the benefits for the customer, even if the subject did not directly affect a consumer-facing product.\nFinally, documents should have relevant input from all stakeholders. You will be the primary author for your document, but it still needs to have input and ideas from others, especially if they will not be in the room for the review. I’ve often found this important for product proposals, where each document should have projected financial data provided ahead of time by the finance team."
+  },
+  {
+    "objectID": "posts/creating-a-document-driven-culture/index.html#writing-style",
+    "href": "posts/creating-a-document-driven-culture/index.html#writing-style",
+    "title": "Creating a Document-Driven Culture",
+    "section": "Writing style",
+    "text": "Writing style\nWriting style is very important. At Amazon, shortly after joining, I attended my first writing training, required for all new employees. A few years prior at Microsoft, I had been an editor-in-chief of a popular developer magazine, so I felt confident I knew how to write. The feedback I received from the training was, however, quite humbling.\nI discovered I wasn’t writing in the active voice, had many consistency errors, and the editor running the training returned my writing sample in a bloodbath of red ink, highlighting many more corrections.\nEven after Amazon, this remains an area I continue to develop. I’ve since found that creating and using my own style guide helps. A personal style guide acts as a set of rules and checklist, ensuring consistency throughout a document beyond what a spelling and grammar checker can provide."
+  },
+  {
+    "objectID": "posts/creating-a-document-driven-culture/index.html#getting-feedback",
+    "href": "posts/creating-a-document-driven-culture/index.html#getting-feedback",
+    "title": "Creating a Document-Driven Culture",
+    "section": "Getting feedback",
+    "text": "Getting feedback\nFirst, the author should ask if there are high-level questions or comments about the document. This opens up for any general feedback, such as confirmation that other individuals outside of the review have also seen and contributed to the document. These high-level comments rarely get into a discussion about the idea, unless there is something obvious about the approach. For example, “Didn’t we try something similar three years ago?”\nAfter everyone has shared their overall comments, the author, now facilitator, invites feedback on a page-by-page basis. A good lead-in for this will be, “Are there any comments on page 1?” The group now reviews their notes, and the floor is open for discussion. In a setting with printed copies of the document, line numbers in the document help the reader precisely refer to part of the document. For example, “On line 24, you mention that you’ve seen increased bug reports. Do you have data that supports this?”\nOnce everyone has had an opportunity to provide feedback on page 1, the author/facilitator will move on to page 2, then page 3, and so on. For longer documents, there’s no need to review the appendices page-by-page. Once the group reaches the end of the document, the author asks for any final feedback before moving on to recommendations.\nAs the document was opinionated, the author should have everything they need to move forward. The outcome could be that the group agrees with the approach and wants to move forward. Alternatively, during the discussion, maybe the group preferred another option or a different approach. Finally, while it was rare, one outcome could be that the group felt they needed more information. Here, the group asks the author to update the document and set up additional time for a further review."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Posts",
+    "section": "",
+    "text": "Creating a Document-Driven Culture\n\n\n\nTechnical Leadership\n\n\n\nAmazon is famous for banning PowerPoint in favor of written documents. But why and how does this work? In this article, I share my experience and ideas for creating a document-driven culture.\n\n\n\n\n\nAug 6, 2024\n\n\nSimon Guest\n\n\n\n\n\nNo matching items"
+  }
+]
