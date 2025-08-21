@@ -9,8 +9,8 @@
 <link>https://simonguest.com/</link>
 <atom:link href="https://simonguest.com/index.xml" rel="self" type="application/rss+xml"/>
 <description>The blog of Simon Guest</description>
-<generator>quarto-1.7.32</generator>
-<lastBuildDate>Tue, 06 Aug 2024 07:00:00 GMT</lastBuildDate>
+<generator>quarto-1.7.33</generator>
+<lastBuildDate>Tue, 06 Aug 2024 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Creating a Document-Driven Culture</title>
   <dc:creator>Simon Guest</dc:creator>
@@ -123,7 +123,7 @@
  ]]></description>
   <category>Technical Leadership</category>
   <guid>https://simonguest.com/posts/creating-a-document-driven-culture/</guid>
-  <pubDate>Tue, 06 Aug 2024 07:00:00 GMT</pubDate>
+  <pubDate>Tue, 06 Aug 2024 00:00:00 GMT</pubDate>
   <media:content url="https://simonguest.com/posts/creating-a-document-driven-culture/main.webp" medium="image" type="image/webp"/>
 </item>
 </channel>
