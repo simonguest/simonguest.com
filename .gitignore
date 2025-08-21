@@ -14,3 +14,9 @@ wheels/
 
 # Quarto preview site folder
 /_site/
+
+# Obsidian workspace folder
+posts/.obsidian/
+
+# Mac DS Store
+.DS_Store

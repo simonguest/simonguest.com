@@ -8,10 +8,10 @@ website:
   navbar:
     right:
       - about.qmd
+      - icon: linkedin
+        href: https://www.linkedin.com/in/simonguest/
       - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+        href: https://github.com/simonguest
 format:
   html:
     theme:

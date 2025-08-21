@@ -1,0 +1,144 @@
+---
+title: "Creating a Document-Driven Culture"
+description: "Amazon is famous for banning PowerPoint in favor of written documents. But why and how does this work? In this article, I share my experience and ideas for creating a document-driven culture."
+author: "Simon Guest"
+date: "2024-08-06"
+categories: ["Technical Leadership"]
+image: "main.webp"
+---
+
+When I was interviewing at Code.org, I asked whether there was a document-driven culture, one where well-written documents were the primary mechanism for driving decisions in the organization. The answer was a resounding yes!
+
+What I found is that like many other organizations, Code.org had a lot of documents, but they were often short and used for brainstorming. While these can be useful for generating ideas, based on my prior experience at Amazon, I advocated for a truly document-driven culture. While we still have work to do, adopting this culture is helping us increase the quality of our documents, explore ideas in more depth, and reach quicker decisions and outcomes.
+
+In this document, I’ll share my experience of working in - and creating - a document-driven culture. This includes the advantages I see within my own teams and the elements of the writing and reading culture. I will conclude by exploring how your organization might benefit from embracing a document-driven culture and share the next steps for adopting this within your teams.
+
+# Benefits of a Document-Driven Culture
+
+I’ve often observed five major benefits of organizations who adopt a document-driven culture: 
+
+## Deeper thinking ahead of proposing ideas 
+
+Writing is hard. It’s more challenging to write a document than it is to put together bullet points. A well-written document can take days and weeks of preparation and requires you to think deeply about the topic. Putting an idea into words often requires you to explore different angles, resulting in a higher quality and well-tested idea.
+
+A document also forces you to challenge your own assumptions. There have been several occasions when I’ve started a document only to give up halfway - or pivot to a different proposal - as I realized my original idea wasn’t as good as I had initially thought.
+
+## Increased employee engagement, especially in a remote setting
+
+In today’s Zoom-based culture, it's challenging to maintain engagement, especially when presenting an idea. Many of us are guilty of half-listening to a presentation on Zoom, while keeping up with Slack and Email, only to return after the meeting with questions that were already covered.
+
+A document-driven culture is not just about writing documents, but also has strict rituals on how to read them in a group. These rituals can feel strange when you first try them, but they increase engagement and focus from every participant.
+
+## Getting input from everyone in the room
+
+A slide deck (or a conversation without a document) can create meetings with power dynamics. If, as a manager, I’m trying to communicate a change in direction via a presentation, my reports may be hesitant to speak up or challenge some of my assumptions - or be unaware at what point in the conversation they can interrupt.
+
+A document-driven culture eliminates this by providing structured opportunities where everyone, regardless of seniority or title, has ample time to ask questions and provide feedback on a document.
+
+## Resolute decision making
+
+In many organizations, conversations around a new idea don’t reach a decision point until after several meetings. Often, in many of these meetings, we’ll also discover we need additional data which requires yet another meeting.
+
+A well-written document avoids this plethora of meetings by including all data, options, and recommendations, which reduces ambiguity and provides a clearer outcome.
+
+## Historical knowledge of decisions
+
+Finally, a document-driven culture leaves a paper trail for others to follow in the future, explaining the rationale behind a decision or other options that were considered. 
+
+Without a document, others, especially new employees, lack the context of the conversation and data, and end up relying on folklore to understand how decisions were made.
+
+# When and How to Write a Document
+
+A document-driven culture doesn’t mean writing a document for every occasion. You should write a document when you need input into an idea or proposal and/or want to reach a decision from a group of individuals. 
+
+One-way sharing of information to a large audience such as a “lunch and learn” or an “all staff” update doesn’t benefit as much from being a document and a slide deck is still a great tool for these occasions.
+
+As you prepare to put together a document, consider the format that will work best. Here are some formats I’ve used in the past:
+
+**2-Pager**: As the name suggests, these are 2-page documents, used for quick proposals, often decisions that have a minor impact or can be reversed. For example, my team might write a 2-pager to propose an upcoming change in a deployment window.
+
+**6-Pager**: For more in-depth proposals, I recommend a 6-page document. This is the format for a large change in direction or a decision that is very difficult to undo, such as reducing the cost of an item for customers. These documents can be up to (but should not exceed) 6-pages for the main narrative. They can, however, include appendices for supporting data.
+
+**PRFAQ**: As written about in Working Backwards: Insights, Stories, and Secrets from Inside Amazon [Bryar, Carr], Amazon uses a Press Release with Frequently Asked Questions (PRFAQ) document for new product ideas. The document is 6 pages, with the first page being a fictitious press release from the future introducing the product and how it will work on launch day. A list of frequently asked questions follows, written both from an internal (Amazon) and external (customer) perspective.
+
+**OP1 and OP2**: for annual planning, Amazon uses two 6-page documents called OP1 and OP2. Each organization creates their OP1 in Q3 of the calendar year, outlining the investments they will make in the following year. After the finance group approves budgets, groups create an OP2 (in Q1 of the following calendar year) forecasting the overall spend.
+
+Although the PRFAQ and OP1/OP2 are useful formats, as I’ve used documents with my teams, I’ve tried to avoid creating my own templates, instead encouraging everyone in the organization to read other documents and develop their own formats and writing style.
+
+## Opinionated and customer-focused, with input from others
+
+Regardless of the document format and length, the strongest documents have three core elements:
+
+First, documents should be opinionated. You shouldn’t create a document that presents three options and ask for a discussion. Instead, create a document that presents three options together with a recommendation. The resulting discussion is more effective and becomes a yes/no decision on whether this is the right approach and how to move forward.
+
+An opinionated document has a second side-effect of leaving a good paper trail. With an opinionated document, employees can go back and understand which options the team considered, the trade-offs, and the final recommendation. 
+
+Second, your documents should always link back to the customer, even if the customer is internal, such as another group in your organization. Many of the best documents I’ve read are the ones that intimately connect back to the benefits for the customer, even if the subject did not directly affect a consumer-facing product.
+
+Finally, documents should have relevant input from all stakeholders. You will be the primary author for your document, but it still needs to have input and ideas from others, especially if they will not be in the room for the review. I’ve often found this important for product proposals, where each document should have projected financial data provided ahead of time by the finance team.
+
+## Writing style
+
+Writing style is very important. At Amazon, shortly after joining, I attended my first writing training, required for all new employees. A few years prior at Microsoft, I had been an editor-in-chief of a popular developer magazine, so I felt confident I knew how to write. The feedback I received from the training was, however, quite humbling. 
+
+I discovered I wasn’t writing in the active voice, had many consistency errors, and the editor running the training returned my writing sample in a bloodbath of red ink, highlighting many more corrections. 
+
+Even after Amazon, this remains an area I continue to develop. I’ve since found that creating and using my own style guide helps. A personal style guide acts as a set of rules and checklist, ensuring consistency throughout a document beyond what a spelling and grammar checker can provide.
+
+# How to Read a Document
+
+Writing documents is not the only thing required for a document-driven culture. How to read is equally, if not more, important. While re-learning how to read might sound strange, I’ve found there are several aspects important to a document-driven culture.
+
+First, there should be no pre-reading of documents. While it might seem expedient to send out a document the night before, it changes the dynamics of the meeting. Unless everyone pre-reads the document (which is never the case), some people come into the meeting with the context of the document and others don’t. Realizing this, what typically happens is “we’ll give 5 minutes for those who could not pre-read”, which is simply not enough time for everyone in the group to fully understand the document. As a result, everyone is on a different page, pun intended, and the meeting is not as effective as it could have been.
+
+Instead, in a document-driven culture, the author of the document distributes the document at the start of the meeting (and not earlier). If meeting in person, the author can print out paper copies for everyone in the room. In a remote setting, the author will share the link to the document once the review begins.
+
+After distributing the document, it’s critical to allocate enough time for everyone to read. For a 2-page document, I suggest 10-15 minutes of reading time with 20-40 minutes of discussion time. For a 6-page document, I allocate 20-25 minutes of reading time (more if there are many appendices) and 40-70 minutes of discussion time. To ensure enough time, most of my 6-pager reviews at Amazon were a minimum of 90 minutes, some 2 hours. This might seem like a long meeting to cover just one topic, but remember the goal is to take the audience from not having heard of the idea to the group making a decision.
+
+During the reading time, the group reads in silence. In a meeting with paper documents, readers use pens to scribble down their notes and questions in the margin. For an online meeting with an electronic document, inline comments work equally well. And silence means silence. Unless there is an urgent request (for example, “I don’t have access to the document”) no one should verbally interrupt when everyone is reading.
+
+Approaching the end of the reading time, the author of the document (and by proxy, facilitator of the meeting) should confirm whether anyone needs more time. Everyone reads at different speeds depending on their familiarity with the topic and it’s the author’s responsibility to ensure that everyone has had ample time to read the document in its entirety.
+
+Once everyone has finished reading, the meeting can now switch to discussion. Instead of opening the floor to everyone, however, there is also a format for facilitating this. 
+
+## Getting feedback
+
+First, the author should ask if there are high-level questions or comments about the document. This opens up for any general feedback, such as confirmation that other individuals outside of the review have also seen and contributed to the document. These high-level comments rarely get into a discussion about the idea, unless there is something obvious about the approach. For example, “Didn’t we try something similar three years ago?”
+
+After everyone has shared their overall comments, the author, now facilitator, invites feedback on a page-by-page basis. A good lead-in for this will be, “Are there any comments on page 1?” The group now reviews their notes, and the floor is open for discussion. In a setting with printed copies of the document, line numbers in the document help the reader precisely refer to part of the document. For example, “On line 24, you mention that you’ve seen increased bug reports. Do you have data that supports this?”
+
+Once everyone has had an opportunity to provide feedback on page 1, the author/facilitator will move on to page 2, then page 3, and so on. For longer documents, there’s no need to review the appendices page-by-page. Once the group reaches the end of the document, the author asks for any final feedback before moving on to recommendations.
+
+As the document was opinionated, the author should have everything they need to move forward. The outcome could be that the group agrees with the approach and wants to move forward. Alternatively, during the discussion, maybe the group preferred another option or a different approach. Finally, while it was rare, one outcome could be that the group felt they needed more information. Here, the group asks the author to update the document and set up additional time for a further review.
+
+# Sidebar: How to Review a Document
+
+At Amazon, my direct reports would often ask me to review documents they were preparing for their own review. While it was likely that I would be in the meeting, I was keen to ensure that the quality of the document reflected well on our group and organization.
+
+When a document was nearing completion, I would set up a review with my direct report and their team. Using the same time allocated to the meeting, we would do a “trial read” of the document. After the review, I would structure my feedback into two parts: the validity of the proposal and whether it needed adjusting, and the readability of the document. This second part was valuable as it provided the team with a fresh set of eyes on the document and often highlighted structural changes that may help the audience better understand the proposal.
+
+# Does a Document-Driven Culture Result in Fewer Meetings?
+
+Yes, and no.
+
+On one hand, a document-driven culture can significantly reduce the number of “regular sync up” meetings we all have on our calendars. In a document-driven culture, authors only schedule a meeting once a document is complete and ready to be reviewed. This is more efficient than a recurring cadence, where the same topics keep coming up, often without resolution.
+
+A document-driven culture can also reduce ad hoc meetings that should be document reviews. Often, people will reach out and want time to discuss an idea. A document-driven culture supports reducing these types of requests and encouraging deeper thinking, with “That idea sounds interesting. Let’s meet when you have a document to read and we can go into more detail.”
+
+Back to the original question of fewer meetings, the “no” part of this answer brings us back to the fact that writing is hard. Preparing a well-written document takes time, and you will spend much of this reviewing and seeking input from others prior to presenting the document in the final review.
+
+To summarize, while a document-driven culture is not necessarily a time-saver in terms of calendar time, the meetings that will be held are much more effective in helping the author and the organization drive towards a clearer and more expedient decision.
+
+# Implementing a Document-Driven Culture in Your Own Organization
+
+I hope this article has provided a glimpse into the benefits of a document-driven culture. If you are interested in exploring this within your own organization, I would recommend these three first steps:
+
+**Practice it in a small group**: A document-driven approach only works if everyone takes part. This is especially important for the rituals required for reading during a review. You can pilot this with a small group - it doesn’t have to be the entire organization at once. When proposing the idea to your group, I recommend advocating “trying this new approach over the next quarter” as many may be hesitant to give up their slide decks permanently!
+
+Over these three months, each member of the group should choose to write a 6-page document on one idea or proposal they are working on. To review their document, they will get the right people together - in a separate review meeting vs. any existing recurring meetings - and practice facilitating reading at the meeting. 
+
+At the end of the quarter, the group can review findings and, if successful, decide on what an org-wide rollout could look like.
+
+**Invest in writing skills**: To support writing stronger documents over these three months, the group should also make a commitment to invest in education to improve their writing skills. This might include reading books or articles, or installing grammar checking tools.
+
+**Support each other**: Finally, to further support this education, it’s also important to give feedback to each other. While it might feel uncomfortable to comment on the spelling, grammar, format, or structure of a colleague’s document, it’s an essential skill that will help improve the quality of all the written materials in your organization.
