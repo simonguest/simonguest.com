@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Simon Guest">
+<meta name="dcterms.date" content="2024-02-06">
+<meta name="description" content="Why this is happening, how we can bring it back, and where generative AI may help.">
+
+<title>Is Using a Debugger Becoming a Lost Art? – Simon Says</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-4df3b0c4fafa0f66eafcead0ee6cff11.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>
+
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: #fff;
+      }
+
+      .quarto-title-block .quarto-title-banner {
+        color: #fff;
+background-image: url(main.webp);
+background-size: cover;
+      }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@1/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=client-NyH4rB82RzHd5dToa2AY3wAJNsnYmPLd5PFuHNpDNDR"></script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Simon Says</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About Simon</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/simonguest/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/simonguest"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Is Using a Debugger Becoming a Lost Art?</h1>
+                  <div>
+        <div class="description">
+          Why this is happening, how we can bring it back, and where generative AI may help.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">IDEs</div>
+                <div class="quarto-category">Debugging</div>
+                <div class="quarto-category">Generative AI</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Simon Guest </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 6, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>I was sad to learn of Niklaus Wirth’s death on New Year’s Day. In college, I used Modula-2, Pascal, and Delphi, and my love of coding may have been very different without Wirth’s contributions. May he rest in peace.</p>
+<p>As I was reminiscing about languages and tools I used to use, I recalled how much time I spent in the debugger. I was always using the debugger. It was the primary tool to learn new code, understand why my code wasn’t working, and ultimately figure out how to fix it.</p>
+<p>When I speak to developers today, however, especially those earlier in their career, using a debugger seems to be a lost art.</p>
+<p>As an example, I was recently working with one of our developers, helping diagnose why their build was taking so long. I couldn’t help but notice they were sprinkling <em>console.log()</em> statements throughout their code to figure out whether a line had been reached and the value of a variable in scope.</p>
+<p>When I asked, “Why don’t you use the debugger?” there were several reasons. Some were valid, others were myths, and many were related to their setup, but all had turned this engineer off the idea.</p>
+<p>And this developer is not alone. In a <a href="https://news.ycombinator.com/item?id=32513082">recent thread</a> on Hacker News titled, “Why are we not using debuggers more?”, I found it fascinating to see the polarization of opinions in the comments.</p>
+<p>In this article, I’ll expand on this and cover several reasons developers may not be using the debugger. I’ll then share the benefits of using a debugger I’ve seen in my teams and explore the potential connection between debugging and generative AI.</p>
+<section id="why-dont-developers-use-a-debugger" class="level1">
+<h1>Why don’t developers use a debugger?</h1>
+<p><em>“It’s easier not to…”</em> - If you don’t have a debugger setup - or don’t know how to use one - this can be a valid excuse. I’ll admit it. It’s super easy to insert a console.log statement and re-run your code.</p>
+<p><em>“Setting up the debugger is too complex…”</em> - Depending on your development environment, getting a working debugger can take effort. It might require creating a new runtime configuration, generating source maps, or installing specific libraries.</p>
+<p><em>“The debugger never works for me…”</em> - Even when a debugger is available, sometimes it just doesn’t work. Maybe it doesn’t break when you thought it should have. Or maybe it breaks, but on a completely different line.</p>
+<p><em>“I don’t know how to use it with my type of application…” </em>- For Web applications, it’s difficult to debug both the server and browser. For distributed applications, it’s challenging to attach a debugger to a remotely-running container.</p>
+<p><em>“I was told that using a debugger is much slower…”</em> - Debugging an application will always be slower than running without debugging. And who wants a slower development machine?</p>
+<p>How do we solve for these? I believe the above highlights the friction - or perceived friction - of using a debugger. I also believe that if more developers knew the advantages of using a debugger, more would invest the time to overcome the friction of using one.</p>
+<p>To start down this path, let’s look at some advantages of using a debugger:</p>
+</section>
+<section id="why-use-a-debugger" class="level1">
+<h1>Why use a debugger?</h1>
+<section id="inspections-and-evaluations" class="level2">
+<h2 class="anchored" data-anchor-id="inspections-and-evaluations">Inspections and evaluations</h2>
+<p>As you probably know, debuggers enable you to inspect the value of any variable when a breakpoint is reached.</p>
+<p>For example, in this computer vision application, I can use the debugger to inspect the value of the <em>delegate</em>, <em>image</em>, and <em>model</em> variables when the <em>detectObjects</em> function is called.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./screenshot-1.webp" class="img-fluid figure-img"></p>
+<figcaption>Screenshot of the variables pane in VS Code Debugger</figcaption>
+</figure>
+</div>
+<p>Many IDEs also support “inline views”, where the editor displays the values of variables in scope alongside each line of code. This can be useful for quickly seeing simple values at runtime, although you still need the inspector for complex objects.</p>
+<p>Finally, most IDEs also support the evaluation of expressions at runtime. This can help support a more complex inspection or to view the output from a function.</p>
+<section id="why-is-this-better-than-console.log" class="level3">
+<h3 class="anchored" data-anchor-id="why-is-this-better-than-console.log">Why is this better than console.log?</h3>
+<p>First, you don’t have to write any console.log statements! (And then remove them, especially after you’ve pushed your commit!)</p>
+<p>More importantly, not only does a debugger show the values of variables at runtime, but it also provides the context of what else is in scope.</p>
+<p>On many occasions, I’ve used a debugger and discovered a value or method that was available in a module or class - one that I hadn’t realized existed: “Wow! I didn’t realize the cv object contains the list of devices - now I don’t need to pass them separately.”</p>
+</section>
+</section>
+<section id="dynamic-breakpoints" class="level2">
+<h2 class="anchored" data-anchor-id="dynamic-breakpoints">Dynamic breakpoints</h2>
+<p>As well as breakpoints that stop when the line of code is reached, debuggers also support dynamic breakpoints. These include “break on exception”, which will pause the debugger if an uncaught exception is raised, and conditional breakpoints.</p>
+<p>Using a conditional breakpoint, the debugger stops only when an expression evaluates to true.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./screenshot-2.webp" class="img-fluid figure-img"></p>
+<figcaption>A conditional breakpoint in VS Code Debugger</figcaption>
+</figure>
+</div>
+<p>For example, let’s imagine I was experiencing an issue when my computer vision model was running on the CPU instead of the GPU. Using a conditional breakpoint, the debugger only breaks when the passed <em>delegate</em> variable is set to “CPU”. This enables me to ignore all the other times that the GPU was being used.</p>
+<section id="why-is-this-better-than-console.log-1" class="level3">
+<h3 class="anchored" data-anchor-id="why-is-this-better-than-console.log-1">Why is this better than console.log?</h3>
+<p>Breaking on exception is very efficient - way more so than just logging the exception to stdout. The debugger pauses and provides all the context needed to diagnose the issue.</p>
+<p>The alternative - using console.log - requires finding the exception in the logs, tracing which line caused it, inserting a console.log to write some additional values, and re-running your program (likely many times over).</p>
+<p>Conditional breakpoints are equally productive, especially for edge cases. You can use these breakpoints to trap known values, such as the delegate variable in the last example, and unexpected ones - for example, stopping when a passed object is null/undefined.</p>
+</section>
+</section>
+<section id="walking-the-call-stack" class="level2">
+<h2 class="anchored" data-anchor-id="walking-the-call-stack">Walking the call stack</h2>
+<p>When a debugger hits a breakpoint, besides variables, you have access to the call stack. The call stack is the sequence of calls that was made between starting the program and the current line of code being executed.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./screenshot-3.webp" class="img-fluid figure-img"></p>
+<figcaption>The call stack window in VS Code Debugger</figcaption>
+</figure>
+</div>
+<p>As shown above, in our computer vision example, the debugger has paused on a breakpoint. It’s now easy to trace the call stack - all the way from the user clicking the run button (the onclick function at the bottom of the stack) through to the <em>detectObjects</em> method being called in the cv library.</p>
+<section id="why-is-this-better-than-console.log-2" class="level3">
+<h3 class="anchored" data-anchor-id="why-is-this-better-than-console.log-2">Why is this better than console.log?</h3>
+<p>Not only does the call stack give you visibility you wouldn’t get with a console.log statement, but it can be really useful for learning unfamiliar code.</p>
+<p>Especially when I’ve run a project for the first time, the call stack provides insight into the dependencies between parts of the system. Over time, this helps me create a mental model of how everything fits together: “Oh wow, I didn’t realize that module x got called by module y.”</p>
+</section>
+</section>
+<section id="setting-values" class="level2">
+<h2 class="anchored" data-anchor-id="setting-values">Setting values</h2>
+<p>Debuggers allow you to inspect values, but you may not know that you can set values at runtime as well. This is one of my favorite features, as you can change a value and often reduce the time to see the impact.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./screenshot-4.webp" class="img-fluid figure-img"></p>
+<figcaption>Setting variables in VS Code Debugger</figcaption>
+</figure>
+</div>
+<p>In the above example, I can right click on the delegate variable, manually set the value to ‘CPU’. After continuing execution, this will force the model to run on the CPU.</p>
+<section id="why-is-this-better-than-console.log-3" class="level3">
+<h3 class="anchored" data-anchor-id="why-is-this-better-than-console.log-3">Why is this better than console.log?</h3>
+<p>I’ve often used this for a couple of scenarios. The first is to test error conditions and handling. For example, imagine a user has reported that the page crashes if they try to create an account with a username longer than 16 characters. It’s trivial to set a breakpoint, set the value of username to something longer than 16 characters, and then step through to diagnose the offending code.</p>
+<p>I’ve also used this approach to jump quickly to other parts of the application. For example, set a manual breakpoint, change the value of <em>level</em> to 20, and resume the debugger.</p>
+</section>
+</section>
+<section id="integrating-with-ai-coding-assistants" class="level2">
+<h2 class="anchored" data-anchor-id="integrating-with-ai-coding-assistants">Integrating with AI coding assistants</h2>
+<p>You may have used an AI coding assistant (e.g., GitHub Copilot) to help with generating code. I believe that integrating coding assistants with the debugger will take this one step further.</p>
+<p>As we’ve seen in previous sections, when a debugger reaches a breakpoint, it has a lot of context about the running application. This includes the current code being executed, all the variables in scope, any exceptions, and the call stack.</p>
+<p>This context is incredibly useful if sent to an LLM. In the case of an unhandled exception, the exception and all the context leading up to the exception can be fed to the LLM. This is a lot more powerful than just copying and pasting a generic exception message into ChatGPT.</p>
+<p>I believe we’ll see more advanced use cases of the debugging context working hand-in-hand with an LLM. These may include providing other optimizations, such as recommending shorter call paths or eliminating redundancies.</p>
+<p>This is a nascent area, with some of this functionality taking shape in the early adopter builds of GitHub Copilot. If you’d like to find out more, I recommend watching Session <a href="https://www.youtube.com/watch?v=5pbPLHYB6-0">BRK231H</a> from Microsoft’s Ignite conference in 2023. Fast forward to the 25 minute mark, where Mark Downie shows a development version of Copilot chat working alongside the debugger to diagnose an unhandled exception in his C# code.</p>
+</section>
+</section>
+<section id="what-now" class="level1">
+<h1>What Now?</h1>
+<p>If you haven’t used a debugger before - or if you’ve been frustrated - I hope this article has convinced you it’s worth another try. If so, I’d recommend three next steps:</p>
+<section id="get-your-environment-working" class="level2">
+<h2 class="anchored" data-anchor-id="get-your-environment-working">Get your environment working</h2>
+<p>Most importantly, I recommend setting aside time to set up your own development environment to support debugging. This may involve installing some additional libraries or tools - for example, installing the debug gem in a Ruby environment. To enable debugging for JavaScript and TypeScript environments, you will also need to generate source maps in your build process.</p>
+<p>I’ve also found it useful to get into the habit of configuring my IDE to run the debugger by default. (To do this, you can create a single debug configuration - or, if that’s not possible, replace your keyboard shortcut for running the project to debugging instead).</p>
+<p>By doing this, you’ll always have access to the debugger at runtime. When things aren’t working, it’s then easy to set a breakpoint and inspect the code vs.&nbsp;having to adjust your thinking to restarting the application with a debugger attached. (And if you are worried that your program will always be stopping, most IDEs support a “mute all breakpoints” option.)</p>
+<p>One additional side effect is if you do set the debugger as the default target, you’ll likely dispel the myth that debugging is slow on today’s modern machines.</p>
+</section>
+<section id="become-a-evangelist-for-using-the-debugger-in-your-own-team" class="level2">
+<h2 class="anchored" data-anchor-id="become-a-evangelist-for-using-the-debugger-in-your-own-team">Become a evangelist for using the debugger in your own team</h2>
+<p>Once you have your environment working, one of our principal engineers at Code.org recommends becoming an evangelist in your own team. As he puts it, “don’t just enable the debugger for yourself, enable it for your teammates.”</p>
+<p>This can be as simple as sharing, committing, and maintaining the IDE configuration harnesses that enable one-click debugging for your project.</p>
+</section>
+<section id="explore-remote-debugging" class="level2">
+<h2 class="anchored" data-anchor-id="explore-remote-debugging">Explore remote debugging</h2>
+<p>As you master your own development environment, I’ve encouraged my teams to go on and understand how remote debugging works, especially for those working on distributed applications.</p>
+<p>This involves understanding the protocols behind remote debugging, such as GDB Remote Serial Protocol, Chrome DevTools Protocol, and Java Debug Wire Protocol, among others.</p>
+<p>If you are interested in diving deeper here, I’d recommend <a href="https://www.amazon.com/Practical-Debugging-Scale-Kubernetes-Production-ebook/dp/B0BRKBP3BG">Practical Debugging at Scale [Almog]</a>, especially if you are running Java-based applications on Kubernetes.</p>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>In this article, we’ve covered many of the challenges developers face with debugging and re-introduced several benefits of using a debugger: inspections and evaluations, dynamic breakpoints, walking the call stack, setting values, and integrating with AI coding assistants.</p>
+<p>If you are new to using a debugger (or were just afraid to ask) I hope this has provided some ideas for exploring more. If you are a developer who was already using a debugger, I hope you’ll continue to evangelize the benefits before it truly becomes a lost art!</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/simonguest\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -221,5 +221,150 @@
   <pubDate>Wed, 21 Feb 2024 00:00:00 GMT</pubDate>
   <media:content url="https://simonguest.com/posts/should-ctos-write-code/main.webp" medium="image" type="image/webp"/>
 </item>
+<item>
+  <title>Is Using a Debugger Becoming a Lost Art?</title>
+  <dc:creator>Simon Guest</dc:creator>
+  <link>https://simonguest.com/posts/is-using-a-debugger-becoming-a-lost/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I was sad to learn of Niklaus Wirth’s death on New Year’s Day. In college, I used Modula-2, Pascal, and Delphi, and my love of coding may have been very different without Wirth’s contributions. May he rest in peace.</p>
+<p>As I was reminiscing about languages and tools I used to use, I recalled how much time I spent in the debugger. I was always using the debugger. It was the primary tool to learn new code, understand why my code wasn’t working, and ultimately figure out how to fix it.</p>
+<p>When I speak to developers today, however, especially those earlier in their career, using a debugger seems to be a lost art.</p>
+<p>As an example, I was recently working with one of our developers, helping diagnose why their build was taking so long. I couldn’t help but notice they were sprinkling <em>console.log()</em> statements throughout their code to figure out whether a line had been reached and the value of a variable in scope.</p>
+<p>When I asked, “Why don’t you use the debugger?” there were several reasons. Some were valid, others were myths, and many were related to their setup, but all had turned this engineer off the idea.</p>
+<p>And this developer is not alone. In a <a href="https://news.ycombinator.com/item?id=32513082">recent thread</a> on Hacker News titled, “Why are we not using debuggers more?”, I found it fascinating to see the polarization of opinions in the comments.</p>
+<p>In this article, I’ll expand on this and cover several reasons developers may not be using the debugger. I’ll then share the benefits of using a debugger I’ve seen in my teams and explore the potential connection between debugging and generative AI.</p>
+<section id="why-dont-developers-use-a-debugger" class="level1">
+<h1>Why don’t developers use a debugger?</h1>
+<p><em>“It’s easier not to…”</em> - If you don’t have a debugger setup - or don’t know how to use one - this can be a valid excuse. I’ll admit it. It’s super easy to insert a console.log statement and re-run your code.</p>
+<p><em>“Setting up the debugger is too complex…”</em> - Depending on your development environment, getting a working debugger can take effort. It might require creating a new runtime configuration, generating source maps, or installing specific libraries.</p>
+<p><em>“The debugger never works for me…”</em> - Even when a debugger is available, sometimes it just doesn’t work. Maybe it doesn’t break when you thought it should have. Or maybe it breaks, but on a completely different line.</p>
+<p><em>“I don’t know how to use it with my type of application…” </em>- For Web applications, it’s difficult to debug both the server and browser. For distributed applications, it’s challenging to attach a debugger to a remotely-running container.</p>
+<p><em>“I was told that using a debugger is much slower…”</em> - Debugging an application will always be slower than running without debugging. And who wants a slower development machine?</p>
+<p>How do we solve for these? I believe the above highlights the friction - or perceived friction - of using a debugger. I also believe that if more developers knew the advantages of using a debugger, more would invest the time to overcome the friction of using one.</p>
+<p>To start down this path, let’s look at some advantages of using a debugger:</p>
+</section>
+<section id="why-use-a-debugger" class="level1">
+<h1>Why use a debugger?</h1>
+<section id="inspections-and-evaluations" class="level2">
+<h2 class="anchored" data-anchor-id="inspections-and-evaluations">Inspections and evaluations</h2>
+<p>As you probably know, debuggers enable you to inspect the value of any variable when a breakpoint is reached.</p>
+<p>For example, in this computer vision application, I can use the debugger to inspect the value of the <em>delegate</em>, <em>image</em>, and <em>model</em> variables when the <em>detectObjects</em> function is called.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://simonguest.com/posts/is-using-a-debugger-becoming-a-lost/screenshot-1.webp" class="img-fluid figure-img"></p>
+<figcaption>Screenshot of the variables pane in VS Code Debugger</figcaption>
+</figure>
+</div>
+<p>Many IDEs also support “inline views”, where the editor displays the values of variables in scope alongside each line of code. This can be useful for quickly seeing simple values at runtime, although you still need the inspector for complex objects.</p>
+<p>Finally, most IDEs also support the evaluation of expressions at runtime. This can help support a more complex inspection or to view the output from a function.</p>
+<section id="why-is-this-better-than-console.log" class="level3">
+<h3 class="anchored" data-anchor-id="why-is-this-better-than-console.log">Why is this better than console.log?</h3>
+<p>First, you don’t have to write any console.log statements! (And then remove them, especially after you’ve pushed your commit!)</p>
+<p>More importantly, not only does a debugger show the values of variables at runtime, but it also provides the context of what else is in scope.</p>
+<p>On many occasions, I’ve used a debugger and discovered a value or method that was available in a module or class - one that I hadn’t realized existed: “Wow! I didn’t realize the cv object contains the list of devices - now I don’t need to pass them separately.”</p>
+</section>
+</section>
+<section id="dynamic-breakpoints" class="level2">
+<h2 class="anchored" data-anchor-id="dynamic-breakpoints">Dynamic breakpoints</h2>
+<p>As well as breakpoints that stop when the line of code is reached, debuggers also support dynamic breakpoints. These include “break on exception”, which will pause the debugger if an uncaught exception is raised, and conditional breakpoints.</p>
+<p>Using a conditional breakpoint, the debugger stops only when an expression evaluates to true.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://simonguest.com/posts/is-using-a-debugger-becoming-a-lost/screenshot-2.webp" class="img-fluid figure-img"></p>
+<figcaption>A conditional breakpoint in VS Code Debugger</figcaption>
+</figure>
+</div>
+<p>For example, let’s imagine I was experiencing an issue when my computer vision model was running on the CPU instead of the GPU. Using a conditional breakpoint, the debugger only breaks when the passed <em>delegate</em> variable is set to “CPU”. This enables me to ignore all the other times that the GPU was being used.</p>
+<section id="why-is-this-better-than-console.log-1" class="level3">
+<h3 class="anchored" data-anchor-id="why-is-this-better-than-console.log-1">Why is this better than console.log?</h3>
+<p>Breaking on exception is very efficient - way more so than just logging the exception to stdout. The debugger pauses and provides all the context needed to diagnose the issue.</p>
+<p>The alternative - using console.log - requires finding the exception in the logs, tracing which line caused it, inserting a console.log to write some additional values, and re-running your program (likely many times over).</p>
+<p>Conditional breakpoints are equally productive, especially for edge cases. You can use these breakpoints to trap known values, such as the delegate variable in the last example, and unexpected ones - for example, stopping when a passed object is null/undefined.</p>
+</section>
+</section>
+<section id="walking-the-call-stack" class="level2">
+<h2 class="anchored" data-anchor-id="walking-the-call-stack">Walking the call stack</h2>
+<p>When a debugger hits a breakpoint, besides variables, you have access to the call stack. The call stack is the sequence of calls that was made between starting the program and the current line of code being executed.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://simonguest.com/posts/is-using-a-debugger-becoming-a-lost/screenshot-3.webp" class="img-fluid figure-img"></p>
+<figcaption>The call stack window in VS Code Debugger</figcaption>
+</figure>
+</div>
+<p>As shown above, in our computer vision example, the debugger has paused on a breakpoint. It’s now easy to trace the call stack - all the way from the user clicking the run button (the onclick function at the bottom of the stack) through to the <em>detectObjects</em> method being called in the cv library.</p>
+<section id="why-is-this-better-than-console.log-2" class="level3">
+<h3 class="anchored" data-anchor-id="why-is-this-better-than-console.log-2">Why is this better than console.log?</h3>
+<p>Not only does the call stack give you visibility you wouldn’t get with a console.log statement, but it can be really useful for learning unfamiliar code.</p>
+<p>Especially when I’ve run a project for the first time, the call stack provides insight into the dependencies between parts of the system. Over time, this helps me create a mental model of how everything fits together: “Oh wow, I didn’t realize that module x got called by module y.”</p>
+</section>
+</section>
+<section id="setting-values" class="level2">
+<h2 class="anchored" data-anchor-id="setting-values">Setting values</h2>
+<p>Debuggers allow you to inspect values, but you may not know that you can set values at runtime as well. This is one of my favorite features, as you can change a value and often reduce the time to see the impact.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://simonguest.com/posts/is-using-a-debugger-becoming-a-lost/screenshot-4.webp" class="img-fluid figure-img"></p>
+<figcaption>Setting variables in VS Code Debugger</figcaption>
+</figure>
+</div>
+<p>In the above example, I can right click on the delegate variable, manually set the value to ‘CPU’. After continuing execution, this will force the model to run on the CPU.</p>
+<section id="why-is-this-better-than-console.log-3" class="level3">
+<h3 class="anchored" data-anchor-id="why-is-this-better-than-console.log-3">Why is this better than console.log?</h3>
+<p>I’ve often used this for a couple of scenarios. The first is to test error conditions and handling. For example, imagine a user has reported that the page crashes if they try to create an account with a username longer than 16 characters. It’s trivial to set a breakpoint, set the value of username to something longer than 16 characters, and then step through to diagnose the offending code.</p>
+<p>I’ve also used this approach to jump quickly to other parts of the application. For example, set a manual breakpoint, change the value of <em>level</em> to 20, and resume the debugger.</p>
+</section>
+</section>
+<section id="integrating-with-ai-coding-assistants" class="level2">
+<h2 class="anchored" data-anchor-id="integrating-with-ai-coding-assistants">Integrating with AI coding assistants</h2>
+<p>You may have used an AI coding assistant (e.g., GitHub Copilot) to help with generating code. I believe that integrating coding assistants with the debugger will take this one step further.</p>
+<p>As we’ve seen in previous sections, when a debugger reaches a breakpoint, it has a lot of context about the running application. This includes the current code being executed, all the variables in scope, any exceptions, and the call stack.</p>
+<p>This context is incredibly useful if sent to an LLM. In the case of an unhandled exception, the exception and all the context leading up to the exception can be fed to the LLM. This is a lot more powerful than just copying and pasting a generic exception message into ChatGPT.</p>
+<p>I believe we’ll see more advanced use cases of the debugging context working hand-in-hand with an LLM. These may include providing other optimizations, such as recommending shorter call paths or eliminating redundancies.</p>
+<p>This is a nascent area, with some of this functionality taking shape in the early adopter builds of GitHub Copilot. If you’d like to find out more, I recommend watching Session <a href="https://www.youtube.com/watch?v=5pbPLHYB6-0">BRK231H</a> from Microsoft’s Ignite conference in 2023. Fast forward to the 25 minute mark, where Mark Downie shows a development version of Copilot chat working alongside the debugger to diagnose an unhandled exception in his C# code.</p>
+</section>
+</section>
+<section id="what-now" class="level1">
+<h1>What Now?</h1>
+<p>If you haven’t used a debugger before - or if you’ve been frustrated - I hope this article has convinced you it’s worth another try. If so, I’d recommend three next steps:</p>
+<section id="get-your-environment-working" class="level2">
+<h2 class="anchored" data-anchor-id="get-your-environment-working">Get your environment working</h2>
+<p>Most importantly, I recommend setting aside time to set up your own development environment to support debugging. This may involve installing some additional libraries or tools - for example, installing the debug gem in a Ruby environment. To enable debugging for JavaScript and TypeScript environments, you will also need to generate source maps in your build process.</p>
+<p>I’ve also found it useful to get into the habit of configuring my IDE to run the debugger by default. (To do this, you can create a single debug configuration - or, if that’s not possible, replace your keyboard shortcut for running the project to debugging instead).</p>
+<p>By doing this, you’ll always have access to the debugger at runtime. When things aren’t working, it’s then easy to set a breakpoint and inspect the code vs.&nbsp;having to adjust your thinking to restarting the application with a debugger attached. (And if you are worried that your program will always be stopping, most IDEs support a “mute all breakpoints” option.)</p>
+<p>One additional side effect is if you do set the debugger as the default target, you’ll likely dispel the myth that debugging is slow on today’s modern machines.</p>
+</section>
+<section id="become-a-evangelist-for-using-the-debugger-in-your-own-team" class="level2">
+<h2 class="anchored" data-anchor-id="become-a-evangelist-for-using-the-debugger-in-your-own-team">Become a evangelist for using the debugger in your own team</h2>
+<p>Once you have your environment working, one of our principal engineers at Code.org recommends becoming an evangelist in your own team. As he puts it, “don’t just enable the debugger for yourself, enable it for your teammates.”</p>
+<p>This can be as simple as sharing, committing, and maintaining the IDE configuration harnesses that enable one-click debugging for your project.</p>
+</section>
+<section id="explore-remote-debugging" class="level2">
+<h2 class="anchored" data-anchor-id="explore-remote-debugging">Explore remote debugging</h2>
+<p>As you master your own development environment, I’ve encouraged my teams to go on and understand how remote debugging works, especially for those working on distributed applications.</p>
+<p>This involves understanding the protocols behind remote debugging, such as GDB Remote Serial Protocol, Chrome DevTools Protocol, and Java Debug Wire Protocol, among others.</p>
+<p>If you are interested in diving deeper here, I’d recommend <a href="https://www.amazon.com/Practical-Debugging-Scale-Kubernetes-Production-ebook/dp/B0BRKBP3BG">Practical Debugging at Scale [Almog]</a>, especially if you are running Java-based applications on Kubernetes.</p>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>In this article, we’ve covered many of the challenges developers face with debugging and re-introduced several benefits of using a debugger: inspections and evaluations, dynamic breakpoints, walking the call stack, setting values, and integrating with AI coding assistants.</p>
+<p>If you are new to using a debugger (or were just afraid to ask) I hope this has provided some ideas for exploring more. If you are a developer who was already using a debugger, I hope you’ll continue to evangelize the benefits before it truly becomes a lost art!</p>
+
+
+</section>
+
+ ]]></description>
+  <category>IDEs</category>
+  <category>Debugging</category>
+  <category>Generative AI</category>
+  <guid>https://simonguest.com/posts/is-using-a-debugger-becoming-a-lost/</guid>
+  <pubDate>Tue, 06 Feb 2024 00:00:00 GMT</pubDate>
+  <media:content url="https://simonguest.com/posts/is-using-a-debugger-becoming-a-lost/main.webp" medium="image" type="image/webp"/>
+</item>
 </channel>
 </rss>
