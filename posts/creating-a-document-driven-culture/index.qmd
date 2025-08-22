@@ -5,6 +5,9 @@ author: "Simon Guest"
 date: "2024-08-06"
 categories: ["Technical Leadership"]
 image: "main.webp"
+image-alt: "The nib of a fountain pen on top of a blank page of paper"
+title-block-banner: "main.webp"
+title-block-banner-color: "#fff"
 ---
 
 When I was interviewing at Code.org, I asked whether there was a document-driven culture, one where well-written documents were the primary mechanism for driving decisions in the organization. The answer was a resounding yes!
