@@ -4,7 +4,35 @@
     "href": "index.html",
     "title": "Posts",
     "section": "",
-    "text": "Creating a Document-Driven Culture\n\n\n\nTechnical Leadership\n\n\n\nAmazon is famous for banning PowerPoint in favor of written documents. But why and how does this work? In this article, I share my experience and ideas for creating a document-driven culture.\n\n\n\n\n\nAug 6, 2024\n\n\nSimon Guest\n\n\n\n\n\nNo matching items"
+    "text": "Creating a Document-Driven Culture\n\n\n\nTechnical Leadership\n\n\n\nAmazon is famous for banning PowerPoint in favor of written documents. But why and how does this work? In this article, I share my experience and ideas for creating a document-driven culture.\n\n\n\n\n\nAug 6, 2024\n\n\nSimon Guest\n\n\n\n\n\n\n\n\n\n\n\n\nShould CTOs Write Code?\n\n\n\nTechnical Leadership\n\n\n\nIn this article, I dust off this age-old question and answer it using an action logic framework.\n\n\n\n\n\nFeb 21, 2024\n\n\nSimon Guest\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/should-ctos-write-code/index.html",
+    "href": "posts/should-ctos-write-code/index.html",
+    "title": "Should CTOs Write Code?",
+    "section": "",
+    "text": "Should CTOs - or VPs, Directors, Engineering Managers, or any other technical manager role - write code?\nIt’s a polarizing question. The answer often depends on your background, definition of what a CTO should do, and the size of your organization.\nIt’s a question I’ve struggled with for many years. I’ve regularly asked myself what, if any, code should I be writing? How can I add value without undermining the engineers on my team? And when I write code, why do I always feel guilty?"
+  },
+  {
+    "objectID": "posts/should-ctos-write-code/index.html#cons-of-writing-code-as-cto",
+    "href": "posts/should-ctos-write-code/index.html#cons-of-writing-code-as-cto",
+    "title": "Should CTOs Write Code?",
+    "section": "Cons of writing code as CTO",
+    "text": "Cons of writing code as CTO\nNow, of course, writing code as CTO is a double-edged sword.\nOn one hand, my code may not be of the highest quality (even though secretly I refuse to believe it!) This can introduce a challenging power dynamic when I submit a pull request and other engineers need to provide critical feedback.\nIn addition, if my code is on the critical path, it has the potential to cause production issues. The team shouldn’t get paged in the middle of the night to resolve a bug that the CTO inadvertently checked in.\nFinally, it doesn’t scale. Locking myself in my office writing code takes me away from other tasks that help the organization more forward. In a former role as VP of Engineering, I was in the middle of a “personal project,” debugging a prototype, when one of my engineers came to me and said, “It’s great that you are working on that, but I really need you to do some ‘vp-ing’ right now.”\nSo, should CTOs write code? I was recently discussing this question with my coach, Jim Svagerko. He introduced me to a framework that introduces seven developmental action logics. I found this framework offered a new and interesting lens through which to answer the question."
+  },
+  {
+    "objectID": "posts/should-ctos-write-code/index.html#dont-be-the-expert",
+    "href": "posts/should-ctos-write-code/index.html#dont-be-the-expert",
+    "title": "Should CTOs Write Code?",
+    "section": "Don’t be the expert!",
+    "text": "Don’t be the expert!\nAs I reflected more on this, I realized that whenever I’ve written code as an Expert, it has always backfired.\nAt Concur, we were developing our first set of partner integrations. I was new to my role and insisted that I jointly work with engineers to develop one of our connectors (even to the point of organizing a mini-hackathon!) Let’s just say the appetite for the project was low.\nAlso at Concur, I remember we were about to show our new expense product at our annual conference. While I was thrilled with the product, I couldn’t stand the “loading spinner” the team had copied and pasted from our previous product.\nThe team was running up against the deadline, so I wrote a new spinner and checked it in. While the demo looked smoother, I didn’t make many friends for bypassing the process (and they rightfully replaced it with a much better one when we got back.)\nFinally, at Code.org, I’ve been trying to migrate our development environment into containers. While it’s been intellectually rewarding, it’s been challenging to advocate this to other engineers - one reason being that I’m not in the position of having to use and maintain this every day.\nWhen I’ve written code while in the mode of an Expert action logic, I’ve often faced resistance. The code has not been adopted or it seems to have caused more downstream issues than the problems it was trying to solve.\nWhat’s the answer? Let’s revisit the action logic diagram:\n\n\n\nThe Action Logic Framework\n\n\nInstead of going from Achiever to Expert, when I think about contributing by writing code at CTO, I should instead look the other way - specifically to Strategist."
+  },
+  {
+    "objectID": "posts/should-ctos-write-code/index.html#writing-code-as-strategist",
+    "href": "posts/should-ctos-write-code/index.html#writing-code-as-strategist",
+    "title": "Should CTOs Write Code?",
+    "section": "Writing code as Strategist",
+    "text": "Writing code as Strategist\nIn this action logic, the code that I write can set a vision. For example, “I had an idea how we can solve X. I’ve put together a quick prototype that shows the potential. What do you think?”\nWork aligned to this action logic is work that my engineers are not doing. It’s often exploring a future state or a lateral direction that’s not part of our defined roadmap.\nIn addition, the Strategist action logic produces code that is not on the critical path. Even if they adopt the approach, the team should take my prototype and rewrite it from scratch.\nThinking back, my most successful coding contributions have been when I’ve been operating in this Strategist action logic.\nAt Concur, I created a prototype of using GraphQL to serve travel requests. It was simple and used stubbed-out data, but it paved the way for a new set of APIs (which the team thankfully wrote from scratch.)\nAt Amazon, I prototyped a new technique for encrypting image data. It was well beyond the current product horizon, but helped with future planning cycles and eventually led to a patent.\nAnd at Code.org, I put together a quick prototype that showed how music could help teach computer science concepts. What started as a “I think there might be something here” has evolved into a wider pilot and a fully fledged activity we will launch later this year."
   },
   {
     "objectID": "posts/creating-a-document-driven-culture/index.html",
@@ -72,7 +100,7 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "About Simon",
     "section": "",
     "text": "About this blog"
   }
