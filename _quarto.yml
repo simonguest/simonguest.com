@@ -7,7 +7,7 @@ website:
   description: "The blog of Simon Guest"
   navbar:
     right:
-      - about.qmd
+      - about/index.qmd
       - icon: linkedin
         href: https://www.linkedin.com/in/simonguest/
       - icon: github
