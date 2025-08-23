@@ -1,7 +1,6 @@
 ---
 title: "Is Using a Debugger Becoming a Lost Art?"
 description: "Why this is happening, how we can bring it back, and where generative AI may help."
-author: "Simon Guest"
 date: "2024-02-06"
 categories: ["IDEs", "Debugging", "Generative AI"]
 image: "main.webp"

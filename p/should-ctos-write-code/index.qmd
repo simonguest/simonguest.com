@@ -1,7 +1,6 @@
 ---
 title: "Should CTOs Write Code?"
 description: "In this article, I dust off this age-old question and answer it using an action logic framework."
-author: "Simon Guest"
 date: "2024-02-21"
 categories: ["Technical Leadership"]
 image: "main.webp"

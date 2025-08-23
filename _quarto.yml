@@ -5,13 +5,16 @@ website:
   title: "Simon Says"
   site-url: https://simonguest.com
   description: "The blog of Simon Guest"
+  search: false
   navbar:
     right:
       - about/index.qmd
       - icon: linkedin
-        href: https://www.linkedin.com/in/simonguest/
+        href: https://www.linkedin.com/in/simonguest
+        aria-label: Simon Guest on LinkedIn
       - icon: github
         href: https://github.com/simonguest
+        aria-label: Simon Guest on GitHub
 format:
   html:
     theme:
