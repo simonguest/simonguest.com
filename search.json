@@ -7,155 +7,155 @@
     "text": "Simon Guest is a technical advisor specializing in educational technology, where he partners with organizations to create exceptional software that reaches millions of students worldwide.\nWith extensive software engineering leadership experience at Code.org, Amazon, SAP, and Microsoft, Simon brings deep technical expertise to the intersection of education and technology. He is an active contributor to open-source education projects, articles, and books, and regularly teaches at the K-12 and undergraduate level.\nBorn and raised in England, Simon has a HNC in Software Engineering from Plymouth College and a Master’s Degree in IT Security from the University of Westminster. He now lives in Kirkland, Washington, with his wife and their two sons."
   },
   {
-    "objectID": "posts/should-ctos-write-code/index.html",
-    "href": "posts/should-ctos-write-code/index.html",
+    "objectID": "p/should-ctos-write-code/index.html",
+    "href": "p/should-ctos-write-code/index.html",
     "title": "Should CTOs Write Code?",
     "section": "",
     "text": "Should CTOs - or VPs, Directors, Engineering Managers, or any other technical manager role - write code?\nIt’s a polarizing question. The answer often depends on your background, definition of what a CTO should do, and the size of your organization.\nIt’s a question I’ve struggled with for many years. I’ve regularly asked myself what, if any, code should I be writing? How can I add value without undermining the engineers on my team? And when I write code, why do I always feel guilty?"
   },
   {
-    "objectID": "posts/should-ctos-write-code/index.html#cons-of-writing-code-as-cto",
-    "href": "posts/should-ctos-write-code/index.html#cons-of-writing-code-as-cto",
+    "objectID": "p/should-ctos-write-code/index.html#cons-of-writing-code-as-cto",
+    "href": "p/should-ctos-write-code/index.html#cons-of-writing-code-as-cto",
     "title": "Should CTOs Write Code?",
     "section": "Cons of writing code as CTO",
     "text": "Cons of writing code as CTO\nNow, of course, writing code as CTO is a double-edged sword.\nOn one hand, my code may not be of the highest quality (even though secretly I refuse to believe it!) This can introduce a challenging power dynamic when I submit a pull request and other engineers need to provide critical feedback.\nIn addition, if my code is on the critical path, it has the potential to cause production issues. The team shouldn’t get paged in the middle of the night to resolve a bug that the CTO inadvertently checked in.\nFinally, it doesn’t scale. Locking myself in my office writing code takes me away from other tasks that help the organization more forward. In a former role as VP of Engineering, I was in the middle of a “personal project,” debugging a prototype, when one of my engineers came to me and said, “It’s great that you are working on that, but I really need you to do some ‘vp-ing’ right now.”\nSo, should CTOs write code? I was recently discussing this question with my coach, Jim Svagerko. He introduced me to a framework that introduces seven developmental action logics. I found this framework offered a new and interesting lens through which to answer the question."
   },
   {
-    "objectID": "posts/should-ctos-write-code/index.html#dont-be-the-expert",
-    "href": "posts/should-ctos-write-code/index.html#dont-be-the-expert",
+    "objectID": "p/should-ctos-write-code/index.html#dont-be-the-expert",
+    "href": "p/should-ctos-write-code/index.html#dont-be-the-expert",
     "title": "Should CTOs Write Code?",
     "section": "Don’t be the expert!",
     "text": "Don’t be the expert!\nAs I reflected more on this, I realized that whenever I’ve written code as an Expert, it has always backfired.\nAt Concur, we were developing our first set of partner integrations. I was new to my role and insisted that I jointly work with engineers to develop one of our connectors (even to the point of organizing a mini-hackathon!) Let’s just say the appetite for the project was low.\nAlso at Concur, I remember we were about to show our new expense product at our annual conference. While I was thrilled with the product, I couldn’t stand the “loading spinner” the team had copied and pasted from our previous product.\nThe team was running up against the deadline, so I wrote a new spinner and checked it in. While the demo looked smoother, I didn’t make many friends for bypassing the process (and they rightfully replaced it with a much better one when we got back.)\nFinally, at Code.org, I’ve been trying to migrate our development environment into containers. While it’s been intellectually rewarding, it’s been challenging to advocate this to other engineers - one reason being that I’m not in the position of having to use and maintain this every day.\nWhen I’ve written code while in the mode of an Expert action logic, I’ve often faced resistance. The code has not been adopted or it seems to have caused more downstream issues than the problems it was trying to solve.\nWhat’s the answer? Let’s revisit the action logic diagram:\n\n\n\nThe Action Logic Framework\n\n\nInstead of going from Achiever to Expert, when I think about contributing by writing code at CTO, I should instead look the other way - specifically to Strategist."
   },
   {
-    "objectID": "posts/should-ctos-write-code/index.html#writing-code-as-strategist",
-    "href": "posts/should-ctos-write-code/index.html#writing-code-as-strategist",
+    "objectID": "p/should-ctos-write-code/index.html#writing-code-as-strategist",
+    "href": "p/should-ctos-write-code/index.html#writing-code-as-strategist",
     "title": "Should CTOs Write Code?",
     "section": "Writing code as Strategist",
     "text": "Writing code as Strategist\nIn this action logic, the code that I write can set a vision. For example, “I had an idea how we can solve X. I’ve put together a quick prototype that shows the potential. What do you think?”\nWork aligned to this action logic is work that my engineers are not doing. It’s often exploring a future state or a lateral direction that’s not part of our defined roadmap.\nIn addition, the Strategist action logic produces code that is not on the critical path. Even if they adopt the approach, the team should take my prototype and rewrite it from scratch.\nThinking back, my most successful coding contributions have been when I’ve been operating in this Strategist action logic.\nAt Concur, I created a prototype of using GraphQL to serve travel requests. It was simple and used stubbed-out data, but it paved the way for a new set of APIs (which the team thankfully wrote from scratch.)\nAt Amazon, I prototyped a new technique for encrypting image data. It was well beyond the current product horizon, but helped with future planning cycles and eventually led to a patent.\nAnd at Code.org, I put together a quick prototype that showed how music could help teach computer science concepts. What started as a “I think there might be something here” has evolved into a wider pilot and a fully fledged activity we will launch later this year."
   },
   {
-    "objectID": "posts/is-using-a-debugger-becoming-a-lost/index.html",
-    "href": "posts/is-using-a-debugger-becoming-a-lost/index.html",
+    "objectID": "p/is-using-a-debugger-becoming-a-lost/index.html",
+    "href": "p/is-using-a-debugger-becoming-a-lost/index.html",
     "title": "Is Using a Debugger Becoming a Lost Art?",
     "section": "",
     "text": "I was sad to learn of Niklaus Wirth’s death on New Year’s Day. In college, I used Modula-2, Pascal, and Delphi, and my love of coding may have been very different without Wirth’s contributions. May he rest in peace.\nAs I was reminiscing about languages and tools I used to use, I recalled how much time I spent in the debugger. I was always using the debugger. It was the primary tool to learn new code, understand why my code wasn’t working, and ultimately figure out how to fix it.\nWhen I speak to developers today, however, especially those earlier in their career, using a debugger seems to be a lost art.\nAs an example, I was recently working with one of our developers, helping diagnose why their build was taking so long. I couldn’t help but notice they were sprinkling console.log() statements throughout their code to figure out whether a line had been reached and the value of a variable in scope.\nWhen I asked, “Why don’t you use the debugger?” there were several reasons. Some were valid, others were myths, and many were related to their setup, but all had turned this engineer off the idea.\nAnd this developer is not alone. In a recent thread on Hacker News titled, “Why are we not using debuggers more?”, I found it fascinating to see the polarization of opinions in the comments.\nIn this article, I’ll expand on this and cover several reasons developers may not be using the debugger. I’ll then share the benefits of using a debugger I’ve seen in my teams and explore the potential connection between debugging and generative AI."
   },
   {
-    "objectID": "posts/is-using-a-debugger-becoming-a-lost/index.html#inspections-and-evaluations",
-    "href": "posts/is-using-a-debugger-becoming-a-lost/index.html#inspections-and-evaluations",
+    "objectID": "p/is-using-a-debugger-becoming-a-lost/index.html#inspections-and-evaluations",
+    "href": "p/is-using-a-debugger-becoming-a-lost/index.html#inspections-and-evaluations",
     "title": "Is Using a Debugger Becoming a Lost Art?",
     "section": "Inspections and evaluations",
     "text": "Inspections and evaluations\nAs you probably know, debuggers enable you to inspect the value of any variable when a breakpoint is reached.\nFor example, in this computer vision application, I can use the debugger to inspect the value of the delegate, image, and model variables when the detectObjects function is called.\n\n\n\nScreenshot of the variables pane in VS Code Debugger\n\n\nMany IDEs also support “inline views”, where the editor displays the values of variables in scope alongside each line of code. This can be useful for quickly seeing simple values at runtime, although you still need the inspector for complex objects.\nFinally, most IDEs also support the evaluation of expressions at runtime. This can help support a more complex inspection or to view the output from a function.\n\nWhy is this better than console.log?\nFirst, you don’t have to write any console.log statements! (And then remove them, especially after you’ve pushed your commit!)\nMore importantly, not only does a debugger show the values of variables at runtime, but it also provides the context of what else is in scope.\nOn many occasions, I’ve used a debugger and discovered a value or method that was available in a module or class - one that I hadn’t realized existed: “Wow! I didn’t realize the cv object contains the list of devices - now I don’t need to pass them separately.”"
   },
   {
-    "objectID": "posts/is-using-a-debugger-becoming-a-lost/index.html#dynamic-breakpoints",
-    "href": "posts/is-using-a-debugger-becoming-a-lost/index.html#dynamic-breakpoints",
+    "objectID": "p/is-using-a-debugger-becoming-a-lost/index.html#dynamic-breakpoints",
+    "href": "p/is-using-a-debugger-becoming-a-lost/index.html#dynamic-breakpoints",
     "title": "Is Using a Debugger Becoming a Lost Art?",
     "section": "Dynamic breakpoints",
     "text": "Dynamic breakpoints\nAs well as breakpoints that stop when the line of code is reached, debuggers also support dynamic breakpoints. These include “break on exception”, which will pause the debugger if an uncaught exception is raised, and conditional breakpoints.\nUsing a conditional breakpoint, the debugger stops only when an expression evaluates to true.\n\n\n\nA conditional breakpoint in VS Code Debugger\n\n\nFor example, let’s imagine I was experiencing an issue when my computer vision model was running on the CPU instead of the GPU. Using a conditional breakpoint, the debugger only breaks when the passed delegate variable is set to “CPU”. This enables me to ignore all the other times that the GPU was being used.\n\nWhy is this better than console.log?\nBreaking on exception is very efficient - way more so than just logging the exception to stdout. The debugger pauses and provides all the context needed to diagnose the issue.\nThe alternative - using console.log - requires finding the exception in the logs, tracing which line caused it, inserting a console.log to write some additional values, and re-running your program (likely many times over).\nConditional breakpoints are equally productive, especially for edge cases. You can use these breakpoints to trap known values, such as the delegate variable in the last example, and unexpected ones - for example, stopping when a passed object is null/undefined."
   },
   {
-    "objectID": "posts/is-using-a-debugger-becoming-a-lost/index.html#walking-the-call-stack",
-    "href": "posts/is-using-a-debugger-becoming-a-lost/index.html#walking-the-call-stack",
+    "objectID": "p/is-using-a-debugger-becoming-a-lost/index.html#walking-the-call-stack",
+    "href": "p/is-using-a-debugger-becoming-a-lost/index.html#walking-the-call-stack",
     "title": "Is Using a Debugger Becoming a Lost Art?",
     "section": "Walking the call stack",
     "text": "Walking the call stack\nWhen a debugger hits a breakpoint, besides variables, you have access to the call stack. The call stack is the sequence of calls that was made between starting the program and the current line of code being executed.\n\n\n\nThe call stack window in VS Code Debugger\n\n\nAs shown above, in our computer vision example, the debugger has paused on a breakpoint. It’s now easy to trace the call stack - all the way from the user clicking the run button (the onclick function at the bottom of the stack) through to the detectObjects method being called in the cv library.\n\nWhy is this better than console.log?\nNot only does the call stack give you visibility you wouldn’t get with a console.log statement, but it can be really useful for learning unfamiliar code.\nEspecially when I’ve run a project for the first time, the call stack provides insight into the dependencies between parts of the system. Over time, this helps me create a mental model of how everything fits together: “Oh wow, I didn’t realize that module x got called by module y.”"
   },
   {
-    "objectID": "posts/is-using-a-debugger-becoming-a-lost/index.html#setting-values",
-    "href": "posts/is-using-a-debugger-becoming-a-lost/index.html#setting-values",
+    "objectID": "p/is-using-a-debugger-becoming-a-lost/index.html#setting-values",
+    "href": "p/is-using-a-debugger-becoming-a-lost/index.html#setting-values",
     "title": "Is Using a Debugger Becoming a Lost Art?",
     "section": "Setting values",
     "text": "Setting values\nDebuggers allow you to inspect values, but you may not know that you can set values at runtime as well. This is one of my favorite features, as you can change a value and often reduce the time to see the impact.\n\n\n\nSetting variables in VS Code Debugger\n\n\nIn the above example, I can right click on the delegate variable, manually set the value to ‘CPU’. After continuing execution, this will force the model to run on the CPU.\n\nWhy is this better than console.log?\nI’ve often used this for a couple of scenarios. The first is to test error conditions and handling. For example, imagine a user has reported that the page crashes if they try to create an account with a username longer than 16 characters. It’s trivial to set a breakpoint, set the value of username to something longer than 16 characters, and then step through to diagnose the offending code.\nI’ve also used this approach to jump quickly to other parts of the application. For example, set a manual breakpoint, change the value of level to 20, and resume the debugger."
   },
   {
-    "objectID": "posts/is-using-a-debugger-becoming-a-lost/index.html#integrating-with-ai-coding-assistants",
-    "href": "posts/is-using-a-debugger-becoming-a-lost/index.html#integrating-with-ai-coding-assistants",
+    "objectID": "p/is-using-a-debugger-becoming-a-lost/index.html#integrating-with-ai-coding-assistants",
+    "href": "p/is-using-a-debugger-becoming-a-lost/index.html#integrating-with-ai-coding-assistants",
     "title": "Is Using a Debugger Becoming a Lost Art?",
     "section": "Integrating with AI coding assistants",
     "text": "Integrating with AI coding assistants\nYou may have used an AI coding assistant (e.g., GitHub Copilot) to help with generating code. I believe that integrating coding assistants with the debugger will take this one step further.\nAs we’ve seen in previous sections, when a debugger reaches a breakpoint, it has a lot of context about the running application. This includes the current code being executed, all the variables in scope, any exceptions, and the call stack.\nThis context is incredibly useful if sent to an LLM. In the case of an unhandled exception, the exception and all the context leading up to the exception can be fed to the LLM. This is a lot more powerful than just copying and pasting a generic exception message into ChatGPT.\nI believe we’ll see more advanced use cases of the debugging context working hand-in-hand with an LLM. These may include providing other optimizations, such as recommending shorter call paths or eliminating redundancies.\nThis is a nascent area, with some of this functionality taking shape in the early adopter builds of GitHub Copilot. If you’d like to find out more, I recommend watching Session BRK231H from Microsoft’s Ignite conference in 2023. Fast forward to the 25 minute mark, where Mark Downie shows a development version of Copilot chat working alongside the debugger to diagnose an unhandled exception in his C# code."
   },
   {
-    "objectID": "posts/is-using-a-debugger-becoming-a-lost/index.html#get-your-environment-working",
-    "href": "posts/is-using-a-debugger-becoming-a-lost/index.html#get-your-environment-working",
+    "objectID": "p/is-using-a-debugger-becoming-a-lost/index.html#get-your-environment-working",
+    "href": "p/is-using-a-debugger-becoming-a-lost/index.html#get-your-environment-working",
     "title": "Is Using a Debugger Becoming a Lost Art?",
     "section": "Get your environment working",
     "text": "Get your environment working\nMost importantly, I recommend setting aside time to set up your own development environment to support debugging. This may involve installing some additional libraries or tools - for example, installing the debug gem in a Ruby environment. To enable debugging for JavaScript and TypeScript environments, you will also need to generate source maps in your build process.\nI’ve also found it useful to get into the habit of configuring my IDE to run the debugger by default. (To do this, you can create a single debug configuration - or, if that’s not possible, replace your keyboard shortcut for running the project to debugging instead).\nBy doing this, you’ll always have access to the debugger at runtime. When things aren’t working, it’s then easy to set a breakpoint and inspect the code vs. having to adjust your thinking to restarting the application with a debugger attached. (And if you are worried that your program will always be stopping, most IDEs support a “mute all breakpoints” option.)\nOne additional side effect is if you do set the debugger as the default target, you’ll likely dispel the myth that debugging is slow on today’s modern machines."
   },
   {
-    "objectID": "posts/is-using-a-debugger-becoming-a-lost/index.html#become-a-evangelist-for-using-the-debugger-in-your-own-team",
-    "href": "posts/is-using-a-debugger-becoming-a-lost/index.html#become-a-evangelist-for-using-the-debugger-in-your-own-team",
+    "objectID": "p/is-using-a-debugger-becoming-a-lost/index.html#become-a-evangelist-for-using-the-debugger-in-your-own-team",
+    "href": "p/is-using-a-debugger-becoming-a-lost/index.html#become-a-evangelist-for-using-the-debugger-in-your-own-team",
     "title": "Is Using a Debugger Becoming a Lost Art?",
     "section": "Become a evangelist for using the debugger in your own team",
     "text": "Become a evangelist for using the debugger in your own team\nOnce you have your environment working, one of our principal engineers at Code.org recommends becoming an evangelist in your own team. As he puts it, “don’t just enable the debugger for yourself, enable it for your teammates.”\nThis can be as simple as sharing, committing, and maintaining the IDE configuration harnesses that enable one-click debugging for your project."
   },
   {
-    "objectID": "posts/is-using-a-debugger-becoming-a-lost/index.html#explore-remote-debugging",
-    "href": "posts/is-using-a-debugger-becoming-a-lost/index.html#explore-remote-debugging",
+    "objectID": "p/is-using-a-debugger-becoming-a-lost/index.html#explore-remote-debugging",
+    "href": "p/is-using-a-debugger-becoming-a-lost/index.html#explore-remote-debugging",
     "title": "Is Using a Debugger Becoming a Lost Art?",
     "section": "Explore remote debugging",
     "text": "Explore remote debugging\nAs you master your own development environment, I’ve encouraged my teams to go on and understand how remote debugging works, especially for those working on distributed applications.\nThis involves understanding the protocols behind remote debugging, such as GDB Remote Serial Protocol, Chrome DevTools Protocol, and Java Debug Wire Protocol, among others.\nIf you are interested in diving deeper here, I’d recommend Practical Debugging at Scale [Almog], especially if you are running Java-based applications on Kubernetes."
   },
   {
-    "objectID": "posts/creating-a-document-driven-culture/index.html",
-    "href": "posts/creating-a-document-driven-culture/index.html",
+    "objectID": "p/creating-a-document-driven-culture/index.html",
+    "href": "p/creating-a-document-driven-culture/index.html",
     "title": "Creating a Document-Driven Culture",
     "section": "",
     "text": "When I was interviewing at Code.org, I asked whether there was a document-driven culture, one where well-written documents were the primary mechanism for driving decisions in the organization. The answer was a resounding yes!\nWhat I found is that like many other organizations, Code.org had a lot of documents, but they were often short and used for brainstorming. While these can be useful for generating ideas, based on my prior experience at Amazon, I advocated for a truly document-driven culture. While we still have work to do, adopting this culture is helping us increase the quality of our documents, explore ideas in more depth, and reach quicker decisions and outcomes.\nIn this document, I’ll share my experience of working in - and creating - a document-driven culture. This includes the advantages I see within my own teams and the elements of the writing and reading culture. I will conclude by exploring how your organization might benefit from embracing a document-driven culture and share the next steps for adopting this within your teams."
   },
   {
-    "objectID": "posts/creating-a-document-driven-culture/index.html#deeper-thinking-ahead-of-proposing-ideas",
-    "href": "posts/creating-a-document-driven-culture/index.html#deeper-thinking-ahead-of-proposing-ideas",
+    "objectID": "p/creating-a-document-driven-culture/index.html#deeper-thinking-ahead-of-proposing-ideas",
+    "href": "p/creating-a-document-driven-culture/index.html#deeper-thinking-ahead-of-proposing-ideas",
     "title": "Creating a Document-Driven Culture",
     "section": "Deeper thinking ahead of proposing ideas",
     "text": "Deeper thinking ahead of proposing ideas\nWriting is hard. It’s more challenging to write a document than it is to put together bullet points. A well-written document can take days and weeks of preparation and requires you to think deeply about the topic. Putting an idea into words often requires you to explore different angles, resulting in a higher quality and well-tested idea.\nA document also forces you to challenge your own assumptions. There have been several occasions when I’ve started a document only to give up halfway - or pivot to a different proposal - as I realized my original idea wasn’t as good as I had initially thought."
   },
   {
-    "objectID": "posts/creating-a-document-driven-culture/index.html#increased-employee-engagement-especially-in-a-remote-setting",
-    "href": "posts/creating-a-document-driven-culture/index.html#increased-employee-engagement-especially-in-a-remote-setting",
+    "objectID": "p/creating-a-document-driven-culture/index.html#increased-employee-engagement-especially-in-a-remote-setting",
+    "href": "p/creating-a-document-driven-culture/index.html#increased-employee-engagement-especially-in-a-remote-setting",
     "title": "Creating a Document-Driven Culture",
     "section": "Increased employee engagement, especially in a remote setting",
     "text": "Increased employee engagement, especially in a remote setting\nIn today’s Zoom-based culture, it’s challenging to maintain engagement, especially when presenting an idea. Many of us are guilty of half-listening to a presentation on Zoom, while keeping up with Slack and Email, only to return after the meeting with questions that were already covered.\nA document-driven culture is not just about writing documents, but also has strict rituals on how to read them in a group. These rituals can feel strange when you first try them, but they increase engagement and focus from every participant."
   },
   {
-    "objectID": "posts/creating-a-document-driven-culture/index.html#getting-input-from-everyone-in-the-room",
-    "href": "posts/creating-a-document-driven-culture/index.html#getting-input-from-everyone-in-the-room",
+    "objectID": "p/creating-a-document-driven-culture/index.html#getting-input-from-everyone-in-the-room",
+    "href": "p/creating-a-document-driven-culture/index.html#getting-input-from-everyone-in-the-room",
     "title": "Creating a Document-Driven Culture",
     "section": "Getting input from everyone in the room",
     "text": "Getting input from everyone in the room\nA slide deck (or a conversation without a document) can create meetings with power dynamics. If, as a manager, I’m trying to communicate a change in direction via a presentation, my reports may be hesitant to speak up or challenge some of my assumptions - or be unaware at what point in the conversation they can interrupt.\nA document-driven culture eliminates this by providing structured opportunities where everyone, regardless of seniority or title, has ample time to ask questions and provide feedback on a document."
   },
   {
-    "objectID": "posts/creating-a-document-driven-culture/index.html#resolute-decision-making",
-    "href": "posts/creating-a-document-driven-culture/index.html#resolute-decision-making",
+    "objectID": "p/creating-a-document-driven-culture/index.html#resolute-decision-making",
+    "href": "p/creating-a-document-driven-culture/index.html#resolute-decision-making",
     "title": "Creating a Document-Driven Culture",
     "section": "Resolute decision making",
     "text": "Resolute decision making\nIn many organizations, conversations around a new idea don’t reach a decision point until after several meetings. Often, in many of these meetings, we’ll also discover we need additional data which requires yet another meeting.\nA well-written document avoids this plethora of meetings by including all data, options, and recommendations, which reduces ambiguity and provides a clearer outcome."
   },
   {
-    "objectID": "posts/creating-a-document-driven-culture/index.html#historical-knowledge-of-decisions",
-    "href": "posts/creating-a-document-driven-culture/index.html#historical-knowledge-of-decisions",
+    "objectID": "p/creating-a-document-driven-culture/index.html#historical-knowledge-of-decisions",
+    "href": "p/creating-a-document-driven-culture/index.html#historical-knowledge-of-decisions",
     "title": "Creating a Document-Driven Culture",
     "section": "Historical knowledge of decisions",
     "text": "Historical knowledge of decisions\nFinally, a document-driven culture leaves a paper trail for others to follow in the future, explaining the rationale behind a decision or other options that were considered.\nWithout a document, others, especially new employees, lack the context of the conversation and data, and end up relying on folklore to understand how decisions were made."
   },
   {
-    "objectID": "posts/creating-a-document-driven-culture/index.html#opinionated-and-customer-focused-with-input-from-others",
-    "href": "posts/creating-a-document-driven-culture/index.html#opinionated-and-customer-focused-with-input-from-others",
+    "objectID": "p/creating-a-document-driven-culture/index.html#opinionated-and-customer-focused-with-input-from-others",
+    "href": "p/creating-a-document-driven-culture/index.html#opinionated-and-customer-focused-with-input-from-others",
     "title": "Creating a Document-Driven Culture",
     "section": "Opinionated and customer-focused, with input from others",
     "text": "Opinionated and customer-focused, with input from others\nRegardless of the document format and length, the strongest documents have three core elements:\nFirst, documents should be opinionated. You shouldn’t create a document that presents three options and ask for a discussion. Instead, create a document that presents three options together with a recommendation. The resulting discussion is more effective and becomes a yes/no decision on whether this is the right approach and how to move forward.\nAn opinionated document has a second side-effect of leaving a good paper trail. With an opinionated document, employees can go back and understand which options the team considered, the trade-offs, and the final recommendation.\nSecond, your documents should always link back to the customer, even if the customer is internal, such as another group in your organization. Many of the best documents I’ve read are the ones that intimately connect back to the benefits for the customer, even if the subject did not directly affect a consumer-facing product.\nFinally, documents should have relevant input from all stakeholders. You will be the primary author for your document, but it still needs to have input and ideas from others, especially if they will not be in the room for the review. I’ve often found this important for product proposals, where each document should have projected financial data provided ahead of time by the finance team."
   },
   {
-    "objectID": "posts/creating-a-document-driven-culture/index.html#writing-style",
-    "href": "posts/creating-a-document-driven-culture/index.html#writing-style",
+    "objectID": "p/creating-a-document-driven-culture/index.html#writing-style",
+    "href": "p/creating-a-document-driven-culture/index.html#writing-style",
     "title": "Creating a Document-Driven Culture",
     "section": "Writing style",
     "text": "Writing style\nWriting style is very important. At Amazon, shortly after joining, I attended my first writing training, required for all new employees. A few years prior at Microsoft, I had been an editor-in-chief of a popular developer magazine, so I felt confident I knew how to write. The feedback I received from the training was, however, quite humbling.\nI discovered I wasn’t writing in the active voice, had many consistency errors, and the editor running the training returned my writing sample in a bloodbath of red ink, highlighting many more corrections.\nEven after Amazon, this remains an area I continue to develop. I’ve since found that creating and using my own style guide helps. A personal style guide acts as a set of rules and checklist, ensuring consistency throughout a document beyond what a spelling and grammar checker can provide."
   },
   {
-    "objectID": "posts/creating-a-document-driven-culture/index.html#getting-feedback",
-    "href": "posts/creating-a-document-driven-culture/index.html#getting-feedback",
+    "objectID": "p/creating-a-document-driven-culture/index.html#getting-feedback",
+    "href": "p/creating-a-document-driven-culture/index.html#getting-feedback",
     "title": "Creating a Document-Driven Culture",
     "section": "Getting feedback",
     "text": "Getting feedback\nFirst, the author should ask if there are high-level questions or comments about the document. This opens up for any general feedback, such as confirmation that other individuals outside of the review have also seen and contributed to the document. These high-level comments rarely get into a discussion about the idea, unless there is something obvious about the approach. For example, “Didn’t we try something similar three years ago?”\nAfter everyone has shared their overall comments, the author, now facilitator, invites feedback on a page-by-page basis. A good lead-in for this will be, “Are there any comments on page 1?” The group now reviews their notes, and the floor is open for discussion. In a setting with printed copies of the document, line numbers in the document help the reader precisely refer to part of the document. For example, “On line 24, you mention that you’ve seen increased bug reports. Do you have data that supports this?”\nOnce everyone has had an opportunity to provide feedback on page 1, the author/facilitator will move on to page 2, then page 3, and so on. For longer documents, there’s no need to review the appendices page-by-page. Once the group reaches the end of the document, the author asks for any final feedback before moving on to recommendations.\nAs the document was opinionated, the author should have everything they need to move forward. The outcome could be that the group agrees with the approach and wants to move forward. Alternatively, during the discussion, maybe the group preferred another option or a different approach. Finally, while it was rare, one outcome could be that the group felt they needed more information. Here, the group asks the author to update the document and set up additional time for a further review."

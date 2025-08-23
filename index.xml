@@ -14,7 +14,7 @@
 <item>
   <title>Creating a Document-Driven Culture</title>
   <dc:creator>Simon Guest</dc:creator>
-  <link>https://simonguest.com/posts/creating-a-document-driven-culture/</link>
+  <link>https://simonguest.com/p/creating-a-document-driven-culture/</link>
   <description><![CDATA[ 
 
 
@@ -122,14 +122,14 @@
 
  ]]></description>
   <category>Technical Leadership</category>
-  <guid>https://simonguest.com/posts/creating-a-document-driven-culture/</guid>
+  <guid>https://simonguest.com/p/creating-a-document-driven-culture/</guid>
   <pubDate>Tue, 06 Aug 2024 00:00:00 GMT</pubDate>
-  <media:content url="https://simonguest.com/posts/creating-a-document-driven-culture/main.webp" medium="image" type="image/webp"/>
+  <media:content url="https://simonguest.com/p/creating-a-document-driven-culture/main.webp" medium="image" type="image/webp"/>
 </item>
 <item>
   <title>Should CTOs Write Code?</title>
   <dc:creator>Simon Guest</dc:creator>
-  <link>https://simonguest.com/posts/should-ctos-write-code/</link>
+  <link>https://simonguest.com/p/should-ctos-write-code/</link>
   <description><![CDATA[ 
 
 
@@ -159,7 +159,7 @@
 <p>The results enabled the researchers to create seven layers of action logics: Opportunist, Diplomat, Expert, Achiever, Individualist, Strategist, and Alchemist. Action logics are how leaders interpret their surroundings and react when their power or safety is challenged.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://simonguest.com/posts/should-ctos-write-code/framework.webp" class="img-fluid figure-img"></p>
+<p><img src="https://simonguest.com/p/should-ctos-write-code/framework.webp" class="img-fluid figure-img"></p>
 <figcaption>The Action Logic Framework</figcaption>
 </figure>
 </div>
@@ -190,7 +190,7 @@
 <p>What’s the answer? Let’s revisit the action logic diagram:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://simonguest.com/posts/should-ctos-write-code/framework.webp" class="img-fluid figure-img"></p>
+<p><img src="https://simonguest.com/p/should-ctos-write-code/framework.webp" class="img-fluid figure-img"></p>
 <figcaption>The Action Logic Framework</figcaption>
 </figure>
 </div>
@@ -217,14 +217,14 @@
 
  ]]></description>
   <category>Technical Leadership</category>
-  <guid>https://simonguest.com/posts/should-ctos-write-code/</guid>
+  <guid>https://simonguest.com/p/should-ctos-write-code/</guid>
   <pubDate>Wed, 21 Feb 2024 00:00:00 GMT</pubDate>
-  <media:content url="https://simonguest.com/posts/should-ctos-write-code/main.webp" medium="image" type="image/webp"/>
+  <media:content url="https://simonguest.com/p/should-ctos-write-code/main.webp" medium="image" type="image/webp"/>
 </item>
 <item>
   <title>Is Using a Debugger Becoming a Lost Art?</title>
   <dc:creator>Simon Guest</dc:creator>
-  <link>https://simonguest.com/posts/is-using-a-debugger-becoming-a-lost/</link>
+  <link>https://simonguest.com/p/is-using-a-debugger-becoming-a-lost/</link>
   <description><![CDATA[ 
 
 
@@ -256,7 +256,7 @@
 <p>For example, in this computer vision application, I can use the debugger to inspect the value of the <em>delegate</em>, <em>image</em>, and <em>model</em> variables when the <em>detectObjects</em> function is called.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://simonguest.com/posts/is-using-a-debugger-becoming-a-lost/screenshot-1.webp" class="img-fluid figure-img"></p>
+<p><img src="https://simonguest.com/p/is-using-a-debugger-becoming-a-lost/screenshot-1.webp" class="img-fluid figure-img"></p>
 <figcaption>Screenshot of the variables pane in VS Code Debugger</figcaption>
 </figure>
 </div>
@@ -275,7 +275,7 @@
 <p>Using a conditional breakpoint, the debugger stops only when an expression evaluates to true.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://simonguest.com/posts/is-using-a-debugger-becoming-a-lost/screenshot-2.webp" class="img-fluid figure-img"></p>
+<p><img src="https://simonguest.com/p/is-using-a-debugger-becoming-a-lost/screenshot-2.webp" class="img-fluid figure-img"></p>
 <figcaption>A conditional breakpoint in VS Code Debugger</figcaption>
 </figure>
 </div>
@@ -292,7 +292,7 @@
 <p>When a debugger hits a breakpoint, besides variables, you have access to the call stack. The call stack is the sequence of calls that was made between starting the program and the current line of code being executed.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://simonguest.com/posts/is-using-a-debugger-becoming-a-lost/screenshot-3.webp" class="img-fluid figure-img"></p>
+<p><img src="https://simonguest.com/p/is-using-a-debugger-becoming-a-lost/screenshot-3.webp" class="img-fluid figure-img"></p>
 <figcaption>The call stack window in VS Code Debugger</figcaption>
 </figure>
 </div>
@@ -308,7 +308,7 @@
 <p>Debuggers allow you to inspect values, but you may not know that you can set values at runtime as well. This is one of my favorite features, as you can change a value and often reduce the time to see the impact.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://simonguest.com/posts/is-using-a-debugger-becoming-a-lost/screenshot-4.webp" class="img-fluid figure-img"></p>
+<p><img src="https://simonguest.com/p/is-using-a-debugger-becoming-a-lost/screenshot-4.webp" class="img-fluid figure-img"></p>
 <figcaption>Setting variables in VS Code Debugger</figcaption>
 </figure>
 </div>
@@ -362,9 +362,9 @@
   <category>IDEs</category>
   <category>Debugging</category>
   <category>Generative AI</category>
-  <guid>https://simonguest.com/posts/is-using-a-debugger-becoming-a-lost/</guid>
+  <guid>https://simonguest.com/p/is-using-a-debugger-becoming-a-lost/</guid>
   <pubDate>Tue, 06 Feb 2024 00:00:00 GMT</pubDate>
-  <media:content url="https://simonguest.com/posts/is-using-a-debugger-becoming-a-lost/main.webp" medium="image" type="image/webp"/>
+  <media:content url="https://simonguest.com/p/is-using-a-debugger-becoming-a-lost/main.webp" medium="image" type="image/webp"/>
 </item>
 </channel>
 </rss>
