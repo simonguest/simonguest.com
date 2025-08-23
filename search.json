@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Posts",
+    "objectID": "about/index.html",
+    "href": "about/index.html",
+    "title": "About Simon",
     "section": "",
-    "text": "Creating a Document-Driven Culture\n\n\n\nTechnical Leadership\n\n\n\nAmazon is famous for banning PowerPoint in favor of written documents. But why and how does this work? In this article, I share my experience and ideas for creating a document-driven culture.\n\n\n\n\n\nAug 6, 2024\n\n\nSimon Guest\n\n\n\n\n\n\n\n\n\n\n\n\nShould CTOs Write Code?\n\n\n\nTechnical Leadership\n\n\n\nIn this article, I dust off this age-old question and answer it using an action logic framework.\n\n\n\n\n\nFeb 21, 2024\n\n\nSimon Guest\n\n\n\n\n\n\n\n\n\n\n\n\nIs Using a Debugger Becoming a Lost Art?\n\n\n\nIDEs\n\nDebugging\n\nGenerative AI\n\n\n\nWhy this is happening, how we can bring it back, and where generative AI may help.\n\n\n\n\n\nFeb 6, 2024\n\n\nSimon Guest\n\n\n\n\n\nNo matching items"
+    "text": "Simon Guest is a technical advisor specializing in educational technology, where he partners with organizations to create exceptional software that reaches millions of students worldwide.\nWith extensive software engineering leadership experience at Code.org, Amazon, SAP, and Microsoft, Simon brings deep technical expertise to the intersection of education and technology. He is an active contributor to open-source education projects, articles, and books, and regularly teaches at the K-12 and undergraduate level.\nBorn and raised in England, Simon has a HNC in Software Engineering from Plymouth College and a Master’s Degree in IT Security from the University of Westminster. He now lives in Kirkland, Washington, with his wife and their two sons."
   },
   {
     "objectID": "posts/should-ctos-write-code/index.html",
@@ -161,10 +161,10 @@
     "text": "Getting feedback\nFirst, the author should ask if there are high-level questions or comments about the document. This opens up for any general feedback, such as confirmation that other individuals outside of the review have also seen and contributed to the document. These high-level comments rarely get into a discussion about the idea, unless there is something obvious about the approach. For example, “Didn’t we try something similar three years ago?”\nAfter everyone has shared their overall comments, the author, now facilitator, invites feedback on a page-by-page basis. A good lead-in for this will be, “Are there any comments on page 1?” The group now reviews their notes, and the floor is open for discussion. In a setting with printed copies of the document, line numbers in the document help the reader precisely refer to part of the document. For example, “On line 24, you mention that you’ve seen increased bug reports. Do you have data that supports this?”\nOnce everyone has had an opportunity to provide feedback on page 1, the author/facilitator will move on to page 2, then page 3, and so on. For longer documents, there’s no need to review the appendices page-by-page. Once the group reaches the end of the document, the author asks for any final feedback before moving on to recommendations.\nAs the document was opinionated, the author should have everything they need to move forward. The outcome could be that the group agrees with the approach and wants to move forward. Alternatively, during the discussion, maybe the group preferred another option or a different approach. Finally, while it was rare, one outcome could be that the group felt they needed more information. Here, the group asks the author to update the document and set up additional time for a further review."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Simon",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Posts",
     "section": "",
-    "text": "About this blog"
+    "text": "Creating a Document-Driven Culture\n\n\n\nTechnical Leadership\n\n\n\nAmazon is famous for banning PowerPoint in favor of written documents. But why and how does this work? In this article, I share my experience and ideas for creating a document-driven culture.\n\n\n\n\n\nAug 6, 2024\n\n\nSimon Guest\n\n\n\n\n\n\n\n\n\n\n\n\nShould CTOs Write Code?\n\n\n\nTechnical Leadership\n\n\n\nIn this article, I dust off this age-old question and answer it using an action logic framework.\n\n\n\n\n\nFeb 21, 2024\n\n\nSimon Guest\n\n\n\n\n\n\n\n\n\n\n\n\nIs Using a Debugger Becoming a Lost Art?\n\n\n\nIDEs\n\nDebugging\n\nGenerative AI\n\n\n\nWhy this is happening, how we can bring it back, and where generative AI may help.\n\n\n\n\n\nFeb 6, 2024\n\n\nSimon Guest\n\n\n\n\n\nNo matching items"
   }
 ]
