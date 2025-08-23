@@ -6,7 +6,7 @@ date: "2024-02-21"
 categories: ["Technical Leadership"]
 image: "main.webp"
 image-alt: "A compile button on a black background"
-title-block-banner: "main.webp"
+title-block-banner: "banner.webp"
 title-block-banner-color: "#fff"
 ---
 

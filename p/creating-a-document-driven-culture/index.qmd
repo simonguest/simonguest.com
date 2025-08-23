@@ -6,7 +6,7 @@ date: "2024-08-06"
 categories: ["Technical Leadership"]
 image: "main.webp"
 image-alt: "The nib of a fountain pen on top of a blank page of paper"
-title-block-banner: "main.webp"
+title-block-banner: "banner.webp"
 title-block-banner-color: "#fff"
 ---
 

@@ -6,7 +6,7 @@ date: "2024-02-06"
 categories: ["IDEs", "Debugging", "Generative AI"]
 image: "main.webp"
 image-alt: "The back of a CTO working at their desk, writing code"
-title-block-banner: "main.webp"
+title-block-banner: "banner.webp"
 title-block-banner-color: "#fff"
 ---
 
