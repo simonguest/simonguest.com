@@ -15,7 +15,6 @@ website:
 format:
   html:
     theme:
-      - cosmo
-      - brand
+      - litera
     css: styles.css
     include-in-header: analytics.html
