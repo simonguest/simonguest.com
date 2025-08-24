@@ -1,0 +1,168 @@
+---
+title: "How We Accrue Technical Debt"
+description: "In this article, I cover the different ways that organizations accrue technical debt, the impact that this has, and strategies for tackling it."
+date: "2024-01-03"
+categories: ["Technical Debt"]
+image: "main.webp"
+image-alt: "A pile of colorful credit cards"
+title-block-banner: "banner.webp"
+title-block-banner-color: "#fff"
+---
+
+What is Technical Debt? We use the word frequently, yet we lack a consistent definition. Without a common understanding, it's challenging to talk about technical debt, especially with those who don't come from a software engineering background.
+
+Many equate technical debt to the age of software. It's true that older codebases can carry a lot, but I've also seen technical debt creep in from day one. During my time at AWS, I inherited a team that had built up significant technical debt, causing a serious impact on velocity - and this was a 6-month-old team!
+
+I've found one of the best ways of explaining technical debt is to first understand how we accrue it. In this article, I'll cover several ways I’ve seen organizations build up technical debt: moving too quickly, customer pivots, departing engineers, new engineers, lack of technical direction, technical decay, and a fragile development environment.
+
+For each, I'll share how this technical debt occurs, the impact it may have on your own team, and strategies for addressing it.
+
+# Moving Too Quickly
+
+In an organization’s early years, technical debt can accrue from pushing out features too quickly. Startups value speed to market above everything else, which is critical for competing for early market share.
+
+I’ve often seen this as prototypes being released to production, the rapid development of features without a clear sense of the underlying architecture, and sometimes copy/pasted code to get functionality out of the door quickly.
+
+This emphasis on speed often results in a system that, while effective in the short term, causes long-term maintenance and scalability issues. In many codebases, the result is entanglement. X calls Y; Y calls X. Or more challenging, X calls Y; Y calls Z; Z calls X.
+
+As the system grows over time, this entanglement becomes all-consuming, leading to a single, large production deployment (vs. being able to deploy different modules separately) and a frustrating developer experience.
+
+## How can we address this?
+
+For startups, I don’t believe the answer is to slow down and try to do things perfectly the first time. While it sounds good in theory, I've never been part of an organization that has figured out the definitive architecture on day one.
+
+I’ve found a better approach is to acknowledge you will accrue technical debt, and set up the right mechanisms for paying it back in the future. These include documenting shortcuts (as they are being taken) and protecting engineering time in future sprints to address them.
+
+For organizations already dealing with entanglement in their codebase, an effective strategy can be to paint a vision of disentanglement with your team.
+
+At Code.org, we are going through this very process as we disentangle two core parts of our monolith: a Rails app (used by our students and teachers) and a Sinatra app (used for content and marketing materials) that have many cross dependencies with each other.
+
+While we can deploy both successfully, separating the two will bring many advantages. This includes the ability to ship content updates outside of the deploy window and a far smaller repo size - as well as putting us on a path to further decouple other components in each application.
+
+Rather than try to disentangle everything in one go, we are finding it more effective to break the work into milestones, with each milestone offering either value for students or teachers - or increasing developer productivity.
+
+# Customer Pivots
+
+As organizations grow, they often pivot to figure out their true north star and customer. Each pivot often adds code for a particular customer dimension or use case.
+
+For example, a startup may set off creating a product designed for the healthcare market, but then discover that the solution lands better with young parents. They will quickly make the pivot, but the code to support the prior healthcare use cases may never get deleted.
+
+Extra code can also creep in with additional types of customers. I saw a variation of this several years ago, where I joined a team who had copied and pasted chunks of code hundreds of times to support each new customer type.
+
+Code added this way can (and did) bring future feature development to a crawl. Product requests that appear simple on the surface (i.e., “Can we add a new phone number type for all our customers?”) need to be implemented across multiple parts of the codebase and even regression tested to support customer types that may no longer be in use.
+
+## How can we address this?
+
+For many startups, especially ones that go through many pivots, this is a common growing pain, but one that can be mitigated against.
+
+In the previous example, instead of copy/pasting code, we should have created a separate customer service with separate data from day one - and then treated this as the most valuable single source of truth. This would have avoided the pain of unpicking complex user details from a monolith in the future.
+
+For existing organizations who suffer with this type of technical debt today, one approach is to create an additional abstraction layer, move client calls across, and deprecate the old code and model. At Concur, we successfully used this approach to move customers across to a new generation of our expense product.
+
+What we learned, however, is not to expect an overnight success story - these projects are complex, often multi-year, especially for large codebases - however when completed successfully, can help unlock a lot of the technical debt accrued from multiple early pivots.
+
+# Departing Engineers
+
+Engineers leave. It's an unfortunate truth, and when they do, the understanding of a system often leaves with them. When folks depart, we ask them to write handover documentation, but it's near impossible to replicate the mental models they have formed over the years.
+
+The result is a lack of system understanding that can exhibit many symptoms. Engineering velocity often suffers. New engineers fear they might break code and are more cautious in pushing out new features. And when engineers do ship new features, they may not fully understand legacy dependencies that can be removed, resulting in tomb-stoned code that persists forever.
+
+Finally, departing engineers can compound the problem with “helpful scripts” left behind to assist their former colleagues. Engineers write these scripts in good faith, but they often add a further layer of abstraction that prevents newer engineers from uncovering how the core components of the system actually work.
+
+## How can we address this?
+
+We can’t stop people from leaving, but when an engineer announces their intention to move on, I try to over-index on setting up in-person knowledge transfer with the team.
+
+This should not be just an hour in their last week. It should be most, if not all, of the engineer's remaining time with the organization. This investment is critical for other engineers to build their own mental models of the system, even it means that feature work has to stop for a sprint or two.
+
+In addition, following a key engineer's departure, I've found it's critical to encourage a culture of accepting failure over paralysis. As long as the right boundaries are in place, I always prefer the conversation of "we tried this, but it broke things and we need to revert" vs. "we are too scared to make the change."
+
+# New Engineers (with Differing Experience)
+
+Previous engineers have left, and you've hired replacements. Nice job! Unfortunately, these new engineers don't have the same background. They are joining with knowledge of a more modern stack such as Go or Rust vs. the "slightly older version of Java" that your production systems run on. "That's ok," you reassure yourself, "They're a strong engineer. They'll pick it up quickly."
+
+Sometimes, they do, and you've got a great engineer on your hands. Sometimes, however, they just don’t.
+
+It will start with slower onboarding. You'll hear "I just don't know how to do X in this old stack" or "I would have done it like this in Go or Rust, but that just doesn't work in this older version of the JDK."
+
+Over time, as they get more acquainted with the system, this can morph into a lack of respect for the old stack. "Who on earth would have done it this way?" and before you know it, "This sucks. Let's rewrite this whole thing!"
+
+Finally, many times, this can lead to the new engineer departing. After 18 months, they decide that this isn't for them and find a new position, offering the opportunity to go back to the stack they are more comfortable with.
+
+This can be frustrating. Now you have no engineer and potentially a few months’ worth of poorly written code accruing to your technical debt balance.
+
+## How can we address this?
+
+It starts with the interview. I’ve found I either need to hire engineers with prior experience of our stack (which can increase the hiring timeline) or be very deliberate in sharing the details of the stack they will work on. If they have a background in a different technology, I try to set the expectation there will be no opportunity for a rewrite in the near term and gauge their curiosity about learning what we have.
+
+When the new engineer starts, I believe it’s important to evangelize our current tech stack. "Yes, it has issues, but this got us to where we are today!" I share articles and news about the ecosystem (even older stacks have vibrant developer communities) and, if they come up, quickly shut down any conversations about rewriting.
+
+Finally, it’s important to invest in developer education. As an example, at Code.org we offer an annual professional development stipend that can an engineer can use for conferences, online courses, and other training materials. We’ve found these all can help newer engineers close their knowledge gap with a new platform.
+
+# Lack of Technical Direction
+
+Of course, different engineers have different ways of doing things. Many engineers will create components using differing design patterns. (React classes vs. hooks, anyone?) Other engineers might introduce new tools into the build process that overlap with what's already there.
+
+Without overall technical direction, these inconsistencies can grow out of control, accruing more technical debt. This slows everyone down, but is especially painful for new engineers trying to learning the code. Should they use a class or a hook? Should they use npm, yarn, grunt, or make for their new repo? Should they create a new service or extend the API of an existing one?
+
+Over time, engineers substitute this lack of technical direction with folklore: “Ah yes - if you are building a component in this part of the site, you’ll need to do X, but for another part of the site, you want Y instead.”
+
+## How can we address this?
+
+A document outlining current and future technical direction is essential. The document doesn’t need to go into an intricate deep level of detail - but it should provide the right guardrails, while continuing to support a level of autonomy for the team.
+
+The architectural tenets doc we have at Code.org lists attempts to do this using eight tenets - ranging from standardizing on a well-structured monorepo (vs. creating multiple repos) through to guidelines for storing new data and creating new APIs. If you don’t have a document similar to this, it can be an enlightening exercise to pull together a working group (a cross section of engineers on the team) to create one.
+
+It’s one thing to have a nice document. It’s another to go implement the required changes, especially if there are already inconsistencies in the codebase. Custom linters can help. These linters can run on each commit and report on the state of the system. For example, “45 out of 90 components are implemented as old classes.” Each commit can still go through, but the linter serves as a visible and persistent reminder to the team.
+
+These types of linters can also prevent future regressions. At Code.org, we’ve recently implemented a linter that reports on any new connections between two monolithic parts of the application we are decoupling.
+
+# Technical Decay
+
+For many organizations, a lack of technical direction can also result in technical decay within the system.
+
+This can manifest as classic bit rot: operating systems, languages, frameworks, and libraries that are many versions behind. Another variant of this is where teams fork an open-source library - and then fail to keep that fork up to date. If this wasn’t enough, all of this can be compounded by custom code written several years ago that could now be replaced with an open-source library (but hasn't).
+
+Operating systems, languages, frameworks, and libraries that are several versions behind are a support and security risk. Many have an End of Life (EOL) date where they are no longer supported or patched.
+
+These outdated components can also cause complex dependency chains. In many Web-based projects, I've seen teams want to use a particular React component, however it depends on a newer version of webpack, which is not supported on the outdated version of Node running in production. Before they can use the component, the team needs to work backwards to upgrade all the dependencies in the chain.
+
+Finally, not only does technical decay introduce risks and complexity, but it also connects back to engineer attrition. Engineers joined your organization expecting to use the latest versions of components and frameworks, not ones that are several years old and are proving painful to upgrade.
+
+## How can we address this?
+
+Start by cataloguing the current versions of all components and their EOL dates. This will give you a prioritized list of the ones you should upgrade first.
+
+As we’ve been undertaking many upgrades at Code.org, we’ve discovered that when you are several versions out of date, it’s prudent to consider multiple minor version upgrades vs. one major jump. For example, we needed to upgrade our version of Ruby from 2.5.0 to 3.0.5. We found it was more manageable to go from 2.5 to 2.7.5 to 3.0 and then to 3.0.5 rather than trying to upgrade everything in one go.
+
+During each of these upgrades, we were also keen to define what success meant. For us, this included 100% of the code switched to using the new version of the library and a full cleanup (removal) of old dependencies. Again, linters helped a lot with this.
+
+For dependencies used across multiple development teams, it's effective to block out sprints where all teams come together to work on the upgrade. (At Code.org, we call these summer swarms and typically run these when we have periods of downtime during the academic year.)
+
+Finally, for more complex upgrades such as languages or operating systems, it’s worth considering assigning engineers on a full-time basis. While it might be painful to slow down feature work, many engineers will often view it as a welcomed challenge, especially given the positive impact for the overall team.
+
+# Fragile Development Environment
+
+When a codebase is small, it's easy for engineers to run everything on their laptop. As time goes by, and the size and complexity of the codebase increases, it becomes much more difficult.
+
+The plethora of hardware and software permutations doesn’t help. A couple of decades ago it was much easier - everyone was using the same version of Windows and the same IDE. Now, your development team is likely a hybrid of Windows, Macs, maybe some flavors of desktop Linux, not to mention a mix of architectures (x86 and ARM), especially as engineers upgrade to Apple Silicon-based machines - all running a mix of popular and fringe IDEs.
+
+In many engineering orgs, this creates a fragile development environment. Engineers spend valuable time helping each other out when their environment breaks - and onboarding is far more difficult than it used to be, with complex "getting started" instructions for each permutation.
+
+This can also amplify technical decay, as engineers can be reluctant to make changes - as even a simple library upgrade involves testing across the different operating systems and architectures used by the team.
+
+## How can we address this?
+
+A first step is to increase the focus on developer tooling.
+
+In many of my prior teams - and at Code.org - we’ve set up a developer working group, where a subgroup of engineers document and cost out their frustrations with the current tooling. The costing part is critical, as time spent on supporting a fragile environment is often unaccounted for in traditional product planning.
+
+Out of this should come a sense of what to prioritize. This often starts as standardization across hardware and software, but can expand into how an organization can produce a 100% scriptable development environment. At Code.org, we still have work ahead of us to enable this, but once this is done, it should open up the opportunity of bringing on volunteer engineers from outside the organization.
+
+Containerization can help with scripting a new development environment. Many IDEs now support Development Containers, an open specification for using Docker-based containers as full development environments. At Code.org, we are learning it can take effort to move the team to a containerized environment. However, this can pave the way for expanded use cases, such as cloud-based IDEs and expanding the use of containers to our staging and production environments.
+
+# Conclusion
+
+In this article, we’ve covered several ways that an organization can accrue technical debt: moving too quickly, customer pivots, departing engineers, new engineers, lack of technical direction, technical decay, and a fragile development environment.
+
+While you may have more (or different variations on these), I hope you found these useful and took away some new ideas and approaches for addressing each one.

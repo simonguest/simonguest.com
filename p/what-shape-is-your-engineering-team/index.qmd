@@ -4,7 +4,7 @@ description: "Use the shape of your team to help with product fit, hiring decisi
 date: "2024-01-23"
 categories: ["Technical Leadership"]
 image: "main.webp"
-image-alt: ""
+image-alt: "An aerial shot of a group of business people, arranged in the shape of a triangle"
 title-block-banner: "banner.webp"
 title-block-banner-color: "#fff"
 ---

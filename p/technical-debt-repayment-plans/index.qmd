@@ -1,0 +1,124 @@
+---
+title: "Technical Debt Repayment Plans"
+description: "Introducing the concept of 'repayment plans' for reducing technical debt in your organization."
+date: "2024-01-10"
+categories: ["Technical Debt"]
+image: "main.webp"
+image-alt: "A side shot of a golden piggy bank, plain decor"
+title-block-banner: "banner.webp"
+title-block-banner-color: "#fff"
+---
+
+Like many organizations, Code.org has its fair share of technical debt. At the beginning of last school year, we agreed to dedicate 20% of engineering time towards reducing it. While we had good intentions, we didn’t do a stellar job of managing the time. Engineers would approach me asking me whether we had spent the 20% and if not, whether they could they use some of it.
+
+For this school year, we brainstormed different allocation models - which I fondly call repayment plans, analogous to a plan you might put together to reduce credit card debt. We came up with five options, all designed to distribute our 20% allocation of engineering time in various ways.
+
+In this article, I’ll share an overview of these repayment plans, together with advantages and disadvantages of each. As we were developing these, we realized that there is no perfect option and, as we’ll uncover, some repayment plans work better for some types of technical debt over others.
+
+# Plan 1: Percentage of Sprint
+
+How it works: Take the 20% allocation of engineering time and distribute it as a percentage of each sprint. For example, in a 2-week sprint, each engineer spends 2 days of the sprint working on technical debt reduction.
+
+## Advantages
+
+This can be a good plan for bugs and issues that engineers can fix and ship in a few hours (or less than two days). For example, I’ve seen this work well for small accessibility tasks (i.e., adding alt text across many components).
+
+## Disadvantages
+
+This plan is challenging for tech debt tasks that take more than a couple of days. For long-running tasks, engineers face a context switch and ramp-up time each sprint.
+
+It can also be difficult to work on tech debt items that span different teams. Engineers in multiple teams need to align on the day (or days) in the sprint that they are working on tech debt.
+
+If the allocation of days is at the end of the week or sprint, there is a risk of feature work eating into the allocation. “I just need a few more hours to get this feature completed before I start work on that technical debt…”
+
+# Plan 2: Every nth Sprint
+
+How it works: Take the allocation of engineering time and distribute it as every nth sprint. For example, for a 20% allocation, this equates to one technical debt reduction sprint after every four product feature sprints.
+
+## Advantages
+
+This can be a good plan for longer product cycles - e.g., shipping every few months or a quarter. (In a recent podcast, I learned the VS Code team does something similar, allocating the last week before their monthly release.)
+
+Engineers can work on larger tasks. A two-week sprint offers a lot more time to pick up larger tasks vs. two days, as per the previous plan.
+
+All engineers are working on tech debt reduction items at the same time. This makes it easier to tackle technical debt that has cross-team dependencies (such as upgrading a library that multiple teams use).
+
+This plan can also give product owners a dedicated sprint for planning before the next four-sprints worth of feature work.
+
+## Disadvantages
+
+Similar to the previous plan, feature work can eat into the allocation if not completed. “We just need a few more days to get this feature completed before we can start our technical debt sprint...”
+
+Two weeks may still not be enough for many tech debt reduction tasks. For example, migrating your application to use a different storage engine may be difficult in a two-week window.
+
+This repayment plan offers a lot of engineering time condensed into a small amount of calendar time. For example, an engineering team size of 50 equates to 4,000 hours of engineering time in a 2-week sprint. To use this effectively requires planning and coordination before the sprint starts. Otherwise, there is a real risk of engineers starting the sprint, not knowing what they should work on first.
+
+# Plan 3: Aligned with Product Calendar
+
+How it works: Block out the 20% allocation as part of the product calendar. For example, the calendar shows that after we’ve shipped feature X, we’ll spend the next 3 sprints on Y that reduces tech debt.
+
+## Advantages
+
+Compared to the previous two, this plan is more effective for tech debt reduction work that requires multiple engineers working together for more than a sprint.
+
+This increased amount of time to work on technical debt also reduces the number of context switches for engineers.
+
+This plan also provides wider visibility for how tech debt reduction fits with the product roadmap. (Tech debt reduction becomes a conversation during product planning, which can only be a good thing.)
+
+## Disadvantages
+
+The flexible time boundaries can cause tension between product features and tech debt reduction work. While both are important, product features will often index higher on urgency. For example, “We are getting pressure from our customers to bring feature X forward. Can we push out the tech debt reduction work by a few sprints?”
+
+Tech debt reduction items in the calendar still have an end date. Because of this, engineers need to estimate the work to ensure it fits into the allotted calendar time.
+
+In larger organizations, the product calendar may not align across multiple teams. This can make it challenging to work on tech debt reduction items that affect other teams. For example, if one team is trying to remove tech debt in the same area of the codebase that another is working in to ship a new feature.
+
+# Plan 4: Annual Swarms
+
+How it works: Allocate the 20% in contiguous sprints at one point in the year, where all engineers “swarm” to work on technical debt. For example, all engineers spend 5 contiguous sprints over the summer.
+
+## Advantages
+
+This plan works well for organizations that have seasonal usage. For example, at Code.org, we’ve run these swarms during the summer when students are typically not in school (and our usage is lower). This makes it easier to have planned downtime, if required.
+
+All engineers are working on tech debt reduction together, which makes cross-team dependencies easier to manage.
+
+Engineers get a longer time to work on items. For example, 20% of a 50-week working calendar equates to 10 weeks (or five 2-week sprints). For many organizations, this is a lot of time to make inroads on several large technical debt items.
+
+Having run these before, I’ve observed a lot of positive energy from these longer durations of allocated time (vs. spending 2 days per sprint). It also provides the opportunity for a large retro and celebration at the end of the 10 weeks.
+
+## Disadvantages
+
+10 weeks is a long time to not ship any features! This may be especially hard to bite off in startup environments.
+
+Somewhat related, what do product owners (or any other members of the team who might not be directly working on technical debt) work on during this time?
+
+While 10 weeks allows for large upgrades or refactors of the code base, there is always a chance that these don’t get completed in time. If this happens, the next opportunity to work on these might not be until the following year, which can leave a lot of work in a dangling state until then.
+
+# Plan 5: Dedicated Team
+
+How it works: Take 20% of your engineers and dedicate them to a “tech debt reduction team”. For example, for a team of 30 engineers, allocate 6 of them to working on technical debt in a full-time capacity.
+
+## Advantages
+
+This plan can offer focus to a group of engineers passionate about reducing technical debt for their organization. The team can also operate autonomously, managing their own backlog of technical debt items, and changing priorities as needed.
+
+As this is a full-time team, the engineers don’t have to estimate the work or try to fit it into a calendar. They just start the work!
+
+Related, there is also less pressure for the team to complete the work by a certain date, compared to all the prior plans.
+
+## Disadvantages
+
+Finding enough engineers who want to work on tech debt reduction (vs. product features) can be challenging. It's often tricky to create a process where engineers can volunteer for this new team without feeling pressure from their manager or having concerns about their promotion path or resume.
+
+In smaller organizations, a dedicated team may not have the right experience for all the technical debt work. For example, a dedicated tech debt team comprising primarily web engineers could find it more difficult to refactor a database or server-side logic - slowing down the work or requiring additional time from engineers outside of the team.
+
+As with the “aligned with product calendar” plan, trying to reduce technical debt while another team is trying to ship a new feature can be challenging.
+
+# Conclusion
+
+In this article, I’ve covered five different repayment plans for allocating engineering time and reducing technical debt: Percentage of Sprint, Every nth Sprint, Aligned with Product Calendar, Annual Swarms, and a Dedicated Team.
+
+During my career, I’ve experimented with many of these. A couple of years ago, at Code.org, we held summer swarms and upgraded some of our larger Web-based dependencies. This school year, we are aligning our tech debt reduction work with our product calendar. And, as our engineering org continues to grow, I’m curious to explore the option of a dedicated team.
+
+I hope this has generated ideas for how you may put together similar “repayment plans” for your own technical debt - and look forward to thoughts on different allocations or approaches that have worked well for you.

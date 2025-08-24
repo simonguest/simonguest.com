@@ -1,0 +1,60 @@
+---
+title: "Shared Keyboard Shortcuts on macOS and Linux"
+description: "Creating consistent keyboard shortcuts that work well between the two."
+date: "2023-12-26"
+categories: ["macOS", "Linux"]
+image: "main.webp"
+image-alt: "An extreme close up of a Ctrl Key on a black keyboard."
+title-block-banner: "banner.webp"
+title-block-banner-color: "#fff"
+---
+
+I often switch between Mac and Linux for development. The Mac is my go-to machine for my main applications and development specific to the Apple ecosystem. On a separate PC running Ubuntu, I work on several other repos and anything else required for x86 development.
+
+Switching between the two can be challenging, especially when trying to remember keyboard shortcuts. Many issues stem from both machines having physically different keyboard layouts, but there are also nuances with different applications. For example, to open a new terminal window on the Mac, the default shortcut is Command-T (using iTerm2). On Linux, in Gnome-Terminal, it’s Ctrl-Shift-T. Even when remapping Command and Ctrl keys around on one of the machines, it’s still a different operation.
+
+After spending far too long to try to solve this, I’ve come up with three techniques I’ve found helped.
+
+# Own Your Shortcut Keys
+
+Earlier in my career, I found it easy to quickly memorize new sets of shortcut keys. For example, I could install a new IDE and adjust to using SHIFT-F5 to launch the debugger instead of Ctrl-Shift-R.
+
+Maybe it’s a case of getting older, but that’s become more difficult - or more accurately, I’ve become more stuck in my ways about wanting to dictate the shortcut keys I want to use vs. having applications set them for me. Plus, no one shares keyboards any more (unless you are an advocate of in-person pair programming), so no one should care if I have a wacky set of keyboard shortcuts as long as I can remember them.
+
+My first recommendation therefore is to own your shortcut keys. Think about what keyboard shortcut feels most natural to you for each action, and let that drive how you setup your system. For reference, maintain a table of your shortcut keys. [Here’s](https://github.com/simonguest/keymap) mine.
+
+# Consistent Modifier Keys
+
+Modifier keys (these are the keys that modify others like Ctrl, Shift, Alt, etc.) are different between Mac and PCs, and many PC keyboards also have variations. On my Mac, the layout of the modifier keys (to the left of the space bar) is as follows:
+
+Fn - Ctrl - Opt - Cmd
+
+Yet, on my DELL, the layout is:
+
+Ctrl - Fn - Win - Alt
+
+Even if the keyboard shortcuts are identical between the machines, I find myself having to frequent look down at the keyboard to reorient to the layout.
+
+I’ve found the solution to this is to not to. Instead of following the keys on the keyboard, I have a mental model of how modifier keys should operate across all keyboards.
+
+For me, I always expect the Meta key (Command or Windows key) to be immediately to the left of the space bar. The key directly to the left of the Meta is always Alt/Option. If there are four modifier keys, the key to its left is always Fn. Finally, the key is the bottom left is always Ctrl. Again, this is my muscle memory of what I’ve learned over the many years - yours may be completely different.
+
+With my mental model for this keyboard layout, I then ignore the labels printed on the keys and use tools to map them equivalently.
+
+On the Mac, you can use the _Modifier Keys_ option in the _Keyboard_ system preferences to swap these if needed. In Linux, you can do something similar using _TweakUI_ in Gnome, or `setxkbmap`.
+
+(Note: If you need to swap the Fn and Ctrl keys on a PC, many times this has to be done via a Bios setting as Fn is not recognized as a standard key interrupt.)
+
+# Remapping the Rest
+
+With a uniform set of modifier keys, you can now start to remap the other keys. On Linux, there are many different options:
+
+[**xmodmap**](https://wiki.archlinux.org/title/xmodmap): This works well if you want to swap out a single key for another single key, but doesn’t do much more than that. It won’t handle chords (e.g., mapping Win-T to Ctrl-T) or other complex operations.
+
+[**xbindkeys**](https://wiki.archlinux.org/title/Xbindkeys): Typically, `xbindkeys` is used in combination with `xvkbd` or `xdotool`. `xbindkeys` traps the interrupt for a keypress or chord, and then `xvkbd` or `xdotool` simulates an alternative keypress. While on the surface it looks nice, I’ve had issues when trying to implement it. First, it is slow. It worked for remapping a single key, but not suitable for multiple keypresses in succession. Second, it seems inconsistent. This may have been how I was using the `--clearmodifiers` flag in `xdotool`, but I found that one in every ten chords wouldn’t map correctly. Finally, both `xvkbd` and `xdotool` use the testing API in X, which is deprecated in Wayland.
+
+[**xkeysnail**](https://github.com/mooz/xkeysnail): This is the tool that has worked the best for me. `xkeysnail` is a python script that captures input from `/dev/input/eventXX` devices, remaps them, and redirects it to `/dev/uinput`. It supports chords, complex operations (e.g., pressing a key and having a sequence of keys played back), and performs really well. It also has the added feature of mapping keys specific to the window in focus (using the `WM_CLASS` in Gnome). Therefore, Ctrl-Shift-T can be mapped to a different replacement keyboard shortcut in Gnome Terminal vs. VS Code. [Here](https://github.com/simonguest/keymap/blob/main/Linux/xkeysnail/config.py) is an example of my setup.
+
+`xkeysnail` does have a couple of downsides, however. Because it acts as a new virtual keyboard device, it overrides any existing modmaps that have been previously applied. This makes it a little more difficult to set different combinations for different keyboards attached to the same machine. Finally, `xkeysnail` must run as root (for writing to `/dev/uinput`), which makes it a little more work to get running as a startup process.
+
+Finally, as your keyboards may be assigned different `/dev/input/eventXX` devices on reboot/reconnection, you’ll need to pass the correct device to `xkeysnail`. I’ve written a [script](https://github.com/simonguest/keymap/blob/main/Linux/xkeysnail/launch_xkeysnail) that does this automatically.

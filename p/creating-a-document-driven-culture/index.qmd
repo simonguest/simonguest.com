@@ -2,7 +2,7 @@
 title: "Creating a Document-Driven Culture"
 description: "Amazon is famous for banning PowerPoint in favor of written documents. But why and how does this work? I share my experience and ideas for creating a document-driven culture."
 date: "2024-08-06"
-categories: ["Technical Leadership"]
+categories: ["Technical Leadership", "Writing"]
 image: "main.webp"
 image-alt: "The nib of a fountain pen on top of a blank page of paper"
 title-block-banner: "banner.webp"
