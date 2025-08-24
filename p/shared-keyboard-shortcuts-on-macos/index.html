@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2023-12-26">
+<meta name="description" content="Creating consistent keyboard shortcuts that work well between the two.">
 
-<title>Posts – Simon Says</title>
+<title>Shared Keyboard Shortcuts on macOS and Linux – Simon Says</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,21 +25,19 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-badfea7620e6254af941214fdd9b8bfc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-badfea7620e6254af941214fdd9b8bfc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -53,78 +53,38 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
+<style>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: #fff;
+      }
 
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
+      .quarto-title-block .quarto-title-banner {
+        color: #fff;
+background-image: url(banner.webp);
+background-size: cover;
+      }
+</style>
 <script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@1/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=client-NyH4rB82RzHd5dToa2AY3wAJNsnYmPLd5PFuHNpDNDR"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
+<link rel="stylesheet" href="../../styles.css">
+</head>
 
-<link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="Simon Says" href="index.xml" data-external="1"></head>
-
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Simon Says</span>
     </a>
   </div>
@@ -134,7 +94,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about/index.html"> 
+    <a class="nav-link" href="../../about/index.html"> 
 <span class="menu-text">About Simon</span></a>
   </li>  
   <li class="nav-item compact">
@@ -157,313 +117,81 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Posts</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Shared Keyboard Shortcuts on macOS and Linux</h1>
+                  <div>
+        <div class="description">
+          Creating consistent keyboard shortcuts that work well between the two.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">macOS</div>
+                <div class="quarto-category">Linux</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 26, 2023</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(9)</span></div><div class="category" data-category="RGVidWdnaW5n">Debugging <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R2VuZXJhdGl2ZSUyMEFJ">Generative AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SURFcw==">IDEs <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TGludXg=">Linux <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWFjT1M=">macOS <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VGVjaG5pY2FsJTIwRGVidA==">Technical Debt <span class="quarto-category-count">(2)</span></div><div class="category" data-category="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==">Technical Leadership <span class="quarto-category-count">(5)</span></div><div class="category" data-category="V3JpdGluZw==">Writing <span class="quarto-category-count">(2)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<p>I often switch between Mac and Linux for development. The Mac is my go-to machine for my main applications and development specific to the Apple ecosystem. On a separate PC running Ubuntu, I work on several other repos and anything else required for x86 development.</p>
+<p>Switching between the two can be challenging, especially when trying to remember keyboard shortcuts. Many issues stem from both machines having physically different keyboard layouts, but there are also nuances with different applications. For example, to open a new terminal window on the Mac, the default shortcut is Command-T (using iTerm2). On Linux, in Gnome-Terminal, it’s Ctrl-Shift-T. Even when remapping Command and Ctrl keys around on one of the machines, it’s still a different operation.</p>
+<p>After spending far too long to try to solve this, I’ve come up with three techniques I’ve found helped.</p>
+<section id="own-your-shortcut-keys" class="level1">
+<h1>Own Your Shortcut Keys</h1>
+<p>Earlier in my career, I found it easy to quickly memorize new sets of shortcut keys. For example, I could install a new IDE and adjust to using SHIFT-F5 to launch the debugger instead of Ctrl-Shift-R.</p>
+<p>Maybe it’s a case of getting older, but that’s become more difficult - or more accurately, I’ve become more stuck in my ways about wanting to dictate the shortcut keys I want to use vs.&nbsp;having applications set them for me. Plus, no one shares keyboards any more (unless you are an advocate of in-person pair programming), so no one should care if I have a wacky set of keyboard shortcuts as long as I can remember them.</p>
+<p>My first recommendation therefore is to own your shortcut keys. Think about what keyboard shortcut feels most natural to you for each action, and let that drive how you setup your system. For reference, maintain a table of your shortcut keys. <a href="https://github.com/simonguest/keymap">Here’s</a> mine.</p>
+</section>
+<section id="consistent-modifier-keys" class="level1">
+<h1>Consistent Modifier Keys</h1>
+<p>Modifier keys (these are the keys that modify others like Ctrl, Shift, Alt, etc.) are different between Mac and PCs, and many PC keyboards also have variations. On my Mac, the layout of the modifier keys (to the left of the space bar) is as follows:</p>
+<p>Fn - Ctrl - Opt - Cmd</p>
+<p>Yet, on my DELL, the layout is:</p>
+<p>Ctrl - Fn - Win - Alt</p>
+<p>Even if the keyboard shortcuts are identical between the machines, I find myself having to frequent look down at the keyboard to reorient to the layout.</p>
+<p>I’ve found the solution to this is to not to. Instead of following the keys on the keyboard, I have a mental model of how modifier keys should operate across all keyboards.</p>
+<p>For me, I always expect the Meta key (Command or Windows key) to be immediately to the left of the space bar. The key directly to the left of the Meta is always Alt/Option. If there are four modifier keys, the key to its left is always Fn. Finally, the key is the bottom left is always Ctrl. Again, this is my muscle memory of what I’ve learned over the many years - yours may be completely different.</p>
+<p>With my mental model for this keyboard layout, I then ignore the labels printed on the keys and use tools to map them equivalently.</p>
+<p>On the Mac, you can use the <em>Modifier Keys</em> option in the <em>Keyboard</em> system preferences to swap these if needed. In Linux, you can do something similar using <em>TweakUI</em> in Gnome, or <code>setxkbmap</code>.</p>
+<p>(Note: If you need to swap the Fn and Ctrl keys on a PC, many times this has to be done via a Bios setting as Fn is not recognized as a standard key interrupt.)</p>
+</section>
+<section id="remapping-the-rest" class="level1">
+<h1>Remapping the Rest</h1>
+<p>With a uniform set of modifier keys, you can now start to remap the other keys. On Linux, there are many different options:</p>
+<p><a href="https://wiki.archlinux.org/title/xmodmap"><strong>xmodmap</strong></a>: This works well if you want to swap out a single key for another single key, but doesn’t do much more than that. It won’t handle chords (e.g., mapping Win-T to Ctrl-T) or other complex operations.</p>
+<p><a href="https://wiki.archlinux.org/title/Xbindkeys"><strong>xbindkeys</strong></a>: Typically, <code>xbindkeys</code> is used in combination with <code>xvkbd</code> or <code>xdotool</code>. <code>xbindkeys</code> traps the interrupt for a keypress or chord, and then <code>xvkbd</code> or <code>xdotool</code> simulates an alternative keypress. While on the surface it looks nice, I’ve had issues when trying to implement it. First, it is slow. It worked for remapping a single key, but not suitable for multiple keypresses in succession. Second, it seems inconsistent. This may have been how I was using the <code>--clearmodifiers</code> flag in <code>xdotool</code>, but I found that one in every ten chords wouldn’t map correctly. Finally, both <code>xvkbd</code> and <code>xdotool</code> use the testing API in X, which is deprecated in Wayland.</p>
+<p><a href="https://github.com/mooz/xkeysnail"><strong>xkeysnail</strong></a>: This is the tool that has worked the best for me. <code>xkeysnail</code> is a python script that captures input from <code>/dev/input/eventXX</code> devices, remaps them, and redirects it to <code>/dev/uinput</code>. It supports chords, complex operations (e.g., pressing a key and having a sequence of keys played back), and performs really well. It also has the added feature of mapping keys specific to the window in focus (using the <code>WM_CLASS</code> in Gnome). Therefore, Ctrl-Shift-T can be mapped to a different replacement keyboard shortcut in Gnome Terminal vs.&nbsp;VS Code. <a href="https://github.com/simonguest/keymap/blob/main/Linux/xkeysnail/config.py">Here</a> is an example of my setup.</p>
+<p><code>xkeysnail</code> does have a couple of downsides, however. Because it acts as a new virtual keyboard device, it overrides any existing modmaps that have been previously applied. This makes it a little more difficult to set different combinations for different keyboards attached to the same machine. Finally, <code>xkeysnail</code> must run as root (for writing to <code>/dev/uinput</code>), which makes it a little more work to get running as a startup process.</p>
+<p>Finally, as your keyboards may be assigned different <code>/dev/input/eventXX</code> devices on reboot/reconnection, you’ll need to pass the correct device to <code>xkeysnail</code>. I’ve written a <a href="https://github.com/simonguest/keymap/blob/main/Linux/xkeysnail/launch_xkeysnail">script</a> that does this automatically.</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcCUyQ1dyaXRpbmc=" data-listing-date-sort="1722902400000" data-listing-file-modified-sort="1755998490327" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2741">
-<a href="./p/creating-a-document-driven-culture/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/creating-a-document-driven-culture/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="The nib of a fountain pen on top of a blank page of paper">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Creating a Document-Driven Culture
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('V3JpdGluZw=='); return false;">Writing</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Amazon is famous for banning PowerPoint in favor of written documents. But why and how does this work? I share my experience and ideas for creating a document-driven culture.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Aug 6, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==" data-listing-date-sort="1708473600000" data-listing-file-modified-sort="1755998490330" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1496">
-<a href="./p/should-ctos-write-code/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/should-ctos-write-code/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="A compile button on a black background">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Should CTOs Write Code?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>In this article, I dust off this age-old question and answer it using an action logic framework.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Feb 21, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="SURFcyUyQ0RlYnVnZ2luZyUyQ0dlbmVyYXRpdmUlMjBBSQ==" data-listing-date-sort="1707177600000" data-listing-file-modified-sort="1755998490328" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1987">
-<a href="./p/is-using-a-debugger-becoming-a-lost/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/is-using-a-debugger-becoming-a-lost/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="The back of a CTO working at their desk, writing code">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Is Using a Debugger Becoming a Lost Art?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('SURFcw=='); return false;">IDEs</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGVidWdnaW5n'); return false;">Debugging</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('R2VuZXJhdGl2ZSUyMEFJ'); return false;">Generative AI</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Why this is happening, how we can bring it back, and where generative AI may help.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Feb 6, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==" data-listing-date-sort="1705968000000" data-listing-file-modified-sort="1755998490331" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1386">
-<a href="./p/what-shape-is-your-engineering-team/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/what-shape-is-your-engineering-team/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="An aerial shot of a group of business people, arranged in the shape of a triangle">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-What Shape Is Your Engineering Team?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Use the shape of your team to help with product fit, hiring decisions, and mentoring opportunities.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Jan 23, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="VGVjaG5pY2FsJTIwRGVidA==" data-listing-date-sort="1704844800000" data-listing-file-modified-sort="1755998490330" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1557">
-<a href="./p/technical-debt-repayment-plans/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/technical-debt-repayment-plans/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="A side shot of a golden piggy bank, plain decor">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Technical Debt Repayment Plans
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwRGVidA=='); return false;">Technical Debt</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Introducing the concept of ‘repayment plans’ for reducing technical debt in your organization.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Jan 10, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="VGVjaG5pY2FsJTIwRGVidA==" data-listing-date-sort="1704240000000" data-listing-file-modified-sort="1755998490328" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2873">
-<a href="./p/how-we-accrue-technical-debt/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/how-we-accrue-technical-debt/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="A pile of colorful credit cards">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-How We Accrue Technical Debt
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwRGVidA=='); return false;">Technical Debt</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>In this article, I cover the different ways that organizations accrue technical debt, the impact that this has, and strategies for tackling it.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Jan 3, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="6" data-categories="bWFjT1MlMkNMaW51eA==" data-listing-date-sort="1703548800000" data-listing-file-modified-sort="1755998490329" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="938">
-<a href="./p/shared-keyboard-shortcuts-on-macos/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/shared-keyboard-shortcuts-on-macos/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="An extreme close up of a Ctrl Key on a black keyboard.">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Shared Keyboard Shortcuts on macOS and Linux
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWFjT1M='); return false;">macOS</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TGludXg='); return false;">Linux</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Creating consistent keyboard shortcuts that work well between the two.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Dec 26, 2023
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="7" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcCUyQ1dyaXRpbmc=" data-listing-date-sort="1703376000000" data-listing-file-modified-sort="1755998490332" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1107">
-<a href="./p/writing-better-technical-documents/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/writing-better-technical-documents/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="A quill in a pot of blue ink against a white background.">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Writing Better Technical Documents
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('V3JpdGluZw=='); return false;">Writing</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Five techniques that have helped me write better technical documents.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Dec 24, 2023
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="8" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==" data-listing-date-sort="1703203200000" data-listing-file-modified-sort="1755998490331" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1361">
-<a href="./p/why-dont-software-developers-practice-051/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/why-dont-software-developers-practice-051/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="A silhouette of a girl playing a violin">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Why Don’t Software Developers Practice?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Could practice help us develop new skills, experiment, and build muscle memory?</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Dec 22, 2023
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

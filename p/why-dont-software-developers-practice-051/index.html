@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2023-12-22">
+<meta name="description" content="Could practice help us develop new skills, experiment, and build muscle memory?">
 
-<title>Posts – Simon Says</title>
+<title>Why Don’t Software Developers Practice? – Simon Says</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,21 +25,19 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-badfea7620e6254af941214fdd9b8bfc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-badfea7620e6254af941214fdd9b8bfc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -53,78 +53,38 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
+<style>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: #fff;
+      }
 
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
+      .quarto-title-block .quarto-title-banner {
+        color: #fff;
+background-image: url(banner.webp);
+background-size: cover;
+      }
+</style>
 <script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@1/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=client-NyH4rB82RzHd5dToa2AY3wAJNsnYmPLd5PFuHNpDNDR"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
+<link rel="stylesheet" href="../../styles.css">
+</head>
 
-<link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="Simon Says" href="index.xml" data-external="1"></head>
-
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Simon Says</span>
     </a>
   </div>
@@ -134,7 +94,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about/index.html"> 
+    <a class="nav-link" href="../../about/index.html"> 
 <span class="menu-text">About Simon</span></a>
   </li>  
   <li class="nav-item compact">
@@ -157,313 +117,96 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Posts</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Why Don’t Software Developers Practice?</h1>
+                  <div>
+        <div class="description">
+          Could practice help us develop new skills, experiment, and build muscle memory?
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Technical Leadership</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 22, 2023</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(9)</span></div><div class="category" data-category="RGVidWdnaW5n">Debugging <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R2VuZXJhdGl2ZSUyMEFJ">Generative AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SURFcw==">IDEs <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TGludXg=">Linux <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWFjT1M=">macOS <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VGVjaG5pY2FsJTIwRGVidA==">Technical Debt <span class="quarto-category-count">(2)</span></div><div class="category" data-category="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==">Technical Leadership <span class="quarto-category-count">(5)</span></div><div class="category" data-category="V3JpdGluZw==">Writing <span class="quarto-category-count">(2)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<p>Many professions incorporate practice into their daily routines. Athletes wake up early to practice regularly. Successful musicians often have a strict routine of practice. And many artists will dedicate time to practicing new techniques they then incorporate into their work.</p>
+<p>Yet, as software developers, we don’t embrace this concept. We often expect developers to perform (i.e., ship software) 100% of their working time. Imagine if this happened with the other professions. Athletes would run races non-stop, musicians would spend all their time performing in front of an audience, and artists would need to produce masterpiece after masterpiece without fail.</p>
+<p>This is concerning. Always being under pressure to perform adds significant psychological stress. Having no room for practice means no room for failure, even if a company’s values claims otherwise. No time for practice also means no time for experimentation, or more accurately, experimentation happens in production. Can you imagine a musician trying a new instrument for the first time in front of a packed concert hall?</p>
+<p>The concept of practice holds so much potential for improving software development. Practice can help developers try something new - maybe it’s a new language, framework, or tool. Practice can also help developers experiment - such as trying different techniques to cache data or an alternate way to get user input. Practice can also help build muscle memory - increasing the ability to write code without constantly relying on Stack Overflow.</p>
+<p>What does it take to incorporate practice into software development? There are many angles, but here are five steps I’ve found useful with my teams to develop a culture of practice:</p>
+<section id="define-your-goal" class="level1">
+<h1>Define Your Goal</h1>
+<p>The first step is to define a goal. As a developer, what do you want to achieve from practice? Your goal should be bold and should even feel a little intimidating just to say it aloud. It shouldn’t be too bold that it’s never achievable - but it shouldn’t be something you can quickly accomplish in a couple of days either.</p>
+<p>To give an example, I recently wanted to learn the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a>. I had no experience with doing anything audio-related in the browser, and given the size of the spec, it was intimidating at first glance. It did, however, provide for a good goal for which to focus my practice time.</p>
+</section>
+<section id="one-step-at-a-time" class="level1">
+<h1>One Step at a Time</h1>
+<p>After establishing a goal, it’s important to work the first step on the journey. The key is not to figure out everything at once - you’ll likely end up spending more time deconstructing the tasks vs.&nbsp;actually spending time in practice - just the next step in order to make progress.</p>
+<p>Going back to my example of learning Web Audio, I decided the first step was to work out how to play a simple WAV file in the browser. That was the sole focus of my first practice session, and it was easy to know when I had accomplished it. After completing this, to figure out what I should do in my next practice session, I went back to the Web Audio spec and figured out that creating a simple oscillator would be a good next step.</p>
+<p>It’s important to define one step at a time, and not to over-commit. Even though the goal may be intimidating, practice shouldn’t be a stretch. If it is, it will become stressful and you’ll likely give up. I like to set a goal of 50%: If I have 90 minutes to practice, my next step should feel about 45 minutes’ worth of work, providing a healthy buffer as I figure things out. Plus, if I end early and accomplish something, I feel much better than running out of time, having over-committed.</p>
+</section>
+<section id="create-a-feedback-loop" class="level1">
+<h1>Create a Feedback Loop</h1>
+<p>Feedback is critical for practice. Not only does it provide a sense of accomplishment, but you need to know when things are working and if you are making progress.</p>
+<p>In their book, <a href="https://www.amazon.com/Peak-Secrets-New-Science-Expertise-ebook/dp/B011H56MKS">Peak: Secrets from the New Science of Expertise</a>, Ericsson and Pool define two types of practice: Purposeful practice and deliberate practice.</p>
+<p>Purposeful practice is exploratory. It’s done on your own and you create your own feedback loops. Figuring out how to play a WAV file is an example of purposeful practice. If my code plays the sound correctly, that’s successful feedback.</p>
+<p>Deliberate practice involves another person, such as a coach or mentor. For athletes, this could be a track coach offering advice on improving posture. For software developers, this could be a mentor or a more senior developer offering feedback on the effectiveness of the code.</p>
+<p>As you set up your own practice, decide which type of feedback loop is going to be more useful for you. With the abundance of samples and tutorials in our profession, you’ll likely default to purposeful practice, but don’t discount the value of deliberate practice, especially if there is an opportunity to learn from others.</p>
+</section>
+<section id="schedule-time-to-practice" class="level1">
+<h1>Schedule Time to Practice</h1>
+<p>Many developers I speak with like the idea of practice, but struggle with fitting it into the calendar. Scheduling time is one of the most important parts of setting up a routine of practice.</p>
+<p>Practice should always be outside of a “performance window”. Imagine a musician who has two concerts, one in the morning and one in the afternoon. They will probably be tired in between, so practice then is likely counter-productive. The same is true for software development. Carving out an hour in between sprint tasks in the middle of the day may not be the most effective time.</p>
+<p>Instead, look for windows of time outside of your “performances”. For me, this is early mornings. I don’t know why, but I find it much easier to switch into a mode of practice before taking on any other work. As a result, I try to be steadfast about reserving early morning hours for practice time.</p>
+<p>This, of course, begets the question: Should practice time be taken out of the hours allocated to a sprint? If practice time can be scheduled this way, sure, but I lean towards practice being about true personal development, and therefore dedicating time outside of working hours. This approach also opens up the ability to practice things that are not related to your day job. Maybe you want to learn about Rust, but your company has no plans to adopt it. It’s easier to commit to this if your practice window is on your own time.</p>
+</section>
+<section id="create-an-environment-for-focus" class="level1">
+<h1>Create an Environment for Focus</h1>
+<p>After scheduling time on the calendar, it can be too easy to adopt a mindset that this is “free time” vs.&nbsp;“practice time”.</p>
+<p>You should treat practice time as you would any other time where you need to focus. Turn off notifications and close windows with anything that could be a distraction. It can be effective to create a new virtual desktop and then dedicate that desktop entirely to the practice activity. This can help create a separate space, free of clutter, without going through the pain of closing or minimizing my other work.</p>
+<p>I’ve also found the <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Pomodoro Technique</a> works well for practice. I find that I can sustain practice for about 90 minutes before I need to take a break or resume other activities. Having a timer helps me frame and dedicate the time to do this.</p>
+</section>
+<section id="treat-creations-as-impermanent" class="level1">
+<h1>Treat Creations as Impermanent</h1>
+<p>Water art, popular in Buddhism, is the concept of painting using water. As the artist paints, the creation comes to life, but as the water slowly evaporates, the art disappears, returning to a clean board.</p>
+<p>Practice should have a similar impermanence. The goal of practice is about learning. There’s no need to publish, share, create tests, create a prototype, or do anything production-worthy with code created during practice. If you want to save your work in between practice sessions, create a private repo, but resist trying to turn the output into something bigger.</p>
+<p>Instead, focus on the learning experience. I guarantee that there will be a time where you’ll apply what you’ve learned. Wait for that time to come vs.&nbsp;trying to force a creation out of your practice session.</p>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>I hope you find the five steps in this article useful, and start incorporating the concept of practice into software development. If we do, I suspect it will be a net positive for our profession, making for more productive and happy developers.</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcCUyQ1dyaXRpbmc=" data-listing-date-sort="1722902400000" data-listing-file-modified-sort="1755998490327" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2741">
-<a href="./p/creating-a-document-driven-culture/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/creating-a-document-driven-culture/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="The nib of a fountain pen on top of a blank page of paper">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Creating a Document-Driven Culture
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('V3JpdGluZw=='); return false;">Writing</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Amazon is famous for banning PowerPoint in favor of written documents. But why and how does this work? I share my experience and ideas for creating a document-driven culture.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Aug 6, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==" data-listing-date-sort="1708473600000" data-listing-file-modified-sort="1755998490330" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1496">
-<a href="./p/should-ctos-write-code/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/should-ctos-write-code/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="A compile button on a black background">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Should CTOs Write Code?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>In this article, I dust off this age-old question and answer it using an action logic framework.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Feb 21, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="SURFcyUyQ0RlYnVnZ2luZyUyQ0dlbmVyYXRpdmUlMjBBSQ==" data-listing-date-sort="1707177600000" data-listing-file-modified-sort="1755998490328" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1987">
-<a href="./p/is-using-a-debugger-becoming-a-lost/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/is-using-a-debugger-becoming-a-lost/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="The back of a CTO working at their desk, writing code">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Is Using a Debugger Becoming a Lost Art?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('SURFcw=='); return false;">IDEs</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGVidWdnaW5n'); return false;">Debugging</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('R2VuZXJhdGl2ZSUyMEFJ'); return false;">Generative AI</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Why this is happening, how we can bring it back, and where generative AI may help.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Feb 6, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==" data-listing-date-sort="1705968000000" data-listing-file-modified-sort="1755998490331" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1386">
-<a href="./p/what-shape-is-your-engineering-team/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/what-shape-is-your-engineering-team/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="An aerial shot of a group of business people, arranged in the shape of a triangle">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-What Shape Is Your Engineering Team?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Use the shape of your team to help with product fit, hiring decisions, and mentoring opportunities.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Jan 23, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="VGVjaG5pY2FsJTIwRGVidA==" data-listing-date-sort="1704844800000" data-listing-file-modified-sort="1755998490330" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1557">
-<a href="./p/technical-debt-repayment-plans/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/technical-debt-repayment-plans/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="A side shot of a golden piggy bank, plain decor">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Technical Debt Repayment Plans
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwRGVidA=='); return false;">Technical Debt</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Introducing the concept of ‘repayment plans’ for reducing technical debt in your organization.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Jan 10, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="VGVjaG5pY2FsJTIwRGVidA==" data-listing-date-sort="1704240000000" data-listing-file-modified-sort="1755998490328" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2873">
-<a href="./p/how-we-accrue-technical-debt/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/how-we-accrue-technical-debt/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="A pile of colorful credit cards">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-How We Accrue Technical Debt
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwRGVidA=='); return false;">Technical Debt</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>In this article, I cover the different ways that organizations accrue technical debt, the impact that this has, and strategies for tackling it.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Jan 3, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="6" data-categories="bWFjT1MlMkNMaW51eA==" data-listing-date-sort="1703548800000" data-listing-file-modified-sort="1755998490329" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="938">
-<a href="./p/shared-keyboard-shortcuts-on-macos/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/shared-keyboard-shortcuts-on-macos/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="An extreme close up of a Ctrl Key on a black keyboard.">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Shared Keyboard Shortcuts on macOS and Linux
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWFjT1M='); return false;">macOS</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TGludXg='); return false;">Linux</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Creating consistent keyboard shortcuts that work well between the two.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Dec 26, 2023
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="7" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcCUyQ1dyaXRpbmc=" data-listing-date-sort="1703376000000" data-listing-file-modified-sort="1755998490332" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1107">
-<a href="./p/writing-better-technical-documents/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/writing-better-technical-documents/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="A quill in a pot of blue ink against a white background.">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Writing Better Technical Documents
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('V3JpdGluZw=='); return false;">Writing</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Five techniques that have helped me write better technical documents.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Dec 24, 2023
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="8" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==" data-listing-date-sort="1703203200000" data-listing-file-modified-sort="1755998490331" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1361">
-<a href="./p/why-dont-software-developers-practice-051/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/why-dont-software-developers-practice-051/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="A silhouette of a girl playing a violin">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Why Don’t Software Developers Practice?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Could practice help us develop new skills, experiment, and build muscle memory?</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Dec 22, 2023
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

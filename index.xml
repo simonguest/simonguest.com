@@ -121,6 +121,7 @@
 
  ]]></description>
   <category>Technical Leadership</category>
+  <category>Writing</category>
   <guid>https://simonguest.com/p/creating-a-document-driven-culture/</guid>
   <pubDate>Tue, 06 Aug 2024 00:00:00 GMT</pubDate>
   <media:content url="https://simonguest.com/p/creating-a-document-driven-culture/main.webp" medium="image" type="image/webp"/>
@@ -477,6 +478,405 @@
   <guid>https://simonguest.com/p/what-shape-is-your-engineering-team/</guid>
   <pubDate>Tue, 23 Jan 2024 00:00:00 GMT</pubDate>
   <media:content url="https://simonguest.com/p/what-shape-is-your-engineering-team/main.webp" medium="image" type="image/webp"/>
+</item>
+<item>
+  <title>Technical Debt Repayment Plans</title>
+  <link>https://simonguest.com/p/technical-debt-repayment-plans/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Like many organizations, Code.org has its fair share of technical debt. At the beginning of last school year, we agreed to dedicate 20% of engineering time towards reducing it. While we had good intentions, we didn’t do a stellar job of managing the time. Engineers would approach me asking me whether we had spent the 20% and if not, whether they could they use some of it.</p>
+<p>For this school year, we brainstormed different allocation models - which I fondly call repayment plans, analogous to a plan you might put together to reduce credit card debt. We came up with five options, all designed to distribute our 20% allocation of engineering time in various ways.</p>
+<p>In this article, I’ll share an overview of these repayment plans, together with advantages and disadvantages of each. As we were developing these, we realized that there is no perfect option and, as we’ll uncover, some repayment plans work better for some types of technical debt over others.</p>
+<section id="plan-1-percentage-of-sprint" class="level1">
+<h1>Plan 1: Percentage of Sprint</h1>
+<p>How it works: Take the 20% allocation of engineering time and distribute it as a percentage of each sprint. For example, in a 2-week sprint, each engineer spends 2 days of the sprint working on technical debt reduction.</p>
+<section id="advantages" class="level2">
+<h2 class="anchored" data-anchor-id="advantages">Advantages</h2>
+<p>This can be a good plan for bugs and issues that engineers can fix and ship in a few hours (or less than two days). For example, I’ve seen this work well for small accessibility tasks (i.e., adding alt text across many components).</p>
+</section>
+<section id="disadvantages" class="level2">
+<h2 class="anchored" data-anchor-id="disadvantages">Disadvantages</h2>
+<p>This plan is challenging for tech debt tasks that take more than a couple of days. For long-running tasks, engineers face a context switch and ramp-up time each sprint.</p>
+<p>It can also be difficult to work on tech debt items that span different teams. Engineers in multiple teams need to align on the day (or days) in the sprint that they are working on tech debt.</p>
+<p>If the allocation of days is at the end of the week or sprint, there is a risk of feature work eating into the allocation. “I just need a few more hours to get this feature completed before I start work on that technical debt…”</p>
+</section>
+</section>
+<section id="plan-2-every-nth-sprint" class="level1">
+<h1>Plan 2: Every nth Sprint</h1>
+<p>How it works: Take the allocation of engineering time and distribute it as every nth sprint. For example, for a 20% allocation, this equates to one technical debt reduction sprint after every four product feature sprints.</p>
+<section id="advantages-1" class="level2">
+<h2 class="anchored" data-anchor-id="advantages-1">Advantages</h2>
+<p>This can be a good plan for longer product cycles - e.g., shipping every few months or a quarter. (In a recent podcast, I learned the VS Code team does something similar, allocating the last week before their monthly release.)</p>
+<p>Engineers can work on larger tasks. A two-week sprint offers a lot more time to pick up larger tasks vs.&nbsp;two days, as per the previous plan.</p>
+<p>All engineers are working on tech debt reduction items at the same time. This makes it easier to tackle technical debt that has cross-team dependencies (such as upgrading a library that multiple teams use).</p>
+<p>This plan can also give product owners a dedicated sprint for planning before the next four-sprints worth of feature work.</p>
+</section>
+<section id="disadvantages-1" class="level2">
+<h2 class="anchored" data-anchor-id="disadvantages-1">Disadvantages</h2>
+<p>Similar to the previous plan, feature work can eat into the allocation if not completed. “We just need a few more days to get this feature completed before we can start our technical debt sprint…”</p>
+<p>Two weeks may still not be enough for many tech debt reduction tasks. For example, migrating your application to use a different storage engine may be difficult in a two-week window.</p>
+<p>This repayment plan offers a lot of engineering time condensed into a small amount of calendar time. For example, an engineering team size of 50 equates to 4,000 hours of engineering time in a 2-week sprint. To use this effectively requires planning and coordination before the sprint starts. Otherwise, there is a real risk of engineers starting the sprint, not knowing what they should work on first.</p>
+</section>
+</section>
+<section id="plan-3-aligned-with-product-calendar" class="level1">
+<h1>Plan 3: Aligned with Product Calendar</h1>
+<p>How it works: Block out the 20% allocation as part of the product calendar. For example, the calendar shows that after we’ve shipped feature X, we’ll spend the next 3 sprints on Y that reduces tech debt.</p>
+<section id="advantages-2" class="level2">
+<h2 class="anchored" data-anchor-id="advantages-2">Advantages</h2>
+<p>Compared to the previous two, this plan is more effective for tech debt reduction work that requires multiple engineers working together for more than a sprint.</p>
+<p>This increased amount of time to work on technical debt also reduces the number of context switches for engineers.</p>
+<p>This plan also provides wider visibility for how tech debt reduction fits with the product roadmap. (Tech debt reduction becomes a conversation during product planning, which can only be a good thing.)</p>
+</section>
+<section id="disadvantages-2" class="level2">
+<h2 class="anchored" data-anchor-id="disadvantages-2">Disadvantages</h2>
+<p>The flexible time boundaries can cause tension between product features and tech debt reduction work. While both are important, product features will often index higher on urgency. For example, “We are getting pressure from our customers to bring feature X forward. Can we push out the tech debt reduction work by a few sprints?”</p>
+<p>Tech debt reduction items in the calendar still have an end date. Because of this, engineers need to estimate the work to ensure it fits into the allotted calendar time.</p>
+<p>In larger organizations, the product calendar may not align across multiple teams. This can make it challenging to work on tech debt reduction items that affect other teams. For example, if one team is trying to remove tech debt in the same area of the codebase that another is working in to ship a new feature.</p>
+</section>
+</section>
+<section id="plan-4-annual-swarms" class="level1">
+<h1>Plan 4: Annual Swarms</h1>
+<p>How it works: Allocate the 20% in contiguous sprints at one point in the year, where all engineers “swarm” to work on technical debt. For example, all engineers spend 5 contiguous sprints over the summer.</p>
+<section id="advantages-3" class="level2">
+<h2 class="anchored" data-anchor-id="advantages-3">Advantages</h2>
+<p>This plan works well for organizations that have seasonal usage. For example, at Code.org, we’ve run these swarms during the summer when students are typically not in school (and our usage is lower). This makes it easier to have planned downtime, if required.</p>
+<p>All engineers are working on tech debt reduction together, which makes cross-team dependencies easier to manage.</p>
+<p>Engineers get a longer time to work on items. For example, 20% of a 50-week working calendar equates to 10 weeks (or five 2-week sprints). For many organizations, this is a lot of time to make inroads on several large technical debt items.</p>
+<p>Having run these before, I’ve observed a lot of positive energy from these longer durations of allocated time (vs.&nbsp;spending 2 days per sprint). It also provides the opportunity for a large retro and celebration at the end of the 10 weeks.</p>
+</section>
+<section id="disadvantages-3" class="level2">
+<h2 class="anchored" data-anchor-id="disadvantages-3">Disadvantages</h2>
+<p>10 weeks is a long time to not ship any features! This may be especially hard to bite off in startup environments.</p>
+<p>Somewhat related, what do product owners (or any other members of the team who might not be directly working on technical debt) work on during this time?</p>
+<p>While 10 weeks allows for large upgrades or refactors of the code base, there is always a chance that these don’t get completed in time. If this happens, the next opportunity to work on these might not be until the following year, which can leave a lot of work in a dangling state until then.</p>
+</section>
+</section>
+<section id="plan-5-dedicated-team" class="level1">
+<h1>Plan 5: Dedicated Team</h1>
+<p>How it works: Take 20% of your engineers and dedicate them to a “tech debt reduction team”. For example, for a team of 30 engineers, allocate 6 of them to working on technical debt in a full-time capacity.</p>
+<section id="advantages-4" class="level2">
+<h2 class="anchored" data-anchor-id="advantages-4">Advantages</h2>
+<p>This plan can offer focus to a group of engineers passionate about reducing technical debt for their organization. The team can also operate autonomously, managing their own backlog of technical debt items, and changing priorities as needed.</p>
+<p>As this is a full-time team, the engineers don’t have to estimate the work or try to fit it into a calendar. They just start the work!</p>
+<p>Related, there is also less pressure for the team to complete the work by a certain date, compared to all the prior plans.</p>
+</section>
+<section id="disadvantages-4" class="level2">
+<h2 class="anchored" data-anchor-id="disadvantages-4">Disadvantages</h2>
+<p>Finding enough engineers who want to work on tech debt reduction (vs.&nbsp;product features) can be challenging. It’s often tricky to create a process where engineers can volunteer for this new team without feeling pressure from their manager or having concerns about their promotion path or resume.</p>
+<p>In smaller organizations, a dedicated team may not have the right experience for all the technical debt work. For example, a dedicated tech debt team comprising primarily web engineers could find it more difficult to refactor a database or server-side logic - slowing down the work or requiring additional time from engineers outside of the team.</p>
+<p>As with the “aligned with product calendar” plan, trying to reduce technical debt while another team is trying to ship a new feature can be challenging.</p>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>In this article, I’ve covered five different repayment plans for allocating engineering time and reducing technical debt: Percentage of Sprint, Every nth Sprint, Aligned with Product Calendar, Annual Swarms, and a Dedicated Team.</p>
+<p>During my career, I’ve experimented with many of these. A couple of years ago, at Code.org, we held summer swarms and upgraded some of our larger Web-based dependencies. This school year, we are aligning our tech debt reduction work with our product calendar. And, as our engineering org continues to grow, I’m curious to explore the option of a dedicated team.</p>
+<p>I hope this has generated ideas for how you may put together similar “repayment plans” for your own technical debt - and look forward to thoughts on different allocations or approaches that have worked well for you.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Technical Debt</category>
+  <guid>https://simonguest.com/p/technical-debt-repayment-plans/</guid>
+  <pubDate>Wed, 10 Jan 2024 00:00:00 GMT</pubDate>
+  <media:content url="https://simonguest.com/p/technical-debt-repayment-plans/main.webp" medium="image" type="image/webp"/>
+</item>
+<item>
+  <title>How We Accrue Technical Debt</title>
+  <link>https://simonguest.com/p/how-we-accrue-technical-debt/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>What is Technical Debt? We use the word frequently, yet we lack a consistent definition. Without a common understanding, it’s challenging to talk about technical debt, especially with those who don’t come from a software engineering background.</p>
+<p>Many equate technical debt to the age of software. It’s true that older codebases can carry a lot, but I’ve also seen technical debt creep in from day one. During my time at AWS, I inherited a team that had built up significant technical debt, causing a serious impact on velocity - and this was a 6-month-old team!</p>
+<p>I’ve found one of the best ways of explaining technical debt is to first understand how we accrue it. In this article, I’ll cover several ways I’ve seen organizations build up technical debt: moving too quickly, customer pivots, departing engineers, new engineers, lack of technical direction, technical decay, and a fragile development environment.</p>
+<p>For each, I’ll share how this technical debt occurs, the impact it may have on your own team, and strategies for addressing it.</p>
+<section id="moving-too-quickly" class="level1">
+<h1>Moving Too Quickly</h1>
+<p>In an organization’s early years, technical debt can accrue from pushing out features too quickly. Startups value speed to market above everything else, which is critical for competing for early market share.</p>
+<p>I’ve often seen this as prototypes being released to production, the rapid development of features without a clear sense of the underlying architecture, and sometimes copy/pasted code to get functionality out of the door quickly.</p>
+<p>This emphasis on speed often results in a system that, while effective in the short term, causes long-term maintenance and scalability issues. In many codebases, the result is entanglement. X calls Y; Y calls X. Or more challenging, X calls Y; Y calls Z; Z calls X.</p>
+<p>As the system grows over time, this entanglement becomes all-consuming, leading to a single, large production deployment (vs.&nbsp;being able to deploy different modules separately) and a frustrating developer experience.</p>
+<section id="how-can-we-address-this" class="level2">
+<h2 class="anchored" data-anchor-id="how-can-we-address-this">How can we address this?</h2>
+<p>For startups, I don’t believe the answer is to slow down and try to do things perfectly the first time. While it sounds good in theory, I’ve never been part of an organization that has figured out the definitive architecture on day one.</p>
+<p>I’ve found a better approach is to acknowledge you will accrue technical debt, and set up the right mechanisms for paying it back in the future. These include documenting shortcuts (as they are being taken) and protecting engineering time in future sprints to address them.</p>
+<p>For organizations already dealing with entanglement in their codebase, an effective strategy can be to paint a vision of disentanglement with your team.</p>
+<p>At Code.org, we are going through this very process as we disentangle two core parts of our monolith: a Rails app (used by our students and teachers) and a Sinatra app (used for content and marketing materials) that have many cross dependencies with each other.</p>
+<p>While we can deploy both successfully, separating the two will bring many advantages. This includes the ability to ship content updates outside of the deploy window and a far smaller repo size - as well as putting us on a path to further decouple other components in each application.</p>
+<p>Rather than try to disentangle everything in one go, we are finding it more effective to break the work into milestones, with each milestone offering either value for students or teachers - or increasing developer productivity.</p>
+</section>
+</section>
+<section id="customer-pivots" class="level1">
+<h1>Customer Pivots</h1>
+<p>As organizations grow, they often pivot to figure out their true north star and customer. Each pivot often adds code for a particular customer dimension or use case.</p>
+<p>For example, a startup may set off creating a product designed for the healthcare market, but then discover that the solution lands better with young parents. They will quickly make the pivot, but the code to support the prior healthcare use cases may never get deleted.</p>
+<p>Extra code can also creep in with additional types of customers. I saw a variation of this several years ago, where I joined a team who had copied and pasted chunks of code hundreds of times to support each new customer type.</p>
+<p>Code added this way can (and did) bring future feature development to a crawl. Product requests that appear simple on the surface (i.e., “Can we add a new phone number type for all our customers?”) need to be implemented across multiple parts of the codebase and even regression tested to support customer types that may no longer be in use.</p>
+<section id="how-can-we-address-this-1" class="level2">
+<h2 class="anchored" data-anchor-id="how-can-we-address-this-1">How can we address this?</h2>
+<p>For many startups, especially ones that go through many pivots, this is a common growing pain, but one that can be mitigated against.</p>
+<p>In the previous example, instead of copy/pasting code, we should have created a separate customer service with separate data from day one - and then treated this as the most valuable single source of truth. This would have avoided the pain of unpicking complex user details from a monolith in the future.</p>
+<p>For existing organizations who suffer with this type of technical debt today, one approach is to create an additional abstraction layer, move client calls across, and deprecate the old code and model. At Concur, we successfully used this approach to move customers across to a new generation of our expense product.</p>
+<p>What we learned, however, is not to expect an overnight success story - these projects are complex, often multi-year, especially for large codebases - however when completed successfully, can help unlock a lot of the technical debt accrued from multiple early pivots.</p>
+</section>
+</section>
+<section id="departing-engineers" class="level1">
+<h1>Departing Engineers</h1>
+<p>Engineers leave. It’s an unfortunate truth, and when they do, the understanding of a system often leaves with them. When folks depart, we ask them to write handover documentation, but it’s near impossible to replicate the mental models they have formed over the years.</p>
+<p>The result is a lack of system understanding that can exhibit many symptoms. Engineering velocity often suffers. New engineers fear they might break code and are more cautious in pushing out new features. And when engineers do ship new features, they may not fully understand legacy dependencies that can be removed, resulting in tomb-stoned code that persists forever.</p>
+<p>Finally, departing engineers can compound the problem with “helpful scripts” left behind to assist their former colleagues. Engineers write these scripts in good faith, but they often add a further layer of abstraction that prevents newer engineers from uncovering how the core components of the system actually work.</p>
+<section id="how-can-we-address-this-2" class="level2">
+<h2 class="anchored" data-anchor-id="how-can-we-address-this-2">How can we address this?</h2>
+<p>We can’t stop people from leaving, but when an engineer announces their intention to move on, I try to over-index on setting up in-person knowledge transfer with the team.</p>
+<p>This should not be just an hour in their last week. It should be most, if not all, of the engineer’s remaining time with the organization. This investment is critical for other engineers to build their own mental models of the system, even it means that feature work has to stop for a sprint or two.</p>
+<p>In addition, following a key engineer’s departure, I’ve found it’s critical to encourage a culture of accepting failure over paralysis. As long as the right boundaries are in place, I always prefer the conversation of “we tried this, but it broke things and we need to revert” vs.&nbsp;“we are too scared to make the change.”</p>
+</section>
+</section>
+<section id="new-engineers-with-differing-experience" class="level1">
+<h1>New Engineers (with Differing Experience)</h1>
+<p>Previous engineers have left, and you’ve hired replacements. Nice job! Unfortunately, these new engineers don’t have the same background. They are joining with knowledge of a more modern stack such as Go or Rust vs.&nbsp;the “slightly older version of Java” that your production systems run on. “That’s ok,” you reassure yourself, “They’re a strong engineer. They’ll pick it up quickly.”</p>
+<p>Sometimes, they do, and you’ve got a great engineer on your hands. Sometimes, however, they just don’t.</p>
+<p>It will start with slower onboarding. You’ll hear “I just don’t know how to do X in this old stack” or “I would have done it like this in Go or Rust, but that just doesn’t work in this older version of the JDK.”</p>
+<p>Over time, as they get more acquainted with the system, this can morph into a lack of respect for the old stack. “Who on earth would have done it this way?” and before you know it, “This sucks. Let’s rewrite this whole thing!”</p>
+<p>Finally, many times, this can lead to the new engineer departing. After 18 months, they decide that this isn’t for them and find a new position, offering the opportunity to go back to the stack they are more comfortable with.</p>
+<p>This can be frustrating. Now you have no engineer and potentially a few months’ worth of poorly written code accruing to your technical debt balance.</p>
+<section id="how-can-we-address-this-3" class="level2">
+<h2 class="anchored" data-anchor-id="how-can-we-address-this-3">How can we address this?</h2>
+<p>It starts with the interview. I’ve found I either need to hire engineers with prior experience of our stack (which can increase the hiring timeline) or be very deliberate in sharing the details of the stack they will work on. If they have a background in a different technology, I try to set the expectation there will be no opportunity for a rewrite in the near term and gauge their curiosity about learning what we have.</p>
+<p>When the new engineer starts, I believe it’s important to evangelize our current tech stack. “Yes, it has issues, but this got us to where we are today!” I share articles and news about the ecosystem (even older stacks have vibrant developer communities) and, if they come up, quickly shut down any conversations about rewriting.</p>
+<p>Finally, it’s important to invest in developer education. As an example, at Code.org we offer an annual professional development stipend that can an engineer can use for conferences, online courses, and other training materials. We’ve found these all can help newer engineers close their knowledge gap with a new platform.</p>
+</section>
+</section>
+<section id="lack-of-technical-direction" class="level1">
+<h1>Lack of Technical Direction</h1>
+<p>Of course, different engineers have different ways of doing things. Many engineers will create components using differing design patterns. (React classes vs.&nbsp;hooks, anyone?) Other engineers might introduce new tools into the build process that overlap with what’s already there.</p>
+<p>Without overall technical direction, these inconsistencies can grow out of control, accruing more technical debt. This slows everyone down, but is especially painful for new engineers trying to learning the code. Should they use a class or a hook? Should they use npm, yarn, grunt, or make for their new repo? Should they create a new service or extend the API of an existing one?</p>
+<p>Over time, engineers substitute this lack of technical direction with folklore: “Ah yes - if you are building a component in this part of the site, you’ll need to do X, but for another part of the site, you want Y instead.”</p>
+<section id="how-can-we-address-this-4" class="level2">
+<h2 class="anchored" data-anchor-id="how-can-we-address-this-4">How can we address this?</h2>
+<p>A document outlining current and future technical direction is essential. The document doesn’t need to go into an intricate deep level of detail - but it should provide the right guardrails, while continuing to support a level of autonomy for the team.</p>
+<p>The architectural tenets doc we have at Code.org lists attempts to do this using eight tenets - ranging from standardizing on a well-structured monorepo (vs.&nbsp;creating multiple repos) through to guidelines for storing new data and creating new APIs. If you don’t have a document similar to this, it can be an enlightening exercise to pull together a working group (a cross section of engineers on the team) to create one.</p>
+<p>It’s one thing to have a nice document. It’s another to go implement the required changes, especially if there are already inconsistencies in the codebase. Custom linters can help. These linters can run on each commit and report on the state of the system. For example, “45 out of 90 components are implemented as old classes.” Each commit can still go through, but the linter serves as a visible and persistent reminder to the team.</p>
+<p>These types of linters can also prevent future regressions. At Code.org, we’ve recently implemented a linter that reports on any new connections between two monolithic parts of the application we are decoupling.</p>
+</section>
+</section>
+<section id="technical-decay" class="level1">
+<h1>Technical Decay</h1>
+<p>For many organizations, a lack of technical direction can also result in technical decay within the system.</p>
+<p>This can manifest as classic bit rot: operating systems, languages, frameworks, and libraries that are many versions behind. Another variant of this is where teams fork an open-source library - and then fail to keep that fork up to date. If this wasn’t enough, all of this can be compounded by custom code written several years ago that could now be replaced with an open-source library (but hasn’t).</p>
+<p>Operating systems, languages, frameworks, and libraries that are several versions behind are a support and security risk. Many have an End of Life (EOL) date where they are no longer supported or patched.</p>
+<p>These outdated components can also cause complex dependency chains. In many Web-based projects, I’ve seen teams want to use a particular React component, however it depends on a newer version of webpack, which is not supported on the outdated version of Node running in production. Before they can use the component, the team needs to work backwards to upgrade all the dependencies in the chain.</p>
+<p>Finally, not only does technical decay introduce risks and complexity, but it also connects back to engineer attrition. Engineers joined your organization expecting to use the latest versions of components and frameworks, not ones that are several years old and are proving painful to upgrade.</p>
+<section id="how-can-we-address-this-5" class="level2">
+<h2 class="anchored" data-anchor-id="how-can-we-address-this-5">How can we address this?</h2>
+<p>Start by cataloguing the current versions of all components and their EOL dates. This will give you a prioritized list of the ones you should upgrade first.</p>
+<p>As we’ve been undertaking many upgrades at Code.org, we’ve discovered that when you are several versions out of date, it’s prudent to consider multiple minor version upgrades vs.&nbsp;one major jump. For example, we needed to upgrade our version of Ruby from 2.5.0 to 3.0.5. We found it was more manageable to go from 2.5 to 2.7.5 to 3.0 and then to 3.0.5 rather than trying to upgrade everything in one go.</p>
+<p>During each of these upgrades, we were also keen to define what success meant. For us, this included 100% of the code switched to using the new version of the library and a full cleanup (removal) of old dependencies. Again, linters helped a lot with this.</p>
+<p>For dependencies used across multiple development teams, it’s effective to block out sprints where all teams come together to work on the upgrade. (At Code.org, we call these summer swarms and typically run these when we have periods of downtime during the academic year.)</p>
+<p>Finally, for more complex upgrades such as languages or operating systems, it’s worth considering assigning engineers on a full-time basis. While it might be painful to slow down feature work, many engineers will often view it as a welcomed challenge, especially given the positive impact for the overall team.</p>
+</section>
+</section>
+<section id="fragile-development-environment" class="level1">
+<h1>Fragile Development Environment</h1>
+<p>When a codebase is small, it’s easy for engineers to run everything on their laptop. As time goes by, and the size and complexity of the codebase increases, it becomes much more difficult.</p>
+<p>The plethora of hardware and software permutations doesn’t help. A couple of decades ago it was much easier - everyone was using the same version of Windows and the same IDE. Now, your development team is likely a hybrid of Windows, Macs, maybe some flavors of desktop Linux, not to mention a mix of architectures (x86 and ARM), especially as engineers upgrade to Apple Silicon-based machines - all running a mix of popular and fringe IDEs.</p>
+<p>In many engineering orgs, this creates a fragile development environment. Engineers spend valuable time helping each other out when their environment breaks - and onboarding is far more difficult than it used to be, with complex “getting started” instructions for each permutation.</p>
+<p>This can also amplify technical decay, as engineers can be reluctant to make changes - as even a simple library upgrade involves testing across the different operating systems and architectures used by the team.</p>
+<section id="how-can-we-address-this-6" class="level2">
+<h2 class="anchored" data-anchor-id="how-can-we-address-this-6">How can we address this?</h2>
+<p>A first step is to increase the focus on developer tooling.</p>
+<p>In many of my prior teams - and at Code.org - we’ve set up a developer working group, where a subgroup of engineers document and cost out their frustrations with the current tooling. The costing part is critical, as time spent on supporting a fragile environment is often unaccounted for in traditional product planning.</p>
+<p>Out of this should come a sense of what to prioritize. This often starts as standardization across hardware and software, but can expand into how an organization can produce a 100% scriptable development environment. At Code.org, we still have work ahead of us to enable this, but once this is done, it should open up the opportunity of bringing on volunteer engineers from outside the organization.</p>
+<p>Containerization can help with scripting a new development environment. Many IDEs now support Development Containers, an open specification for using Docker-based containers as full development environments. At Code.org, we are learning it can take effort to move the team to a containerized environment. However, this can pave the way for expanded use cases, such as cloud-based IDEs and expanding the use of containers to our staging and production environments.</p>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>In this article, we’ve covered several ways that an organization can accrue technical debt: moving too quickly, customer pivots, departing engineers, new engineers, lack of technical direction, technical decay, and a fragile development environment.</p>
+<p>While you may have more (or different variations on these), I hope you found these useful and took away some new ideas and approaches for addressing each one.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Technical Debt</category>
+  <guid>https://simonguest.com/p/how-we-accrue-technical-debt/</guid>
+  <pubDate>Wed, 03 Jan 2024 00:00:00 GMT</pubDate>
+  <media:content url="https://simonguest.com/p/how-we-accrue-technical-debt/main.webp" medium="image" type="image/webp"/>
+</item>
+<item>
+  <title>Shared Keyboard Shortcuts on macOS and Linux</title>
+  <link>https://simonguest.com/p/shared-keyboard-shortcuts-on-macos/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I often switch between Mac and Linux for development. The Mac is my go-to machine for my main applications and development specific to the Apple ecosystem. On a separate PC running Ubuntu, I work on several other repos and anything else required for x86 development.</p>
+<p>Switching between the two can be challenging, especially when trying to remember keyboard shortcuts. Many issues stem from both machines having physically different keyboard layouts, but there are also nuances with different applications. For example, to open a new terminal window on the Mac, the default shortcut is Command-T (using iTerm2). On Linux, in Gnome-Terminal, it’s Ctrl-Shift-T. Even when remapping Command and Ctrl keys around on one of the machines, it’s still a different operation.</p>
+<p>After spending far too long to try to solve this, I’ve come up with three techniques I’ve found helped.</p>
+<section id="own-your-shortcut-keys" class="level1">
+<h1>Own Your Shortcut Keys</h1>
+<p>Earlier in my career, I found it easy to quickly memorize new sets of shortcut keys. For example, I could install a new IDE and adjust to using SHIFT-F5 to launch the debugger instead of Ctrl-Shift-R.</p>
+<p>Maybe it’s a case of getting older, but that’s become more difficult - or more accurately, I’ve become more stuck in my ways about wanting to dictate the shortcut keys I want to use vs.&nbsp;having applications set them for me. Plus, no one shares keyboards any more (unless you are an advocate of in-person pair programming), so no one should care if I have a wacky set of keyboard shortcuts as long as I can remember them.</p>
+<p>My first recommendation therefore is to own your shortcut keys. Think about what keyboard shortcut feels most natural to you for each action, and let that drive how you setup your system. For reference, maintain a table of your shortcut keys. <a href="https://github.com/simonguest/keymap">Here’s</a> mine.</p>
+</section>
+<section id="consistent-modifier-keys" class="level1">
+<h1>Consistent Modifier Keys</h1>
+<p>Modifier keys (these are the keys that modify others like Ctrl, Shift, Alt, etc.) are different between Mac and PCs, and many PC keyboards also have variations. On my Mac, the layout of the modifier keys (to the left of the space bar) is as follows:</p>
+<p>Fn - Ctrl - Opt - Cmd</p>
+<p>Yet, on my DELL, the layout is:</p>
+<p>Ctrl - Fn - Win - Alt</p>
+<p>Even if the keyboard shortcuts are identical between the machines, I find myself having to frequent look down at the keyboard to reorient to the layout.</p>
+<p>I’ve found the solution to this is to not to. Instead of following the keys on the keyboard, I have a mental model of how modifier keys should operate across all keyboards.</p>
+<p>For me, I always expect the Meta key (Command or Windows key) to be immediately to the left of the space bar. The key directly to the left of the Meta is always Alt/Option. If there are four modifier keys, the key to its left is always Fn. Finally, the key is the bottom left is always Ctrl. Again, this is my muscle memory of what I’ve learned over the many years - yours may be completely different.</p>
+<p>With my mental model for this keyboard layout, I then ignore the labels printed on the keys and use tools to map them equivalently.</p>
+<p>On the Mac, you can use the <em>Modifier Keys</em> option in the <em>Keyboard</em> system preferences to swap these if needed. In Linux, you can do something similar using <em>TweakUI</em> in Gnome, or <code>setxkbmap</code>.</p>
+<p>(Note: If you need to swap the Fn and Ctrl keys on a PC, many times this has to be done via a Bios setting as Fn is not recognized as a standard key interrupt.)</p>
+</section>
+<section id="remapping-the-rest" class="level1">
+<h1>Remapping the Rest</h1>
+<p>With a uniform set of modifier keys, you can now start to remap the other keys. On Linux, there are many different options:</p>
+<p><a href="https://wiki.archlinux.org/title/xmodmap"><strong>xmodmap</strong></a>: This works well if you want to swap out a single key for another single key, but doesn’t do much more than that. It won’t handle chords (e.g., mapping Win-T to Ctrl-T) or other complex operations.</p>
+<p><a href="https://wiki.archlinux.org/title/Xbindkeys"><strong>xbindkeys</strong></a>: Typically, <code>xbindkeys</code> is used in combination with <code>xvkbd</code> or <code>xdotool</code>. <code>xbindkeys</code> traps the interrupt for a keypress or chord, and then <code>xvkbd</code> or <code>xdotool</code> simulates an alternative keypress. While on the surface it looks nice, I’ve had issues when trying to implement it. First, it is slow. It worked for remapping a single key, but not suitable for multiple keypresses in succession. Second, it seems inconsistent. This may have been how I was using the <code>--clearmodifiers</code> flag in <code>xdotool</code>, but I found that one in every ten chords wouldn’t map correctly. Finally, both <code>xvkbd</code> and <code>xdotool</code> use the testing API in X, which is deprecated in Wayland.</p>
+<p><a href="https://github.com/mooz/xkeysnail"><strong>xkeysnail</strong></a>: This is the tool that has worked the best for me. <code>xkeysnail</code> is a python script that captures input from <code>/dev/input/eventXX</code> devices, remaps them, and redirects it to <code>/dev/uinput</code>. It supports chords, complex operations (e.g., pressing a key and having a sequence of keys played back), and performs really well. It also has the added feature of mapping keys specific to the window in focus (using the <code>WM_CLASS</code> in Gnome). Therefore, Ctrl-Shift-T can be mapped to a different replacement keyboard shortcut in Gnome Terminal vs.&nbsp;VS Code. <a href="https://github.com/simonguest/keymap/blob/main/Linux/xkeysnail/config.py">Here</a> is an example of my setup.</p>
+<p><code>xkeysnail</code> does have a couple of downsides, however. Because it acts as a new virtual keyboard device, it overrides any existing modmaps that have been previously applied. This makes it a little more difficult to set different combinations for different keyboards attached to the same machine. Finally, <code>xkeysnail</code> must run as root (for writing to <code>/dev/uinput</code>), which makes it a little more work to get running as a startup process.</p>
+<p>Finally, as your keyboards may be assigned different <code>/dev/input/eventXX</code> devices on reboot/reconnection, you’ll need to pass the correct device to <code>xkeysnail</code>. I’ve written a <a href="https://github.com/simonguest/keymap/blob/main/Linux/xkeysnail/launch_xkeysnail">script</a> that does this automatically.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>macOS</category>
+  <category>Linux</category>
+  <guid>https://simonguest.com/p/shared-keyboard-shortcuts-on-macos/</guid>
+  <pubDate>Tue, 26 Dec 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://simonguest.com/p/shared-keyboard-shortcuts-on-macos/main.webp" medium="image" type="image/webp"/>
+</item>
+<item>
+  <title>Writing Better Technical Documents</title>
+  <link>https://simonguest.com/p/writing-better-technical-documents/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>When I joined Code.org, several folks asked me what habits from Amazon I wanted to bring across with me. While Amazon has many peculiar qualities, the one I valued most was the culture of writing. As you’ve likely heard, Amazon values writing and using documents for decision making over creating slide decks.</p>
+<p>A good document makes meetings more efficient. Spending the first 10-15 minutes reading a well-written document gets everyone on the same page (both literally and figuratively) much quicker than any slide deck can. A good document also increases critical thinking skills. While it’s possible to “wing” a presentation by assembling a few bullet points the night before, the same isn’t true with a good document. You must instead invest the time exploring many angles of a topic before you can confidently put it into words.</p>
+<p>Writing, however, is hard. Coming from an engineering background, writing wasn’t (and still isn’t) as natural to me as other subjects. Over the past few years, I’ve found five techniques that help make for stronger technical documents. Here they are:</p>
+<section id="tell-a-story" class="level1">
+<h1>Tell a Story</h1>
+<p>Storytelling isn’t just for works of fiction. A well-written technical document can still tell a story. The proposal for your next big idea can still have a protagonist, conflict, and a story-based narrative.</p>
+<p>When applying this to technical documents, I start by putting myself in the reader’s position. Who is the protagonist that I want to present to the reader? What is the issue or conflict? How will the protagonist resolve this? Many of the promotion documents I wrote at Amazon followed this idea. The protagonist was, of course, the individual being put up for promotion, and I shared the conflicts and issues they faced along the way (which later on became the justification for moving to the next level). While it wasn’t a novel, these story constructs helped create a compelling case.</p>
+<p>Two books that have helped me learn more about storytelling are <a href="https://www.amazon.com/Story-Structure-Substance-Principles-Screenwriting-ebook/dp/B0042FZVOY"><em>Story</em> by Robert McKee</a> and <a href="https://www.amazon.com/Writing-Memoir-Craft-Stephen-King-ebook/dp/B000FC0SIM"><em>On Writing</em> by Stephen King</a>. While it’s in depth and aimed at screenwriters, McKee’s book provides the foundation for good storytelling. King’s memoir is a unique and engaging perspective on becoming a writer. While it’s geared more towards fiction writers, I found much of the content still applies to writing non-fiction work.</p>
+</section>
+<section id="maintain-a-consistent-style" class="level1">
+<h1>Maintain a Consistent Style</h1>
+<p>Inconsistencies are easy to spot as a reader and notoriously difficult to see when you are writing. Yet, inconsistencies such as using 3rd Jan in one paragraph and 1/3 in the next will negatively affect how your document is received, even if the content is sound.</p>
+<p>During my time at Amazon, I created a style guide that I referred to when writing or reviewing documents. A style guide is just a set of rules to ensure consistency throughout a document. For example, my rule for dates is to use 3 Jan vs.&nbsp;1/3 for days and Jan 2022 vs.&nbsp;1/2022 for months. I have many other rules that include the use of numbers, spacing, acronyms, and so on.</p>
+<p>Building your own style guide is easy. I’d recommend starting with <a href="https://www.amazon.com/Elements-Style-William-Strunk-Jr/dp/1989862004"><em>Elements of Style</em> by William Strunk Jr.</a> to learn about common patterns used in the publishing industry. As you get deeper into the subject, the <a href="https://www.amazon.com/Chicago-Manual-Style-17th/dp/022628705X"><em>Chicago Manual of Style</em> by The University of Chicago Press Editorial Staff</a> an invaluable resource for those documents that have to be perfect.</p>
+</section>
+<section id="strive-for-clarity" class="level1">
+<h1>Strive for Clarity</h1>
+<p>When writing about a technical subject, it’s easy to use a style that biases towards overly complex jargon. The illusion is that doing so will make you sound much smarter, but quite the opposite is true. Instead of writing a document that your professor would be proud of, try writing in a style that a 10th grader could read. (Look for a tool that supports the <a href="https://readable.com/readability/flesch-reading-ease-flesch-kincaid-grade-level/">Flesch Reading Ease score</a> to determine how readable your own work is).</p>
+<p>One habit that helps is writing in the active voice. It wasn’t until I took a writing class at Amazon that I discovered I was writing mostly in the passive voice (i.e., The code is optimized to be secure) vs.&nbsp;an active voice (i.e., I’ve optimized the code to be secure). I now use several tools (e.g., <a href="https://prowritingaid.com/">ProWritingAid</a>) that prevent too many passive voice sentences creeping back in.</p>
+<p>Other books I would recommend include <a href="https://www.amazon.com/Sense-Style-Thinking-Persons-Writing-ebook/dp/B00INIYG74"><em>Sense of Style</em> by Steven Pinker</a>. Pinker covers an almost scientific approach for writing clearly and avoiding leaning too heavily towards an academic style. I also enjoyed <a href="https://www.amazon.com/Writing-Well-Classic-Guide-Nonfiction/dp/0060891548"><em>On Writing Well</em> by William Zinsser</a>. One recommendation in Zinsser’s book is after you’ve completed your first draft, try to reduce the length of your prose by 50%. And once you’ve done that, try to reduce it again by another 50%. When I’ve used this approach with my own documents, it’s been a useful tool to distill down to the essence of what I’m wanting to say.</p>
+<p>Use Feedback Loops</p>
+<p>Writing is a journey of continual improvement and constructive feedback will help your documents become stronger.</p>
+<p>There are many automated ways of generating feedback for your documents. I’ve had success with <a href="https://prowritingaid.com/">ProWritingAid</a> as it integrates well with Google Docs, but most editors now support basic style and grammar checking.</p>
+<p>Once you have addressed feedback using tools, ask other folks on your team to review your work, especially ahead of an important review. When they provide feedback, I recommend focusing on the areas they flag as confusing and think about how you can clarify these. Maybe it requires a stronger introduction or purpose? Maybe it’s the length of the paragraphs? Maybe you are using acronyms that the reader is less familiar with?</p>
+<p>In addition, be a supportive reviewer for other writers on your team. At Amazon, when folks would send me documents to review, I would split my feedback into two parts: I’d cover the proposal (i.e., Let’s first discuss whether the idea makes sense) and then the writing style (i.e., I have some feedback on the grammar and structure of the document, if it is useful). On every occasion I shared feedback on the document’s style, it was well received.</p>
+</section>
+<section id="practice-every-day" class="level1">
+<h1>Practice Every Day</h1>
+<p>Every time you put hands to keyboard is an opportunity to become a better writer. Putting together a quick email? Maybe that’s a chance to check for passive voice. Composing a LinkedIn post? How could that be more concise? It may take longer to create and review that outgoing note, but doing so can help form natural habits that will make your writing stronger.</p>
+<p>Finally, besides practice, I’ve found that reading has made me a better writer. I always have a queue of books lined up, and even if they are on technical topics, it’s always fascinating to see how the author introduces the subject and keeps me, the reader, engaged.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Technical Leadership</category>
+  <category>Writing</category>
+  <guid>https://simonguest.com/p/writing-better-technical-documents/</guid>
+  <pubDate>Sun, 24 Dec 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://simonguest.com/p/writing-better-technical-documents/main.webp" medium="image" type="image/webp"/>
+</item>
+<item>
+  <title>Why Don’t Software Developers Practice?</title>
+  <link>https://simonguest.com/p/why-dont-software-developers-practice-051/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Many professions incorporate practice into their daily routines. Athletes wake up early to practice regularly. Successful musicians often have a strict routine of practice. And many artists will dedicate time to practicing new techniques they then incorporate into their work.</p>
+<p>Yet, as software developers, we don’t embrace this concept. We often expect developers to perform (i.e., ship software) 100% of their working time. Imagine if this happened with the other professions. Athletes would run races non-stop, musicians would spend all their time performing in front of an audience, and artists would need to produce masterpiece after masterpiece without fail.</p>
+<p>This is concerning. Always being under pressure to perform adds significant psychological stress. Having no room for practice means no room for failure, even if a company’s values claims otherwise. No time for practice also means no time for experimentation, or more accurately, experimentation happens in production. Can you imagine a musician trying a new instrument for the first time in front of a packed concert hall?</p>
+<p>The concept of practice holds so much potential for improving software development. Practice can help developers try something new - maybe it’s a new language, framework, or tool. Practice can also help developers experiment - such as trying different techniques to cache data or an alternate way to get user input. Practice can also help build muscle memory - increasing the ability to write code without constantly relying on Stack Overflow.</p>
+<p>What does it take to incorporate practice into software development? There are many angles, but here are five steps I’ve found useful with my teams to develop a culture of practice:</p>
+<section id="define-your-goal" class="level1">
+<h1>Define Your Goal</h1>
+<p>The first step is to define a goal. As a developer, what do you want to achieve from practice? Your goal should be bold and should even feel a little intimidating just to say it aloud. It shouldn’t be too bold that it’s never achievable - but it shouldn’t be something you can quickly accomplish in a couple of days either.</p>
+<p>To give an example, I recently wanted to learn the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a>. I had no experience with doing anything audio-related in the browser, and given the size of the spec, it was intimidating at first glance. It did, however, provide for a good goal for which to focus my practice time.</p>
+</section>
+<section id="one-step-at-a-time" class="level1">
+<h1>One Step at a Time</h1>
+<p>After establishing a goal, it’s important to work the first step on the journey. The key is not to figure out everything at once - you’ll likely end up spending more time deconstructing the tasks vs.&nbsp;actually spending time in practice - just the next step in order to make progress.</p>
+<p>Going back to my example of learning Web Audio, I decided the first step was to work out how to play a simple WAV file in the browser. That was the sole focus of my first practice session, and it was easy to know when I had accomplished it. After completing this, to figure out what I should do in my next practice session, I went back to the Web Audio spec and figured out that creating a simple oscillator would be a good next step.</p>
+<p>It’s important to define one step at a time, and not to over-commit. Even though the goal may be intimidating, practice shouldn’t be a stretch. If it is, it will become stressful and you’ll likely give up. I like to set a goal of 50%: If I have 90 minutes to practice, my next step should feel about 45 minutes’ worth of work, providing a healthy buffer as I figure things out. Plus, if I end early and accomplish something, I feel much better than running out of time, having over-committed.</p>
+</section>
+<section id="create-a-feedback-loop" class="level1">
+<h1>Create a Feedback Loop</h1>
+<p>Feedback is critical for practice. Not only does it provide a sense of accomplishment, but you need to know when things are working and if you are making progress.</p>
+<p>In their book, <a href="https://www.amazon.com/Peak-Secrets-New-Science-Expertise-ebook/dp/B011H56MKS">Peak: Secrets from the New Science of Expertise</a>, Ericsson and Pool define two types of practice: Purposeful practice and deliberate practice.</p>
+<p>Purposeful practice is exploratory. It’s done on your own and you create your own feedback loops. Figuring out how to play a WAV file is an example of purposeful practice. If my code plays the sound correctly, that’s successful feedback.</p>
+<p>Deliberate practice involves another person, such as a coach or mentor. For athletes, this could be a track coach offering advice on improving posture. For software developers, this could be a mentor or a more senior developer offering feedback on the effectiveness of the code.</p>
+<p>As you set up your own practice, decide which type of feedback loop is going to be more useful for you. With the abundance of samples and tutorials in our profession, you’ll likely default to purposeful practice, but don’t discount the value of deliberate practice, especially if there is an opportunity to learn from others.</p>
+</section>
+<section id="schedule-time-to-practice" class="level1">
+<h1>Schedule Time to Practice</h1>
+<p>Many developers I speak with like the idea of practice, but struggle with fitting it into the calendar. Scheduling time is one of the most important parts of setting up a routine of practice.</p>
+<p>Practice should always be outside of a “performance window”. Imagine a musician who has two concerts, one in the morning and one in the afternoon. They will probably be tired in between, so practice then is likely counter-productive. The same is true for software development. Carving out an hour in between sprint tasks in the middle of the day may not be the most effective time.</p>
+<p>Instead, look for windows of time outside of your “performances”. For me, this is early mornings. I don’t know why, but I find it much easier to switch into a mode of practice before taking on any other work. As a result, I try to be steadfast about reserving early morning hours for practice time.</p>
+<p>This, of course, begets the question: Should practice time be taken out of the hours allocated to a sprint? If practice time can be scheduled this way, sure, but I lean towards practice being about true personal development, and therefore dedicating time outside of working hours. This approach also opens up the ability to practice things that are not related to your day job. Maybe you want to learn about Rust, but your company has no plans to adopt it. It’s easier to commit to this if your practice window is on your own time.</p>
+</section>
+<section id="create-an-environment-for-focus" class="level1">
+<h1>Create an Environment for Focus</h1>
+<p>After scheduling time on the calendar, it can be too easy to adopt a mindset that this is “free time” vs.&nbsp;“practice time”.</p>
+<p>You should treat practice time as you would any other time where you need to focus. Turn off notifications and close windows with anything that could be a distraction. It can be effective to create a new virtual desktop and then dedicate that desktop entirely to the practice activity. This can help create a separate space, free of clutter, without going through the pain of closing or minimizing my other work.</p>
+<p>I’ve also found the <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Pomodoro Technique</a> works well for practice. I find that I can sustain practice for about 90 minutes before I need to take a break or resume other activities. Having a timer helps me frame and dedicate the time to do this.</p>
+</section>
+<section id="treat-creations-as-impermanent" class="level1">
+<h1>Treat Creations as Impermanent</h1>
+<p>Water art, popular in Buddhism, is the concept of painting using water. As the artist paints, the creation comes to life, but as the water slowly evaporates, the art disappears, returning to a clean board.</p>
+<p>Practice should have a similar impermanence. The goal of practice is about learning. There’s no need to publish, share, create tests, create a prototype, or do anything production-worthy with code created during practice. If you want to save your work in between practice sessions, create a private repo, but resist trying to turn the output into something bigger.</p>
+<p>Instead, focus on the learning experience. I guarantee that there will be a time where you’ll apply what you’ve learned. Wait for that time to come vs.&nbsp;trying to force a creation out of your practice session.</p>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>I hope you find the five steps in this article useful, and start incorporating the concept of practice into software development. If we do, I suspect it will be a net positive for our profession, making for more productive and happy developers.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Technical Leadership</category>
+  <guid>https://simonguest.com/p/why-dont-software-developers-practice-051/</guid>
+  <pubDate>Fri, 22 Dec 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://simonguest.com/p/why-dont-software-developers-practice-051/main.webp" medium="image" type="image/webp"/>
 </item>
 </channel>
 </rss>

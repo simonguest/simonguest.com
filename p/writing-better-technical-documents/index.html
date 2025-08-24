@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2023-12-24">
+<meta name="description" content="Five techniques that have helped me write better technical documents.">
 
-<title>Posts – Simon Says</title>
+<title>Writing Better Technical Documents – Simon Says</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,21 +25,19 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-badfea7620e6254af941214fdd9b8bfc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-badfea7620e6254af941214fdd9b8bfc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -53,78 +53,38 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
+<style>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: #fff;
+      }
 
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
+      .quarto-title-block .quarto-title-banner {
+        color: #fff;
+background-image: url(banner.webp);
+background-size: cover;
+      }
+</style>
 <script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@1/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=client-NyH4rB82RzHd5dToa2AY3wAJNsnYmPLd5PFuHNpDNDR"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
+<link rel="stylesheet" href="../../styles.css">
+</head>
 
-<link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="Simon Says" href="index.xml" data-external="1"></head>
-
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Simon Says</span>
     </a>
   </div>
@@ -134,7 +94,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about/index.html"> 
+    <a class="nav-link" href="../../about/index.html"> 
 <span class="menu-text">About Simon</span></a>
   </li>  
   <li class="nav-item compact">
@@ -157,313 +117,81 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Posts</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Writing Better Technical Documents</h1>
+                  <div>
+        <div class="description">
+          Five techniques that have helped me write better technical documents.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Technical Leadership</div>
+                <div class="quarto-category">Writing</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 24, 2023</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(9)</span></div><div class="category" data-category="RGVidWdnaW5n">Debugging <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R2VuZXJhdGl2ZSUyMEFJ">Generative AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SURFcw==">IDEs <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TGludXg=">Linux <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWFjT1M=">macOS <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VGVjaG5pY2FsJTIwRGVidA==">Technical Debt <span class="quarto-category-count">(2)</span></div><div class="category" data-category="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==">Technical Leadership <span class="quarto-category-count">(5)</span></div><div class="category" data-category="V3JpdGluZw==">Writing <span class="quarto-category-count">(2)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<p>When I joined Code.org, several folks asked me what habits from Amazon I wanted to bring across with me. While Amazon has many peculiar qualities, the one I valued most was the culture of writing. As you’ve likely heard, Amazon values writing and using documents for decision making over creating slide decks.</p>
+<p>A good document makes meetings more efficient. Spending the first 10-15 minutes reading a well-written document gets everyone on the same page (both literally and figuratively) much quicker than any slide deck can. A good document also increases critical thinking skills. While it’s possible to “wing” a presentation by assembling a few bullet points the night before, the same isn’t true with a good document. You must instead invest the time exploring many angles of a topic before you can confidently put it into words.</p>
+<p>Writing, however, is hard. Coming from an engineering background, writing wasn’t (and still isn’t) as natural to me as other subjects. Over the past few years, I’ve found five techniques that help make for stronger technical documents. Here they are:</p>
+<section id="tell-a-story" class="level1">
+<h1>Tell a Story</h1>
+<p>Storytelling isn’t just for works of fiction. A well-written technical document can still tell a story. The proposal for your next big idea can still have a protagonist, conflict, and a story-based narrative.</p>
+<p>When applying this to technical documents, I start by putting myself in the reader’s position. Who is the protagonist that I want to present to the reader? What is the issue or conflict? How will the protagonist resolve this? Many of the promotion documents I wrote at Amazon followed this idea. The protagonist was, of course, the individual being put up for promotion, and I shared the conflicts and issues they faced along the way (which later on became the justification for moving to the next level). While it wasn’t a novel, these story constructs helped create a compelling case.</p>
+<p>Two books that have helped me learn more about storytelling are <a href="https://www.amazon.com/Story-Structure-Substance-Principles-Screenwriting-ebook/dp/B0042FZVOY"><em>Story</em> by Robert McKee</a> and <a href="https://www.amazon.com/Writing-Memoir-Craft-Stephen-King-ebook/dp/B000FC0SIM"><em>On Writing</em> by Stephen King</a>. While it’s in depth and aimed at screenwriters, McKee’s book provides the foundation for good storytelling. King’s memoir is a unique and engaging perspective on becoming a writer. While it’s geared more towards fiction writers, I found much of the content still applies to writing non-fiction work.</p>
+</section>
+<section id="maintain-a-consistent-style" class="level1">
+<h1>Maintain a Consistent Style</h1>
+<p>Inconsistencies are easy to spot as a reader and notoriously difficult to see when you are writing. Yet, inconsistencies such as using 3rd Jan in one paragraph and 1/3 in the next will negatively affect how your document is received, even if the content is sound.</p>
+<p>During my time at Amazon, I created a style guide that I referred to when writing or reviewing documents. A style guide is just a set of rules to ensure consistency throughout a document. For example, my rule for dates is to use 3 Jan vs.&nbsp;1/3 for days and Jan 2022 vs.&nbsp;1/2022 for months. I have many other rules that include the use of numbers, spacing, acronyms, and so on.</p>
+<p>Building your own style guide is easy. I’d recommend starting with <a href="https://www.amazon.com/Elements-Style-William-Strunk-Jr/dp/1989862004"><em>Elements of Style</em> by William Strunk Jr.</a> to learn about common patterns used in the publishing industry. As you get deeper into the subject, the <a href="https://www.amazon.com/Chicago-Manual-Style-17th/dp/022628705X"><em>Chicago Manual of Style</em> by The University of Chicago Press Editorial Staff</a> an invaluable resource for those documents that have to be perfect.</p>
+</section>
+<section id="strive-for-clarity" class="level1">
+<h1>Strive for Clarity</h1>
+<p>When writing about a technical subject, it’s easy to use a style that biases towards overly complex jargon. The illusion is that doing so will make you sound much smarter, but quite the opposite is true. Instead of writing a document that your professor would be proud of, try writing in a style that a 10th grader could read. (Look for a tool that supports the <a href="https://readable.com/readability/flesch-reading-ease-flesch-kincaid-grade-level/">Flesch Reading Ease score</a> to determine how readable your own work is).</p>
+<p>One habit that helps is writing in the active voice. It wasn’t until I took a writing class at Amazon that I discovered I was writing mostly in the passive voice (i.e., The code is optimized to be secure) vs.&nbsp;an active voice (i.e., I’ve optimized the code to be secure). I now use several tools (e.g., <a href="https://prowritingaid.com/">ProWritingAid</a>) that prevent too many passive voice sentences creeping back in.</p>
+<p>Other books I would recommend include <a href="https://www.amazon.com/Sense-Style-Thinking-Persons-Writing-ebook/dp/B00INIYG74"><em>Sense of Style</em> by Steven Pinker</a>. Pinker covers an almost scientific approach for writing clearly and avoiding leaning too heavily towards an academic style. I also enjoyed <a href="https://www.amazon.com/Writing-Well-Classic-Guide-Nonfiction/dp/0060891548"><em>On Writing Well</em> by William Zinsser</a>. One recommendation in Zinsser’s book is after you’ve completed your first draft, try to reduce the length of your prose by 50%. And once you’ve done that, try to reduce it again by another 50%. When I’ve used this approach with my own documents, it’s been a useful tool to distill down to the essence of what I’m wanting to say.</p>
+<p>Use Feedback Loops</p>
+<p>Writing is a journey of continual improvement and constructive feedback will help your documents become stronger.</p>
+<p>There are many automated ways of generating feedback for your documents. I’ve had success with <a href="https://prowritingaid.com/">ProWritingAid</a> as it integrates well with Google Docs, but most editors now support basic style and grammar checking.</p>
+<p>Once you have addressed feedback using tools, ask other folks on your team to review your work, especially ahead of an important review. When they provide feedback, I recommend focusing on the areas they flag as confusing and think about how you can clarify these. Maybe it requires a stronger introduction or purpose? Maybe it’s the length of the paragraphs? Maybe you are using acronyms that the reader is less familiar with?</p>
+<p>In addition, be a supportive reviewer for other writers on your team. At Amazon, when folks would send me documents to review, I would split my feedback into two parts: I’d cover the proposal (i.e., Let’s first discuss whether the idea makes sense) and then the writing style (i.e., I have some feedback on the grammar and structure of the document, if it is useful). On every occasion I shared feedback on the document’s style, it was well received.</p>
+</section>
+<section id="practice-every-day" class="level1">
+<h1>Practice Every Day</h1>
+<p>Every time you put hands to keyboard is an opportunity to become a better writer. Putting together a quick email? Maybe that’s a chance to check for passive voice. Composing a LinkedIn post? How could that be more concise? It may take longer to create and review that outgoing note, but doing so can help form natural habits that will make your writing stronger.</p>
+<p>Finally, besides practice, I’ve found that reading has made me a better writer. I always have a queue of books lined up, and even if they are on technical topics, it’s always fascinating to see how the author introduces the subject and keeps me, the reader, engaged.</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcCUyQ1dyaXRpbmc=" data-listing-date-sort="1722902400000" data-listing-file-modified-sort="1755998490327" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2741">
-<a href="./p/creating-a-document-driven-culture/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/creating-a-document-driven-culture/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="The nib of a fountain pen on top of a blank page of paper">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Creating a Document-Driven Culture
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('V3JpdGluZw=='); return false;">Writing</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Amazon is famous for banning PowerPoint in favor of written documents. But why and how does this work? I share my experience and ideas for creating a document-driven culture.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Aug 6, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==" data-listing-date-sort="1708473600000" data-listing-file-modified-sort="1755998490330" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1496">
-<a href="./p/should-ctos-write-code/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/should-ctos-write-code/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="A compile button on a black background">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Should CTOs Write Code?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>In this article, I dust off this age-old question and answer it using an action logic framework.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Feb 21, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="SURFcyUyQ0RlYnVnZ2luZyUyQ0dlbmVyYXRpdmUlMjBBSQ==" data-listing-date-sort="1707177600000" data-listing-file-modified-sort="1755998490328" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1987">
-<a href="./p/is-using-a-debugger-becoming-a-lost/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/is-using-a-debugger-becoming-a-lost/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="The back of a CTO working at their desk, writing code">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Is Using a Debugger Becoming a Lost Art?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('SURFcw=='); return false;">IDEs</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGVidWdnaW5n'); return false;">Debugging</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('R2VuZXJhdGl2ZSUyMEFJ'); return false;">Generative AI</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Why this is happening, how we can bring it back, and where generative AI may help.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Feb 6, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==" data-listing-date-sort="1705968000000" data-listing-file-modified-sort="1755998490331" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1386">
-<a href="./p/what-shape-is-your-engineering-team/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/what-shape-is-your-engineering-team/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="An aerial shot of a group of business people, arranged in the shape of a triangle">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-What Shape Is Your Engineering Team?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Use the shape of your team to help with product fit, hiring decisions, and mentoring opportunities.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Jan 23, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="VGVjaG5pY2FsJTIwRGVidA==" data-listing-date-sort="1704844800000" data-listing-file-modified-sort="1755998490330" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1557">
-<a href="./p/technical-debt-repayment-plans/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/technical-debt-repayment-plans/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="A side shot of a golden piggy bank, plain decor">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Technical Debt Repayment Plans
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwRGVidA=='); return false;">Technical Debt</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Introducing the concept of ‘repayment plans’ for reducing technical debt in your organization.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Jan 10, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="VGVjaG5pY2FsJTIwRGVidA==" data-listing-date-sort="1704240000000" data-listing-file-modified-sort="1755998490328" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2873">
-<a href="./p/how-we-accrue-technical-debt/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/how-we-accrue-technical-debt/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="A pile of colorful credit cards">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-How We Accrue Technical Debt
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwRGVidA=='); return false;">Technical Debt</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>In this article, I cover the different ways that organizations accrue technical debt, the impact that this has, and strategies for tackling it.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Jan 3, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="6" data-categories="bWFjT1MlMkNMaW51eA==" data-listing-date-sort="1703548800000" data-listing-file-modified-sort="1755998490329" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="938">
-<a href="./p/shared-keyboard-shortcuts-on-macos/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/shared-keyboard-shortcuts-on-macos/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="An extreme close up of a Ctrl Key on a black keyboard.">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Shared Keyboard Shortcuts on macOS and Linux
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWFjT1M='); return false;">macOS</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TGludXg='); return false;">Linux</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Creating consistent keyboard shortcuts that work well between the two.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Dec 26, 2023
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="7" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcCUyQ1dyaXRpbmc=" data-listing-date-sort="1703376000000" data-listing-file-modified-sort="1755998490332" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1107">
-<a href="./p/writing-better-technical-documents/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/writing-better-technical-documents/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="A quill in a pot of blue ink against a white background.">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Writing Better Technical Documents
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('V3JpdGluZw=='); return false;">Writing</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Five techniques that have helped me write better technical documents.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Dec 24, 2023
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="8" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==" data-listing-date-sort="1703203200000" data-listing-file-modified-sort="1755998490331" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1361">
-<a href="./p/why-dont-software-developers-practice-051/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/why-dont-software-developers-practice-051/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="A silhouette of a girl playing a violin">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Why Don’t Software Developers Practice?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Could practice help us develop new skills, experiment, and build muscle memory?</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Dec 22, 2023
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

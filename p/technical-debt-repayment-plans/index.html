@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-01-10">
+<meta name="description" content="Introducing the concept of ‘repayment plans’ for reducing technical debt in your organization.">
 
-<title>Posts – Simon Says</title>
+<title>Technical Debt Repayment Plans – Simon Says</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,21 +25,19 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-badfea7620e6254af941214fdd9b8bfc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-badfea7620e6254af941214fdd9b8bfc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -53,78 +53,38 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
+<style>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: #fff;
+      }
 
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
+      .quarto-title-block .quarto-title-banner {
+        color: #fff;
+background-image: url(banner.webp);
+background-size: cover;
+      }
+</style>
 <script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@1/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=client-NyH4rB82RzHd5dToa2AY3wAJNsnYmPLd5PFuHNpDNDR"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
+<link rel="stylesheet" href="../../styles.css">
+</head>
 
-<link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="Simon Says" href="index.xml" data-external="1"></head>
-
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Simon Says</span>
     </a>
   </div>
@@ -134,7 +94,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about/index.html"> 
+    <a class="nav-link" href="../../about/index.html"> 
 <span class="menu-text">About Simon</span></a>
   </li>  
   <li class="nav-item compact">
@@ -157,313 +117,138 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Posts</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Technical Debt Repayment Plans</h1>
+                  <div>
+        <div class="description">
+          Introducing the concept of ‘repayment plans’ for reducing technical debt in your organization.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Technical Debt</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 10, 2024</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(9)</span></div><div class="category" data-category="RGVidWdnaW5n">Debugging <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R2VuZXJhdGl2ZSUyMEFJ">Generative AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SURFcw==">IDEs <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TGludXg=">Linux <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWFjT1M=">macOS <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VGVjaG5pY2FsJTIwRGVidA==">Technical Debt <span class="quarto-category-count">(2)</span></div><div class="category" data-category="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==">Technical Leadership <span class="quarto-category-count">(5)</span></div><div class="category" data-category="V3JpdGluZw==">Writing <span class="quarto-category-count">(2)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<p>Like many organizations, Code.org has its fair share of technical debt. At the beginning of last school year, we agreed to dedicate 20% of engineering time towards reducing it. While we had good intentions, we didn’t do a stellar job of managing the time. Engineers would approach me asking me whether we had spent the 20% and if not, whether they could they use some of it.</p>
+<p>For this school year, we brainstormed different allocation models - which I fondly call repayment plans, analogous to a plan you might put together to reduce credit card debt. We came up with five options, all designed to distribute our 20% allocation of engineering time in various ways.</p>
+<p>In this article, I’ll share an overview of these repayment plans, together with advantages and disadvantages of each. As we were developing these, we realized that there is no perfect option and, as we’ll uncover, some repayment plans work better for some types of technical debt over others.</p>
+<section id="plan-1-percentage-of-sprint" class="level1">
+<h1>Plan 1: Percentage of Sprint</h1>
+<p>How it works: Take the 20% allocation of engineering time and distribute it as a percentage of each sprint. For example, in a 2-week sprint, each engineer spends 2 days of the sprint working on technical debt reduction.</p>
+<section id="advantages" class="level2">
+<h2 class="anchored" data-anchor-id="advantages">Advantages</h2>
+<p>This can be a good plan for bugs and issues that engineers can fix and ship in a few hours (or less than two days). For example, I’ve seen this work well for small accessibility tasks (i.e., adding alt text across many components).</p>
+</section>
+<section id="disadvantages" class="level2">
+<h2 class="anchored" data-anchor-id="disadvantages">Disadvantages</h2>
+<p>This plan is challenging for tech debt tasks that take more than a couple of days. For long-running tasks, engineers face a context switch and ramp-up time each sprint.</p>
+<p>It can also be difficult to work on tech debt items that span different teams. Engineers in multiple teams need to align on the day (or days) in the sprint that they are working on tech debt.</p>
+<p>If the allocation of days is at the end of the week or sprint, there is a risk of feature work eating into the allocation. “I just need a few more hours to get this feature completed before I start work on that technical debt…”</p>
+</section>
+</section>
+<section id="plan-2-every-nth-sprint" class="level1">
+<h1>Plan 2: Every nth Sprint</h1>
+<p>How it works: Take the allocation of engineering time and distribute it as every nth sprint. For example, for a 20% allocation, this equates to one technical debt reduction sprint after every four product feature sprints.</p>
+<section id="advantages-1" class="level2">
+<h2 class="anchored" data-anchor-id="advantages-1">Advantages</h2>
+<p>This can be a good plan for longer product cycles - e.g., shipping every few months or a quarter. (In a recent podcast, I learned the VS Code team does something similar, allocating the last week before their monthly release.)</p>
+<p>Engineers can work on larger tasks. A two-week sprint offers a lot more time to pick up larger tasks vs.&nbsp;two days, as per the previous plan.</p>
+<p>All engineers are working on tech debt reduction items at the same time. This makes it easier to tackle technical debt that has cross-team dependencies (such as upgrading a library that multiple teams use).</p>
+<p>This plan can also give product owners a dedicated sprint for planning before the next four-sprints worth of feature work.</p>
+</section>
+<section id="disadvantages-1" class="level2">
+<h2 class="anchored" data-anchor-id="disadvantages-1">Disadvantages</h2>
+<p>Similar to the previous plan, feature work can eat into the allocation if not completed. “We just need a few more days to get this feature completed before we can start our technical debt sprint…”</p>
+<p>Two weeks may still not be enough for many tech debt reduction tasks. For example, migrating your application to use a different storage engine may be difficult in a two-week window.</p>
+<p>This repayment plan offers a lot of engineering time condensed into a small amount of calendar time. For example, an engineering team size of 50 equates to 4,000 hours of engineering time in a 2-week sprint. To use this effectively requires planning and coordination before the sprint starts. Otherwise, there is a real risk of engineers starting the sprint, not knowing what they should work on first.</p>
+</section>
+</section>
+<section id="plan-3-aligned-with-product-calendar" class="level1">
+<h1>Plan 3: Aligned with Product Calendar</h1>
+<p>How it works: Block out the 20% allocation as part of the product calendar. For example, the calendar shows that after we’ve shipped feature X, we’ll spend the next 3 sprints on Y that reduces tech debt.</p>
+<section id="advantages-2" class="level2">
+<h2 class="anchored" data-anchor-id="advantages-2">Advantages</h2>
+<p>Compared to the previous two, this plan is more effective for tech debt reduction work that requires multiple engineers working together for more than a sprint.</p>
+<p>This increased amount of time to work on technical debt also reduces the number of context switches for engineers.</p>
+<p>This plan also provides wider visibility for how tech debt reduction fits with the product roadmap. (Tech debt reduction becomes a conversation during product planning, which can only be a good thing.)</p>
+</section>
+<section id="disadvantages-2" class="level2">
+<h2 class="anchored" data-anchor-id="disadvantages-2">Disadvantages</h2>
+<p>The flexible time boundaries can cause tension between product features and tech debt reduction work. While both are important, product features will often index higher on urgency. For example, “We are getting pressure from our customers to bring feature X forward. Can we push out the tech debt reduction work by a few sprints?”</p>
+<p>Tech debt reduction items in the calendar still have an end date. Because of this, engineers need to estimate the work to ensure it fits into the allotted calendar time.</p>
+<p>In larger organizations, the product calendar may not align across multiple teams. This can make it challenging to work on tech debt reduction items that affect other teams. For example, if one team is trying to remove tech debt in the same area of the codebase that another is working in to ship a new feature.</p>
+</section>
+</section>
+<section id="plan-4-annual-swarms" class="level1">
+<h1>Plan 4: Annual Swarms</h1>
+<p>How it works: Allocate the 20% in contiguous sprints at one point in the year, where all engineers “swarm” to work on technical debt. For example, all engineers spend 5 contiguous sprints over the summer.</p>
+<section id="advantages-3" class="level2">
+<h2 class="anchored" data-anchor-id="advantages-3">Advantages</h2>
+<p>This plan works well for organizations that have seasonal usage. For example, at Code.org, we’ve run these swarms during the summer when students are typically not in school (and our usage is lower). This makes it easier to have planned downtime, if required.</p>
+<p>All engineers are working on tech debt reduction together, which makes cross-team dependencies easier to manage.</p>
+<p>Engineers get a longer time to work on items. For example, 20% of a 50-week working calendar equates to 10 weeks (or five 2-week sprints). For many organizations, this is a lot of time to make inroads on several large technical debt items.</p>
+<p>Having run these before, I’ve observed a lot of positive energy from these longer durations of allocated time (vs.&nbsp;spending 2 days per sprint). It also provides the opportunity for a large retro and celebration at the end of the 10 weeks.</p>
+</section>
+<section id="disadvantages-3" class="level2">
+<h2 class="anchored" data-anchor-id="disadvantages-3">Disadvantages</h2>
+<p>10 weeks is a long time to not ship any features! This may be especially hard to bite off in startup environments.</p>
+<p>Somewhat related, what do product owners (or any other members of the team who might not be directly working on technical debt) work on during this time?</p>
+<p>While 10 weeks allows for large upgrades or refactors of the code base, there is always a chance that these don’t get completed in time. If this happens, the next opportunity to work on these might not be until the following year, which can leave a lot of work in a dangling state until then.</p>
+</section>
+</section>
+<section id="plan-5-dedicated-team" class="level1">
+<h1>Plan 5: Dedicated Team</h1>
+<p>How it works: Take 20% of your engineers and dedicate them to a “tech debt reduction team”. For example, for a team of 30 engineers, allocate 6 of them to working on technical debt in a full-time capacity.</p>
+<section id="advantages-4" class="level2">
+<h2 class="anchored" data-anchor-id="advantages-4">Advantages</h2>
+<p>This plan can offer focus to a group of engineers passionate about reducing technical debt for their organization. The team can also operate autonomously, managing their own backlog of technical debt items, and changing priorities as needed.</p>
+<p>As this is a full-time team, the engineers don’t have to estimate the work or try to fit it into a calendar. They just start the work!</p>
+<p>Related, there is also less pressure for the team to complete the work by a certain date, compared to all the prior plans.</p>
+</section>
+<section id="disadvantages-4" class="level2">
+<h2 class="anchored" data-anchor-id="disadvantages-4">Disadvantages</h2>
+<p>Finding enough engineers who want to work on tech debt reduction (vs.&nbsp;product features) can be challenging. It’s often tricky to create a process where engineers can volunteer for this new team without feeling pressure from their manager or having concerns about their promotion path or resume.</p>
+<p>In smaller organizations, a dedicated team may not have the right experience for all the technical debt work. For example, a dedicated tech debt team comprising primarily web engineers could find it more difficult to refactor a database or server-side logic - slowing down the work or requiring additional time from engineers outside of the team.</p>
+<p>As with the “aligned with product calendar” plan, trying to reduce technical debt while another team is trying to ship a new feature can be challenging.</p>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>In this article, I’ve covered five different repayment plans for allocating engineering time and reducing technical debt: Percentage of Sprint, Every nth Sprint, Aligned with Product Calendar, Annual Swarms, and a Dedicated Team.</p>
+<p>During my career, I’ve experimented with many of these. A couple of years ago, at Code.org, we held summer swarms and upgraded some of our larger Web-based dependencies. This school year, we are aligning our tech debt reduction work with our product calendar. And, as our engineering org continues to grow, I’m curious to explore the option of a dedicated team.</p>
+<p>I hope this has generated ideas for how you may put together similar “repayment plans” for your own technical debt - and look forward to thoughts on different allocations or approaches that have worked well for you.</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcCUyQ1dyaXRpbmc=" data-listing-date-sort="1722902400000" data-listing-file-modified-sort="1755998490327" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2741">
-<a href="./p/creating-a-document-driven-culture/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/creating-a-document-driven-culture/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="The nib of a fountain pen on top of a blank page of paper">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Creating a Document-Driven Culture
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('V3JpdGluZw=='); return false;">Writing</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Amazon is famous for banning PowerPoint in favor of written documents. But why and how does this work? I share my experience and ideas for creating a document-driven culture.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Aug 6, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==" data-listing-date-sort="1708473600000" data-listing-file-modified-sort="1755998490330" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1496">
-<a href="./p/should-ctos-write-code/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/should-ctos-write-code/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="A compile button on a black background">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Should CTOs Write Code?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>In this article, I dust off this age-old question and answer it using an action logic framework.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Feb 21, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="SURFcyUyQ0RlYnVnZ2luZyUyQ0dlbmVyYXRpdmUlMjBBSQ==" data-listing-date-sort="1707177600000" data-listing-file-modified-sort="1755998490328" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1987">
-<a href="./p/is-using-a-debugger-becoming-a-lost/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/is-using-a-debugger-becoming-a-lost/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="The back of a CTO working at their desk, writing code">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Is Using a Debugger Becoming a Lost Art?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('SURFcw=='); return false;">IDEs</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGVidWdnaW5n'); return false;">Debugging</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('R2VuZXJhdGl2ZSUyMEFJ'); return false;">Generative AI</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Why this is happening, how we can bring it back, and where generative AI may help.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Feb 6, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==" data-listing-date-sort="1705968000000" data-listing-file-modified-sort="1755998490331" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1386">
-<a href="./p/what-shape-is-your-engineering-team/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/what-shape-is-your-engineering-team/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="An aerial shot of a group of business people, arranged in the shape of a triangle">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-What Shape Is Your Engineering Team?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Use the shape of your team to help with product fit, hiring decisions, and mentoring opportunities.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Jan 23, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="VGVjaG5pY2FsJTIwRGVidA==" data-listing-date-sort="1704844800000" data-listing-file-modified-sort="1755998490330" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1557">
-<a href="./p/technical-debt-repayment-plans/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/technical-debt-repayment-plans/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="A side shot of a golden piggy bank, plain decor">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Technical Debt Repayment Plans
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwRGVidA=='); return false;">Technical Debt</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Introducing the concept of ‘repayment plans’ for reducing technical debt in your organization.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Jan 10, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="VGVjaG5pY2FsJTIwRGVidA==" data-listing-date-sort="1704240000000" data-listing-file-modified-sort="1755998490328" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2873">
-<a href="./p/how-we-accrue-technical-debt/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/how-we-accrue-technical-debt/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="A pile of colorful credit cards">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-How We Accrue Technical Debt
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwRGVidA=='); return false;">Technical Debt</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>In this article, I cover the different ways that organizations accrue technical debt, the impact that this has, and strategies for tackling it.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Jan 3, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="6" data-categories="bWFjT1MlMkNMaW51eA==" data-listing-date-sort="1703548800000" data-listing-file-modified-sort="1755998490329" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="938">
-<a href="./p/shared-keyboard-shortcuts-on-macos/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/shared-keyboard-shortcuts-on-macos/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="An extreme close up of a Ctrl Key on a black keyboard.">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Shared Keyboard Shortcuts on macOS and Linux
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWFjT1M='); return false;">macOS</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TGludXg='); return false;">Linux</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Creating consistent keyboard shortcuts that work well between the two.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Dec 26, 2023
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="7" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcCUyQ1dyaXRpbmc=" data-listing-date-sort="1703376000000" data-listing-file-modified-sort="1755998490332" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1107">
-<a href="./p/writing-better-technical-documents/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/writing-better-technical-documents/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="A quill in a pot of blue ink against a white background.">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Writing Better Technical Documents
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('V3JpdGluZw=='); return false;">Writing</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Five techniques that have helped me write better technical documents.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Dec 24, 2023
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="8" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==" data-listing-date-sort="1703203200000" data-listing-file-modified-sort="1755998490331" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1361">
-<a href="./p/why-dont-software-developers-practice-051/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/why-dont-software-developers-practice-051/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="A silhouette of a girl playing a violin">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Why Don’t Software Developers Practice?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Could practice help us develop new skills, experiment, and build muscle memory?</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Dec 22, 2023
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

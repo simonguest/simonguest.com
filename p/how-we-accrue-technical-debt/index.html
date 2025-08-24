@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-08-06">
-<meta name="description" content="Amazon is famous for banning PowerPoint in favor of written documents. But why and how does this work? I share my experience and ideas for creating a document-driven culture.">
+<meta name="dcterms.date" content="2024-01-03">
+<meta name="description" content="In this article, I cover the different ways that organizations accrue technical debt, the impact that this has, and strategies for tackling it.">
 
-<title>Creating a Document-Driven Culture – Simon Says</title>
+<title>How We Accrue Technical Debt – Simon Says</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -118,15 +118,14 @@ background-size: cover;
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Creating a Document-Driven Culture</h1>
+      <h1 class="title">How We Accrue Technical Debt</h1>
                   <div>
         <div class="description">
-          Amazon is famous for banning PowerPoint in favor of written documents. But why and how does this work? I share my experience and ideas for creating a document-driven culture.
+          In this article, I cover the different ways that organizations accrue technical debt, the impact that this has, and strategies for tackling it.
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">Technical Leadership</div>
-                <div class="quarto-category">Writing</div>
+                <div class="quarto-category">Technical Debt</div>
               </div>
                   </div>
   </div>
@@ -138,7 +137,7 @@ background-size: cover;
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">August 6, 2024</p>
+        <p class="date">January 3, 2024</p>
       </div>
     </div>
     
@@ -157,101 +156,114 @@ background-size: cover;
 
 
 
-<p>When I was interviewing at Code.org, I asked whether there was a document-driven culture, one where well-written documents were the primary mechanism for driving decisions in the organization. The answer was a resounding yes!</p>
-<p>What I found is that like many other organizations, Code.org had a lot of documents, but they were often short and used for brainstorming. While these can be useful for generating ideas, based on my prior experience at Amazon, I advocated for a truly document-driven culture. While we still have work to do, adopting this culture is helping us increase the quality of our documents, explore ideas in more depth, and reach quicker decisions and outcomes.</p>
-<p>In this document, I’ll share my experience of working in - and creating - a document-driven culture. This includes the advantages I see within my own teams and the elements of the writing and reading culture. I will conclude by exploring how your organization might benefit from embracing a document-driven culture and share the next steps for adopting this within your teams.</p>
-<section id="benefits-of-a-document-driven-culture" class="level1">
-<h1>Benefits of a Document-Driven Culture</h1>
-<p>I’ve often observed five major benefits of organizations who adopt a document-driven culture:</p>
-<section id="deeper-thinking-ahead-of-proposing-ideas" class="level2">
-<h2 class="anchored" data-anchor-id="deeper-thinking-ahead-of-proposing-ideas">Deeper thinking ahead of proposing ideas</h2>
-<p>Writing is hard. It’s more challenging to write a document than it is to put together bullet points. A well-written document can take days and weeks of preparation and requires you to think deeply about the topic. Putting an idea into words often requires you to explore different angles, resulting in a higher quality and well-tested idea.</p>
-<p>A document also forces you to challenge your own assumptions. There have been several occasions when I’ve started a document only to give up halfway - or pivot to a different proposal - as I realized my original idea wasn’t as good as I had initially thought.</p>
-</section>
-<section id="increased-employee-engagement-especially-in-a-remote-setting" class="level2">
-<h2 class="anchored" data-anchor-id="increased-employee-engagement-especially-in-a-remote-setting">Increased employee engagement, especially in a remote setting</h2>
-<p>In today’s Zoom-based culture, it’s challenging to maintain engagement, especially when presenting an idea. Many of us are guilty of half-listening to a presentation on Zoom, while keeping up with Slack and Email, only to return after the meeting with questions that were already covered.</p>
-<p>A document-driven culture is not just about writing documents, but also has strict rituals on how to read them in a group. These rituals can feel strange when you first try them, but they increase engagement and focus from every participant.</p>
-</section>
-<section id="getting-input-from-everyone-in-the-room" class="level2">
-<h2 class="anchored" data-anchor-id="getting-input-from-everyone-in-the-room">Getting input from everyone in the room</h2>
-<p>A slide deck (or a conversation without a document) can create meetings with power dynamics. If, as a manager, I’m trying to communicate a change in direction via a presentation, my reports may be hesitant to speak up or challenge some of my assumptions - or be unaware at what point in the conversation they can interrupt.</p>
-<p>A document-driven culture eliminates this by providing structured opportunities where everyone, regardless of seniority or title, has ample time to ask questions and provide feedback on a document.</p>
-</section>
-<section id="resolute-decision-making" class="level2">
-<h2 class="anchored" data-anchor-id="resolute-decision-making">Resolute decision making</h2>
-<p>In many organizations, conversations around a new idea don’t reach a decision point until after several meetings. Often, in many of these meetings, we’ll also discover we need additional data which requires yet another meeting.</p>
-<p>A well-written document avoids this plethora of meetings by including all data, options, and recommendations, which reduces ambiguity and provides a clearer outcome.</p>
-</section>
-<section id="historical-knowledge-of-decisions" class="level2">
-<h2 class="anchored" data-anchor-id="historical-knowledge-of-decisions">Historical knowledge of decisions</h2>
-<p>Finally, a document-driven culture leaves a paper trail for others to follow in the future, explaining the rationale behind a decision or other options that were considered.</p>
-<p>Without a document, others, especially new employees, lack the context of the conversation and data, and end up relying on folklore to understand how decisions were made.</p>
+<p>What is Technical Debt? We use the word frequently, yet we lack a consistent definition. Without a common understanding, it’s challenging to talk about technical debt, especially with those who don’t come from a software engineering background.</p>
+<p>Many equate technical debt to the age of software. It’s true that older codebases can carry a lot, but I’ve also seen technical debt creep in from day one. During my time at AWS, I inherited a team that had built up significant technical debt, causing a serious impact on velocity - and this was a 6-month-old team!</p>
+<p>I’ve found one of the best ways of explaining technical debt is to first understand how we accrue it. In this article, I’ll cover several ways I’ve seen organizations build up technical debt: moving too quickly, customer pivots, departing engineers, new engineers, lack of technical direction, technical decay, and a fragile development environment.</p>
+<p>For each, I’ll share how this technical debt occurs, the impact it may have on your own team, and strategies for addressing it.</p>
+<section id="moving-too-quickly" class="level1">
+<h1>Moving Too Quickly</h1>
+<p>In an organization’s early years, technical debt can accrue from pushing out features too quickly. Startups value speed to market above everything else, which is critical for competing for early market share.</p>
+<p>I’ve often seen this as prototypes being released to production, the rapid development of features without a clear sense of the underlying architecture, and sometimes copy/pasted code to get functionality out of the door quickly.</p>
+<p>This emphasis on speed often results in a system that, while effective in the short term, causes long-term maintenance and scalability issues. In many codebases, the result is entanglement. X calls Y; Y calls X. Or more challenging, X calls Y; Y calls Z; Z calls X.</p>
+<p>As the system grows over time, this entanglement becomes all-consuming, leading to a single, large production deployment (vs.&nbsp;being able to deploy different modules separately) and a frustrating developer experience.</p>
+<section id="how-can-we-address-this" class="level2">
+<h2 class="anchored" data-anchor-id="how-can-we-address-this">How can we address this?</h2>
+<p>For startups, I don’t believe the answer is to slow down and try to do things perfectly the first time. While it sounds good in theory, I’ve never been part of an organization that has figured out the definitive architecture on day one.</p>
+<p>I’ve found a better approach is to acknowledge you will accrue technical debt, and set up the right mechanisms for paying it back in the future. These include documenting shortcuts (as they are being taken) and protecting engineering time in future sprints to address them.</p>
+<p>For organizations already dealing with entanglement in their codebase, an effective strategy can be to paint a vision of disentanglement with your team.</p>
+<p>At Code.org, we are going through this very process as we disentangle two core parts of our monolith: a Rails app (used by our students and teachers) and a Sinatra app (used for content and marketing materials) that have many cross dependencies with each other.</p>
+<p>While we can deploy both successfully, separating the two will bring many advantages. This includes the ability to ship content updates outside of the deploy window and a far smaller repo size - as well as putting us on a path to further decouple other components in each application.</p>
+<p>Rather than try to disentangle everything in one go, we are finding it more effective to break the work into milestones, with each milestone offering either value for students or teachers - or increasing developer productivity.</p>
 </section>
 </section>
-<section id="when-and-how-to-write-a-document" class="level1">
-<h1>When and How to Write a Document</h1>
-<p>A document-driven culture doesn’t mean writing a document for every occasion. You should write a document when you need input into an idea or proposal and/or want to reach a decision from a group of individuals.</p>
-<p>One-way sharing of information to a large audience such as a “lunch and learn” or an “all staff” update doesn’t benefit as much from being a document and a slide deck is still a great tool for these occasions.</p>
-<p>As you prepare to put together a document, consider the format that will work best. Here are some formats I’ve used in the past:</p>
-<p><strong>2-Pager</strong>: As the name suggests, these are 2-page documents, used for quick proposals, often decisions that have a minor impact or can be reversed. For example, my team might write a 2-pager to propose an upcoming change in a deployment window.</p>
-<p><strong>6-Pager</strong>: For more in-depth proposals, I recommend a 6-page document. This is the format for a large change in direction or a decision that is very difficult to undo, such as reducing the cost of an item for customers. These documents can be up to (but should not exceed) 6-pages for the main narrative. They can, however, include appendices for supporting data.</p>
-<p><strong>PRFAQ</strong>: As written about in Working Backwards: Insights, Stories, and Secrets from Inside Amazon [Bryar, Carr], Amazon uses a Press Release with Frequently Asked Questions (PRFAQ) document for new product ideas. The document is 6 pages, with the first page being a fictitious press release from the future introducing the product and how it will work on launch day. A list of frequently asked questions follows, written both from an internal (Amazon) and external (customer) perspective.</p>
-<p><strong>OP1 and OP2</strong>: for annual planning, Amazon uses two 6-page documents called OP1 and OP2. Each organization creates their OP1 in Q3 of the calendar year, outlining the investments they will make in the following year. After the finance group approves budgets, groups create an OP2 (in Q1 of the following calendar year) forecasting the overall spend.</p>
-<p>Although the PRFAQ and OP1/OP2 are useful formats, as I’ve used documents with my teams, I’ve tried to avoid creating my own templates, instead encouraging everyone in the organization to read other documents and develop their own formats and writing style.</p>
-<section id="opinionated-and-customer-focused-with-input-from-others" class="level2">
-<h2 class="anchored" data-anchor-id="opinionated-and-customer-focused-with-input-from-others">Opinionated and customer-focused, with input from others</h2>
-<p>Regardless of the document format and length, the strongest documents have three core elements:</p>
-<p>First, documents should be opinionated. You shouldn’t create a document that presents three options and ask for a discussion. Instead, create a document that presents three options together with a recommendation. The resulting discussion is more effective and becomes a yes/no decision on whether this is the right approach and how to move forward.</p>
-<p>An opinionated document has a second side-effect of leaving a good paper trail. With an opinionated document, employees can go back and understand which options the team considered, the trade-offs, and the final recommendation.</p>
-<p>Second, your documents should always link back to the customer, even if the customer is internal, such as another group in your organization. Many of the best documents I’ve read are the ones that intimately connect back to the benefits for the customer, even if the subject did not directly affect a consumer-facing product.</p>
-<p>Finally, documents should have relevant input from all stakeholders. You will be the primary author for your document, but it still needs to have input and ideas from others, especially if they will not be in the room for the review. I’ve often found this important for product proposals, where each document should have projected financial data provided ahead of time by the finance team.</p>
-</section>
-<section id="writing-style" class="level2">
-<h2 class="anchored" data-anchor-id="writing-style">Writing style</h2>
-<p>Writing style is very important. At Amazon, shortly after joining, I attended my first writing training, required for all new employees. A few years prior at Microsoft, I had been an editor-in-chief of a popular developer magazine, so I felt confident I knew how to write. The feedback I received from the training was, however, quite humbling.</p>
-<p>I discovered I wasn’t writing in the active voice, had many consistency errors, and the editor running the training returned my writing sample in a bloodbath of red ink, highlighting many more corrections.</p>
-<p>Even after Amazon, this remains an area I continue to develop. I’ve since found that creating and using my own style guide helps. A personal style guide acts as a set of rules and checklist, ensuring consistency throughout a document beyond what a spelling and grammar checker can provide.</p>
+<section id="customer-pivots" class="level1">
+<h1>Customer Pivots</h1>
+<p>As organizations grow, they often pivot to figure out their true north star and customer. Each pivot often adds code for a particular customer dimension or use case.</p>
+<p>For example, a startup may set off creating a product designed for the healthcare market, but then discover that the solution lands better with young parents. They will quickly make the pivot, but the code to support the prior healthcare use cases may never get deleted.</p>
+<p>Extra code can also creep in with additional types of customers. I saw a variation of this several years ago, where I joined a team who had copied and pasted chunks of code hundreds of times to support each new customer type.</p>
+<p>Code added this way can (and did) bring future feature development to a crawl. Product requests that appear simple on the surface (i.e., “Can we add a new phone number type for all our customers?”) need to be implemented across multiple parts of the codebase and even regression tested to support customer types that may no longer be in use.</p>
+<section id="how-can-we-address-this-1" class="level2">
+<h2 class="anchored" data-anchor-id="how-can-we-address-this-1">How can we address this?</h2>
+<p>For many startups, especially ones that go through many pivots, this is a common growing pain, but one that can be mitigated against.</p>
+<p>In the previous example, instead of copy/pasting code, we should have created a separate customer service with separate data from day one - and then treated this as the most valuable single source of truth. This would have avoided the pain of unpicking complex user details from a monolith in the future.</p>
+<p>For existing organizations who suffer with this type of technical debt today, one approach is to create an additional abstraction layer, move client calls across, and deprecate the old code and model. At Concur, we successfully used this approach to move customers across to a new generation of our expense product.</p>
+<p>What we learned, however, is not to expect an overnight success story - these projects are complex, often multi-year, especially for large codebases - however when completed successfully, can help unlock a lot of the technical debt accrued from multiple early pivots.</p>
 </section>
 </section>
-<section id="how-to-read-a-document" class="level1">
-<h1>How to Read a Document</h1>
-<p>Writing documents is not the only thing required for a document-driven culture. How to read is equally, if not more, important. While re-learning how to read might sound strange, I’ve found there are several aspects important to a document-driven culture.</p>
-<p>First, there should be no pre-reading of documents. While it might seem expedient to send out a document the night before, it changes the dynamics of the meeting. Unless everyone pre-reads the document (which is never the case), some people come into the meeting with the context of the document and others don’t. Realizing this, what typically happens is “we’ll give 5 minutes for those who could not pre-read”, which is simply not enough time for everyone in the group to fully understand the document. As a result, everyone is on a different page, pun intended, and the meeting is not as effective as it could have been.</p>
-<p>Instead, in a document-driven culture, the author of the document distributes the document at the start of the meeting (and not earlier). If meeting in person, the author can print out paper copies for everyone in the room. In a remote setting, the author will share the link to the document once the review begins.</p>
-<p>After distributing the document, it’s critical to allocate enough time for everyone to read. For a 2-page document, I suggest 10-15 minutes of reading time with 20-40 minutes of discussion time. For a 6-page document, I allocate 20-25 minutes of reading time (more if there are many appendices) and 40-70 minutes of discussion time. To ensure enough time, most of my 6-pager reviews at Amazon were a minimum of 90 minutes, some 2 hours. This might seem like a long meeting to cover just one topic, but remember the goal is to take the audience from not having heard of the idea to the group making a decision.</p>
-<p>During the reading time, the group reads in silence. In a meeting with paper documents, readers use pens to scribble down their notes and questions in the margin. For an online meeting with an electronic document, inline comments work equally well. And silence means silence. Unless there is an urgent request (for example, “I don’t have access to the document”) no one should verbally interrupt when everyone is reading.</p>
-<p>Approaching the end of the reading time, the author of the document (and by proxy, facilitator of the meeting) should confirm whether anyone needs more time. Everyone reads at different speeds depending on their familiarity with the topic and it’s the author’s responsibility to ensure that everyone has had ample time to read the document in its entirety.</p>
-<p>Once everyone has finished reading, the meeting can now switch to discussion. Instead of opening the floor to everyone, however, there is also a format for facilitating this.</p>
-<section id="getting-feedback" class="level2">
-<h2 class="anchored" data-anchor-id="getting-feedback">Getting feedback</h2>
-<p>First, the author should ask if there are high-level questions or comments about the document. This opens up for any general feedback, such as confirmation that other individuals outside of the review have also seen and contributed to the document. These high-level comments rarely get into a discussion about the idea, unless there is something obvious about the approach. For example, “Didn’t we try something similar three years ago?”</p>
-<p>After everyone has shared their overall comments, the author, now facilitator, invites feedback on a page-by-page basis. A good lead-in for this will be, “Are there any comments on page 1?” The group now reviews their notes, and the floor is open for discussion. In a setting with printed copies of the document, line numbers in the document help the reader precisely refer to part of the document. For example, “On line 24, you mention that you’ve seen increased bug reports. Do you have data that supports this?”</p>
-<p>Once everyone has had an opportunity to provide feedback on page 1, the author/facilitator will move on to page 2, then page 3, and so on. For longer documents, there’s no need to review the appendices page-by-page. Once the group reaches the end of the document, the author asks for any final feedback before moving on to recommendations.</p>
-<p>As the document was opinionated, the author should have everything they need to move forward. The outcome could be that the group agrees with the approach and wants to move forward. Alternatively, during the discussion, maybe the group preferred another option or a different approach. Finally, while it was rare, one outcome could be that the group felt they needed more information. Here, the group asks the author to update the document and set up additional time for a further review.</p>
+<section id="departing-engineers" class="level1">
+<h1>Departing Engineers</h1>
+<p>Engineers leave. It’s an unfortunate truth, and when they do, the understanding of a system often leaves with them. When folks depart, we ask them to write handover documentation, but it’s near impossible to replicate the mental models they have formed over the years.</p>
+<p>The result is a lack of system understanding that can exhibit many symptoms. Engineering velocity often suffers. New engineers fear they might break code and are more cautious in pushing out new features. And when engineers do ship new features, they may not fully understand legacy dependencies that can be removed, resulting in tomb-stoned code that persists forever.</p>
+<p>Finally, departing engineers can compound the problem with “helpful scripts” left behind to assist their former colleagues. Engineers write these scripts in good faith, but they often add a further layer of abstraction that prevents newer engineers from uncovering how the core components of the system actually work.</p>
+<section id="how-can-we-address-this-2" class="level2">
+<h2 class="anchored" data-anchor-id="how-can-we-address-this-2">How can we address this?</h2>
+<p>We can’t stop people from leaving, but when an engineer announces their intention to move on, I try to over-index on setting up in-person knowledge transfer with the team.</p>
+<p>This should not be just an hour in their last week. It should be most, if not all, of the engineer’s remaining time with the organization. This investment is critical for other engineers to build their own mental models of the system, even it means that feature work has to stop for a sprint or two.</p>
+<p>In addition, following a key engineer’s departure, I’ve found it’s critical to encourage a culture of accepting failure over paralysis. As long as the right boundaries are in place, I always prefer the conversation of “we tried this, but it broke things and we need to revert” vs.&nbsp;“we are too scared to make the change.”</p>
 </section>
 </section>
-<section id="sidebar-how-to-review-a-document" class="level1">
-<h1>Sidebar: How to Review a Document</h1>
-<p>At Amazon, my direct reports would often ask me to review documents they were preparing for their own review. While it was likely that I would be in the meeting, I was keen to ensure that the quality of the document reflected well on our group and organization.</p>
-<p>When a document was nearing completion, I would set up a review with my direct report and their team. Using the same time allocated to the meeting, we would do a “trial read” of the document. After the review, I would structure my feedback into two parts: the validity of the proposal and whether it needed adjusting, and the readability of the document. This second part was valuable as it provided the team with a fresh set of eyes on the document and often highlighted structural changes that may help the audience better understand the proposal.</p>
+<section id="new-engineers-with-differing-experience" class="level1">
+<h1>New Engineers (with Differing Experience)</h1>
+<p>Previous engineers have left, and you’ve hired replacements. Nice job! Unfortunately, these new engineers don’t have the same background. They are joining with knowledge of a more modern stack such as Go or Rust vs.&nbsp;the “slightly older version of Java” that your production systems run on. “That’s ok,” you reassure yourself, “They’re a strong engineer. They’ll pick it up quickly.”</p>
+<p>Sometimes, they do, and you’ve got a great engineer on your hands. Sometimes, however, they just don’t.</p>
+<p>It will start with slower onboarding. You’ll hear “I just don’t know how to do X in this old stack” or “I would have done it like this in Go or Rust, but that just doesn’t work in this older version of the JDK.”</p>
+<p>Over time, as they get more acquainted with the system, this can morph into a lack of respect for the old stack. “Who on earth would have done it this way?” and before you know it, “This sucks. Let’s rewrite this whole thing!”</p>
+<p>Finally, many times, this can lead to the new engineer departing. After 18 months, they decide that this isn’t for them and find a new position, offering the opportunity to go back to the stack they are more comfortable with.</p>
+<p>This can be frustrating. Now you have no engineer and potentially a few months’ worth of poorly written code accruing to your technical debt balance.</p>
+<section id="how-can-we-address-this-3" class="level2">
+<h2 class="anchored" data-anchor-id="how-can-we-address-this-3">How can we address this?</h2>
+<p>It starts with the interview. I’ve found I either need to hire engineers with prior experience of our stack (which can increase the hiring timeline) or be very deliberate in sharing the details of the stack they will work on. If they have a background in a different technology, I try to set the expectation there will be no opportunity for a rewrite in the near term and gauge their curiosity about learning what we have.</p>
+<p>When the new engineer starts, I believe it’s important to evangelize our current tech stack. “Yes, it has issues, but this got us to where we are today!” I share articles and news about the ecosystem (even older stacks have vibrant developer communities) and, if they come up, quickly shut down any conversations about rewriting.</p>
+<p>Finally, it’s important to invest in developer education. As an example, at Code.org we offer an annual professional development stipend that can an engineer can use for conferences, online courses, and other training materials. We’ve found these all can help newer engineers close their knowledge gap with a new platform.</p>
 </section>
-<section id="does-a-document-driven-culture-result-in-fewer-meetings" class="level1">
-<h1>Does a Document-Driven Culture Result in Fewer Meetings?</h1>
-<p>Yes, and no.</p>
-<p>On one hand, a document-driven culture can significantly reduce the number of “regular sync up” meetings we all have on our calendars. In a document-driven culture, authors only schedule a meeting once a document is complete and ready to be reviewed. This is more efficient than a recurring cadence, where the same topics keep coming up, often without resolution.</p>
-<p>A document-driven culture can also reduce ad hoc meetings that should be document reviews. Often, people will reach out and want time to discuss an idea. A document-driven culture supports reducing these types of requests and encouraging deeper thinking, with “That idea sounds interesting. Let’s meet when you have a document to read and we can go into more detail.”</p>
-<p>Back to the original question of fewer meetings, the “no” part of this answer brings us back to the fact that writing is hard. Preparing a well-written document takes time, and you will spend much of this reviewing and seeking input from others prior to presenting the document in the final review.</p>
-<p>To summarize, while a document-driven culture is not necessarily a time-saver in terms of calendar time, the meetings that will be held are much more effective in helping the author and the organization drive towards a clearer and more expedient decision.</p>
 </section>
-<section id="implementing-a-document-driven-culture-in-your-own-organization" class="level1">
-<h1>Implementing a Document-Driven Culture in Your Own Organization</h1>
-<p>I hope this article has provided a glimpse into the benefits of a document-driven culture. If you are interested in exploring this within your own organization, I would recommend these three first steps:</p>
-<p><strong>Practice it in a small group</strong>: A document-driven approach only works if everyone takes part. This is especially important for the rituals required for reading during a review. You can pilot this with a small group - it doesn’t have to be the entire organization at once. When proposing the idea to your group, I recommend advocating “trying this new approach over the next quarter” as many may be hesitant to give up their slide decks permanently!</p>
-<p>Over these three months, each member of the group should choose to write a 6-page document on one idea or proposal they are working on. To review their document, they will get the right people together - in a separate review meeting vs.&nbsp;any existing recurring meetings - and practice facilitating reading at the meeting.</p>
-<p>At the end of the quarter, the group can review findings and, if successful, decide on what an org-wide rollout could look like.</p>
-<p><strong>Invest in writing skills</strong>: To support writing stronger documents over these three months, the group should also make a commitment to invest in education to improve their writing skills. This might include reading books or articles, or installing grammar checking tools.</p>
-<p><strong>Support each other</strong>: Finally, to further support this education, it’s also important to give feedback to each other. While it might feel uncomfortable to comment on the spelling, grammar, format, or structure of a colleague’s document, it’s an essential skill that will help improve the quality of all the written materials in your organization.</p>
+<section id="lack-of-technical-direction" class="level1">
+<h1>Lack of Technical Direction</h1>
+<p>Of course, different engineers have different ways of doing things. Many engineers will create components using differing design patterns. (React classes vs.&nbsp;hooks, anyone?) Other engineers might introduce new tools into the build process that overlap with what’s already there.</p>
+<p>Without overall technical direction, these inconsistencies can grow out of control, accruing more technical debt. This slows everyone down, but is especially painful for new engineers trying to learning the code. Should they use a class or a hook? Should they use npm, yarn, grunt, or make for their new repo? Should they create a new service or extend the API of an existing one?</p>
+<p>Over time, engineers substitute this lack of technical direction with folklore: “Ah yes - if you are building a component in this part of the site, you’ll need to do X, but for another part of the site, you want Y instead.”</p>
+<section id="how-can-we-address-this-4" class="level2">
+<h2 class="anchored" data-anchor-id="how-can-we-address-this-4">How can we address this?</h2>
+<p>A document outlining current and future technical direction is essential. The document doesn’t need to go into an intricate deep level of detail - but it should provide the right guardrails, while continuing to support a level of autonomy for the team.</p>
+<p>The architectural tenets doc we have at Code.org lists attempts to do this using eight tenets - ranging from standardizing on a well-structured monorepo (vs.&nbsp;creating multiple repos) through to guidelines for storing new data and creating new APIs. If you don’t have a document similar to this, it can be an enlightening exercise to pull together a working group (a cross section of engineers on the team) to create one.</p>
+<p>It’s one thing to have a nice document. It’s another to go implement the required changes, especially if there are already inconsistencies in the codebase. Custom linters can help. These linters can run on each commit and report on the state of the system. For example, “45 out of 90 components are implemented as old classes.” Each commit can still go through, but the linter serves as a visible and persistent reminder to the team.</p>
+<p>These types of linters can also prevent future regressions. At Code.org, we’ve recently implemented a linter that reports on any new connections between two monolithic parts of the application we are decoupling.</p>
+</section>
+</section>
+<section id="technical-decay" class="level1">
+<h1>Technical Decay</h1>
+<p>For many organizations, a lack of technical direction can also result in technical decay within the system.</p>
+<p>This can manifest as classic bit rot: operating systems, languages, frameworks, and libraries that are many versions behind. Another variant of this is where teams fork an open-source library - and then fail to keep that fork up to date. If this wasn’t enough, all of this can be compounded by custom code written several years ago that could now be replaced with an open-source library (but hasn’t).</p>
+<p>Operating systems, languages, frameworks, and libraries that are several versions behind are a support and security risk. Many have an End of Life (EOL) date where they are no longer supported or patched.</p>
+<p>These outdated components can also cause complex dependency chains. In many Web-based projects, I’ve seen teams want to use a particular React component, however it depends on a newer version of webpack, which is not supported on the outdated version of Node running in production. Before they can use the component, the team needs to work backwards to upgrade all the dependencies in the chain.</p>
+<p>Finally, not only does technical decay introduce risks and complexity, but it also connects back to engineer attrition. Engineers joined your organization expecting to use the latest versions of components and frameworks, not ones that are several years old and are proving painful to upgrade.</p>
+<section id="how-can-we-address-this-5" class="level2">
+<h2 class="anchored" data-anchor-id="how-can-we-address-this-5">How can we address this?</h2>
+<p>Start by cataloguing the current versions of all components and their EOL dates. This will give you a prioritized list of the ones you should upgrade first.</p>
+<p>As we’ve been undertaking many upgrades at Code.org, we’ve discovered that when you are several versions out of date, it’s prudent to consider multiple minor version upgrades vs.&nbsp;one major jump. For example, we needed to upgrade our version of Ruby from 2.5.0 to 3.0.5. We found it was more manageable to go from 2.5 to 2.7.5 to 3.0 and then to 3.0.5 rather than trying to upgrade everything in one go.</p>
+<p>During each of these upgrades, we were also keen to define what success meant. For us, this included 100% of the code switched to using the new version of the library and a full cleanup (removal) of old dependencies. Again, linters helped a lot with this.</p>
+<p>For dependencies used across multiple development teams, it’s effective to block out sprints where all teams come together to work on the upgrade. (At Code.org, we call these summer swarms and typically run these when we have periods of downtime during the academic year.)</p>
+<p>Finally, for more complex upgrades such as languages or operating systems, it’s worth considering assigning engineers on a full-time basis. While it might be painful to slow down feature work, many engineers will often view it as a welcomed challenge, especially given the positive impact for the overall team.</p>
+</section>
+</section>
+<section id="fragile-development-environment" class="level1">
+<h1>Fragile Development Environment</h1>
+<p>When a codebase is small, it’s easy for engineers to run everything on their laptop. As time goes by, and the size and complexity of the codebase increases, it becomes much more difficult.</p>
+<p>The plethora of hardware and software permutations doesn’t help. A couple of decades ago it was much easier - everyone was using the same version of Windows and the same IDE. Now, your development team is likely a hybrid of Windows, Macs, maybe some flavors of desktop Linux, not to mention a mix of architectures (x86 and ARM), especially as engineers upgrade to Apple Silicon-based machines - all running a mix of popular and fringe IDEs.</p>
+<p>In many engineering orgs, this creates a fragile development environment. Engineers spend valuable time helping each other out when their environment breaks - and onboarding is far more difficult than it used to be, with complex “getting started” instructions for each permutation.</p>
+<p>This can also amplify technical decay, as engineers can be reluctant to make changes - as even a simple library upgrade involves testing across the different operating systems and architectures used by the team.</p>
+<section id="how-can-we-address-this-6" class="level2">
+<h2 class="anchored" data-anchor-id="how-can-we-address-this-6">How can we address this?</h2>
+<p>A first step is to increase the focus on developer tooling.</p>
+<p>In many of my prior teams - and at Code.org - we’ve set up a developer working group, where a subgroup of engineers document and cost out their frustrations with the current tooling. The costing part is critical, as time spent on supporting a fragile environment is often unaccounted for in traditional product planning.</p>
+<p>Out of this should come a sense of what to prioritize. This often starts as standardization across hardware and software, but can expand into how an organization can produce a 100% scriptable development environment. At Code.org, we still have work ahead of us to enable this, but once this is done, it should open up the opportunity of bringing on volunteer engineers from outside the organization.</p>
+<p>Containerization can help with scripting a new development environment. Many IDEs now support Development Containers, an open specification for using Docker-based containers as full development environments. At Code.org, we are learning it can take effort to move the team to a containerized environment. However, this can pave the way for expanded use cases, such as cloud-based IDEs and expanding the use of containers to our staging and production environments.</p>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>In this article, we’ve covered several ways that an organization can accrue technical debt: moving too quickly, customer pivots, departing engineers, new engineers, lack of technical direction, technical decay, and a fragile development environment.</p>
+<p>While you may have more (or different variations on these), I hope you found these useful and took away some new ideas and approaches for addressing each one.</p>
 
 
 </section>
