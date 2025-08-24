@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-01-23">
+<meta name="description" content="Use the shape of your team to help with product fit, hiring decisions, and mentoring opportunities.">
 
-<title>Posts – Simon Says</title>
+<title>What Shape Is Your Engineering Team? – Simon Says</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,21 +25,19 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-badfea7620e6254af941214fdd9b8bfc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-badfea7620e6254af941214fdd9b8bfc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -53,78 +53,38 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
+<style>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: #fff;
+      }
 
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
+      .quarto-title-block .quarto-title-banner {
+        color: #fff;
+background-image: url(banner.webp);
+background-size: cover;
+      }
+</style>
 <script src="https://cdn.jsdelivr.net/npm/@statsig/js-client@1/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=client-NyH4rB82RzHd5dToa2AY3wAJNsnYmPLd5PFuHNpDNDR"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
+<link rel="stylesheet" href="../../styles.css">
+</head>
 
-<link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="Simon Says" href="index.xml" data-external="1"></head>
-
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Simon Says</span>
     </a>
   </div>
@@ -134,7 +94,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about/index.html"> 
+    <a class="nav-link" href="../../about/index.html"> 
 <span class="menu-text">About Simon</span></a>
   </li>  
   <li class="nav-item compact">
@@ -157,162 +117,146 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Posts</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">What Shape Is Your Engineering Team?</h1>
+                  <div>
+        <div class="description">
+          Use the shape of your team to help with product fit, hiring decisions, and mentoring opportunities.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Technical Leadership</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 23, 2024</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="RGVidWdnaW5n">Debugging <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R2VuZXJhdGl2ZSUyMEFJ">Generative AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SURFcw==">IDEs <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==">Technical Leadership <span class="quarto-category-count">(3)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<p>When I meet an engineering team for the first time, I’m always intrigued to learn the “shape” of the team.</p>
+<p>What do I mean by “shape”? Well, if you map the ratios of engineers across all levels in the team, you can often derive a shape from it.</p>
+<p>For example, imagine a team of engineers that range from SDE-1 (entry level) to SDE-5 (principal). Let’s say the team has 15 engineers and comprises five SDE-1s, four SDE-2s, three SDE-3s, two SDE-4s, and one SDE-5.</p>
+<p>If we draw a shape depicting the number of engineers at each level, we end up with a triangle:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./triangle.webp" class="img-fluid figure-img"></p>
+<figcaption>A “Triangle-Shaped” Team</figcaption>
+</figure>
+</div>
+<p>Understanding the shape of a team can offer a lot of insight. First, it provides data for hiring decisions. For example, do you need another senior engineer and if so, how will this impact the balance of the team?</p>
+<p>It can also help identify mentoring opportunities by looking at the ratio of junior engineers to senior engineers who can provide guidance.</p>
+<p>Finally, it can help highlight gaps and help understand the impact upcoming promotions or changes in levels may have.</p>
+<p>There is no perfect shape to aspire to. Instead, I’ve found certain shapes of teams work well for different environments, various sizes of teams, and the type of product you are developing.</p>
+<p>In this article, I’ll introduce fives shapes of teams I commonly come across: The triangle, the inverted triangle, the diamond, the rectangle, and hourglass.</p>
+<p>For each, I’ll describe the structure of the team, the environment and products I’ve found this shape can best work for, and a few things to watch out for along the way.</p>
+<section id="the-triangle" class="level1">
+<h1>The Triangle</h1>
+<p>As we covered this in the introduction, let’s start with the triangle.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./triangle.webp" class="img-fluid figure-img"></p>
+<figcaption>A “Triangle-Shaped” Team</figcaption>
+</figure>
+</div>
+<p>The triangle has a larger ratio of junior engineers compared to senior engineers. I’ve seen this shape (and inherited many teams of this shape) at Microsoft, SAP, and Amazon, all of whom invest heavily in college recruiting and internship programs. This investment provides a strong pipeline of SDE-1 engineers.</p>
+<p>I’ve found triangle-shaped teams work for well-established products, often those that have a good balance of new feature development and existing bug fixing and operational load. With a higher ratio earlier in their career, these teams often have engineers eager to learn new skills and take on responsibilities.</p>
+<p>This spread also offers mentoring opportunities with senior developers responsible for the architecture and technical direction. At AWS, one of my senior engineers would often hold weekly “learn the architecture” sessions with small groups of our recent college graduates.</p>
+<p><strong>What to watch for</strong>: While these teams can be effective, if you have a team of this shape, I recommend monitoring the workload of the one or two senior or principal engineers at the top of the triangle.</p>
+<p>Often, these engineers will be responsible for the architectural decisions and technical direction for new features. This, combined with what may be a heavy mentoring workload, can sometimes lead to burnout.</p>
+</section>
+<section id="the-inverted-triangle" class="level1">
+<h1>The Inverted Triangle</h1>
+<p>As the name implies, the inverted triangle is the opposite, with a larger ratio of principal and senior engineers compared to mid-level and junior engineers.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./inverted-triangle.webp" class="img-fluid figure-img"></p>
+<figcaption>An “Inverted Triangle-Shaped” Team</figcaption>
+</figure>
+</div>
+<p>I’ve found an inverted triangle team can be very effective in early-stage startups and for new product development.</p>
+<p>At Amazon, I had the opportunity to build a team from scratch, responsible for developing a v1 hardware device. I optimized towards hiring a higher ratio of principal and senior engineers who came with hardware, firmware, software, and machine learning backgrounds.</p>
+<p>This seniority of the team provided the years of experience we needed to get the product designed and developed - something that would have been more challenging with a more traditional triangle-shaped team.</p>
+<p><strong>What to watch for</strong>: While I always learn from teams of this shape - the experience of the team often provides new angles I’m not thinking about - they can come with a couple of things to watch for.</p>
+<p>First, given the seniority of many engineers in the team, it’s common to have many strong (and sometimes conflicting) opinions, especially when debating a new design or direction. With my team at Amazon, I recall having to step in often to help the team move forward with a technical decision.</p>
+<p>Second, the work has to be new and engaging for engineers who bring this level of experience. Without this, there may not be enough “senior-level” work to go around, which can lead to boredom and eventual attrition.</p>
+<p>Finally, while inverted triangles work well for new product development, as the product matures and needs to take on more support and maintenance tasks, there will be a need to fill out the rest of the triangle to create more balance.</p>
+</section>
+<section id="the-diamond" class="level1">
+<h1>The Diamond</h1>
+<p>The diamond is a larger ratio of mid-level engineers compared to senior and junior levels. The larger the ratio of mid-level engineers, the wider the diamond.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./triangle.webp" class="img-fluid figure-img"></p>
+<figcaption>A “Diamond-Shaped” Team</figcaption>
+</figure>
+</div>
+<p>A few of my teams, including the engineering org when I first joined Code.org, have been diamond-shaped. Often, teams develop into a diamond when an organization has had a very active college recruitment program in past years and those engineers go through a couple of promotion cycles.</p>
+<p>Diamond-shaped teams can also be very effective for well-established products. The higher ratio of mid-level engineers brings the experience and understanding of the nuances of the system.</p>
+<p><strong>What to watch for</strong>: If you have a diamond-shaped team, I recommend looking at the width of the diamond. If it’s too wide, there can be a high number of mid-level engineers looking for complex projects to stretch their abilities - and potentially not enough projects available to go around.</p>
+<p>A wide diamond can also have the same effect for mentoring opportunities - with a larger number of mid-level engineers looking to mentor a smaller number of junior engineers. (This, however, is often easier to mitigate with interns, contractors, and other peer mentoring opportunities.)</p>
+</section>
+<section id="the-rectangle" class="level1">
+<h1>The Rectangle</h1>
+<p>A rectangular-shaped team has roughly equal ratios across each level.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./rectangle.webp" class="img-fluid figure-img"></p>
+<figcaption>A “Rectangular-Shaped” Team</figcaption>
+</figure>
+</div>
+<p>While I’ve found many large tech companies favor triangular-shaped teams, I’ve often come across rectangle-shaped teams in small and mid-sized organizations. Many of our engineering teams at Code.org are good examples.</p>
+<p>Depending on the size of the engineering organization, it can also be common to see a rectangle-shaped organization and then different shapes for each of the sub-teams.</p>
+<p>For established products, rectangles offer a good balance of feature development suitable for engineers at all levels. The equal ratio can also provide steady mentoring opportunities and career pathways.</p>
+<p><strong>What to watch for</strong>: While the rectangle offers plenty of mentoring opportunities, it’s important to balance college recruiting and interns - as too much can push the team towards a triangle and too less can lead to fewer mentoring opportunities for mid-level engineers.</p>
+</section>
+<section id="the-hourglass" class="level1">
+<h1>The Hourglass</h1>
+<p>An hourglass-shaped team is the inverse of the diamond, with a larger number of senior and junior engineers compared to mid-level. Some hourglass-shaped teams may not even have any mid-level engineers. (I call these “air-gapped.”)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./hourglass.webp" class="img-fluid figure-img"></p>
+<figcaption>An “Hourglass-Shaped” Team</figcaption>
+</figure>
+</div>
+<p>During my career, I’ve only come across one or two instances. Often, the hourglass shape forms when an inverted triangle team pivots to hiring college graduates (often because of slowing feature development). I’ve also seen this shape form during periods of high attrition or when two or more teams merge.</p>
+<p><strong>What to watch for</strong>: I don’t recommend optimizing towards an hourglass-shaped team, as in extreme cases, it can create a disconnect between the senior and junior engineers on the same team.</p>
+<p>This can impact technical decision making, where senior engineers make all decisions and don’t involve the rest of the team. This shape can also introduce mentoring challenges, especially if senior engineers prefer to mentor mid-level vs.&nbsp;early career engineers.</p>
+<p>The combination of the above can lead to senior engineers feeling frustrated that other engineers are not contributing - and less experienced engineers also becoming frustrated they are not getting the support they need from the rest of the team.</p>
+<p>On the occasions I’ve come across this shape, I’ve always used future hiring opportunities to fill out the middle.</p>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>In this article, I’ve shared the concept of identifying the shape of your team and five common shapes I’ve come across: the triangle, the inverted triangle, the diamond, the rectangle, and hourglass.</p>
+<p>While there are likely many other shapes, I hope this approach has offered a unique perspective for identifying the ratios in your own teams and thinking about your future hiring.</p>
+<p>I’d love to hear more about the shapes you have in your teams and what you find as advantages and disadvantages of each.</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==" data-listing-date-sort="1722902400000" data-listing-file-modified-sort="1755995867187" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2741">
-<a href="./p/creating-a-document-driven-culture/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/creating-a-document-driven-culture/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="The nib of a fountain pen on top of a blank page of paper">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Creating a Document-Driven Culture
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Amazon is famous for banning PowerPoint in favor of written documents. But why and how does this work? I share my experience and ideas for creating a document-driven culture.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Aug 6, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==" data-listing-date-sort="1708473600000" data-listing-file-modified-sort="1755995867189" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1496">
-<a href="./p/should-ctos-write-code/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/should-ctos-write-code/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="A compile button on a black background">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Should CTOs Write Code?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>In this article, I dust off this age-old question and answer it using an action logic framework.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Feb 21, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="SURFcyUyQ0RlYnVnZ2luZyUyQ0dlbmVyYXRpdmUlMjBBSQ==" data-listing-date-sort="1707177600000" data-listing-file-modified-sort="1755995867188" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1987">
-<a href="./p/is-using-a-debugger-becoming-a-lost/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/is-using-a-debugger-becoming-a-lost/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="The back of a CTO working at their desk, writing code">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Is Using a Debugger Becoming a Lost Art?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('SURFcw=='); return false;">IDEs</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGVidWdnaW5n'); return false;">Debugging</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('R2VuZXJhdGl2ZSUyMEFJ'); return false;">Generative AI</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Why this is happening, how we can bring it back, and where generative AI may help.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Feb 6, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==" data-listing-date-sort="1705968000000" data-listing-file-modified-sort="1755995867189" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1386">
-<a href="./p/what-shape-is-your-engineering-team/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./p/what-shape-is-your-engineering-team/main.webp" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-What Shape Is Your Engineering Team?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA=='); return false;">Technical Leadership</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Use the shape of your team to help with product fit, hiring decisions, and mentoring opportunities.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
-</div>
-<div class="listing-date">
-Jan 23, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
