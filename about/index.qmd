@@ -13,8 +13,8 @@ about:
 
 ---
 
-Simon Guest is a technical advisor specializing in educational technology, where he partners with organizations to create exceptional software that reaches millions of students worldwide.
+Simon Guest is a technical advisor who partners with educational organizations, helping them create exceptional software and hardware that reaches millions of students worldwide.
 
-With extensive software engineering leadership experience at Code.org, Amazon, SAP, and Microsoft, Simon brings deep technical expertise to the intersection of education and technology. He is an active contributor to open-source education projects, articles, and books, and regularly teaches at the K-12 and undergraduate level.
+With extensive software engineering leadership experience at Code.org, Amazon, SAP, and Microsoft, Simon brings deep technical expertise to the intersection of education and technology. He is an active contributor to open-source education projects, articles, and books, a speaker at conferences, and regularly teaches at the K-12 and undergraduate level.
 
 Born and raised in England, Simon has a HNC in Software Engineering from Plymouth College and a Master's Degree in IT Security from the University of Westminster. He now lives in Kirkland, Washington, with his wife and their two sons.
