@@ -11,13 +11,13 @@ title-block-banner-color: "#fff"
 
 In Nov 2024, Anthropic [introduced](https://www.anthropic.com/news/model-context-protocol){.external target="_blank"} the Model Context Protocol (MCP). MCP provides a standard interface that makes it possible for LLMs to access external tools and data sources. Since the announcement, there have been thousands of MCP servers published, with many for business applications, data access, and developer tools.
 
-In the education space, I believe MCP opens up some interesting learning opportunities, especially for students using LLMs to interact with hardware in the classroom. To test this theory, I created a prototype on an MCP server for the BBC micro:bit.
+In the education space, I believe MCP opens up some interesting learning opportunities, especially for students using LLMs to interact with hardware in the classroom. To test this theory, I created a prototype for the BBC micro:bit.
 
 # What is a micro:bit?
 
 ![Source: https://microbit.org/get-started/features/overview/](./microbit.avif "Schematic of a micro:bit V2"){fig-alt="A diagram of a micro:bit V2, showing the features of the device"}
 
-If you've not come across one, the micro:bit is a pocket-sized computer designed to teach coding and other STEM-related subjects. It's based on an ARM Cortex microprocessor, has a 5x5 LED matrix display, two buttons, a speaker, and sensors that can measure temperature and movement. Since it's launch in 2015, millions of micro:bits have been used in classrooms across the world, with students programming them using [micro:bit's Python IDE](http://python.microbit.org/){.external target="_blank"} and [Microsoft's MakeCode](https://makecode.microbit.org/){.external target="_blank"}.
+If you've not come across one, the micro:bit is a pocket-sized computer designed to teach coding and other STEM-related subjects. It's based on an ARM Cortex microprocessor, has a 5x5 LED matrix display, two buttons, a speaker, and sensors that can measure temperature and movement. Since its launch in 2015, millions of micro:bits have been used in classrooms across the world, with students programming them using [micro:bit's Python IDE](http://python.microbit.org/){.external target="_blank"} and [Microsoft's MakeCode](https://makecode.microbit.org/){.external target="_blank"}.
 
 # The micro:bit MCP Server in Action
 
@@ -25,7 +25,13 @@ At the Aug 2025 [AI Tinkerers](https://seattle.aitinkerers.org/){.external targe
 
 {{< video microbit_mcp_sm.mp4 >}}
 
-The [prototype](https://github.com/simonguest/microbit-mcp) supports a few different interactions: Displaying a an image on the 5x5 matrix display, displaying a message, playing music, getting the temperature, and waiting for one of the buttons to be pressed.
+As shown in the video, the [prototype](https://github.com/simonguest/microbit-mcp) supports a few different interactions: 
+
+  - Displaying an image on the 5x5 matrix display
+  - Displaying a scrollable message
+  - Playing music/notes
+  - Getting the temperature
+  - Waiting for one of the buttons to be pressed
 
 # How it Works
 ```{mermaid}
@@ -44,17 +50,17 @@ flowchart TD
 
 The prototype uses Gradio to display a basic chat interface for the student, and the OpenAI Agent SDK, connecting to a GPT-4o endpoint. When the student opens the UI, it starts a new instance of the micro:bit MCP server and connects to the device via a serial port.
 
-As the student chats with the LLM, if they pose a question or conversation that doesn't interact with the micro:bit, the LLM responds as normal. For example, if the student says "Hello there!", the LLM will just respond as normal without accessing the device.
+As the student chats with the LLM, if they ask a question or make a request that doesn't interact with the micro:bit, the LLM responds as normal. For example, if the student says "Hello there!", the LLM will just respond as normal without accessing the device.
 
-This changes, however, if the student asks for something that requires interaction with the micro:bit: for example, _"Diplay 'Hello there!' on the micro:bit display"_. In this case, the agent will determine if the MCP server exposes a suitable method - and if so, will call the corresponding function. (There's a lot more detail of how this works under the covers that I won't go into in this article.) The local method then sends a data message over the serial connection to custom firmware running on the micro:bit to perform the required action.
+This changes, however, if the student asks for something that requires interaction with the micro:bit: for example, _"Display 'Hello there!' on the micro:bit display"_. In this case, the agent will determine if the MCP server exposes a suitable method - and if so, will call the corresponding function. (There's a lot more detail of how this works under the covers that I won't go into in this article.) The local method then sends a data message over the serial connection to the micro:bit to perform the required action.
 
 ## How could this be used in the classroom?
 
 As I've shown this to others, I've seen a couple of different use cases emerge.
 
-The first is for students to explore using the functionality of the micro:bit as a precursor for writing code. The micro:bit Python IDE supports a REPL (Read-Evaluate-Print-Loop) today. It feels like this LLM-based approach could evolve into a "Smart REPL" to allow students to test what the micro:bit can and cannot do using natural language.
+First, students can explore using the functionality of the micro:bit as a precursor for writing code. The micro:bit Python IDE supports a REPL (Read-Eval-Print-Loop) today. This LLM-based approach could evolve into a "Smart REPL" to allow students to test what the micro:bit can and cannot do using natural language.
 
-The second is for students to explore the structure of MicroPython programs and how they interact with the ddevice. For example, a student could ask the LLM to "display a bouncing ball on the micro:bit" and then examine the generated code to debug and explore how this works.
+The second is to enable students to explore the structure of MicroPython programs and how they interact with the device. For example, a student could ask the LLM to "display a bouncing ball on the micro:bit" and then examine the generated code to debug and explore how this works.
 
 # What's Next?
 
@@ -62,13 +68,13 @@ This was very much a v0.1 prototype. (Something you'll agree with, should you lo
 
 ## Support deploying code to the micro:bit
 
-The serial interface works well for basic tasks (e.g., "display a heart"), but MCP isn't asynchronous. This makes it hard to support long running or interactive scenarios on the device (e.g., "display a bouncing ball" or "display an interactive graph based on the input from the microphone"). 
+The serial interface works well for basic tasks (e.g., "display a heart"), but MCP isn't asynchronous. This makes it hard to support long-running or interactive scenarios on the device (e.g., "display a bouncing ball" or "display an interactive graph based on the input from the microphone"). 
 
 To support this, an interesting angle would be to have the MCP server write and deploy MicroPython code directly to the device. For simple tasks, this could be a one-liner (e.g., `display.scroll('Hello')`). For more complex tasks, this could be more elaborate.
 
 ## MCP Server running in the browser
 
-The current prototype requires local Python, connected to the device via the serial PyPi package. This was perfect for building the prototype, but any student deployment should be web-based, accessing the device via WebUSB. The web interface should still support the student's ability to explore any generated code, however.
+The current prototype requires local Python, connected to the device via the serial PyPI package. This was perfect for building the prototype, but any student deployment should be web-based, accessing the device via WebUSB. The web interface should still support the student's ability to explore any generated code, however.
 
 ## Offline SLMs
 
