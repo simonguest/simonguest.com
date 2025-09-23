@@ -102,28 +102,28 @@
     "href": "p/microbit-mcp/index.html",
     "title": "An MCP Server for the micro:bit",
     "section": "",
-    "text": "In Nov 2024, Anthropic introduced the Model Context Protocol (MCP). MCP provides a standard interface that makes it possible for LLMs to access external tools and data sources. Since the announcement, there have been thousands of MCP servers published, with many for business applications, data access, and developer tools.\nIn the education space, I believe MCP opens up some interesting learning opportunities, especially for students using LLMs to interact with hardware in the classroom. To test this theory, I created a prototype on an MCP server for the BBC micro:bit."
+    "text": "In Nov 2024, Anthropic introduced the Model Context Protocol (MCP). MCP provides a standard interface that makes it possible for LLMs to access external tools and data sources. Since the announcement, there have been thousands of MCP servers published, with many for business applications, data access, and developer tools.\nIn the education space, I believe MCP opens up some interesting learning opportunities, especially for students using LLMs to interact with hardware in the classroom. To test this theory, I created a prototype for the BBC micro:bit."
   },
   {
     "objectID": "p/microbit-mcp/index.html#how-could-this-be-used-in-the-classroom",
     "href": "p/microbit-mcp/index.html#how-could-this-be-used-in-the-classroom",
     "title": "An MCP Server for the micro:bit",
     "section": "How could this be used in the classroom?",
-    "text": "How could this be used in the classroom?\nAs I’ve shown this to others, I’ve seen a couple of different use cases emerge.\nThe first is for students to explore using the functionality of the micro:bit as a precursor for writing code. The micro:bit Python IDE supports a REPL (Read-Evaluate-Print-Loop) today. It feels like this LLM-based approach could evolve into a “Smart REPL” to allow students to test what the micro:bit can and cannot do using natural language.\nThe second is for students to explore the structure of MicroPython programs and how they interact with the ddevice. For example, a student could ask the LLM to “display a bouncing ball on the micro:bit” and then examine the generated code to debug and explore how this works."
+    "text": "How could this be used in the classroom?\nAs I’ve shown this to others, I’ve seen a couple of different use cases emerge.\nFirst, students can explore using the functionality of the micro:bit as a precursor for writing code. The micro:bit Python IDE supports a REPL (Read-Eval-Print-Loop) today. This LLM-based approach could evolve into a “Smart REPL” to allow students to test what the micro:bit can and cannot do using natural language.\nThe second is to enable students to explore the structure of MicroPython programs and how they interact with the device. For example, a student could ask the LLM to “display a bouncing ball on the micro:bit” and then examine the generated code to debug and explore how this works."
   },
   {
     "objectID": "p/microbit-mcp/index.html#support-deploying-code-to-the-microbit",
     "href": "p/microbit-mcp/index.html#support-deploying-code-to-the-microbit",
     "title": "An MCP Server for the micro:bit",
     "section": "Support deploying code to the micro:bit",
-    "text": "Support deploying code to the micro:bit\nThe serial interface works well for basic tasks (e.g., “display a heart”), but MCP isn’t asynchronous. This makes it hard to support long running or interactive scenarios on the device (e.g., “display a bouncing ball” or “display an interactive graph based on the input from the microphone”).\nTo support this, an interesting angle would be to have the MCP server write and deploy MicroPython code directly to the device. For simple tasks, this could be a one-liner (e.g., display.scroll('Hello')). For more complex tasks, this could be more elaborate."
+    "text": "Support deploying code to the micro:bit\nThe serial interface works well for basic tasks (e.g., “display a heart”), but MCP isn’t asynchronous. This makes it hard to support long-running or interactive scenarios on the device (e.g., “display a bouncing ball” or “display an interactive graph based on the input from the microphone”).\nTo support this, an interesting angle would be to have the MCP server write and deploy MicroPython code directly to the device. For simple tasks, this could be a one-liner (e.g., display.scroll('Hello')). For more complex tasks, this could be more elaborate."
   },
   {
     "objectID": "p/microbit-mcp/index.html#mcp-server-running-in-the-browser",
     "href": "p/microbit-mcp/index.html#mcp-server-running-in-the-browser",
     "title": "An MCP Server for the micro:bit",
     "section": "MCP Server running in the browser",
-    "text": "MCP Server running in the browser\nThe current prototype requires local Python, connected to the device via the serial PyPi package. This was perfect for building the prototype, but any student deployment should be web-based, accessing the device via WebUSB. The web interface should still support the student’s ability to explore any generated code, however."
+    "text": "MCP Server running in the browser\nThe current prototype requires local Python, connected to the device via the serial PyPI package. This was perfect for building the prototype, but any student deployment should be web-based, accessing the device via WebUSB. The web interface should still support the student’s ability to explore any generated code, however."
   },
   {
     "objectID": "p/microbit-mcp/index.html#offline-slms",
