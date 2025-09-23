@@ -14,6 +14,7 @@ wheels/
 
 # Quarto preview site folder
 /_site/
+/_freeze/
 
 # Obsidian workspace folder
 posts/.obsidian/
