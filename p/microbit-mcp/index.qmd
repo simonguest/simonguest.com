@@ -3,9 +3,9 @@ title: "An MCP Server for the micro:bit"
 description: "Introducing an MCP (Model Context Protocol) server for the micro:bit that enables students to interact with the device via an LLM"
 date: "2025-09-23"
 categories: ["micro:bit", "LLMs", "MCP"]
-image: "main.webp"
+image: "./main.webp"
 image-alt: "A screenshot of the micro:bit Python IDE, showing code that reads 'What is MCP?'"
-title-block-banner: "banner.webp"
+title-block-banner: "./banner.webp"
 title-block-banner-color: "#fff"
 ---
 

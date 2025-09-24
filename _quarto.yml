@@ -3,7 +3,7 @@ project:
 
 website:
   title: "Simon Says"
-  site-url: https://simonguest.com
+  site-url: "https://simonguest.com"
   description: "The blog of Simon Guest"
   open-graph: true
   search: false
