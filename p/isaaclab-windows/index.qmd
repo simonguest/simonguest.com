@@ -1,0 +1,44 @@
+---
+title: "Running NVIDIA IsaacLab on Windows"
+description: "A uv-managed Python environment to make it easier to run NVIDIA IsaacLab experiments on Windows."
+date: "2025-09-29"
+categories: ["RL", "NVIDIA", "Windows"]
+image: "./main.webp"
+image-alt: "A screenshot of a cartpole simulation environment in NVIDIA IsaacLab"
+title-block-banner: "./banner.webp"
+title-block-banner-color: "#fff"
+---
+
+In my CSP-400 class, a couple of the student teams have been building projects using [NVIDIA IsaacLab](https://developer.nvidia.com/isaac/lab){.external target="_blank"}. If you've not come across it, IsaacLab is an open source framework and set of algorithms for training robots. It's built on top of NVIDIA IsaacSim and Omniverse, which enables training to happen at scale (i.e., thousands of robots learning simultaneously) in a sophisticated virtual environment.
+
+![A trained "CartPole" environment running on NVIDIA IsaacLab](./main.webp){fig-alt="A trained 'CartPole' environment running on NVIDIA IsaacLab"}
+
+Getting IsaacLab running well in a Windows environment can, however, be challenging. NVIDIA recommends a Docker container for running IsaacLab in a professional environment, but this doesn't work on WSL (as it requires Vulkan support). In addition, Docker and Linux environments are typically beyond what is usable in a high school environment today, with many of the students primarily using Windows-based machines.
+
+# Running NVIDIA IsaacLab on Windows
+
+To help overcome this, I've created a [GitHub repo](https://github.com/simonguest/env-isaaclab){.external target="_blank"} that makes it easier to get started with NVIDIA IsaacLab on Windows. 
+
+The repo offers a [uv](https://docs.astral.sh/uv/){.external target="_blank"}-based project that makes it easy (three commands in PowerShell) to get your own IsaacLab project up and running:
+
+1. Create or update the virtual environment from the lockfile:
+```powershell
+uv sync
+```
+2. Activate the virtual environment (from a PowerShell prompt):
+```powershell
+.\.venv\Scripts\Activate
+```
+
+3. Launch IsaacSim!
+```powershell
+isaacsim
+```
+
+I've also included instructions to enable Pylance and debugging support in VS Code, both of which are important as students explore the APIs and frameworks. You can find more details in the repo's [README.md](https://github.com/simonguest/env-isaaclab/blob/main/README.md){.external target="_blank"}.
+
+# Conclusion
+
+If you are using IsaacLab on Windows, I hope this repo helps address some of the challenges that our students encountered.
+
+We are just getting started in my class, but NVIDIA IsaacLab opens up some interesting learning possibilities for teaching CS and AI at the undergrad and high school levels. It goes beyond many of the robot classes taught today by introducing RL concepts and offering a powerful virtual environment vs. needing access to physical robot hardware.
