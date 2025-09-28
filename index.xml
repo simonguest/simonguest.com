@@ -10,7 +10,64 @@
 <atom:link href="https://simonguest.com/index.xml" rel="self" type="application/rss+xml"/>
 <description>The blog of Simon Guest</description>
 <generator>quarto-1.8.24</generator>
-<lastBuildDate>Tue, 23 Sep 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 29 Sep 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Running NVIDIA IsaacLab on Windows</title>
+  <link>https://simonguest.com/p/isaaclab-windows/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>In my CSP-400 class, a couple of the student teams have been building projects using <a href="https://developer.nvidia.com/isaac/lab" class="external" target="_blank">NVIDIA IsaacLab</a>. If you’ve not come across it, IsaacLab is an open source framework and set of algorithms for training robots. It’s built on top of NVIDIA IsaacSim and Omniverse, which enables training to happen at scale (i.e., thousands of robots learning simultaneously) in a sophisticated virtual environment.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://simonguest.com/p/isaaclab-windows/main.webp" class="img-fluid figure-img" alt="A trained 'CartPole' environment running on NVIDIA IsaacLab"></p>
+<figcaption>A trained “CartPole” environment running on NVIDIA IsaacLab</figcaption>
+</figure>
+</div>
+<p>Getting IsaacLab running well in a Windows environment can, however, be challenging. NVIDIA recommends a Docker container for running IsaacLab in a professional environment, but this doesn’t work on WSL (as it requires Vulkan support). In addition, Docker and Linux environments are typically beyond what is usable in a high school environment today, with many of the students primarily using Windows-based machines.</p>
+<section id="running-nvidia-isaaclab-on-windows" class="level1">
+<h1>Running NVIDIA IsaacLab on Windows</h1>
+<p>To help overcome this, I’ve created a <a href="https://github.com/simonguest/env-isaaclab" class="external" target="_blank">GitHub repo</a> that makes it easier to get started with NVIDIA IsaacLab on Windows.</p>
+<p>The repo offers a <a href="https://docs.astral.sh/uv/" class="external" target="_blank">uv</a>-based project that makes it easy (three commands in PowerShell) to get your own IsaacLab project up and running:</p>
+<ol type="1">
+<li>Create or update the virtual environment from the lockfile:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1">uv sync</span></code></pre></div></div>
+<ol start="2" type="1">
+<li>Activate the virtual environment (from a PowerShell prompt):</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>\<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">venv</span>\Scripts\Activate</span></code></pre></div></div>
+<ol start="3" type="1">
+<li>Launch IsaacSim!</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb3-1">isaacsim</span></code></pre></div></div>
+<p>I’ve also included instructions to enable Pylance and debugging support in VS Code, both of which are important as students explore the APIs and frameworks. You can find more details in the repo’s <a href="https://github.com/simonguest/env-isaaclab/blob/main/README.md" class="external" target="_blank">README.md</a>.</p>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>If you are using IsaacLab on Windows, I hope this repo helps address some of the challenges that our students encountered.</p>
+<p>We are just getting started in my class, but NVIDIA IsaacLab opens up some interesting learning possibilities for teaching CS and AI at the undergrad and high school levels. It goes beyond many of the robot classes taught today by introducing RL concepts and offering a powerful virtual environment vs.&nbsp;needing access to physical robot hardware.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>RL</category>
+  <category>NVIDIA</category>
+  <category>Windows</category>
+  <guid>https://simonguest.com/p/isaaclab-windows/</guid>
+  <pubDate>Mon, 29 Sep 2025 00:00:00 GMT</pubDate>
+  <media:content url="https://simonguest.com/p/isaaclab-windows/main.webp" medium="image" type="image/webp"/>
+</item>
 <item>
   <title>An MCP Server for the micro:bit</title>
   <link>https://simonguest.com/p/microbit-mcp/</link>

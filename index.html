@@ -38,7 +38,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-2ceb22b53773876b76da397856803851.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-fa6ebe1abc24c69c1ddb9a141d0fa116.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -117,9 +117,9 @@ window.Quarto = {
 
 <link rel="stylesheet" href="styles.css">
 <link rel="alternate" type="application/rss+xml" title="Simon Says" href="index.xml" data-external="1"><meta property="og:title" content="Posts – Simon Says">
-<meta property="og:image" content="https://simonguest.com/p/microbit-mcp/main.webp">
+<meta property="og:image" content="https://simonguest.com/p/isaaclab-windows/main.webp">
 <meta property="og:site_name" content="Simon Says">
-<meta property="og:image:alt" content="A screenshot of the micro:bit Python IDE, showing code that reads &amp;#039;What is MCP?'">
+<meta property="og:image:alt" content="A screenshot of a cartpole simulation environment in NVIDIA IsaacLab">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -183,7 +183,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(10)</span></div><div class="category" data-category="RGVidWdnaW5n">Debugging <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R2VuZXJhdGl2ZSUyMEFJ">Generative AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SURFcw==">IDEs <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TGludXg=">Linux <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TExNcw==">LLMs <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWFjT1M=">macOS <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TUNQ">MCP <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWljcm8lM0FiaXQ=">micro:bit <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VGVjaG5pY2FsJTIwRGVidA==">Technical Debt <span class="quarto-category-count">(2)</span></div><div class="category" data-category="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==">Technical Leadership <span class="quarto-category-count">(5)</span></div><div class="category" data-category="V3JpdGluZw==">Writing <span class="quarto-category-count">(2)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(11)</span></div><div class="category" data-category="RGVidWdnaW5n">Debugging <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R2VuZXJhdGl2ZSUyMEFJ">Generative AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SURFcw==">IDEs <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TGludXg=">Linux <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TExNcw==">LLMs <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWFjT1M=">macOS <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TUNQ">MCP <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWljcm8lM0FiaXQ=">micro:bit <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TlZJRElB">NVIDIA <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ukw=">RL <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VGVjaG5pY2FsJTIwRGVidA==">Technical Debt <span class="quarto-category-count">(2)</span></div><div class="category" data-category="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==">Technical Leadership <span class="quarto-category-count">(5)</span></div><div class="category" data-category="V2luZG93cw==">Windows <span class="quarto-category-count">(1)</span></div><div class="category" data-category="V3JpdGluZw==">Writing <span class="quarto-category-count">(2)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -197,7 +197,40 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="bWljcm8lM0FiaXQlMkNMTE1zJTJDTUNQ" data-listing-date-sort="1758585600000" data-listing-file-modified-sort="1758751027593" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="990">
+<div class="g-col-1" data-index="0" data-categories="UkwlMkNOVklESUElMkNXaW5kb3dz" data-listing-date-sort="1759104000000" data-listing-file-modified-sort="1759090904081" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="314">
+<a href="./p/isaaclab-windows/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./p/isaaclab-windows/main.webp" class="thumbnail-image card-img" style="height: 150px;" alt="A screenshot of a cartpole simulation environment in NVIDIA IsaacLab">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Running NVIDIA IsaacLab on Windows
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ukw='); return false;">RL</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('TlZJRElB'); return false;">NVIDIA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('V2luZG93cw=='); return false;">Windows</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>A uv-managed Python environment to make it easier to run NVIDIA IsaacLab experiments on Windows.</p>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Sep 29, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="bWljcm8lM0FiaXQlMkNMTE1zJTJDTUNQ" data-listing-date-sort="1758585600000" data-listing-file-modified-sort="1759090904082" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="990">
 <a href="./p/microbit-mcp/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -217,7 +250,7 @@ An MCP Server for the micro:bit
 
 </div>
 <div class="card-text listing-description delink">
-<p>Introducing an MCP (Model Context Protocol) server for the micro:bit that enables students to interact with the device via an LLM</p>
+<p>Introducing an MCP (Model Context Protocol) server for the micro:bit that enables students to interact with the device via an LLM.</p>
 </div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
@@ -230,7 +263,7 @@ Sep 23, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcCUyQ1dyaXRpbmc=" data-listing-date-sort="1722902400000" data-listing-file-modified-sort="1758751027592" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2741">
+<div class="g-col-1" data-index="2" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcCUyQ1dyaXRpbmc=" data-listing-date-sort="1722902400000" data-listing-file-modified-sort="1759090904079" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2741">
 <a href="./p/creating-a-document-driven-culture/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -261,7 +294,7 @@ Aug 6, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==" data-listing-date-sort="1708473600000" data-listing-file-modified-sort="1758751027603" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1496">
+<div class="g-col-1" data-index="3" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==" data-listing-date-sort="1708473600000" data-listing-file-modified-sort="1759090904091" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1496">
 <a href="./p/should-ctos-write-code/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -290,7 +323,7 @@ Feb 21, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="SURFcyUyQ0RlYnVnZ2luZyUyQ0dlbmVyYXRpdmUlMjBBSQ==" data-listing-date-sort="1707177600000" data-listing-file-modified-sort="1758751027592" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1987">
+<div class="g-col-1" data-index="4" data-categories="SURFcyUyQ0RlYnVnZ2luZyUyQ0dlbmVyYXRpdmUlMjBBSQ==" data-listing-date-sort="1707177600000" data-listing-file-modified-sort="1759090904080" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1987">
 <a href="./p/is-using-a-debugger-becoming-a-lost/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -323,7 +356,7 @@ Feb 6, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==" data-listing-date-sort="1705968000000" data-listing-file-modified-sort="1758751027604" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1386">
+<div class="g-col-1" data-index="5" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==" data-listing-date-sort="1705968000000" data-listing-file-modified-sort="1759090904092" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1386">
 <a href="./p/what-shape-is-your-engineering-team/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -352,7 +385,7 @@ Jan 23, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="5" data-categories="VGVjaG5pY2FsJTIwRGVidA==" data-listing-date-sort="1704844800000" data-listing-file-modified-sort="1758751027603" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1557">
+<div class="g-col-1" data-index="6" data-categories="VGVjaG5pY2FsJTIwRGVidA==" data-listing-date-sort="1704844800000" data-listing-file-modified-sort="1759090904092" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1557">
 <a href="./p/technical-debt-repayment-plans/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -381,7 +414,7 @@ Jan 10, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="6" data-categories="VGVjaG5pY2FsJTIwRGVidA==" data-listing-date-sort="1704240000000" data-listing-file-modified-sort="1758751027592" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2873">
+<div class="g-col-1" data-index="7" data-categories="VGVjaG5pY2FsJTIwRGVidA==" data-listing-date-sort="1704240000000" data-listing-file-modified-sort="1759090904080" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2873">
 <a href="./p/how-we-accrue-technical-debt/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -410,7 +443,7 @@ Jan 3, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="7" data-categories="bWFjT1MlMkNMaW51eA==" data-listing-date-sort="1703548800000" data-listing-file-modified-sort="1758751027602" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="938">
+<div class="g-col-1" data-index="8" data-categories="bWFjT1MlMkNMaW51eA==" data-listing-date-sort="1703548800000" data-listing-file-modified-sort="1759090904091" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="938">
 <a href="./p/shared-keyboard-shortcuts-on-macos/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -441,7 +474,7 @@ Dec 26, 2023
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="8" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcCUyQ1dyaXRpbmc=" data-listing-date-sort="1703376000000" data-listing-file-modified-sort="1758751027605" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1107">
+<div class="g-col-1" data-index="9" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcCUyQ1dyaXRpbmc=" data-listing-date-sort="1703376000000" data-listing-file-modified-sort="1759090904093" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1107">
 <a href="./p/writing-better-technical-documents/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -472,7 +505,7 @@ Dec 24, 2023
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="9" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==" data-listing-date-sort="1703203200000" data-listing-file-modified-sort="1758751027605" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1361">
+<div class="g-col-1" data-index="10" data-categories="VGVjaG5pY2FsJTIwTGVhZGVyc2hpcA==" data-listing-date-sort="1703203200000" data-listing-file-modified-sort="1759090904093" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1361">
 <a href="./p/why-dont-software-developers-practice-051/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
