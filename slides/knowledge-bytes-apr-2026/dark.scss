@@ -1,0 +1,330 @@
+/*-- scss:defaults --*/
+
+// Fonts (loaded via css-url in rules below)
+$mainFont: 'Inter', sans-serif;
+$headingFont: 'Inter', sans-serif;
+$codeFont: 'JetBrains Mono', monospace;
+
+// Colors
+$backgroundColor: #0d1117;
+$mainColor: #e8eaf0;
+$headingColor: #ffffff;
+$linkColor: #4299e1;
+$linkColorHover: #74b9ff;
+$selectionBackgroundColor: rgba(66, 153, 225, 0.3);
+
+// Typography
+$mainFontSize: 36px;
+$headingFontWeight: 600;
+$headingLetterSpacing: -0.02em;
+$headingTextTransform: none;
+$headingTextShadow: none;
+
+// Spacing
+$blockMargin: 16px;
+$headingMargin: 0 0 20px 0;
+
+
+/*-- scss:rules --*/
+
+// ── Google Fonts ──────────────────────────────────────────────────────────────
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap');
+
+
+// ── Background gradient ───────────────────────────────────────────────────────
+.reveal-viewport {
+  background: linear-gradient(135deg, #0d1117 0%, #1a1f35 100%);
+  background-attachment: fixed;
+}
+
+
+// ── Headings ──────────────────────────────────────────────────────────────────
+.reveal h1 {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+// Section content slides — title gets a blue underline rule
+.reveal .slides section:not(.title-slide) h2 {
+  font-weight: 600;
+  font-size: 1.4em;
+  letter-spacing: -0.02em;
+  padding-bottom: 0.35em;
+  border-bottom: 3px solid #4299e1;
+  margin-bottom: 0.75em;
+}
+
+
+// ── Title slide ───────────────────────────────────────────────────────────────
+// Quarto's cover slide uses .quarto-title-block (not .title-slide).
+// .title-slide is applied only to level1 section slides.
+.reveal .quarto-title-block {
+  // Background set via title-slide-attributes in YAML (data-background-gradient)
+  // so RevealJS renders it correctly across the full slide.
+
+  h1.title {
+    font-size: 2em;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: #ffffff;
+  }
+
+  .subtitle {
+    color: #4299e1;
+    font-weight: 400;
+    font-size: 1em;
+    margin-top: 0.5em;
+  }
+
+  .author, .date, .quarto-title-author-name {
+    color: #9ca3af;
+    font-weight: 300;
+    font-size: 0.75em;
+  }
+
+}
+
+// ── Body text ─────────────────────────────────────────────────────────────────
+.reveal p,
+.reveal ul,
+.reveal ol {
+  font-weight: 300;
+  line-height: 1.35;
+}
+
+.reveal ul li,
+.reveal ol li {
+  margin-bottom: 0.45em;
+}
+
+// Dim previously revealed bullets; highlight the current one
+.reveal .slides li.fragment.visible {
+  color: #9ca3af;
+}
+
+.reveal .slides li.fragment.current-fragment {
+  color: #e8eaf0;
+}
+
+// Bold text gets the accent color
+.reveal strong, .reveal b {
+  color: #60a5fa;
+  font-weight: 600;
+}
+
+// Inline code
+.reveal code:not(pre code) {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82em;
+  color: #4dd0e1;
+  background: rgba(77, 208, 225, 0.1);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
+
+
+// ── Code blocks ───────────────────────────────────────────────────────────────
+
+// Quarto wraps highlighted code in div.sourceCode — strip any wrapper styling
+.reveal div.sourceCode {
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.reveal pre {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72em;
+  background: #282a36;  // dracula background
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  margin: 0.5em 0;
+  padding: 0.5em 0.5em;
+  box-sizing: border-box;
+  width: 100%;
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.6;
+  }
+}
+
+// Cell output — match dracula background, no border
+// font-size intentionally omitted: inherits 0.72em from .reveal pre above
+// box-sizing + width ensure it doesn't exceed the code block above it
+.reveal .cell-output pre {
+  background: #282a36;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  padding: 0.5em 0.7em;
+  margin-top: 0.3em;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+// Target code directly — RevealJS overrides color at the code element level
+.reveal .cell-output pre code {
+  font-family: 'JetBrains Mono', monospace;
+  color: #f8f8f2;  // dracula foreground
+  background: transparent;
+  white-space: pre;
+}
+
+// ── Line numbers — hide entirely ──────────────────────────────────────────────
+// Pandoc renders line numbers via a hanging-indent trick on every code span:
+//   text-indent: -5em; padding-left: 5em
+// Removing the gutter without resetting those values clips the first characters,
+// so we zero them all out here.
+.reveal pre.numberSource {
+  margin-left: 0;
+  border-left: none;
+  padding-left: 0.5em !important;
+}
+
+.reveal pre.numberSource code > span {
+  position: static;
+  left: 0;
+  counter-increment: none;
+}
+
+.reveal pre.numberSource code > span > a:first-child {
+  display: none;
+}
+
+// Line highlight plugin
+.reveal pre .highlight-line {
+  background: rgba(66, 153, 225, 0.15);
+}
+
+
+// ── Progress bar ──────────────────────────────────────────────────────────────
+.reveal .progress {
+  height: 4px;
+  color: #4299e1;
+  background: rgba(66, 153, 225, 0.15);
+}
+
+
+// ── Watermark ─────────────────────────────────────────────────────────────────
+.reveal::after {
+  content: "AI for STEM Educators";
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #6b7280;
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+  font-style: normal;
+}
+
+
+// ── Slide number ──────────────────────────────────────────────────────────────
+.reveal .slide-number {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #6b7280;
+  background: transparent;
+  bottom: 16px;
+  right: 20px;
+}
+
+
+// ── Section title slides (h1 divider slides) ──────────────────────────────────
+.reveal .slides section.center h1,
+.reveal .slides section[data-layout="center"] h1 {
+  font-size: 1.8em;
+}
+
+// Quarto section slides that have only an h1 + optional subtitle
+.reveal .slides section:has(> h1:only-child),
+.reveal .slides section:has(> h1 + p:last-child) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 10%;
+
+  h1 {
+    color: #4299e1;
+    font-size: 2em;
+  }
+
+  p {
+    color: #9ca3af;
+    font-weight: 300;
+  }
+}
+
+
+// ── Callout / blockquote ──────────────────────────────────────────────────────
+.reveal blockquote {
+  background: rgba(66, 153, 225, 0.08);
+  border-left: 4px solid #4299e1;
+  border-radius: 0 6px 6px 0;
+  padding: 0.6em 1em;
+  font-style: normal;
+  font-weight: 300;
+  color: #cbd5e1;
+  box-shadow: none;
+  width: 95%;
+}
+
+
+// ── Tables ────────────────────────────────────────────────────────────────────
+.reveal table {
+  font-size: 0.85em;
+  border-collapse: collapse;
+  width: 100%;
+
+  th {
+    background: rgba(66, 153, 225, 0.2);
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.5em 0.8em;
+    border-bottom: 2px solid #4299e1;
+  }
+
+  td {
+    padding: 0.4em 0.8em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    color: #d1d5db;
+  }
+
+  tr:hover td {
+    background: rgba(255, 255, 255, 0.03);
+  }
+}
+
+
+// ── Links ─────────────────────────────────────────────────────────────────────
+.reveal a {
+  color: #4299e1;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(66, 153, 225, 0.4);
+  transition: color 0.2s, border-color 0.2s;
+
+  &:hover {
+    color: #74b9ff;
+    border-bottom-color: #74b9ff;
+  }
+}
+
+// ── Copy Button ────────────────────────────────────────────────────────────────
+
+.code-copy-button {
+  margin-top: 30px;
+  margin-right: 15px;
+}
