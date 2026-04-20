@@ -9,7 +9,7 @@
 <link>https://simonguest.com/</link>
 <atom:link href="https://simonguest.com/index.xml" rel="self" type="application/rss+xml"/>
 <description>The blog of Simon Guest</description>
-<generator>quarto-1.8.24</generator>
+<generator>quarto-1.9.37</generator>
 <lastBuildDate>Mon, 29 Sep 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Running NVIDIA IsaacLab on Windows</title>
@@ -92,7 +92,7 @@ font-style: inherit;">venv</span>\Scripts\Activate</span></code></pre></div></di
 <section id="the-microbit-mcp-server-in-action" class="level1">
 <h1>The micro:bit MCP Server in Action</h1>
 <p>At the Aug 2025 <a href="https://seattle.aitinkerers.org/" class="external" target="_blank">AI Tinkerers</a> event in Seattle, I demonstrated an MCP server for the micro:bit. Here’s a short video of what students can use it for:</p>
-<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="microbit_mcp_sm.mp4"></video></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="microbit_mcp_sm.mp4"></video></div>
 <p>As shown in the video, the <a href="https://github.com/simonguest/microbit-mcp">prototype</a> supports a few different interactions:</p>
 <ul>
 <li>Displaying an image on the 5x5 matrix display</li>
