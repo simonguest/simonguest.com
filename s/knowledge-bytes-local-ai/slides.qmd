@@ -1,5 +1,6 @@
 ---
 title: "**Knowledge Bytes** | Local AI Models"
+description: "The case for running AI models locally, hardware requirements, discovering and running models, and benchmarks."
 author: "Simon Guest"
 format:
   revealjs:
@@ -8,6 +9,9 @@ format:
     center-title-slide: true
     theme: [default, dark.scss]
 bibliography: references.bib
+date: "2026-04-17"
+categories: ["AI", "Local Models"]
+image: "./images/huggingface.png"
 
 ---
 

@@ -212,23 +212,6 @@ $headingMargin: 0 0 20px 0;
 }
 
 
-// ── Watermark ─────────────────────────────────────────────────────────────────
-.reveal::after {
-  content: "AI for STEM Educators";
-  position: fixed;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  color: #6b7280;
-  opacity: 0.5;
-  letter-spacing: 0.04em;
-  pointer-events: none;
-  font-style: normal;
-}
-
 
 // ── Slide number ──────────────────────────────────────────────────────────────
 .reveal .slide-number {

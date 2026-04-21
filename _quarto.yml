@@ -8,6 +8,11 @@ website:
   open-graph: true
   search: false
   navbar:
+    left:
+      - text: "Posts"
+        href: index.qmd
+      - text: "Presentations"
+        href: presentations.qmd
     right:
       - about/index.qmd
       - icon: linkedin
