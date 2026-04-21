@@ -14,5 +14,11 @@
       "/p/writing-better-technical-documents/index.html",
       "/p/why-dont-software-developers-practice-051/index.html"
     ]
+  },
+  {
+    "listing": "/presentations.html",
+    "items": [
+      "/s/knowledge-bytes-local-ai/slides.html"
+    ]
   }
 ]
