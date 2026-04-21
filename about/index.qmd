@@ -13,6 +13,8 @@ about:
 
 ---
 
-Simon Guest is a technical advisor who helps educational organizations create exceptional software and hardware used by millions of students worldwide.
+Simon Guest is a computer science and AI educator focused on helping the next generation understand how modern computing systems work, from foundational software engineering to generative AI.
 
-With extensive software engineering leadership experience at Code.org, Amazon, SAP, and Microsoft, Simon brings deep technical expertise to the intersection of education and technology. He is an active contributor to open-source education projects, articles and books, conference speaker, and regularly teaches at the K-12 and undergraduate level.
+He teaches computer science and AI at the DigiPen Institute of Technology and advises organizations building educational technology used by millions of students worldwide.
+
+Before moving into education full time, Simon spent 25+ years building large-scale software systems and leading engineering teams at companies including Amazon, Microsoft, and SAP Concur. He later served as Chief Technology Officer at Code.org, where he led the engineering organization behind the nonprofit’s global computer science learning platform.
