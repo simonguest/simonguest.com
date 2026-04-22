@@ -18,7 +18,9 @@
   {
     "listing": "/presentations.html",
     "items": [
-      "/s/knowledge-bytes-local-ai/slides.html"
+      "/s/knowledge-bytes-local-ai/slides.html",
+      "/s/icsec-study-session/slides-ja.html",
+      "/s/icsec-study-session/slides.html"
     ]
   }
 ]

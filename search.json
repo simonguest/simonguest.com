@@ -343,6 +343,202 @@
     "text": "Bibliography\n\n\n\n\nJacobs, Robert A., Michael I. Jordan, Steven J. Nowlan, and Geoffrey E. Hinton. 1991. “Adaptive Mixtures of Local Experts.” Neural Computation 3 (1): 79–87."
   },
   {
+    "objectID": "s/icsec-study-session/slides-ja.html#アジェンダ",
+    "href": "s/icsec-study-session/slides-ja.html#アジェンダ",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "アジェンダ",
+    "text": "アジェンダ\n\nDigiPenについて\nコース詳細とシラバス\nプラットフォームとツール\nデモ\n質疑応答"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#digipenについて-1",
+    "href": "s/icsec-study-session/slides-ja.html#digipenについて-1",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "DigiPenについて",
+    "text": "DigiPenについて\n\n\n\n1988年創設\nビデオゲームの技術と開発に関する学士号を世界で初めて提供した大学\n卒業生はMicrosoft、Amazon、Bungie、EAなどのスタジオに就職\n2,150以上の商業ゲームタイトルに卒業生がクレジット\nPrinceton Reviewによる2026年トップゲームデザインプログラムに選出"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#digipenについて-2",
+    "href": "s/icsec-study-session/slides-ja.html#digipenについて-2",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "DigiPenについて",
+    "text": "DigiPenについて\n\n\n\n\n\n\n\n\n\n学士課程：\n\nコンピュータサイエンス\nデジタルアート・アニメーション\nゲームデザイン・開発\n音楽・オーディオ\n\n大学院課程：\n\nコンピュータサイエンス\nデジタルアート・アニメーション"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#digipenについて-3",
+    "href": "s/icsec-study-session/slides-ja.html#digipenについて-3",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "DigiPenについて",
+    "text": "DigiPenについて\n\n\n\nコンピュータサイエンス\n\nコンピュータサイエンス学士（BS）\nコンピュータサイエンス・人工知能学士（BS）\nコンピュータサイエンス修士（MS）\n\nAI関連コース\n\nML・AI I・II\nディープラーニング\nコンピュータサイエンス・プロジェクト"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#csとaiカリキュラムの空白地帯",
+    "href": "s/icsec-study-session/slides-ja.html#csとaiカリキュラムの空白地帯",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "CSとAIカリキュラムの「空白地帯」",
+    "text": "CSとAIカリキュラムの「空白地帯」"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#csとaiカリキュラムの空白地帯-1",
+    "href": "s/icsec-study-session/slides-ja.html#csとaiカリキュラムの空白地帯-1",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "CSとAIカリキュラムの「空白地帯」",
+    "text": "CSとAIカリキュラムの「空白地帯」"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#ローカルaiの必然性",
+    "href": "s/icsec-study-session/slides-ja.html#ローカルaiの必然性",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "ローカルAIの「必然性」",
+    "text": "ローカルAIの「必然性」\n\nオープンソースSLM（Small Language Models）の未来\n\nベンダーコストは大幅に補助されている\nオープンソースモデルはSOTA（最先端）に追いついてきている（例：Qwen3.5-35B-A3B）\n量子化技術は進化し続けている（例：TurboQuant、Unsloth）\nハードウェアの進化（例：Apple MLX、Spark DGX）\nデータがマシンの外に出ない"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#cs-394-コース情報",
+    "href": "s/icsec-study-session/slides-ja.html#cs-394-コース情報",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "CS-394 コース情報",
+    "text": "CS-394 コース情報\n\n\n\nジュニア/シニア（300レベル）コース\n修士（500レベル）オプション\n3単位、15週間コース\n第1〜8週\n\n週次課題付き講義形式；成績の40%\n\n第9〜15週\n\nプロジェクト形式；成績の60%"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#学習成果",
+    "href": "s/icsec-study-session/slides-ja.html#学習成果",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "学習成果",
+    "text": "学習成果\n\nLLMの基本的な動作原理と歴史を理解する\n異なるベンダー（OpenAI、Meta、Google）がホストするLLMにアクセスするAPIベースのクライアントを作成・デプロイする\nMCP（Model Context Protocol）仕様に基づいたAIエージェントとツールを作成する\n画像・音声の認識・生成のためのマルチモーダルモデルを探索・活用する\nローカルのラップトップハードウェア上で生成モデルを実行する（CPU、GPU、NPUを使用）\n業界標準のベンチマークを使用して生成モデルを評価・テストする\nRAG（Retrieval Augmented Generation）とファインチューニングによってモデルの精度を高め、ハルシネーションを防ぐ\n倫理・知的財産・安全性の側面を理解する"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#知識のギャップ",
+    "href": "s/icsec-study-session/slides-ja.html#知識のギャップ",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "知識のギャップ",
+    "text": "知識のギャップ\n\n学生は今日生成AIを使っているが、その仕組みを理解している学生はほとんどいない\n\n現行のAIカリキュラムは生成AI以前の技術や、より低レベルな内容に焦点を当てている\n\nゲームデザインにおける未解決の疑問\n\nNPCとしてゲームエンジンに生成AIモデルを組み込むにはどうすればよいか？\nUnity/UnrealでPBRマテリアルの生成を支援するためにどの画像モデルが使えるか？\n音声モデルはどのように機能し、サウンドエフェクトの強化に活用できるか？"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#倫理知的財産安全性への懸念",
+    "href": "s/icsec-study-session/slides-ja.html#倫理知的財産安全性への懸念",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "倫理・知的財産・安全性への懸念",
+    "text": "倫理・知的財産・安全性への懸念\n\n学生には多くの疑問・懸念がある\n\n現在のモデルはどのように学習されているのか？\n環境への影響は？\nモデルは消費者にとって安全か、危険か？\nプログラマー・ゲームデザイナー・アーティストとして、生成AIは自分にとって何を意味するのか？\nAIに仕事を奪われるのか？\n\n目標：どちらか一方の立場を取らない\n\n学生が自分自身の結論に至ることができるよう、枠組みと知識を提供する"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#変化する雇用市場",
+    "href": "s/icsec-study-session/slides-ja.html#変化する雇用市場",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "変化する雇用市場",
+    "text": "変化する雇用市場\n\nChatGPTのリリース以来、AIスキルに言及する求人（非テック職）は800%増加している 1\n現在、テック職の50%以上でAIスキルが求められる 2\n\n過去12か月で9,800bps増加\n\n求人給与はAIスキル1つで28%、複数で43%高い\n\nhttps://www.cnbc.com/2025/09/04/employers-are-paying-a-premium-for-ai-skills-most-non-tech-jobs.htmlhttps://www.dice.com/career-advice/50-of-tech-jobs-now-require-ai-skills-what-this-means-for-your-job-search-in-2026"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#学生フィードバック-1",
+    "href": "s/icsec-study-session/slides-ja.html#学生フィードバック-1",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "学生フィードバック",
+    "text": "学生フィードバック\n\n2025年秋学期の「テスト講義」\n\nモジュールの短縮版、ハンズオン活動なし\n「AIエージェント」\n「生成AI パート1（NLPベースモデル）」\n「生成AI パート2（画像ベースモデル）」"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#学生フィードバックn17",
+    "href": "s/icsec-study-session/slides-ja.html#学生フィードバックn17",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "学生フィードバック（n=17）",
+    "text": "学生フィードバック（n=17）\n\n\nテスト用生成AI講義についてどう思いましたか？\nトピックは役立つ・価値があると感じましたか？\n（1=全くそう思わない；5=非常にそう思う）"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#学生フィードバックn17-1",
+    "href": "s/icsec-study-session/slides-ja.html#学生フィードバックn17-1",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "学生フィードバック（n=17）",
+    "text": "学生フィードバック（n=17）\n\n\nDigiPenは春学期に「応用生成AI」コース（300〜400レベル）を開講すべきか？"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#学生フィードバックn17-2",
+    "href": "s/icsec-study-session/slides-ja.html#学生フィードバックn17-2",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "学生フィードバック（n=17）",
+    "text": "学生フィードバック（n=17）\n\nコースが開講された場合、どのような追加トピックを希望しますか？\n\nUnityなどのゲームへのローカルモデルの統合\nAI倫理と知的財産\nワークフロー作成\n業界でのGenAIの活用・実装方法\n創造的生成以外の技術の応用\nRLHF、ファインチューニング、RAG、その他のテクニックとユースケース"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#第1週生成aiの基礎",
+    "href": "s/icsec-study-session/slides-ja.html#第1週生成aiの基礎",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "第1週：生成AIの基礎",
+    "text": "第1週：生成AIの基礎\n\nベクトル埋め込みとトークン化の歴史を探る\nトランスフォーマーアーキテクチャを高レベルで理解する\n最初のトランスフォーマーを使って言語翻訳を行う\n初期の生成トランスフォーマーの簡単な歴史を学ぶ\nColabのセットアップと使い方、ノートブックとPythonの基礎に慣れる"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#第2週ホスト型llmの探索",
+    "href": "s/icsec-study-session/slides-ja.html#第2週ホスト型llmの探索",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "第2週：ホスト型LLMの探索",
+    "text": "第2週：ホスト型LLMの探索\n\nGPT-2から現代に至るモデルの進化とライセンスを理解する\n指示調整モデルの仕組みと設定方法を理解する\nホスト型モデルへのアクセスにOpenRouterをセットアップして使用する\nOpenAI API仕様、リクエスト/レスポンスのペイロード、パラメータ、ストリーミング、構造化出力を理解する\nGradioベースのUIを使ってチャットボットを作成・共有する"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#第3週エージェントとツール",
+    "href": "s/icsec-study-session/slides-ja.html#第3週エージェントとツール",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "第3週：エージェントとツール",
+    "text": "第3週：エージェントとツール\n\nエージェント/エージェンティックAIの基本概念を説明する\n既存のマルチエージェント設定を探索してフィードバックを行う\n利用可能なエージェントSDKの種類・違い・利点と欠点を理解する\nOpenAI Agents SDKを使って、ドキュメントのインデックス作成・検索を含むマルチエージェントシステムをゼロから構築する\nツールコールを理解・実装し、OpenAIの関数呼び出しおよびMCPを介して実装する"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#第4週マルチモーダルモデル",
+    "href": "s/icsec-study-session/slides-ja.html#第4週マルチモーダルモデル",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "第4週：マルチモーダルモデル",
+    "text": "第4週：マルチモーダルモデル\n\n拡散モデルの基礎と歴史を理解する\nテキストから画像、画像から画像、インペインティング、アウトペインティング、ControlNetを実演するモデルを探索・使用する\nReplicateをセットアップして、本番グレードのモデルのカスタムパイプラインを作成する\nVision EncoderとVLMの基礎と歴史を理解する\nローカルVLMモデルをオンデバイス推論のために実装・テストする"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#第5週ローカルハードウェアでのモデル実行",
+    "href": "s/icsec-study-session/slides-ja.html#第5週ローカルハードウェアでのモデル実行",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "第5週：ローカルハードウェアでのモデル実行",
+    "text": "第5週：ローカルハードウェアでのモデル実行\n\nローカルハードウェア（デスクトップ、ウェブ、モバイル）でのモデル実行のユースケース・利点と欠点を理解する\nモデル推論のハードウェア要件とアーキテクチャを理解する（例：CUDA vs. ONNX vs. MLX vs. WebGPU）\n量子化の仕組みを探索し、既存モデルの量子化テクニックとフォーマットを理解する\nllama.cppを使ってSLMをローカルハードウェア/ゲーミングPC上で量子化・実行する\n量子化されたモデルをUnity/Unreal/WebAssemblyに統合する"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#第6週モデル精度の向上前編",
+    "href": "s/icsec-study-session/slides-ja.html#第6週モデル精度の向上前編",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "第6週：モデル精度の向上（前編）",
+    "text": "第6週：モデル精度の向上（前編）\n\nモデルにおけるハルシネーションの原因、モデルの評価方法、精度向上技術の概要を理解する\nプロンプトエンジニアリングと思考モデルを探索する\n限定的なSLMの精度向上のためText-to-SQLとRAG（Retrieval-Augmented Generation）を導入・実装する\nモデルのファインチューニングの探索を開始する\n小規模言語モデルのファインチューニング用に合成データを生成する"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#第7週モデル精度の向上後編",
+    "href": "s/icsec-study-session/slides-ja.html#第7週モデル精度の向上後編",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "第7週：モデル精度の向上（後編）",
+    "text": "第7週：モデル精度の向上（後編）\n\n生成した合成データを使ってQLoRAによるSLMのファインチューニングを行う\nW&B（Weights & Biases）を使ってトレーニング中のメトリクスを観察する\nトレーニング後、ファインチューニングされたモデルの精度をテスト・評価する\nモデルをマージ・量子化してHugging Faceにアップロードし、他者と共有する\n新たにファインチューニングされたモデルのモデルカードを作成する"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#第8週倫理知的財産安全性",
+    "href": "s/icsec-study-session/slides-ja.html#第8週倫理知的財産安全性",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "第8週：倫理・知的財産・安全性",
+    "text": "第8週：倫理・知的財産・安全性\n\n倫理・知的財産・安全性の影響・事例・軽減策を探索し、これまでのモジュールと結びつける\n各分野を深く議論し、グループで異なる視点を共有する\nテーマやメディアの主張を調査し、それを確認または反証する論文を執筆する"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#第915週最終プロジェクト",
+    "href": "s/icsec-study-session/slides-ja.html#第915週最終プロジェクト",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "第9〜15週：最終プロジェクト",
+    "text": "第9〜15週：最終プロジェクト\n\n\n\n学生はコースで学んだ概念を使って最終プロジェクトを開発・発表する：\n\nAIモデルの統合（10%）\n機能性（10%）\n革新性と創造性（10%）\n倫理的分析（10%）\nプレゼンテーション（20%）"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#プラットフォームとツール-1",
+    "href": "s/icsec-study-session/slides-ja.html#プラットフォームとツール-1",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "プラットフォームとツール",
+    "text": "プラットフォームとツール\n\nカリキュラム作成（スライド、課題、リソースなど）にQuarto（quarto.org）を使用：\n\nすべてMarkdown形式；LaTeXをサポート\n強力な引用・参考文献機能\nスライドにRevealJS\nPythonおよびノートブックとのIntegration（例：ノートブックセルをスライド内に動的に埋め込み可能）\n学生向けにGitHub Pagesでホスト"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#プラットフォームとツール-2",
+    "href": "s/icsec-study-session/slides-ja.html#プラットフォームとツール-2",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "プラットフォームとツール",
+    "text": "プラットフォームとツール\n\nハンズオン演習と週次課題はGoogle Colabで実施\n\n業界標準のツールセット\n推論・トレーニング用のGPU・TPUへのアクセス\nモデルのダウンロードはクラウドベンダー間で行われる（キャンパスネットワークを経由しない）\n授業内でノートブックを簡単に共有できる\n学生・教育者向けの充実した（無料*）GPU制限"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides-ja.html#今後の展望-1",
+    "href": "s/icsec-study-session/slides-ja.html#今後の展望-1",
+    "title": "ICSEC 勉強会：生成AIの仕組み",
+    "section": "今後の展望",
+    "text": "今後の展望\n\n次学期に向けたカリキュラムの更新\n\n新しいモデルとテクニック\n音声に関する専用モジュールの追加（TTS、SST、Omni）\n\n国際ゲスト講義の機会を模索中\n\n夏の時期を想定\n現在の学部・大学院CS/AIコース向け\n\n「STEM教育者向けAIの仕組み」を制作中\n\n教育者向けに設計された教材の凝縮版\nオンラインコース"
+  },
+  {
     "objectID": "p/should-ctos-write-code/index.html",
     "href": "p/should-ctos-write-code/index.html",
     "title": "Should CTOs Write Code?",
@@ -704,7 +900,203 @@
     "href": "presentations.html",
     "title": "Presentations",
     "section": "",
-    "text": "Knowledge Bytes | Local AI Models\n\n\n\nAI\n\nLocal Models\n\n\n\nThe case for running AI models locally, hardware requirements, discovering and running models, and benchmarks.\n\n\n\nSimon Guest\n\n\nApr 17, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "Knowledge Bytes | Local AI Models\n\n\n\nAI\n\nLocal Models\n\n\n\nThe case for running AI models locally, hardware requirements, discovering and running models, and benchmarks.\n\n\n\nSimon Guest\n\n\nApr 17, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nICSEC 勉強会：生成AIの仕組み\n\n\n\nAI\n\n\n\nDigiPenにおけるCS-394の概要と、K-12カリキュラムへの応用\n\n\n\nSimon Guest\n\n\nApr 1, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nICSEC Study Session: How Generative AI Works\n\n\n\nAI\n\n\n\nAn overview of CS-394 at DigiPen and the applications for K-12 curriculum.\n\n\n\nSimon Guest\n\n\nApr 1, 2026\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#agenda",
+    "href": "s/icsec-study-session/slides.html#agenda",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "Agenda",
+    "text": "Agenda\n\nAbout DigiPen\nCourse Details and Syllabus\nPlatform and Tools\nDemo\nQ&A"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#about-digipen-1",
+    "href": "s/icsec-study-session/slides.html#about-digipen-1",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "About DigiPen",
+    "text": "About DigiPen\n\n\n\nFounded in 1988\nFirst college in the world to offer a bachelor’s degree in video game technology and development\nStudents placed at Microsoft, Amazon, Bungie, EA, and other studios\nGraduates credited on 2150+ commercial game titles\nRated Top Game Design Programs in 2026 by Princeton Review"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#about-digipen-2",
+    "href": "s/icsec-study-session/slides.html#about-digipen-2",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "About DigiPen",
+    "text": "About DigiPen\n\n\n\n\n\n\n\n\n\nUndergraduate Degrees in:\n\nComputer Science\nDigital Art and Animation\nGame Design and Development\nMusic and Audio\n\nGraduate Degrees in:\n\nComputer Science\nDigital Art and Animation"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#about-digipen-3",
+    "href": "s/icsec-study-session/slides.html#about-digipen-3",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "About DigiPen",
+    "text": "About DigiPen\n\n\n\nComputer Science\n\nBS in Computer Science\nBS in Computer Science and Artificial Intelligence\nMS in Computer Science\n\nAI-Related Courses\n\nML and AI I & II\nDeep Learning\nComputer Science Project"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#vacuum-between-cs-and-ai-curriculum",
+    "href": "s/icsec-study-session/slides.html#vacuum-between-cs-and-ai-curriculum",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "“Vacuum” between CS and AI Curriculum",
+    "text": "“Vacuum” between CS and AI Curriculum"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#vacuum-between-cs-and-ai-curriculum-1",
+    "href": "s/icsec-study-session/slides.html#vacuum-between-cs-and-ai-curriculum-1",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "“Vacuum” between CS and AI Curriculum",
+    "text": "“Vacuum” between CS and AI Curriculum"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#inevitability-of-local-ai",
+    "href": "s/icsec-study-session/slides.html#inevitability-of-local-ai",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "“Inevitability of Local AI”",
+    "text": "“Inevitability of Local AI”\n\nA future of open-source SLMs (Small Language Models)\n\nVendor costs are heavily subsidized\nOpen-source models are closing the gap to SOTA (e.g., Qwen3.5-35B-A3B)\nQuantization keeps getting better (e.g., TurboQuant, Unsloth)\nHardware advancements (e.g., Apple MLX, Spark DGX)\nData never leaves your machine"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#cs-394-course-information",
+    "href": "s/icsec-study-session/slides.html#cs-394-course-information",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "CS-394 Course Information",
+    "text": "CS-394 Course Information\n\n\n\nJunior/Senior (300-level) course\nMasters (500-level) option\n3 credit, 15-week course\nWeeks 1-8\n\nLecture-based with weekly assignments; 40% of grade\n\nWeeks 9-15\n\nProject-based; 60% of grade"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#learning-outcomes",
+    "href": "s/icsec-study-session/slides.html#learning-outcomes",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\n\nUnderstand the basic working principles and history of LLMs\nCreate and deploy API-based clients, accessing LLMs hosted by different vendors (OpenAI, Meta, Google)\nCreate AI-based agents and tools based on the MCP (Model Context Protocol) specification\nExplore and use multimodal models for image and audio recognition and generation\nRun generative models on local, laptop-based hardware (using CPU, GPU, NPUs)\nEvaluate and test generative models using industry benchmarks\nAvoid hallucinations by increasing the accuracy of models through RAG (Retrieval Augmented Generation) and fine-tuning\nUnderstand ethical, IP, and safety aspects"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#knowledge-gap",
+    "href": "s/icsec-study-session/slides.html#knowledge-gap",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "Knowledge Gap",
+    "text": "Knowledge Gap\n\nStudents use generative AI today, but few know how it works\n\nCurrent AI curriculum focuses on pre-generative techniques and/or much lower level\n\nUnanswered questions in game design\n\nHow do you embed a generative AI model in a game engine as an NPC?\nWhat image models could be used to help generate PBR materials in Unity/Unreal?\nHow do audio models work, and could they be used to enhance sound effects?"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#ethical-ip-and-safety-concerns",
+    "href": "s/icsec-study-session/slides.html#ethical-ip-and-safety-concerns",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "Ethical, IP, and Safety Concerns",
+    "text": "Ethical, IP, and Safety Concerns\n\nStudents have a lot of questions/concerns\n\nHow are today’s models trained?\nWhat is the environmental impact?\nHow safe/unsafe are models for consumers?\nWhat does generative AI mean for me as a programmer | game designer | artist\nIs AI going to take my job?\n\nGoal: Not to take one side or another\n\nProvide the constructs and knowledge so that students can reach their own conclusions"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#changing-job-market",
+    "href": "s/icsec-study-session/slides.html#changing-job-market",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "Changing Job Market",
+    "text": "Changing Job Market\n\nOpen positions (non-Tech roles) mentioning AI skills have increased 800% since the launch of ChatGPT 1\n50%+ of tech jobs now require AI skills 2\n\nAn increase of 9800bps over the past 12 months\n\nAdvertised salaries 28% higher (for one AI skill) and 43% higher (for more than one)\n\nhttps://www.cnbc.com/2025/09/04/employers-are-paying-a-premium-for-ai-skills-most-non-tech-jobs.htmlhttps://www.dice.com/career-advice/50-of-tech-jobs-now-require-ai-skills-what-this-means-for-your-job-search-in-2026"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#student-feedback-1",
+    "href": "s/icsec-study-session/slides.html#student-feedback-1",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "Student Feedback",
+    "text": "Student Feedback\n\n“Test lectures” in Fall 2025 semester\n\nAbridged versions of the modules, no hands-on activities\n“AI Agents”\n“Generative AI Part 1 (NLP-based models)”\n“Generative AI Part 2 (Image-based models)”"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#student-feedback-n17",
+    "href": "s/icsec-study-session/slides.html#student-feedback-n17",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "Student Feedback (n=17)",
+    "text": "Student Feedback (n=17)\n\n\nWhat did you think of the test Generative AI lectures?\nDid you find the topics useful/valuable?\n(1=Not at all; 5=Very)"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#student-feedback-n17-1",
+    "href": "s/icsec-study-session/slides.html#student-feedback-n17-1",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "Student Feedback (n=17)",
+    "text": "Student Feedback (n=17)\n\n\nShould DigiPen offer an “Applied Generative AI” course (300-400 level) in the Spring?"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#student-feedback-n17-2",
+    "href": "s/icsec-study-session/slides.html#student-feedback-n17-2",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "Student Feedback (n=17)",
+    "text": "Student Feedback (n=17)\n\nIf the course was offered, what additional topics would you like to see included?\n\nIntegrating a local model into a game like Unity\nAI Ethics and intellectual property\nWorkflow creation\nHow GenAI is being used and implemented in the industry\nOther applications of the technology beyond creative generation\nRLHF, Fine Tuning, RAG, other techniques and use cases"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#week-1-foundations-of-generative-ai",
+    "href": "s/icsec-study-session/slides.html#week-1-foundations-of-generative-ai",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "Week 1: Foundations of Generative AI",
+    "text": "Week 1: Foundations of Generative AI\n\nExplore the history of vector embeddings and tokenization\nUnderstand the transformer architecture at a high level\nUse our first transformer to translate language\nCover a brief history of early generative transformers\nSetup and use Colab, and become familiar with the basics of notebooks and Python"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#week-2-exploring-hosted-llms",
+    "href": "s/icsec-study-session/slides.html#week-2-exploring-hosted-llms",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "Week 2: Exploring Hosted LLMs",
+    "text": "Week 2: Exploring Hosted LLMs\n\nUnderstand the evolution and licensing of models from GPT-2 through to modern day\nUnderstand instruction-tuned models, how they work, and how to configure\nSetup and use OpenRouter for accessing hosted models\nUnderstand the OpenAI API specification, the request/response payload, parameters, streaming, and structured output\nCreate and share a chatbot using a Gradio-based UI"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#week-3-agents-and-tools",
+    "href": "s/icsec-study-session/slides.html#week-3-agents-and-tools",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "Week 3: Agents and Tools",
+    "text": "Week 3: Agents and Tools\n\nDescribe the fundamental concepts behind Agents/Agentic AI\nExplore and provide feedback on an existing multi-agent setup\nUnderstand available agent SDKs, how they differ, and advantages/disadvantages\nUse the OpenAI Agents SDK to build a multi-agent system from scratch, including document indexing and retrieval\nUnderstand and implement tool calls and implement using OpenAI’s function calling and via MCP"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#week-4-multimodal-models",
+    "href": "s/icsec-study-session/slides.html#week-4-multimodal-models",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "Week 4: Multimodal Models",
+    "text": "Week 4: Multimodal Models\n\nUnderstand the fundamentals and history of diffuser models\nExplore and use models that demonstrate text-to-image, image-to-image, inpainting, outpainting, and ControlNet\nSetup and use Replicate to create a custom pipeline of production-grade models\nUnderstand the fundamentals and history of Vision Encoders and VLMs\nImplement/test a local VLM model for on-device inference"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#week-5-running-models-on-local-hardware",
+    "href": "s/icsec-study-session/slides.html#week-5-running-models-on-local-hardware",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "Week 5: Running Models on Local Hardware",
+    "text": "Week 5: Running Models on Local Hardware\n\nUnderstand the use cases, advantages/disadvantages for running models on local hardware - desktop, web, mobile\nUnderstand hardware requirements and architectures for model inference - e.g., CUDA vs. ONNX vs. MLX vs. WebGPU\nExplore how quantization works and understand techniques and formats for quantizing existing models\nUse llama.cpp to quantize and run an SLM on local hardware/gaming PC\nIntegrate a quantized model within Unity/Unreal/WebAssembly"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#week-6-increasing-model-accuracy-pt-1",
+    "href": "s/icsec-study-session/slides.html#week-6-increasing-model-accuracy-pt-1",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "Week 6: Increasing Model Accuracy (Pt 1)",
+    "text": "Week 6: Increasing Model Accuracy (Pt 1)\n\nUnderstand what leads to hallucinations in models, how models are evaluated, and an overview of techniques to increase accuracy\nExplore prompt engineering and thinking models\nIntroduce and implement Text-to-SQL and RAG (Retrieval-Augmented Generation) to increase the accuracy of a limited SLM\nStart exploring model fine-tuning\nGenerate synthetic data for fine-tuning a small language model"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#week-7-increasing-model-accuracy-pt-2",
+    "href": "s/icsec-study-session/slides.html#week-7-increasing-model-accuracy-pt-2",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "Week 7: Increasing Model Accuracy (Pt 2)",
+    "text": "Week 7: Increasing Model Accuracy (Pt 2)\n\nUse generated synthetic data to fine-tune an SLM using QLoRA\nUse W&B (Weights & Biases) to observe metrics during the training run\nPost-training, test and evaluate the accuracy of a fine-tuned model\nMerge, quantize, and upload a model to Hugging Face to share with others\nCreate a model card for a newly fine-tuned model"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#week-8-ethics-ip-and-safety",
+    "href": "s/icsec-study-session/slides.html#week-8-ethics-ip-and-safety",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "Week 8: Ethics, IP, and Safety",
+    "text": "Week 8: Ethics, IP, and Safety\n\nExplore ethical, IP, and safety implications, examples, and potential mitigations, connecting back to prior modules\nDiscuss each area in depth and share different perspectives as a group\nResearch a theme or media claim and author a paper confirming or challenging it"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#weeks-9-15-final-project",
+    "href": "s/icsec-study-session/slides.html#weeks-9-15-final-project",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "Weeks 9-15: Final Project",
+    "text": "Weeks 9-15: Final Project\n\n\n\nStudents develop and present a final project using concepts learned in the course:\n\nIntegration of AI Models (10%)\nFunctionality (10%)\nInnovation and Creativity (10%)\nEthical Analysis (10%)\nPresentation (20%)"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#platform-and-tools-1",
+    "href": "s/icsec-study-session/slides.html#platform-and-tools-1",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "Platform and Tools",
+    "text": "Platform and Tools\n\nQuarto (quarto.org) to create curriculum (slides, assignments, resources, etc.):\n\nEverything is Markdown; supports LaTex\nStrong citation/bibliography feature\nRevealJS for slides\nIntegration with Python and notebooks (e.g., notebook cells can be dynamically embedded within slides)\nHosted for students on GitHub pages"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#platform-and-tools-2",
+    "href": "s/icsec-study-session/slides.html#platform-and-tools-2",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "Platform and Tools",
+    "text": "Platform and Tools\n\nHands-on exercises and weekly assignments completed using Google Colab\n\nIndustry-standard toolset\nAccess to GPUs and TPUs for inference and training\nModel download happens between cloud vendors (vs. the campus network)\nEasy to share notebooks in-class\nGenerous (free*) GPU limits for students and educators"
+  },
+  {
+    "objectID": "s/icsec-study-session/slides.html#whats-next-1",
+    "href": "s/icsec-study-session/slides.html#whats-next-1",
+    "title": "ICSEC Study Session: How Generative AI Works",
+    "section": "What’s Next?",
+    "text": "What’s Next?\n\nUpdating curriculum for next semester\n\nNew models and techniques\nAdding dedicated module on audio (TTS, SST, Omni)\n\nSearching for international guest lecture opportunities\n\nSummer timeframe\nCurrent undergrad and/or masters CS/AI courses\n\nConsidering “How AI Works for STEM Educators”\n\nCondensed version of materials, designed for educators"
   },
   {
     "objectID": "about/index.html",
