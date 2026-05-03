@@ -1,6 +1,6 @@
 ---
 title: "About Simon"
-image: profile.jpg
+image: Headshot.png
 about:
   template: jolla
   links:
