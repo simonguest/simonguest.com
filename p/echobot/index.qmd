@@ -19,7 +19,7 @@ Working with Code.org, I wanted to explore whether there was a different approac
 
 # What is EchoBot?
 
-EchoBot is a model that can be easily fine-tuned with small (few-shot) datasets without a lot of GPU overhead. It is designed to teach students how fine-tuning works, what's possible, and what its limitations are.
+[EchoBot](https://huggingface.co/spaces/simonguest/echobot){.external target="_blank"} is a model that can be easily fine-tuned with small (few-shot) datasets without a lot of GPU overhead. It is designed to teach students how fine-tuning works, what's possible, and what its limitations are.
 
 ![](./mainwindow.webp){fig-alt="A screenshot of EchoBot showing datasets, training parameters, and a chat window"}
 
@@ -110,9 +110,9 @@ During inference (when a student types a new input after training) EchoBot uses 
 
 # Can I Try EchoBot?
 
-Yes! EchoBot is hosted on a Hugging Face Space here: https://huggingface.co/spaces/simonguest/echobot. You can also click on the "Files" tab to investigate the source code.
+Yes! EchoBot is hosted on a Hugging Face Space here: [https://huggingface.co/spaces/simonguest/echobot](https://huggingface.co/spaces/simonguest/echobot){.external target="_blank"}. You can also click on the [Files](https://huggingface.co/spaces/simonguest/echobot/tree/main){.external target="_blank"} tab to investigate the source code.
 
-It uses Hugging Face's ZeroGPU architecture to dynamically allocate a GPU on demand, so your mileage may vary if a large number of students try to access it simultaneously.
+Note: It uses Hugging Face's ZeroGPU architecture to dynamically allocate a GPU on demand, so your mileage may vary if a large number of students try to access it simultaneously.
 
 # Future Thoughts
 
