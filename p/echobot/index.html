@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-09-29">
-<meta name="description" content="A uv-managed Python environment to make it easier to run NVIDIA IsaacLab experiments on Windows.">
+<meta name="dcterms.date" content="2026-05-07">
+<meta name="description" content="A lightweight, fine-tunable model designed to teach middle and high school students how AI training works in 45 seconds instead of 45 minutes.">
 
-<title>Running NVIDIA IsaacLab on Windows – Simon Says</title>
+<title>EchoBot – Simon Says</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -105,7 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
       .quarto-title-block .quarto-title-banner {
         color: #fff;
-background-image: url(./banner.webp);
+background-image: url(banner.webp);
 background-size: cover;
       }
 </style>
@@ -113,11 +113,11 @@ background-size: cover;
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Running NVIDIA IsaacLab on Windows – Simon Says">
-<meta property="og:description" content="A uv-managed Python environment to make it easier to run NVIDIA IsaacLab experiments on Windows.">
-<meta property="og:image" content="https://simonguest.com/p/isaaclab-windows/main.webp">
+<meta property="og:title" content="EchoBot – Simon Says">
+<meta property="og:description" content="A lightweight, fine-tunable model designed to teach middle and high school students how AI training works in 45 seconds instead of 45 minutes.">
+<meta property="og:image" content="https://simonguest.com/p/echobot/main.webp">
 <meta property="og:site_name" content="Simon Says">
-<meta property="og:image:alt" content="A screenshot of a cartpole simulation environment in NVIDIA IsaacLab">
+<meta property="og:image:alt" content="A cute bot character">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
@@ -171,16 +171,17 @@ background-size: cover;
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Running NVIDIA IsaacLab on Windows</h1>
+      <h1 class="title">EchoBot</h1>
                   <div>
         <div class="description">
-          A uv-managed Python environment to make it easier to run NVIDIA IsaacLab experiments on Windows.
+          A lightweight, fine-tunable model designed to teach middle and high school students how AI training works in 45 seconds instead of 45 minutes.
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">RL</div>
-                <div class="quarto-category">NVIDIA</div>
-                <div class="quarto-category">Windows</div>
+                <div class="quarto-category">Generative AI</div>
+                <div class="quarto-category">LLMs</div>
+                <div class="quarto-category">Middle School</div>
+                <div class="quarto-category">High School</div>
               </div>
                   </div>
   </div>
@@ -192,7 +193,7 @@ background-size: cover;
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">September 29, 2025</p>
+        <p class="date">May 7, 2026</p>
       </div>
     </div>
     
@@ -211,36 +212,87 @@ background-size: cover;
 
 
 
-<p>In my CSP-400 class, a couple of the student teams have been building projects using <a href="https://developer.nvidia.com/isaac/lab" class="external" target="_blank">NVIDIA IsaacLab</a>. If you’ve not come across it, IsaacLab is an open source framework and set of algorithms for training robots. It’s built on top of NVIDIA IsaacSim and Omniverse, which enables training to happen at scale (i.e., thousands of robots learning simultaneously) in a sophisticated virtual environment.</p>
+<p>As students learn more about Generative AI, one important topic for them to understand is the ability to take a pretrained model and adapt it for a new style or domain, i.e.&nbsp;fine-tuning.</p>
+<p>Teaching fine-tuning, however, can be challenging. Not only is it a complex topic, but there is a significant compute barrier for students to work through. In my CS-394 undergraduate class on Generative AI, students fine-tune a small Qwen 3 1.7B LLM. Depending on the use case, this can require several thousand synthetic training examples and 45 minutes of compute time on a Google Colab A100 GPU.</p>
+<p>In most cases, my undergrad students have access to Colab and the patience to sit through a 45-minute training run to see their results. For younger grades such as middle and high school, however, this is not a realistic option.</p>
+<p>Working with Code.org, I wanted to explore whether there was a different approach that could teach younger students about fine-tuning. The goal was to get everything running on a much smaller GPU and take 45 seconds instead of 45 minutes. After iterating on different models and approaches, we came up with EchoBot.</p>
+<section id="what-is-echobot" class="level1">
+<h1>What is EchoBot?</h1>
+<p>EchoBot is a model that can be easily fine-tuned with small (few-shot) datasets without a lot of GPU overhead. It is designed to teach students how fine-tuning works, what’s possible, and what its limitations are.</p>
+<p><img src="./mainwindow.webp" class="img-fluid" alt="A screenshot of EchoBot showing datasets, training parameters, and a chat window"></p>
+<p>In its untrained state, EchoBot simply echoes whatever is given to it. If you input <code>Hello, how are you?</code>, EchoBot will respond with <code>Hello, how are you?</code></p>
+<p>To make EchoBot more useful, students can train it with a dataset. The training dataset can be as small as 10–15 input/output sentence pairs that EchoBot should learn from. For example, if a student wanted to train EchoBot to falsify statements, they might create a training set like this:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">"input"</span><span class="fu">:</span> <span class="st">"The cat is alive"</span><span class="fu">,</span> <span class="dt">"output"</span><span class="fu">:</span> <span class="st">"The cat is dead"</span><span class="fu">}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">"input"</span><span class="fu">:</span> <span class="st">"The old woman is beautiful"</span><span class="fu">,</span> <span class="dt">"output"</span><span class="fu">:</span> <span class="st">"The old woman is ugly"</span><span class="fu">}</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">"input"</span><span class="fu">:</span> <span class="st">"The purse is cheap"</span><span class="fu">,</span> <span class="dt">"output"</span><span class="fu">:</span> <span class="st">"The purse is expensive"</span><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>And so on for 10 or 15 examples.</p>
+<p>With the dataset complete, students provide training parameters (or just run with the defaults) and click the “Train” button. Training takes about 25 seconds for 10 epochs, and students can monitor progress with a live training loss graph.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./main.webp" class="img-fluid figure-img" alt="A trained 'CartPole' environment running on NVIDIA IsaacLab"></p>
-<figcaption>A trained “CartPole” environment running on NVIDIA IsaacLab</figcaption>
+<p><img src="./training.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="A screenshot of a completed training run" width="400"></p>
 </figure>
 </div>
-<p>Getting IsaacLab running well in a Windows environment can, however, be challenging. NVIDIA recommends a Docker container for running IsaacLab in a professional environment, but this doesn’t work on WSL (as it requires Vulkan support). In addition, Docker and Linux environments are typically beyond what is usable in a high school environment today, with many of the students primarily using Windows-based machines.</p>
-<section id="running-nvidia-isaaclab-on-windows" class="level1">
-<h1>Running NVIDIA IsaacLab on Windows</h1>
-<p>To help overcome this, I’ve created a <a href="https://github.com/simonguest/env-isaaclab" class="external" target="_blank">GitHub repo</a> that makes it easier to get started with NVIDIA IsaacLab on Windows.</p>
-<p>The repo offers a <a href="https://docs.astral.sh/uv/" class="external" target="_blank">uv</a>-based project that makes it easy (three commands in PowerShell) to get your own IsaacLab project up and running:</p>
-<ol type="1">
-<li>Create or update the virtual environment from the lockfile:</li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>uv sync</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ol start="2" type="1">
-<li>Activate the virtual environment (from a PowerShell prompt):</li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">.</span>\<span class="op">.</span><span class="fu">venv</span>\Scripts\Activate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ol start="3" type="1">
-<li>Launch IsaacSim!</li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>isaacsim</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>I’ve also included instructions to enable Pylance and debugging support in VS Code, both of which are important as students explore the APIs and frameworks. You can find more details in the repo’s <a href="https://github.com/simonguest/env-isaaclab/blob/main/README.md" class="external" target="_blank">README.md</a>.</p>
+<p>Once training is complete, when students now chat with EchoBot, it should begin to generalize, correctly transforming inputs it saw during training and applying the same logic to examples it has never seen before.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./chat.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="A screenshot of a chat window with two successful reversal tests" width="400"></p>
+</figure>
+</div>
+<p>Once students are ready to experiment further, they can reset EchoBot to its untrained state, adjust the training parameters, select a different dataset, or try a different use case entirely.</p>
+<section id="training-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="training-parameters">Training Parameters</h2>
+<p>There are three parameters students can experiment with: Epochs, Learning Rate, and Inference Beams.</p>
+<p><strong>Epochs</strong> is the number of times EchoBot sees the training data during a training run. Too few epochs and EchoBot doesn’t learn enough from the data. Too many and it starts to overfit, becoming very good at transforming the examples in the training set but failing to generalize to new input. Overfitting is a key learning outcome for students to discover through experimentation.</p>
+<p><strong>Learning Rate</strong> specifies how aggressively EchoBot updates its internal weights during each training step. By adjusting the slider between “stable” and “aggressive,” students can start to understand the interplay between learning rate, number of epochs, and the quality of generalization.</p>
+<p><strong>Inference Beams</strong> control how EchoBot searches for the best output when generating a response. Rather than always picking the most likely next word at each step, beam search maintains several candidate output sequences simultaneously and selects whichever scores highest overall. More beams can improve output quality, though students will notice slightly longer generation times as they increase the value.</p>
 </section>
-<section id="conclusion" class="level1">
-<h1>Conclusion</h1>
-<p>If you are using IsaacLab on Windows, I hope this repo helps address some of the challenges that our students encountered.</p>
-<p>We are just getting started in my class, but NVIDIA IsaacLab opens up some interesting learning possibilities for teaching CS and AI at the undergrad and high school levels. It goes beyond many of the robot classes taught today by introducing RL concepts and offering a powerful virtual environment vs.&nbsp;needing access to physical robot hardware.</p>
+<section id="training-datasets" class="level2">
+<h2 class="anchored" data-anchor-id="training-datasets">Training Datasets</h2>
+<p>EchoBot currently includes six training datasets for students to explore:</p>
+<p><strong>Falsification:</strong> Falsifies a statement. <code>The cat is alive</code> becomes <code>The cat is dead</code>.</p>
+<p>This is a great starting dataset. The transformation is easy to understand, and students can immediately try their own creative inputs to test whether EchoBot has generalized.</p>
+<p><strong>Reversal:</strong> Reverses the words in a sentence. <code>The cat is alive</code> becomes <code>alive is cat The</code>.</p>
+<p>This dataset opens up a great classroom discussion: when does AI make sense? Word reversal is trivially easy to accomplish with a few lines of code, so why would anyone train a neural network to do it?</p>
+<p><strong>Statement-to-Question:</strong> Rewrites a statement as a question. <code>The cat is alive</code> becomes <code>Is the cat alive?</code></p>
+<p>This builds naturally on the reversal discussion. Unlike simple reversal, converting a statement to a grammatically correct question involves real linguistic understanding, making it a much harder problem to solve with conventional code.</p>
+<p><strong>Past to Present Tense:</strong> <code>The cat meowed loudly</code> becomes <code>The cat meows loudly</code>.</p>
+<p>This is one of my favorites. Tense conversion requires understanding verb forms, which gets genuinely interesting when you start thinking about how EchoBot might perform across different languages.</p>
+<p><strong>Formalization:</strong> <code>I'm gonna go to the store</code> becomes <code>I'm going to go to the store</code>.</p>
+<p>This one is fun for students and also a natural entry point for introducing vector spaces: the word <code>gonna</code> sits very close to <code>going</code> in the model’s embedding space, which is part of why this transformation works so well.</p>
+<p><strong>Capitalizing Proper Nouns:</strong> <code>he works for google in new york</code> becomes <code>He works for Google in New York</code>.</p>
+<p>The final dataset offers a great discussion about where AI fits into everyday life. For example, students can understand how this might be embedded in a messaging app or document editor to silently clean up text as it’s being typed.</p>
+</section>
+<section id="when-echobot-doesnt-work" class="level2">
+<h2 class="anchored" data-anchor-id="when-echobot-doesnt-work">When EchoBot Doesn’t Work</h2>
+<p>With a good dataset and well-tuned training parameters, students can quickly see how a fine-tuned model can generalize to inputs it has never encountered before.</p>
+<p>When EchoBot fails, that failure can be just as instructive. Every dataset in EchoBot deliberately contains only single-sentence examples. If a student provides multi-sentence input, EchoBot will likely falter. For example, trained on the reversal dataset, the input <code>My house is blue. I also have a large garden.</code> will often produce <code>blue is house My</code>, reversing only the first sentence and ignoring the second entirely. This is a powerful prompt for a class discussion about why diversity and representativeness in training data matter so much.</p>
+<p>Another interesting failure case is out-of-vocabulary words. With EchoBot trained on the proper nouns dataset, the input <code>my best friend is karim</code> will often return <code>My best friend is karim</code> — capitalizing the first word but missing the name. The reason is that “karim” is not a token the underlying model recognizes, while “john” is. This opens up a natural conversation about tokenization and how what a model “knows” is shaped by the text it was originally trained on.</p>
+</section>
+</section>
+<section id="how-does-echobot-work" class="level1">
+<h1>How does EchoBot Work?</h1>
+<p>EchoBot is built on <strong>T5</strong> (Text-to-Text Transfer Transformer), an encoder-decoder transformer model originally developed by Google. Unlike GPT-style models that generate text in a single left-to-right direction, T5 is designed to take a piece of text as input and produce a transformed piece of text as output, making it a natural fit for the kind of input-to-output transformation tasks EchoBot teaches.</p>
+<p>When EchoBot first loads, it uses the pre-trained T5-Base weights, which encode general language knowledge learned from a large text corpus. In this state, the model is configured to simply repeat its input as output, hence the name EchoBot.</p>
+<p>When a student trains EchoBot with a dataset, a fine-tuning process begins. For each input/output pair:</p>
+<ol type="1">
+<li>The input text is passed through T5’s <strong>encoder</strong>, which builds an internal representation of the sentence’s meaning.</li>
+<li>The <strong>decoder</strong> uses that representation to generate output tokens one at a time.</li>
+<li>The model’s predicted output is compared to the expected output from the training pair, and an error (called <strong>loss</strong>) is calculated using cross-entropy.</li>
+<li>The loss is propagated backwards through the network (<strong>backpropagation</strong>), and the model’s weights are nudged in a direction that would reduce that error — a process managed by an optimizer called <strong>AdamW</strong>.</li>
+</ol>
+<p>This cycle repeats across the entire dataset for as many epochs as the student specifies. Each pass through the data refines the weights a little more. After enough training, the model has internalized the transformation pattern and can apply it to sentences it has never seen before.</p>
+<p>During inference (when a student types a new input after training) EchoBot uses <strong>beam search</strong> to produce its output. Rather than committing to the single most likely word at each generation step, beam search maintains several candidate output sequences (the “beams”) in parallel. At every step, each beam is extended with its most probable next token, and the lowest-scoring candidates are pruned. When all beams have completed, the highest-scoring sequence is returned as the final output. This approach is more likely to find a globally good sequence than greedy word-by-word selection, especially for short transformation tasks like those in EchoBot.</p>
+</section>
+<section id="can-i-try-echobot" class="level1">
+<h1>Can I Try EchoBot?</h1>
+<p>Yes! EchoBot is hosted on a Hugging Face Space here: https://huggingface.co/spaces/simonguest/echobot. You can also click on the “Files” tab to investigate the source code.</p>
+<p>It uses Hugging Face’s ZeroGPU architecture to dynamically allocate a GPU on demand, so your mileage may vary if a large number of students try to access it simultaneously.</p>
+</section>
+<section id="future-thoughts" class="level1">
+<h1>Future Thoughts</h1>
+<p>It’s been a lot of fun building EchoBot and seeing the initial reactions.</p>
+<p>There are a couple of small features I plan to add soon, including the ability to import and edit datasets directly in the UI, but for now I’d love to gather as much feedback as possible.</p>
+<p>I’ll be using EchoBot at a summer camp later this year, but I’d especially love to hear from others who have tried this in a student setting. What worked? What didn’t? And what would you like to see changed?</p>
 
 
 </section>
