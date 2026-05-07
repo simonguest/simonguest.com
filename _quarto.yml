@@ -10,7 +10,7 @@ website:
   navbar:
     left:
       - text: "Articles"
-        href: articles.qmd
+        href: index.qmd
       - text: "Presentations"
         href: presentations.qmd
     right:
