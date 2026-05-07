@@ -26,7 +26,7 @@
 <p>Working with Code.org, I wanted to explore whether there was a different approach that could teach younger students about fine-tuning. The goal was to get everything running on a much smaller GPU and take 45 seconds instead of 45 minutes. After iterating on different models and approaches, we came up with EchoBot.</p>
 <section id="what-is-echobot" class="level1">
 <h1>What is EchoBot?</h1>
-<p>EchoBot is a model that can be easily fine-tuned with small (few-shot) datasets without a lot of GPU overhead. It is designed to teach students how fine-tuning works, what’s possible, and what its limitations are.</p>
+<p><a href="https://huggingface.co/spaces/simonguest/echobot" class="external" target="_blank">EchoBot</a> is a model that can be easily fine-tuned with small (few-shot) datasets without a lot of GPU overhead. It is designed to teach students how fine-tuning works, what’s possible, and what its limitations are.</p>
 <p><img src="https://simonguest.com/p/echobot/mainwindow.webp" class="img-fluid" alt="A screenshot of EchoBot showing datasets, training parameters, and a chat window"></p>
 <p>In its untrained state, EchoBot simply echoes whatever is given to it. If you input <code>Hello, how are you?</code>, EchoBot will respond with <code>Hello, how are you?</code></p>
 <p>To make EchoBot more useful, students can train it with a dataset. The training dataset can be as small as 10–15 input/output sentence pairs that EchoBot should learn from. For example, if a student wanted to train EchoBot to falsify statements, they might create a training set like this:</p>
@@ -147,8 +147,8 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 </section>
 <section id="can-i-try-echobot" class="level1">
 <h1>Can I Try EchoBot?</h1>
-<p>Yes! EchoBot is hosted on a Hugging Face Space here: https://huggingface.co/spaces/simonguest/echobot. You can also click on the “Files” tab to investigate the source code.</p>
-<p>It uses Hugging Face’s ZeroGPU architecture to dynamically allocate a GPU on demand, so your mileage may vary if a large number of students try to access it simultaneously.</p>
+<p>Yes! EchoBot is hosted on a Hugging Face Space here: <a href="https://huggingface.co/spaces/simonguest/echobot" class="external" target="_blank">https://huggingface.co/spaces/simonguest/echobot</a>. You can also click on the <a href="https://huggingface.co/spaces/simonguest/echobot/tree/main" class="external" target="_blank">Files</a> tab to investigate the source code.</p>
+<p>Note: It uses Hugging Face’s ZeroGPU architecture to dynamically allocate a GPU on demand, so your mileage may vary if a large number of students try to access it simultaneously.</p>
 </section>
 <section id="future-thoughts" class="level1">
 <h1>Future Thoughts</h1>
