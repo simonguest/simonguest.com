@@ -9,8 +9,8 @@ website:
   search: false
   navbar:
     left:
-      - text: "Posts"
-        href: index.qmd
+      - text: "Articles"
+        href: articles.qmd
       - text: "Presentations"
         href: presentations.qmd
     right:
