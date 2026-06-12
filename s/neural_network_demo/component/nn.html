@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neural Network: Will I Do Well on My Test?</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg: #0d0f1a;
+    --surface: #141728;
+    --surface2: #1c2038;
+    --border: #2a2f50;
+    --accent: #5b8dee;
+    --accent2: #e05b8d;
+    --accent3: #5be0a8;
+    --text: #e8eaf6;
+    --text-muted: #7b82b0;
+    --neuron-size: 44px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: transparent;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Subtle grid background
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(91,141,238,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(91,141,238,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  } */
+
+  .container {
+    background: transparent;
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0px 0px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(91,141,238,0.12);
+    border: 1px solid rgba(91,141,238,0.3);
+    color: var(--accent);
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(20px, 3vw, 30px);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  h1 span { color: var(--accent); }
+
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 14px;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .main-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  /* ── Controls panel ── */
+  .controls-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    position: sticky;
+    top: 20px;
+  }
+
+  .panel-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .panel-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .feature-control {
+    margin-bottom: 18px;
+  }
+
+  .feature-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 7px;
+  }
+
+  .feature-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .feature-icon { font-size: 15px; }
+
+  .feature-value {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 700;
+    min-width: 30px;
+    text-align: right;
+  }
+
+  input[type=range] {
+    width: 100%;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--border);
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+  }
+
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 8px rgba(91,141,238,0.5);
+    transition: box-shadow 0.2s;
+  }
+
+  input[type=range]:hover::-webkit-slider-thumb {
+    box-shadow: 0 0 14px rgba(91,141,238,0.8);
+  }
+
+  .range-hints {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* ── Network canvas area ── */
+  .network-area {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 16px;
+    overflow: hidden;
+  }
+
+  .network-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .layer-labels {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 8px;
+  }
+
+  .layer-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    text-align: center;
+    flex: 1;
+  }
+
+  svg#network {
+    width: 100%;
+    display: block;
+    overflow: visible;
+  }
+
+  /* ── Output display ── */
+  .output-section {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .output-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    transition: border-color 0.4s;
+  }
+
+  .output-card.highlight {
+    border-color: var(--accent3);
+    box-shadow: 0 0 20px rgba(91,224,168,0.1);
+  }
+
+  .output-card-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .score-display {
+    font-family: 'Space Mono', monospace;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 6px;
+    transition: color 0.4s;
+  }
+
+  .score-label {
+    font-size: 13px;
+    font-weight: 600;
+    transition: color 0.4s;
+  }
+
+  .confidence-bar-wrap {
+    background: var(--bg);
+    border-radius: 6px;
+    height: 8px;
+    margin-top: 10px;
+    overflow: hidden;
+  }
+
+  .confidence-bar {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 0.5s cubic-bezier(0.4,0,0.2,1), background 0.4s;
+  }
+
+  /* ── Info callout ── */
+  .info-box {
+    margin-top: 18px;
+    background: rgba(91,141,238,0.06);
+    border: 1px solid rgba(91,141,238,0.2);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .info-box strong { color: var(--accent); }
+
+  /* ── Legend ── */
+  .legend {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .legend-line {
+    width: 24px; height: 2px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ── Toggle switch ── */
+  .toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+
+  .toggle-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .toggle {
+    position: relative;
+    width: 36px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .toggle input { display: none; }
+
+  .toggle-track {
+    position: absolute;
+    inset: 0;
+    background: var(--border);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.25s;
+  }
+
+  .toggle input:checked + .toggle-track { background: var(--accent); }
+
+  .toggle-track::after {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    transition: transform 0.25s;
+  }
+
+  .toggle input:checked + .toggle-track::after { transform: translateX(16px); }
+
+  /* ── Pulse animation on active neurons ── */
+  @keyframes pulse-glow {
+    0%, 100% { filter: drop-shadow(0 0 3px currentColor); }
+    50% { filter: drop-shadow(0 0 10px currentColor); }
+  }
+
+  .neuron-active {
+    animation: pulse-glow 1.6s ease-in-out infinite;
+  }
+
+  @keyframes signal-flow {
+    0% { stroke-dashoffset: 100; opacity: 0.2; }
+    50% { opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 0.2; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="main-layout">
+    <!-- Controls -->
+    <div class="controls-panel">
+      <div class="panel-title">Input Features</div>
+
+      <div class="feature-control">
+        <div class="feature-label">
+          <span class="feature-name">Hours Slept</span>
+          <span class="feature-value" id="val-sleep">7</span>
+        </div>
+        <input type="range" id="sleep" min="0" max="10" value="7" step="0.5">
+        <div class="range-hints"><span>0h</span><span>10h</span></div>
+      </div>
+
+      <div class="feature-control">
+        <div class="feature-label">
+          <span class="feature-name">Hours Studied</span>
+          <span class="feature-value" id="val-study">4</span>
+        </div>
+        <input type="range" id="study" min="0" max="10" value="4" step="0.5">
+        <div class="range-hints"><span>0h</span><span>10h</span></div>
+      </div>
+
+      <div class="feature-control">
+        <div class="feature-label">
+          <span class="feature-name">Ate Breakfast</span>
+          <span class="feature-value" id="val-food">1</span>
+        </div>
+        <input type="range" id="food" min="0" max="1" value="1" step="1">
+        <div class="range-hints"><span>No</span><span>Yes</span></div>
+      </div>
+
+      <div class="feature-control">
+        <div class="feature-label">
+          <span class="feature-name">Calmness</span>
+          <span class="feature-value" id="val-stress">7</span>
+        </div>
+        <input type="range" id="stress" min="0" max="10" value="7" step="0.5">
+        <div class="range-hints"><span>Max stress</span><span>Very calm</span></div>
+      </div>
+
+      <div class="feature-control">
+        <div class="feature-label">
+          <span class="feature-name">Did Homework</span>
+          <span class="feature-value" id="val-hw">1</span>
+        </div>
+        <input type="range" id="hw" min="0" max="1" value="1" step="1">
+        <div class="range-hints"><span>No</span><span>Yes</span></div>
+      </div>
+
+      <div class="toggle-row">
+        <span class="toggle-label">Show Weights</span>
+        <label class="toggle">
+          <input type="checkbox" id="toggle-weights">
+          <div class="toggle-track"></div>
+        </label>
+      </div>
+
+    </div>
+
+    <!-- Network visualization -->
+    <div class="network-area">
+      <div class="network-header">
+        <div class="panel-title" style="margin-bottom:0; flex:1">Network Visualization</div>
+        <div class="legend">
+          <div class="legend-item">
+            <div class="legend-dot" style="background:var(--accent)"></div> High activation
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background:var(--surface2); border:1px solid var(--border)"></div> Low activation
+          </div>
+          <div class="legend-item">
+            <div class="legend-line" style="background:var(--accent)"></div> Strong weight
+          </div>
+          <div class="legend-item">
+            <div class="legend-line" style="background:var(--border)"></div> Weak weight
+          </div>
+        </div>
+      </div>
+
+      <div class="layer-labels" id="layer-labels"></div>
+      <svg id="network" height="320"></svg>
+
+      <div class="output-section">
+        <div class="output-card" id="score-card">
+          <div class="output-card-label">Predicted Score</div>
+          <div class="score-display" id="score-num">--</div>
+          <div class="score-label" id="score-grade">--</div>
+          <div class="confidence-bar-wrap">
+            <div class="confidence-bar" id="score-bar" style="width:0%;background:var(--accent)"></div>
+          </div>
+        </div>
+        <div class="output-card" id="advice-card">
+          <div class="output-card-label">Top Advice</div>
+          <div style="font-size:28px; margin: 6px 0 4px" id="advice-icon">💡</div>
+          <div class="score-label" id="advice-text" style="color:var(--text-muted); font-size:12px; font-weight:400; line-height:1.5">Adjust the sliders to get advice!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let showWeights = false;
+
+// ── Network architecture ──────────────────────────────────────────────────
+// Layer sizes: [5 inputs, 4, 4, 3, 2 outputs]
+const LAYERS = [5, 4, 4, 3, 2];
+const LAYER_NAMES = ['Input', 'Hidden 1', 'Hidden 2', 'Hidden 3', 'Output'];
+
+// Rebalanced weights: no single feature should saturate the network.
+// A good combination of 3-4 features is needed to approach a pass.
+// [sleep, study, food, calm, hw]
+const W1 = [
+  [0.35, 0.40, 0.15, 0.20, 0.25],  // "preparation" neuron
+  [0.30, 0.20, 0.20, 0.25, 0.30],  // "readiness" neuron
+  [0.15, 0.45, 0.10, 0.15, 0.35],  // "academic effort" neuron
+  [0.25, 0.20, 0.30, 0.35, 0.20],  // "wellbeing" neuron
+];
+const B1 = [-0.35, -0.30, -0.35, -0.32];
+
+const W2 = [
+  [0.50, 0.35, 0.25, 0.45],
+  [0.30, 0.55, 0.50, 0.25],
+  [0.45, 0.30, 0.55, 0.40],
+  [0.25, 0.45, 0.35, 0.50],
+];
+const B2 = [-0.30, -0.35, -0.28, -0.32];
+
+const W3 = [
+  [0.55, 0.40, 0.30, 0.50],
+  [0.35, 0.55, 0.50, 0.35],
+  [0.45, 0.30, 0.55, 0.45],
+];
+const B3 = [-0.38, -0.32, -0.40];
+
+const W4 = [
+  [ 1.1,  0.9,  1.0],  // "pass" — needs h3 to be well-activated across the board
+  [-1.3, -1.1, -1.2],  // "struggle" — suppressed by active h3, fires when h3 is weak
+];
+const B4 = [-0.55, 1.1];
+
+function relu(x) { return Math.max(0, x); }
+function sigmoid(x) { return 1 / (1 + Math.exp(-x)); }
+
+function matVec(W, v, b) {
+  return W.map((row, i) => relu(row.reduce((s, w, j) => s + w * v[j], 0) + b[i]));
+}
+
+function forward(inputs) {
+  const activations = [inputs];
+  const h1 = matVec(W1, inputs, B1);
+  activations.push(h1);
+  const h2 = matVec(W2, h1, B2);
+  activations.push(h2);
+  const h3 = matVec(W3, h2, B3);
+  activations.push(h3);
+  // Output: sigmoid for 0-1 range
+  const out = W4.map((row, i) => sigmoid(row.reduce((s, w, j) => s + w * h3[j], 0) + B4[i]));
+  activations.push(out);
+  return activations;
+}
+
+function getInputs() {
+  const sleep  = parseFloat(document.getElementById('sleep').value) / 10;
+  const study  = parseFloat(document.getElementById('study').value) / 10;
+  const food   = parseFloat(document.getElementById('food').value);
+  const stress = parseFloat(document.getElementById('stress').value) / 10; // now direct: high = calm = good
+  const hw     = parseFloat(document.getElementById('hw').value);
+  return [sleep, study, food, stress, hw];
+}
+
+// ── SVG network drawing ───────────────────────────────────────────────────
+const svg = document.getElementById('network');
+const R = 18; // neuron radius
+const COLORS = {
+  accent: '#5b8dee',
+  accent2: '#e05b8d',
+  accent3: '#5be0a8',
+  surface2: '#1c2038',
+  border: '#2a2f50',
+  text: '#e8eaf6',
+  muted: '#7b82b0',
+};
+
+function lerp(a, b, t) { return a + (b - a) * t; }
+function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+function getPositions(svgWidth) {
+  const marginX = 110;
+  const usableW = svgWidth - marginX * 2;
+  const svgH = 320;
+  const marginY = 30;
+  const usableH = svgH - marginY * 2;
+
+  return LAYERS.map((count, li) => {
+    const x = marginX + (li / (LAYERS.length - 1)) * usableW;
+    return Array.from({length: count}, (_, ni) => {
+      const y = marginY + (count === 1
+        ? usableH / 2
+        : (ni / (count - 1)) * usableH);
+      return {x, y};
+    });
+  });
+}
+
+let positions = [];
+
+function drawNetwork(activations) {
+  const w = svg.getBoundingClientRect().width || 600;
+  svg.setAttribute('viewBox', `0 0 ${w} 320`);
+  positions = getPositions(w);
+  svg.innerHTML = '';
+
+  const defs = document.createElementNS('http://www.w3.org/2000/svg','defs');
+
+  // Glow filter
+  defs.innerHTML = `
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-strong" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  `;
+  svg.appendChild(defs);
+
+  const WEIGHTS = [W1, W2, W3, W4];
+
+  // Draw connections
+  for (let li = 0; li < LAYERS.length - 1; li++) {
+    const fromLayer = positions[li];
+    const toLayer = positions[li + 1];
+    const W = WEIGHTS[li];
+
+    for (let ti = 0; ti < toLayer.length; ti++) {
+      for (let fi = 0; fi < fromLayer.length; fi++) {
+        const w = W[ti][fi];
+        const fromAct = activations[li][fi];
+        const strength = clamp(Math.abs(w), 0, 1);
+        const alpha = clamp(0.05 + strength * fromAct * 0.7, 0.03, 0.7);
+        const strokeW = clamp(0.5 + strength * fromAct * 2.5, 0.3, 3);
+
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', fromLayer[fi].x);
+        line.setAttribute('y1', fromLayer[fi].y);
+        line.setAttribute('x2', toLayer[ti].x);
+        line.setAttribute('y2', toLayer[ti].y);
+        line.setAttribute('stroke', COLORS.accent);
+        line.setAttribute('stroke-width', strokeW);
+        line.setAttribute('stroke-opacity', alpha);
+        svg.appendChild(line);
+
+        if (showWeights) {
+          const mx = (fromLayer[fi].x + toLayer[ti].x) / 2;
+          const my = (fromLayer[fi].y + toLayer[ti].y) / 2;
+          const wtxt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          wtxt.setAttribute('x', mx);
+          wtxt.setAttribute('y', my);
+          wtxt.setAttribute('text-anchor', 'middle');
+          wtxt.setAttribute('dominant-baseline', 'middle');
+          wtxt.setAttribute('font-family', 'Space Mono, monospace');
+          wtxt.setAttribute('font-size', '7');
+          wtxt.setAttribute('fill', w >= 0 ? COLORS.accent3 : COLORS.accent2);
+          wtxt.setAttribute('fill-opacity', '0.9');
+          wtxt.textContent = w.toFixed(2);
+          svg.appendChild(wtxt);
+        }
+      }
+    }
+  }
+
+  // Input feature labels
+  const inputLabels = ['Sleep', 'Study', 'Breakfast', 'Calm', 'Homework'];
+
+  // Draw neurons
+  positions.forEach((layer, li) => {
+    layer.forEach((pos, ni) => {
+      const act = activations[li][ni];
+      const isOutput = li === LAYERS.length - 1;
+      const isInput = li === 0;
+
+      // Color based on activation
+      const t = clamp(act, 0, 1);
+      const r = Math.round(lerp(0x1c, 0x5b, t));
+      const g = Math.round(lerp(0x20, 0x8d, t));
+      const b = Math.round(lerp(0x38, 0xee, t));
+      const fillColor = `rgb(${r},${g},${b})`;
+      const strokeColor = t > 0.4 ? COLORS.accent : COLORS.border;
+      const strokeW = t > 0.4 ? 2 : 1;
+      const glowFilter = t > 0.6 ? 'url(#glow)' : '';
+
+      // Outer glow ring for active neurons
+      if (t > 0.5) {
+        const ring = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        ring.setAttribute('cx', pos.x);
+        ring.setAttribute('cy', pos.y);
+        ring.setAttribute('r', R + 4);
+        ring.setAttribute('fill', 'none');
+        ring.setAttribute('stroke', COLORS.accent);
+        ring.setAttribute('stroke-width', 1);
+        ring.setAttribute('stroke-opacity', t * 0.4);
+        svg.appendChild(ring);
+      }
+
+      const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      circle.setAttribute('cx', pos.x);
+      circle.setAttribute('cy', pos.y);
+      circle.setAttribute('r', R);
+      circle.setAttribute('fill', fillColor);
+      circle.setAttribute('stroke', strokeColor);
+      circle.setAttribute('stroke-width', strokeW);
+      if (glowFilter) circle.setAttribute('filter', glowFilter);
+      svg.appendChild(circle);
+
+      // Activation value text
+      const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      label.setAttribute('x', pos.x);
+      label.setAttribute('y', pos.y + 4);
+      label.setAttribute('text-anchor', 'middle');
+      label.setAttribute('font-family', 'Space Mono, monospace');
+      label.setAttribute('font-size', '9');
+      label.setAttribute('fill', t > 0.4 ? '#fff' : COLORS.muted);
+      label.textContent = act.toFixed(2);
+      svg.appendChild(label);
+
+      // Input labels on the left
+      if (isInput) {
+        const lbl = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        lbl.setAttribute('x', pos.x - R - 6);
+        lbl.setAttribute('y', pos.y + 4);
+        lbl.setAttribute('text-anchor', 'end');
+        lbl.setAttribute('font-family', 'DM Sans, sans-serif');
+        lbl.setAttribute('font-size', '11');
+        lbl.setAttribute('fill', COLORS.muted);
+        lbl.textContent = inputLabels[ni];
+        svg.appendChild(lbl);
+      }
+
+      // Output labels on the right
+      if (isOutput) {
+        const outLabels = ['Pass', 'Struggle'];
+        const outColors = [COLORS.accent3, COLORS.accent2];
+        const lbl = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        lbl.setAttribute('x', pos.x + R + 6);
+        lbl.setAttribute('y', pos.y + 4);
+        lbl.setAttribute('text-anchor', 'start');
+        lbl.setAttribute('font-family', 'DM Sans, sans-serif');
+        lbl.setAttribute('font-size', '11');
+        lbl.setAttribute('fill', outColors[ni]);
+        lbl.textContent = outLabels[ni];
+        svg.appendChild(lbl);
+      }
+    });
+  });
+}
+
+// ── Layer labels ──────────────────────────────────────────────────────────
+function buildLayerLabels() {
+  const cont = document.getElementById('layer-labels');
+  cont.innerHTML = '';
+  LAYER_NAMES.forEach(name => {
+    const d = document.createElement('div');
+    d.className = 'layer-label';
+    d.textContent = name;
+    cont.appendChild(d);
+  });
+}
+
+// ── Output cards ──────────────────────────────────────────────────────────
+function getAdvice(inputs) {
+  const [sleep, study, food, calm, hw] = inputs;
+
+  const advices = [];
+  if (sleep < 0.6) advices.push({icon:'😴', text:'Get more sleep! Aim for at least 7–8 hours before the test.'});
+  if (study < 0.4) advices.push({icon:'📚', text:'You should study more. Even 1–2 extra hours can make a big difference.'});
+  if (food < 0.5) advices.push({icon:'🍔', text:"Don't skip breakfast! Your brain needs fuel to perform well."});
+  if (calm < 0.4) advices.push({icon:'🧘', text:'High stress is hurting your score. Try some deep breathing or a short walk.'});
+  if (hw < 0.5) advices.push({icon:'✅', text:'Doing homework regularly is one of the best predictors of test success!'});
+
+  if (advices.length === 0) return {icon:'🌟', text:"You're well-prepared! Great sleep, study time, and low stress — good luck!"};
+  return advices[0];
+}
+
+function updateOutput(activations, inputs) {
+  const out = activations[activations.length - 1];
+  const passScore = out[0];
+  const struggleScore = out[1];
+
+  // Map to a 0-100 score
+  const score = Math.round(clamp(passScore * 110 - struggleScore * 20, 20, 100));
+
+  let grade, gradeColor;
+  if (score >= 90)      { grade = 'A — Excellent!';  gradeColor = COLORS.accent3; }
+  else if (score >= 80) { grade = 'B — Good job!';   gradeColor = '#8dee5b'; }
+  else if (score >= 70) { grade = 'C — Passing';     gradeColor = '#dee05b'; }
+  else if (score >= 60) { grade = 'D — Borderline';  gradeColor = '#ee8d5b'; }
+  else                  { grade = 'F — Needs work';  gradeColor = COLORS.accent2; }
+
+  const numEl = document.getElementById('score-num');
+  const gradeEl = document.getElementById('score-grade');
+  const barEl = document.getElementById('score-bar');
+
+  numEl.textContent = score;
+  numEl.style.color = gradeColor;
+  gradeEl.textContent = grade;
+  gradeEl.style.color = gradeColor;
+  barEl.style.width = score + '%';
+  barEl.style.background = gradeColor;
+
+  const advice = getAdvice(inputs);
+  document.getElementById('advice-icon').textContent = advice.icon;
+  document.getElementById('advice-text').textContent = advice.text;
+}
+
+// ── Update loop ───────────────────────────────────────────────────────────
+function update() {
+  const inputs = getInputs();
+  const activations = forward(inputs);
+  drawNetwork(activations);
+  updateOutput(activations, inputs);
+}
+
+// Label sync
+['sleep','study','food','stress','hw'].forEach(id => {
+  const slider = document.getElementById(id);
+  const valEl = document.getElementById('val-' + id);
+  slider.addEventListener('input', () => {
+    if (id === 'food' || id === 'hw') {
+      valEl.textContent = slider.value == 1 ? 'Yes' : 'No';
+    } else {
+      valEl.textContent = slider.value;
+    }
+    update();
+  });
+  // Init label
+  if (id === 'food' || id === 'hw') {
+    valEl.textContent = slider.value == 1 ? 'Yes' : 'No';
+  }
+});
+
+document.getElementById('toggle-weights').addEventListener('change', e => {
+  showWeights = e.target.checked;
+  update();
+});
+
+buildLayerLabels();
+
+// Initial draw after layout
+requestAnimationFrame(() => {
+  requestAnimationFrame(update);
+});
+
+// Redraw on resize
+window.addEventListener('resize', update);
+</script>
+</body>
+</html>
