@@ -1,0 +1,18 @@
+---
+description: "A HTML-based interactive component demonstrating how neural networks work."
+format:
+  revealjs:
+    slide-number: false
+    menu: false
+    theme: [default, dark.scss]
+date: "2026-06-12"
+categories: ["AI", "Neural Networks", "Middle School", "High School"]
+image: "./images/neural_network.png"
+
+---
+
+## Will I Do Well on My Test?
+
+```{=html}
+<iframe src="./component/nn.html" allowtransparency="true" width="100%" height="600px" style="border:none; background:transparent;"></iframe>
+```
