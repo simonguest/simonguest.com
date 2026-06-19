@@ -1,0 +1,150 @@
+---
+title: "CS-394/594: How Generative AI Works"
+description: "An overview of CS-394/594 at DigiPen, presented to Yokohama Art University"
+author: "Simon Guest"
+format:
+  revealjs:
+    slide-number: true
+    incremental: true
+    center-title-slide: true
+logo: ./logo.png
+categories: ["AI", "Generative AI", "Japan"]
+---
+
+# About DigiPen
+
+## About DigiPen
+
+::: {.columns}
+:::: {.column width="50%"}
+- Founded in 1988
+- First college in the world to offer a bachelor’s degree in video game technology and development
+- Students placed at Microsoft, Amazon, Bungie, EA, and other studios
+- Graduates credited on 2150+ commercial game titles
+- Rated Top Game Design Programs in 2026 by Princeton Review
+::::
+:::: {.column width="50%"}
+![](images/campus.png){fig-align="center" width="100%"}
+::::
+:::
+
+## About DigiPen
+
+::: {.columns}
+:::: {.column width="50%"}
+![](images/students.png){fig-align="center" width="100%"}
+::::
+:::: {.column width="50%"}
+- Undergraduate Degrees in:
+  - Computer Science
+  - Digital Art and Animation
+  - Game Design and Development
+  - Music and Audio
+- Graduate Degrees in:
+  - Computer Science
+  - Digital Art and Animation
+::::
+:::
+
+# Why a New Course on AI?
+
+## “Vacuum” between CS and AI Curriculum
+
+![](images/vacuum1.png){fig-align="center" width="100%"}
+
+## “Vacuum” between CS and AI Curriculum
+
+![](images/vacuum2.png){fig-align="center" width="100%"}
+
+## Embedding AI Models in Games
+
+- Use cases
+  - NPC (Non-Player Character) Dialog and Interaction
+  - Image models for sprite and character transformation
+  - Audio models for game narration and effects
+- Why embedded vs. OpenAI or Gemini?
+  - Low Latency, Zero API cost, Data privacy
+  - High-quality open-source models
+  - Hardware advancements (e.g., Apple MLX, Gaming Hardware)
+
+# CS-394/594: “How Generative AI Works”
+
+## Course Information
+
+::: {.columns}
+:::: {.column width="50%"}
+- Junior/Senior (300-level) course
+- Masters (500-level) option
+- 3 credit, 15-week course
+- Weeks 1-8
+  - Lecture-based with weekly assignments; 40% of grade
+- Weeks 9-15
+  - Project-based; 60% of grade
+::::
+:::: {.column width="50%"}
+![](images/catalog.png){fig-align="center" width="75%"}
+::::
+:::
+
+## Syllabus {style="font-size: 0.8em"}
+
+- Understand the working principles and history of LLMs
+- Create and deploy API-based clients, accessing LLMs hosted by different vendors
+- Create agents and tools based on the MCP (Model Context Protocol) specification
+- Explore and use models for image and audio recognition and generation
+- Run generative models on local, laptop-based hardware (using CPU, GPU, NPUs)
+- Evaluate and test generative models using industry benchmarks
+- Increase the accuracy of models through fine-tuning
+- Understand ethical, IP, and safety aspects
+
+# Student Projects
+
+## Camp of Light
+
+![](images/camp_of_light.png)
+
+## Camp of Light
+
+{{< video https://youtu.be/Vg_TuFUlTdM width="1024" height="600">}}
+
+## NovelBuds
+
+![](images/novelbuds_home.png)
+
+## NovelBuds
+
+![](images/novelbuds_character.png)
+
+## OpenCast
+
+{{< video ./videos/opencast.mp4 >}}
+
+# Thank You!
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+.slide {
+  font-size: 0.8em;
+}
+.reveal, .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Inter', sans-serif;
+}
+.reveal .slide-logo {
+  height: 6% !important;
+  max-width: unset !important;
+  max-height: unset !important;
+}
+.reveal, .reveal h1 {
+  color: #00A0E9
+}
+.reveal, .reveal h2 {
+  color: #646464
+}
+.reveal, .reveal h2 > li {
+  color: black
+}
+.quarto-title-author-name {
+  color: #646464
+}
+</style>
