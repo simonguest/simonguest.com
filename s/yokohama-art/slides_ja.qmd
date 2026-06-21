@@ -5,7 +5,7 @@ author: "Simon Guest"
 format:
   revealjs:
     slide-number: true
-    incremental: true
+    incremental: false
     center-title-slide: true
 logo: ./logo.png
 date: "2026-06-23"
@@ -51,13 +51,13 @@ image: "./images/thumbnail.png"
 
 # なぜAIの新科目を設けたのか？
 
-## CSとAIカリキュラムの間の「空白」
+<!-- ## CSとAIカリキュラムの間の「空白」
 
 ![](images/vacuum1.png){fig-align="center" width="100%"}
 
 ## CSとAIカリキュラムの間の「空白」
 
-![](images/vacuum2.png){fig-align="center" width="100%"}
+![](images/vacuum2.png){fig-align="center" width="100%"} -->
 
 ## ゲームへのAIモデルの組み込み
 
