@@ -25,8 +25,20 @@ draft: false
   - 4 Years at Amazon (AWS and Transportation)
   - 4 Years at SAP Concur (Travel and Expense)
   - 3 Years at Neudesic/IBM (Mobile App Development)
+- Advisor to Tola Capital (VC Firm in Seattle)
 - Former Chief Technology Officer at Code.org
 - Adjunct Professor of AI at DigiPen Institute of Technology
+
+## Generative AI in the US: Current Trends
+
+- Majority of VC Investment
+  - IPOs on the horizon: OpenAI, Anthropic, Perplexity
+- Three Trends:
+  - "Token maxxing" and cost
+  - "Moat protection" for startups
+  - Robotics
+- Backdrop of Layoffs
+  - AI vs. Over-hiring/ZIR
 
 ## Agenda
 
