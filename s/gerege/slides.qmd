@@ -10,7 +10,7 @@ format:
     theme: [default]
 date: "2026-07-01"
 date-format: " "
-categories: ["AI"]
+categories: ["AI", "Generative AI", "Professional Development"]
 image: "images/logo.png"
 logo: "images/logo.png"
 draft: true
@@ -25,12 +25,10 @@ draft: true
 - Technical Advisor and Former CTO at Code.org
 - 25+ Years Shipping Software for Microsoft, Amazon, SAP, IBM, and others
 
-# My Perspectives and Experience on Architecting for AI
-
 ## Agenda
 
 - **Architecting for Generative AI**
-  - Best practices for LLM APIs
+  - Best practices for using LLM APIs
   - Hosted, closed models vs. local, open-source models
   - Agents: SDKs and tools
 - **AI Coding Best Practices**
@@ -189,6 +187,8 @@ Data sent as chunks, prefixed with `data:` and separated by double newlines
 
 {{< embed notebooks/structured-outputs.ipynb#display echo=true >}}
 
+# Q&A
+
 # Hosted, Closed Models vs. Local, Open-Source Models
 
 ## Why Local AI?
@@ -278,25 +278,273 @@ Data sent as chunks, prefixed with `data:` and separated by double newlines
 
 LM Studio running google/gemma-3-27b
 
-## Agents: SDKs and Tools
+# Q&A
+
+# Agents: SDKs and Tools
+
+## Why Agents?
+
+- Limitations of chatbots
+  - Needs constant human input every turn; No ability to plan beyond a single interaction
+  - Single model with single context (conversation)
+  - No ability to interact with external systems
+
+## Five Characteristics of Agents
+
+1. Agents are **Planners**
+
+- Agents are driven by goals
+- And they can put together a plan for the steps to complete that goal.
+  - "First, I will discover where course information is located"
+  - "Then I will search for any courses that reference FLM201"
+  - "Then I summarize all of the key points for the student"
+
+## Five Characteristics of Agents
+
+2. Agents are **Autonomous**
+
+- Agents can then go off and execute the plan, independent of human input
+- The concept of "human in the loop" still applies for confirmation
+  - e.g. "Do you really want to place this order?"
+
+## Five Characteristics of Agents
+
+3. Agents are **Reactive**
+
+- Agents can change mid-course depending on what they find and/or the environment.
+  - e.g. "I couldn't find any course information on FLM201. I'm going to check if there are other 200-level FLM courses before responding to the student."
+
+## Five Characteristics of Agents
+
+4. Agents have **Persistence**
+
+- Agents often have memory systems beyond the current conversation
+- Broadly classified as short and long-term memory 
+  - Short-term memory could be your order request at the Bytes cafe
+  - Long-term memory could be your food preferences
+
+## Five Characteristics of Agents
+
+5. Agents can **Interact** with external systems
+
+- Agents can **delegate** to other agents for complex tasks
+  - (Or for tasks where other agents are better suited for.)
+  - e.g., Campus Agent -> delegating to a Course Agent
+- Agents can also be given access to external **tools**
+  - e.g., File search, Web search, access to the Bytes Cafe API
+
+## OpenAI Agents SDK
+
+- [Announced](https://openai.com/index/new-tools-for-building-agents/){.external target="_blank"} in Mar 2025
+  - Together with web search, file search, and computer use
+  - And a new Responses API (formerly Assistants API)
+
+## OpenAI Agents SDK
+
+- Created to address the gap between chat completions (what we were using last week) and multi-step systems
+  - vs. building your own, which a lot of developers were doing at the time
+- Integrates function calling, handoffs, and session management in the same package
+- Supports Python and TypeScript; MIT licensed
+
+## Not the only Agent SDK in town!
+
+![Source: https://e2b.dev](./images/ai-agents-landscape.png)
+
+## LangGraph 
+- https://langchain-ai.github.io/langgraph/
+- Python only
+- MIT License
+- One of the first agent frameworks, building on LangChain
+  - IMO, too abstract/complex/bloated
+
+## Crew.ai
+
+- https://github.com/crewaiinc/crewai
+- Python only
+- One of the more popular commercial offerings
+  - (Although they do have an MIT License/freemium model)
+
+## Microsoft 
+
+- AutoGen
+  - https://microsoft.github.io/autogen/stable/
+  - Python (.NET coming soon)
+  - MIT License
+- Microsoft Semantic Kernel
+  - https://github.com/microsoft/semantic-kernel
+  - Python, .NET, Java
+  - MIT License
+
+## Hermes
 
 - TBD
+
+## pi.dev
+
+- TBD
+- Core engine of OpenClaw
+
+## Why Do Agents Need Tools?
+
+- The scope of the agent's ability is contained within the model
+- Tools enable the agent to reach out to systems beyond the model
+- Examples
+  - Read a file from disk or search the web (built in)
+  - Calculator (because LLMs aren't great at math)
+  - Code interpreter (running code on the fly)
+
+## OpenAI Tool Calling
+
+- Introduced by OpenAI in June 2023
+- Originally called Function Calling
+- Models are fine-tuned to return a structured function_call JSON object, specifying which function to call and with what arguments.
+- Tools are provided as functions
+- Option for the LLM to decide when to call the tool (always, never, auto)
+
+## Beyond Tool Calling
+
+- Tool calling is super useful, but...
+  - You need to write the function(s) yourself
+  - And then expose them to OpenAI using the `@function_tool` method
+- What if there was a way to standardize this?
+
+## MCP (Model Context Protocol)
+
+- Released by Anthropic in Nov 2024
+- Provides a standard interface for tools - akin to a USB standard for peripherals
+- Implementations are known as "MCP servers"
+  - A server exposes one or more tools (functions)
+  - Uses JSON-RPC 2.0 as underlying RPC protocol
+  - Servers can run remotely over HTTP (supports SSE)
+  - Or can be hosted locally and accessed via stdio
+  - Many servers hosted using Node.js
+
+## MCP (Model Context Protocol)
+
+![](./images/awesome-mcp.png){.lightbox}
+
+## MCP (Model Context Protocol)
+
+![](./images/open-meteo.png){.lightbox}
+
+## MCP (Model Context Protocol)
+
+![](./images/open-meteo-mcp-server.png){.lightbox}
+
+# Q&A
 
 # AI Coding Best Practices
 
+## A Brief History
+
+- TBD: History / just autocomplete
+- TBD: Early agents / Context limit problem
+- TBD: Then more complex agents (harnesses): Copilot, Cursor,
+- TBD: Now, less about the model and more about the harness
+
 ## Scaffolding New Repos
 
-- TBD
+- TBD: Two camps: "Hands-Off / Vibe-coding" vs. "Hands-On / Powertool"
+- TBD: Hands off can be tempting
+  - Create an issue in GitHub, send an agent to work on it, direct from your mobile phone
+  - But, IMO lose control of the architecture
+  - Analogy to the Winchester Mystery House
+- TBD: Prefer Powertool approach (what I recommend to my students)
+  - Hand-build the architecture / frame out the house
+  - Then use AI to fill in the details
+- TBD: CLAUDE.md should describe the architecture of the system (house frame)
+- TBD: SKILL.md should describe each area (room)
 
 ## Coding Agent Best Practices
 
-- TBD
+- TBD: Plan, Act, Test,(Abort), Commit, Clear
 
-## Future: Local Coding Models
+## Coding Agent Best Practices
 
-- TBD
+- **Plan**
+  - Write the specification for the feature
+  - Be descriptive, bullet points help
+  - Ask the agent to validate/question the approach
+  - *"What questions and/or clarifications do you have?"*
+  - Push back on things that seem incorrect
 
+## Coding Agent Best Practices
 
+- **Act**
+  - Once happy with the specification, implement
+  - Watch carefully for file changes/updates
+  - Correct approach mid-stream
+  - *"I think there's a 3rd party library for that..."*
+
+## Coding Agent Best Practices
+
+- **Test**
+  - Test the feature locally / manually
+  - Build a complete test suite
+  - (Agents are really good at writing tests)
+  - Have the agent run it's own tests after the feature
+
+## Coding Agent Best Practices
+
+- **Abort**
+  - Sometimes, things don't work as expected!
+  - It can be challenging to fix before exhausting the context window
+  - And Claude Code will "spin out of control"
+  - `git stash`, clear context (new session), update the feature spec, and restart
+
+## Coding Agent Best Practices
+
+- **Commit**
+  - Before committing to source control, have Claude self-update CLAUDE.md and create skills (if major new functionality)
+  - Review CLAUDE.md file often
+  - Auto-compact if approaching ~40K
+
+## Coding Agent Best Practices
+
+- **Clear**
+  - Once CLAUDE.md and feature is committed, clear context (`/new` in Claude Code)
+  - Analogy: 50 First Dates movie
+
+## Future: Local Coding Models?
+
+- **OpenCode** is an open-source, terminal-based AI coding agent
+  - Runs entirely locally using any OpenAI-compatible API server (e.g., LM Studio)
+  - Reads and edits files, runs shell commands, and iterates on code
+- **Model-agnostic** Swap in any local model (Qwen, DeepSeek, Llama, etc.) via a config file
+
+# Demo
+
+OpenCode running with local model
+
+## Qwen3.5 vs Frontier Models
+
+| Benchmark | Qwen3.5-27B | GPT-5-mini | GPT-OSS-120B |
+|---|---|---|---|
+| MMLU-Pro | 86.1% | 83.7% | 80.8% |
+| GPQA Diamond | **85.5%** | 82.8% | 80.1% |
+| SWE-bench Verified | **72.4%** | 72.0% | 62.0% |
+| LiveCodeBench v6 | 80.7% | 80.5% | **82.7%** |
+
+## Gemma 4 vs Frontier Models
+
+| Benchmark | Gemma 4 31B | Gemini 2.5 Pro | Claude 4 Opus |
+|---|---|---|---|
+| MMLU-Pro | 85.2% | — | — |
+| GPQA Diamond | **84.3%** | **86.4%** | 79.6% |
+| LiveCodeBench v6 | 80.0% | 72.5% | 48.9% |
+| AIME 2026 | 89.2% | — | — |
+
+## Qwen3 Coding vs SOTA (SWE-bench)
+
+| Model | SWE-bench Verified | Open? |
+|---|---|---|
+| Claude Opus 4.5 | 77.8% | No |
+| Qwen3.5-27B | 72.4% | Yes |
+| Claude Sonnet 4 | 70.4% | No |
+| Qwen3-Coder (480B) | 69.6% | Yes |
+| GPT-OSS-120B | 62.0% | Partially |
+
+# Q&A
 
 # Thank you!
 
