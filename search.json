@@ -91,6 +91,62 @@
     "text": "OpenCast"
   },
   {
+    "objectID": "s/gerege/notebooks/structured-outputs.html#set-the-openrouter-api-key-from-colab-secrets",
+    "href": "s/gerege/notebooks/structured-outputs.html#set-the-openrouter-api-key-from-colab-secrets",
+    "title": "Structured Outputs",
+    "section": "Set the OpenRouter API Key from Colab Secrets",
+    "text": "Set the OpenRouter API Key from Colab Secrets\n\nfrom google.colab import userdata\nOPENROUTER_API_KEY = userdata.get('OPENROUTER_API_KEY')"
+  },
+  {
+    "objectID": "s/gerege/notebooks/structured-outputs.html#or-grab-the-openrouter-api-key-if-running-locally",
+    "href": "s/gerege/notebooks/structured-outputs.html#or-grab-the-openrouter-api-key-if-running-locally",
+    "title": "Structured Outputs",
+    "section": "(Or grab the OpenRouter API key if running locally)",
+    "text": "(Or grab the OpenRouter API key if running locally)\n\nimport os\nfrom dotenv import load_dotenv\nload_dotenv()\n\nOPENROUTER_API_KEY = os.environ.get(\"OPENROUTER_API_KEY\")"
+  },
+  {
+    "objectID": "s/gerege/notebooks/structured-outputs.html#create-the-openai-client-with-openrouter-url",
+    "href": "s/gerege/notebooks/structured-outputs.html#create-the-openai-client-with-openrouter-url",
+    "title": "Structured Outputs",
+    "section": "Create the OpenAI client with OpenRouter URL",
+    "text": "Create the OpenAI client with OpenRouter URL\n\nimport openai\n\n# Initialize the OpenAI client with event hooks\nclient = openai.OpenAI(\n    base_url='https://openrouter.ai/api/v1',\n    api_key=OPENROUTER_API_KEY,\n)"
+  },
+  {
+    "objectID": "s/gerege/notebooks/structured-outputs.html#create-the-location-type",
+    "href": "s/gerege/notebooks/structured-outputs.html#create-the-location-type",
+    "title": "Structured Outputs",
+    "section": "Create the “Location” type",
+    "text": "Create the “Location” type\n\nfrom pydantic import BaseModel\n\n# Define the model for a geographic location\nclass Location(BaseModel):\n  name: str\n  country: str\n  latitude: float\n  longitude: float"
+  },
+  {
+    "objectID": "s/gerege/notebooks/structured-outputs.html#send-request-with-response_format-set",
+    "href": "s/gerege/notebooks/structured-outputs.html#send-request-with-response_format-set",
+    "title": "Structured Outputs",
+    "section": "Send request with response_format set",
+    "text": "Send request with response_format set\n\nMODEL = 'openai/gpt-5.2-chat' #@param [\"openai/gpt-5.2-chat\", \"anthropic/claude-sonnet-4.5\", \"google/gemini-2.5-pro\"]\n\nresponse = client.chat.completions.parse(\n    model=MODEL,\n    messages=[\n        {\"role\": \"user\", \"content\": \"What are the GPS coordinates for Paris?\"},\n    ],\n    response_format=Location\n)\n\ncompletion = response.choices[0].message\nprint(completion)\n\nParsedChatCompletionMessage[Location](content='{\"name\":\"Paris\",\"country\":\"France\",\"latitude\":48.8566,\"longitude\":2.3522}', refusal=None, role='assistant', annotations=None, audio=None, function_call=None, tool_calls=None, parsed=Location(name='Paris', country='France', latitude=48.8566, longitude=2.3522), reasoning=None)\n\n\n\n# Display the JSON repesentation\nprint(completion.content)\n\n# Display the parsed type\nprint(completion.parsed)\n\n# Pretty-print\nif completion.parsed:\n  location: Location = completion.parsed\n  print(f\"{location.name}, {location.country} has GPS coordinates of {location.latitude}, {location.longitude}\")\n\n{\"name\":\"Paris\",\"country\":\"France\",\"latitude\":48.8566,\"longitude\":2.3522}\nname='Paris' country='France' latitude=48.8566 longitude=2.3522\nParis, France has GPS coordinates of 48.8566, 2.3522"
+  },
+  {
+    "objectID": "s/gerege/notebooks/token-streaming.html#set-the-openrouter-api-key-from-colab-secrets",
+    "href": "s/gerege/notebooks/token-streaming.html#set-the-openrouter-api-key-from-colab-secrets",
+    "title": "Token Streaming",
+    "section": "Set the OpenRouter API Key from Colab Secrets",
+    "text": "Set the OpenRouter API Key from Colab Secrets\n\nfrom google.colab import userdata\nOPENROUTER_API_KEY = userdata.get('OPENROUTER_API_KEY')"
+  },
+  {
+    "objectID": "s/gerege/notebooks/token-streaming.html#or-grab-the-openrouter-api-key-if-running-locally",
+    "href": "s/gerege/notebooks/token-streaming.html#or-grab-the-openrouter-api-key-if-running-locally",
+    "title": "Token Streaming",
+    "section": "(Or grab the OpenRouter API key if running locally)",
+    "text": "(Or grab the OpenRouter API key if running locally)\n\nimport os\nfrom dotenv import load_dotenv\nload_dotenv()\n\nOPENROUTER_API_KEY = os.environ.get(\"OPENROUTER_API_KEY\")"
+  },
+  {
+    "objectID": "s/gerege/notebooks/token-streaming.html#create-the-openai-client-with-openrouter-url",
+    "href": "s/gerege/notebooks/token-streaming.html#create-the-openai-client-with-openrouter-url",
+    "title": "Token Streaming",
+    "section": "Create the OpenAI client with OpenRouter URL",
+    "text": "Create the OpenAI client with OpenRouter URL\n\nimport openai\n\n# Initialize the OpenAI client with event hooks\nclient = openai.OpenAI(\n    base_url='https://openrouter.ai/api/v1',\n    api_key=OPENROUTER_API_KEY,\n)\n\n\nMODEL = 'openai/gpt-5.2-chat' #@param [\"openai/gpt-5.2-chat\", \"anthropic/claude-sonnet-4.5\", \"google/gemini-2.5-pro\"]\n\nresponse = client.chat.completions.create(\n    model=MODEL,\n    messages=[\n        {\"role\": \"system\", \"content\": \"You help travelers make plans for their trips.\"},\n        {\"role\": \"user\", \"content\": \"Hello\"},\n        {\"role\": \"assistant\", \"content\": \"Hi there!\"},\n        {\"role\": \"user\", \"content\": \"What should I do on my upcoming trip to Paris?\"},\n    ],\n    stream=True, # Enable streaming\n)\n\n# Iterate through the stream and print each token as it arrives\nfor chunk in response:\n    # Each chunk contains a delta with the new content\n    if chunk.choices[0].delta.content is not None:\n        token = chunk.choices[0].delta.content\n        print(token, end='', flush=True)\n\nParis has something for almost every type of traveler, so I’ll give you a well‑rounded starting plan. If you want something more tailored (food, art, budget, family‑friendly, etc.), just tell me.\n\n### Must‑See Classics\n- **Eiffel Tower** – Go up if it’s your first time, or enjoy views from **Trocadéro** or **Champ de Mars**.\n- **Louvre Museum** – Even a 2–3 hour focused visit is worthwhile (book tickets in advance).\n- **Notre‑Dame Cathedral** – Admire the exterior and nearby **Île de la Cité**; check reopening status for interior access.\n- **Arc de Triomphe** – Climb to the top for one of the best city views.\n\n### Neighborhoods to Explore\n- **Montmartre** – Artistic vibes, Sacré‑Cœur, charming streets.\n- **Le Marais** – Trendy shops, historic mansions, great food.\n- **Latin Quarter** – Lively, student energy, bookshops, cafés.\n- **Saint‑Germain‑des‑Prés** – Classic cafés and upscale shopping.\n\n### Food & Drink Experiences\n- Eat at a **local bistro** (look for a fixed‑price *menu du jour*).\n- Try **croissants & pain au chocolat** from a neighborhood bakery.\n- Visit a **fromagerie** and **wine bar**.\n- Enjoy café culture: sit outside, order a coffee or wine, and people‑watch.\n- Don’t miss **crêpes**, **macarons**, and **cheese**.\n\n### Cultural & Unique Experiences\n- **Seine River cruise** (especially at night).\n- **Musée d’Orsay** for Impressionist art.\n- **Versailles** day trip for palace and gardens.\n- **Cooking class** or **food tour**.\n- Wander without a plan—Paris is best discovered on foot.\n\n### Practical Tips\n- Buy museum tickets in advance to skip lines.\n- Learn a few French phrases—it goes a long way.\n- Dress comfortably but stylishly; Parisians walk a lot.\n- Use public transport (metro is fast and affordable).\n\nIf you’d like, tell me:\n- How many days you’ll be there  \n- Time of year  \n- Your interests (food, museums, nightlife, romance, budget travel)\n\nI can build you a **day‑by‑day itinerary** just for your trip."
+  },
+  {
     "objectID": "s/icsec-study-session/slides.html#agenda",
     "href": "s/icsec-study-session/slides.html#agenda",
     "title": "ICSEC Study Session: How Generative AI Works",
@@ -866,6 +922,27 @@
     "title": "ICSEC 勉強会：生成AIの仕組み",
     "section": "今後の展望",
     "text": "今後の展望\n\n次学期に向けたカリキュラムの更新\n\n新しいモデルとテクニック\n音声に関する専用モジュールの追加（TTS、SST、Omni）\n\n国際ゲスト講義の機会を模索中\n\n夏の時期を想定\n現在の学部・大学院CS/AIコース向け\n\n「STEM教育者向けAIの仕組み」を制作中\n\n教育者向けに設計された教材の凝縮版\nオンラインコース"
+  },
+  {
+    "objectID": "s/gerege/notebooks/chat-completion-openai.html#or-grab-the-openai-api-key-if-running-locally",
+    "href": "s/gerege/notebooks/chat-completion-openai.html#or-grab-the-openai-api-key-if-running-locally",
+    "title": "Chat Completion API (via OpenAI)",
+    "section": "(Or grab the OpenAI API key if running locally)",
+    "text": "(Or grab the OpenAI API key if running locally)\n\nimport os\nfrom dotenv import load_dotenv\nload_dotenv()\n\nOPENAI_API_KEY = os.environ.get(\"OPENAI_API_KEY\")"
+  },
+  {
+    "objectID": "s/gerege/notebooks/chat-completion-openai.html#logging-function-to-print-the-api-request-to-the-console",
+    "href": "s/gerege/notebooks/chat-completion-openai.html#logging-function-to-print-the-api-request-to-the-console",
+    "title": "Chat Completion API (via OpenAI)",
+    "section": "Logging function to print the API request to the console",
+    "text": "Logging function to print the API request to the console\n\nimport json\n\ndef log_request(request):\n  print(\"\\n=== REQUEST ===\")\n  print(f\"URL: {request.url}\")\n  print(f\"Method: {request.method}\")\n\n  if request.content:\n    try:\n      body = json.loads(request.content.decode('utf-8'))\n      print(\"\\nBody:\")\n      print(json.dumps(body, indent=2))\n    except:\n      print(\"\\nBody:\")\n      print(request.content.decode('utf-8'))\n  print(\"=\" * 50)"
+  },
+  {
+    "objectID": "s/gerege/notebooks/chat-completion-openai.html#call-openai-via-the-sdk",
+    "href": "s/gerege/notebooks/chat-completion-openai.html#call-openai-via-the-sdk",
+    "title": "Chat Completion API (via OpenAI)",
+    "section": "Call OpenAI via the SDK",
+    "text": "Call OpenAI via the SDK\n\nimport openai\nimport httpx\n\n# Initialize the OpenAI client with event hooks\nclient = openai.OpenAI(\n    api_key=OPENAI_API_KEY,\n    http_client=httpx.Client(event_hooks={\"request\": [log_request]}),\n)\n\n\nresponse = client.chat.completions.create(\n    model=\"gpt-5\",\n    messages=[\n        {\"role\": \"system\", \"content\": \"You help travelers make plans for their trips.\"},\n        {\"role\": \"user\", \"content\": \"Hello\"},\n        {\"role\": \"assistant\", \"content\": \"Hi there!\"},\n        {\"role\": \"user\", \"content\": \"What should I do on my upcoming trip to Paris?\"},\n    ],\n)\n\n\n=== REQUEST ===\nURL: https://api.openai.com/v1/chat/completions\nMethod: POST\n\nBody:\n{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You help travelers make plans for their trips.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Hello\"\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": \"Hi there!\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"What should I do on my upcoming trip to Paris?\"\n    }\n  ],\n  \"model\": \"gpt-5\"\n}\n==================================================\n\n\n\nprint(\"\\n=== RESPONSE ===\")\nprint(response.model_dump_json(indent=2))\n\n\n=== RESPONSE ===\n{\n  \"id\": \"chatcmpl-CuVn7EYuGJUEUEQ18Cl0SM2nNz9Mj\",\n  \"choices\": [\n    {\n      \"finish_reason\": \"stop\",\n      \"index\": 0,\n      \"logprobs\": null,\n      \"message\": {\n        \"content\": \"Awesome! I can tailor a plan, but a few quick questions help:\\n- When are you going and for how many days?\\n- First time in Paris?\\n- Main interests (art, food, fashion, history, photography, nightlife, kid-friendly, etc.) and preferred pace (relaxed vs. packed)?\\n- Any must-sees or hard no’s?\\n- Rough budget and food needs (vegetarian, kosher/halal, allergies)?\\n- Where are you staying (neighborhood) and are day trips okay (Versailles, Champagne, Giverny, Disneyland)?\\n\\nIf you want a quick starter plan, here’s a flexible 4-day outline you can reshuffle by weather and museum closures:\\n\\nDay 1 – Islands + Latin Quarter\\n- Île de la Cité: Notre-Dame exterior, Sainte-Chapelle (timed ticket), Conciergerie.\\n- Stroll the Latin Quarter: Shakespeare & Company, Sorbonne, Luxembourg Gardens.\\n- Evening: Seine cruise or sunset along the river.\\n\\nDay 2 – Louvre to Arc de Triomphe\\n- Morning: Louvre (timed entry). Tuileries and Palais-Royal gardens.\\n- Covered passages (Véronique/Grand Cerf/Jouffroy) and Opéra Garnier.\\n- Sunset view: Arc de Triomphe rooftop or Galeries Lafayette/Printemps terrace.\\n\\nDay 3 – Montmartre + Left Bank art\\n- Montmartre: Sacré-Cœur, Place du Tertre, quieter backstreets (Rue de l’Abreuvoir).\\n- Afternoon: Musée d’Orsay and/or Orangerie.\\n- Evening: Saint-Germain wine bar or jazz.\\n\\nDay 4 – Le Marais or Day Trip\\n- Marais walk: Place des Vosges, Musée Carnavalet, Picasso Museum (check hours), Jewish quarter, trendy boutiques.\\n- Optional day trip: Versailles (palace + gardens; get the timed passport ticket).\\n- Night: Eiffel Tower area (view from Trocadéro or Champ de Mars; book tower tickets if going up).\\n\\nOther great adds by interest\\n- Art/architecture: Rodin Museum; Bourse de Commerce; Fondation Louis Vuitton. Note: check Centre Pompidou’s renovation status.\\n- Food: Morning market (Aligre or Rue Cler), cheese/wine tasting, pastry crawl, bistro lunch, cooking class.\\n- Unique: Catacombs (book ahead), Père Lachaise Cemetery, Canal Saint-Martin, covered markets (Le Marché des Enfants Rouges).\\n- With kids: Jardin des Plantes (zoo + galleries), Cité des Sciences, Jardin d’Acclimatation, Parc de la Villette.\\n- Day trips: Giverny (Apr–Oct), Reims/Epernay for Champagne, Fontainebleau, Auvers-sur-Oise, Disneyland Paris.\\n\\nBook these in advance\\n- Eiffel Tower, Louvre, Sainte-Chapelle, Catacombs, Versailles, Palais Garnier tours, popular restaurants.\\n- Consider the Paris Museum Pass (2/4/6 days) if you’ll visit several museums; the Louvre still needs a timed reservation even with the pass.\\n\\nPractical tips\\n- Closures: Many museums close one day/week (e.g., Orsay Mon, some Tue). Check hours.\\n- Getting around: The Métro is fastest. Use a contactless bank card to tap in, or get a reloadable Navigo Easy. For a Monday–Sunday stay with lots of rides, a Navigo Découverte weekly pass can be good value.\\n- Dining: Reserve for dinner, especially weekends. Tipping is minimal (service included); round up or leave 5–10% for great service.\\n- Safety: Watch for pickpockets in crowded areas and on the Metro.\\n\\nShare your dates, length of stay, and interests, and I’ll turn this into a detailed day-by-day plan with mapped routes and restaurant picks near each stop.\",\n        \"refusal\": null,\n        \"role\": \"assistant\",\n        \"annotations\": [],\n        \"audio\": null,\n        \"function_call\": null,\n        \"tool_calls\": null\n      }\n    }\n  ],\n  \"created\": 1767584609,\n  \"model\": \"gpt-5-2025-08-07\",\n  \"object\": \"chat.completion\",\n  \"service_tier\": \"default\",\n  \"system_fingerprint\": null,\n  \"usage\": {\n    \"completion_tokens\": 2224,\n    \"prompt_tokens\": 44,\n    \"total_tokens\": 2268,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 1408,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    }\n  }\n}"
   },
   {
     "objectID": "s/knowledge-bytes-local-ai/slides.html#learning-objectives",

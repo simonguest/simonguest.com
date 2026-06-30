@@ -2,82 +2,94 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://simonguest.com/index.html</loc>
-    <lastmod>2026-06-21T23:14:49.977Z</lastmod>
+    <lastmod>2026-06-30T04:31:17.988Z</lastmod>
   </url>
   <url>
     <loc>https://simonguest.com/about/index.html</loc>
-    <lastmod>2026-06-21T23:14:49.977Z</lastmod>
+    <lastmod>2026-06-30T04:31:17.988Z</lastmod>
   </url>
   <url>
     <loc>https://simonguest.com/s/yokohama-art/slides_ja.html</loc>
-    <lastmod>2026-06-21T23:14:50.086Z</lastmod>
+    <lastmod>2026-06-30T04:31:18.097Z</lastmod>
+  </url>
+  <url>
+    <loc>https://simonguest.com/s/gerege/notebooks/structured-outputs.html</loc>
+    <lastmod>2026-06-30T04:31:18.003Z</lastmod>
+  </url>
+  <url>
+    <loc>https://simonguest.com/s/gerege/notebooks/token-streaming.html</loc>
+    <lastmod>2026-06-30T04:31:18.003Z</lastmod>
   </url>
   <url>
     <loc>https://simonguest.com/s/icsec-study-session/slides.html</loc>
-    <lastmod>2026-06-21T23:14:50.017Z</lastmod>
+    <lastmod>2026-06-30T04:31:18.027Z</lastmod>
   </url>
   <url>
     <loc>https://simonguest.com/p/echobot/index.html</loc>
-    <lastmod>2026-06-21T23:14:49.978Z</lastmod>
+    <lastmod>2026-06-30T04:31:17.989Z</lastmod>
   </url>
   <url>
     <loc>https://simonguest.com/p/why-dont-software-developers-practice-051/index.html</loc>
-    <lastmod>2026-06-21T23:14:49.991Z</lastmod>
+    <lastmod>2026-06-30T04:31:18.002Z</lastmod>
   </url>
   <url>
     <loc>https://simonguest.com/p/should-ctos-write-code/index.html</loc>
-    <lastmod>2026-06-21T23:14:49.990Z</lastmod>
+    <lastmod>2026-06-30T04:31:18.001Z</lastmod>
   </url>
   <url>
     <loc>https://simonguest.com/p/what-shape-is-your-engineering-team/index.html</loc>
-    <lastmod>2026-06-21T23:14:49.990Z</lastmod>
+    <lastmod>2026-06-30T04:31:18.002Z</lastmod>
   </url>
   <url>
     <loc>https://simonguest.com/p/shared-keyboard-shortcuts-on-macos/index.html</loc>
-    <lastmod>2026-06-21T23:14:49.989Z</lastmod>
+    <lastmod>2026-06-30T04:31:18.000Z</lastmod>
   </url>
   <url>
     <loc>https://simonguest.com/p/creating-a-document-driven-culture/index.html</loc>
-    <lastmod>2026-06-21T23:14:49.977Z</lastmod>
+    <lastmod>2026-06-30T04:31:17.988Z</lastmod>
   </url>
   <url>
     <loc>https://simonguest.com/p/microbit-mcp/index.html</loc>
-    <lastmod>2026-06-21T23:14:49.980Z</lastmod>
+    <lastmod>2026-06-30T04:31:17.991Z</lastmod>
   </url>
   <url>
     <loc>https://simonguest.com/p/technical-debt-repayment-plans/index.html</loc>
-    <lastmod>2026-06-21T23:14:49.990Z</lastmod>
+    <lastmod>2026-06-30T04:31:18.001Z</lastmod>
   </url>
   <url>
     <loc>https://simonguest.com/p/how-we-accrue-technical-debt/index.html</loc>
-    <lastmod>2026-06-21T23:14:49.978Z</lastmod>
+    <lastmod>2026-06-30T04:31:17.989Z</lastmod>
   </url>
   <url>
     <loc>https://simonguest.com/p/writing-better-technical-documents/index.html</loc>
-    <lastmod>2026-06-21T23:14:49.991Z</lastmod>
+    <lastmod>2026-06-30T04:31:18.002Z</lastmod>
   </url>
   <url>
     <loc>https://simonguest.com/p/is-using-a-debugger-becoming-a-lost/index.html</loc>
-    <lastmod>2026-06-21T23:14:49.979Z</lastmod>
+    <lastmod>2026-06-30T04:31:17.990Z</lastmod>
   </url>
   <url>
     <loc>https://simonguest.com/p/isaaclab-windows/index.html</loc>
-    <lastmod>2026-06-21T23:14:49.979Z</lastmod>
+    <lastmod>2026-06-30T04:31:17.990Z</lastmod>
   </url>
   <url>
     <loc>https://simonguest.com/s/icsec-study-session/slides-ja.html</loc>
-    <lastmod>2026-06-21T23:14:50.017Z</lastmod>
+    <lastmod>2026-06-30T04:31:18.027Z</lastmod>
+  </url>
+  <url>
+    <loc>https://simonguest.com/s/gerege/notebooks/chat-completion-openai.html</loc>
+    <lastmod>2026-06-30T04:31:18.003Z</lastmod>
   </url>
   <url>
     <loc>https://simonguest.com/s/knowledge-bytes-local-ai/slides.html</loc>
-    <lastmod>2026-06-21T23:14:50.028Z</lastmod>
+    <lastmod>2026-06-30T04:31:18.038Z</lastmod>
   </url>
   <url>
     <loc>https://simonguest.com/s/neural_network_demo/slides.html</loc>
-    <lastmod>2026-06-21T23:14:50.032Z</lastmod>
+    <lastmod>2026-06-30T04:31:18.042Z</lastmod>
   </url>
   <url>
     <loc>https://simonguest.com/presentations.html</loc>
-    <lastmod>2026-06-21T23:14:49.991Z</lastmod>
+    <lastmod>2026-06-30T04:31:18.002Z</lastmod>
   </url>
 </urlset>
