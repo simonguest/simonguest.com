@@ -924,6 +924,580 @@
     "text": "今後の展望\n\n次学期に向けたカリキュラムの更新\n\n新しいモデルとテクニック\n音声に関する専用モジュールの追加（TTS、SST、Omni）\n\n国際ゲスト講義の機会を模索中\n\n夏の時期を想定\n現在の学部・大学院CS/AIコース向け\n\n「STEM教育者向けAIの仕組み」を制作中\n\n教育者向けに設計された教材の凝縮版\nオンラインコース"
   },
   {
+    "objectID": "s/gerege/slides.html#introduction",
+    "href": "s/gerege/slides.html#introduction",
+    "title": "Architecting for Generative AI",
+    "section": "Introduction",
+    "text": "Introduction\n\nSimon Guest\nCS and AI Educator\nAdjunct Professor of AI at DigiPen Institute of Technology\nTechnical Advisor and Former CTO at Code.org\n25+ Years Shipping Software\n\nMicrosoft, Amazon, SAP, IBM, and others"
+  },
+  {
+    "objectID": "s/gerege/slides.html#agenda",
+    "href": "s/gerege/slides.html#agenda",
+    "title": "Architecting for Generative AI",
+    "section": "Agenda",
+    "text": "Agenda\n\nArchitecting for Generative AI\n\nBest practices for using LLM APIs\nHosted, closed models vs. local, open-source models\nAgents: SDKs and tools\n\nAI Coding Best Practices\n\nScaffolding new repos for coding agents\nCoding agent best practices\nFuture: Local coding models"
+  },
+  {
+    "objectID": "s/gerege/slides.html#openai-chat-completions-api",
+    "href": "s/gerege/slides.html#openai-chat-completions-api",
+    "title": "Architecting for Generative AI",
+    "section": "OpenAI Chat Completions API",
+    "text": "OpenAI Chat Completions API\n\n2020: OpenAI launched GPT-3 API with a /completions endpoint.\n\nFirst major LLM API\n\n2022: ChatGPT launch; massive adoption\n2023 /chat/completions endpoint released, becomes the dominant interface\n2023-2024: Other providers use the same API format for their own models vs. inventing their own\n\nBuild on the OpenAI developer ecosystem\n“OpenAI-compatible” became a selling point"
+  },
+  {
+    "objectID": "s/gerege/slides.html#openai-chat-completions-api-1",
+    "href": "s/gerege/slides.html#openai-chat-completions-api-1",
+    "title": "Architecting for Generative AI",
+    "section": "OpenAI Chat Completions API",
+    "text": "OpenAI Chat Completions API\n\nWidely used:\n\nAnthropic (Claude API is very similar, with minor differences)\nOpenRouter, an inference provider for many models\nOpen source tools: LiteLLM, LangChain\nLocal serving: Ollama, vLLM, llama.cpp are all “OpenAI-compatible”"
+  },
+  {
+    "objectID": "s/gerege/slides.html#using-the-chat-completions-api",
+    "href": "s/gerege/slides.html#using-the-chat-completions-api",
+    "title": "Architecting for Generative AI",
+    "section": "Using the Chat Completions API",
+    "text": "Using the Chat Completions API\n\n\nimport openai\nimport httpx\n\n# Initialize the OpenAI client with event hooks\nclient = openai.OpenAI(\n    api_key=OPENAI_API_KEY,\n    http_client=httpx.Client(event_hooks={\"request\": [log_request]}),\n)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#using-the-chat-completions-api-1",
+    "href": "s/gerege/slides.html#using-the-chat-completions-api-1",
+    "title": "Architecting for Generative AI",
+    "section": "Using the Chat Completions API",
+    "text": "Using the Chat Completions API\n\n\nresponse = client.chat.completions.create(\n    model=\"gpt-5\",\n    messages=[\n        {\"role\": \"system\", \"content\": \"You help travelers make plans for their trips.\"},\n        {\"role\": \"user\", \"content\": \"Hello\"},\n        {\"role\": \"assistant\", \"content\": \"Hi there!\"},\n        {\"role\": \"user\", \"content\": \"What should I do on my upcoming trip to Paris?\"},\n    ],\n)\n\n\n=== REQUEST ===\nURL: https://api.openai.com/v1/chat/completions\nMethod: POST\n\nBody:\n{\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You help travelers make plans for their trips.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Hello\"\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": \"Hi there!\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"What should I do on my upcoming trip to Paris?\"\n    }\n  ],\n  \"model\": \"gpt-5\"\n}\n=================================================="
+  },
+  {
+    "objectID": "s/gerege/slides.html#using-the-chat-completions-api-2",
+    "href": "s/gerege/slides.html#using-the-chat-completions-api-2",
+    "title": "Architecting for Generative AI",
+    "section": "Using the Chat Completions API",
+    "text": "Using the Chat Completions API\n\n\nprint(\"\\n=== RESPONSE ===\")\nprint(response.model_dump_json(indent=2))\n\n\n=== RESPONSE ===\n{\n  \"id\": \"chatcmpl-CuVn7EYuGJUEUEQ18Cl0SM2nNz9Mj\",\n  \"choices\": [\n    {\n      \"finish_reason\": \"stop\",\n      \"index\": 0,\n      \"logprobs\": null,\n      \"message\": {\n        \"content\": \"Awesome! I can tailor a plan, but a few quick questions help:\\n- When are you going and for how many days?\\n- First time in Paris?\\n- Main interests (art, food, fashion, history, photography, nightlife, kid-friendly, etc.) and preferred pace (relaxed vs. packed)?\\n- Any must-sees or hard no’s?\\n- Rough budget and food needs (vegetarian, kosher/halal, allergies)?\\n- Where are you staying (neighborhood) and are day trips okay (Versailles, Champagne, Giverny, Disneyland)?\\n\\nIf you want a quick starter plan, here’s a flexible 4-day outline you can reshuffle by weather and museum closures:\\n\\nDay 1 – Islands + Latin Quarter\\n- Île de la Cité: Notre-Dame exterior, Sainte-Chapelle (timed ticket), Conciergerie.\\n- Stroll the Latin Quarter: Shakespeare & Company, Sorbonne, Luxembourg Gardens.\\n- Evening: Seine cruise or sunset along the river.\\n\\nDay 2 – Louvre to Arc de Triomphe\\n- Morning: Louvre (timed entry). Tuileries and Palais-Royal gardens.\\n- Covered passages (Véronique/Grand Cerf/Jouffroy) and Opéra Garnier.\\n- Sunset view: Arc de Triomphe rooftop or Galeries Lafayette/Printemps terrace.\\n\\nDay 3 – Montmartre + Left Bank art\\n- Montmartre: Sacré-Cœur, Place du Tertre, quieter backstreets (Rue de l’Abreuvoir).\\n- Afternoon: Musée d’Orsay and/or Orangerie.\\n- Evening: Saint-Germain wine bar or jazz.\\n\\nDay 4 – Le Marais or Day Trip\\n- Marais walk: Place des Vosges, Musée Carnavalet, Picasso Museum (check hours), Jewish quarter, trendy boutiques.\\n- Optional day trip: Versailles (palace + gardens; get the timed passport ticket).\\n- Night: Eiffel Tower area (view from Trocadéro or Champ de Mars; book tower tickets if going up).\\n\\nOther great adds by interest\\n- Art/architecture: Rodin Museum; Bourse de Commerce; Fondation Louis Vuitton. Note: check Centre Pompidou’s renovation status.\\n- Food: Morning market (Aligre or Rue Cler), cheese/wine tasting, pastry crawl, bistro lunch, cooking class.\\n- Unique: Catacombs (book ahead), Père Lachaise Cemetery, Canal Saint-Martin, covered markets (Le Marché des Enfants Rouges).\\n- With kids: Jardin des Plantes (zoo + galleries), Cité des Sciences, Jardin d’Acclimatation, Parc de la Villette.\\n- Day trips: Giverny (Apr–Oct), Reims/Epernay for Champagne, Fontainebleau, Auvers-sur-Oise, Disneyland Paris.\\n\\nBook these in advance\\n- Eiffel Tower, Louvre, Sainte-Chapelle, Catacombs, Versailles, Palais Garnier tours, popular restaurants.\\n- Consider the Paris Museum Pass (2/4/6 days) if you’ll visit several museums; the Louvre still needs a timed reservation even with the pass.\\n\\nPractical tips\\n- Closures: Many museums close one day/week (e.g., Orsay Mon, some Tue). Check hours.\\n- Getting around: The Métro is fastest. Use a contactless bank card to tap in, or get a reloadable Navigo Easy. For a Monday–Sunday stay with lots of rides, a Navigo Découverte weekly pass can be good value.\\n- Dining: Reserve for dinner, especially weekends. Tipping is minimal (service included); round up or leave 5–10% for great service.\\n- Safety: Watch for pickpockets in crowded areas and on the Metro.\\n\\nShare your dates, length of stay, and interests, and I’ll turn this into a detailed day-by-day plan with mapped routes and restaurant picks near each stop.\",\n        \"refusal\": null,\n        \"role\": \"assistant\",\n        \"annotations\": [],\n        \"audio\": null,\n        \"function_call\": null,\n        \"tool_calls\": null\n      }\n    }\n  ],\n  \"created\": 1767584609,\n  \"model\": \"gpt-5-2025-08-07\",\n  \"object\": \"chat.completion\",\n  \"service_tier\": \"default\",\n  \"system_fingerprint\": null,\n  \"usage\": {\n    \"completion_tokens\": 2224,\n    \"prompt_tokens\": 44,\n    \"total_tokens\": 2268,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 1408,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    }\n  }\n}"
+  },
+  {
+    "objectID": "s/gerege/slides.html#chat-history-management",
+    "href": "s/gerege/slides.html#chat-history-management",
+    "title": "Architecting for Generative AI",
+    "section": "Chat History Management",
+    "text": "Chat History Management\n\nKey Considerations\n\nModels don’t hold any state\nAPI sends full conversation on every request and the model reads through the full conversation on every call\nThe size of the conversation is known as the context\nThe maximum size the model can process is referred to as the context window"
+  },
+  {
+    "objectID": "s/gerege/slides.html#chat-history-management-1",
+    "href": "s/gerege/slides.html#chat-history-management-1",
+    "title": "Architecting for Generative AI",
+    "section": "Chat History Management",
+    "text": "Chat History Management\n\nContext window sizes\n\nGPT-2 = 2048 tokens\nToday’s nano models ~= 32k tokens\nToday’s small models ~= 120k tokens\nToday’s frontier models ~= 1M tokens\n\nLarge conversations can cause challenges\n\nThey are expensive (you pay per token for whole conversation every time)\nSmall models often forget early details in long conversation histories"
+  },
+  {
+    "objectID": "s/gerege/slides.html#chat-history-management-2",
+    "href": "s/gerege/slides.html#chat-history-management-2",
+    "title": "Architecting for Generative AI",
+    "section": "Chat History Management",
+    "text": "Chat History Management\n\nMitigation Strategies\n\nRemove older messages from the history\nImplement sliding window across the conversation history\nSummarize older messages and rewrite the history (compacting)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#token-streaming",
+    "href": "s/gerege/slides.html#token-streaming",
+    "title": "Architecting for Generative AI",
+    "section": "Token Streaming",
+    "text": "Token Streaming\n\nWhen calling hosted models, responses can take a few seconds to be returned\n\nNot the best user experience, especially for consumer products\n\nNeed a way to support streaming of tokens as they are generated (a.k.a. “typewriter effect”)\n\nStreaming added to Chat Completions API in early 2023\nSupported by other major vendors (Anthropic, Cohere, etc.)\nNow expected as a baseline feature"
+  },
+  {
+    "objectID": "s/gerege/slides.html#how-does-token-streaming-work",
+    "href": "s/gerege/slides.html#how-does-token-streaming-work",
+    "title": "Architecting for Generative AI",
+    "section": "How Does Token Streaming Work?",
+    "text": "How Does Token Streaming Work?\n\nUses SSE (Server-Sent Events)\n\nUnidirectional (server to client)\nUses standard HTTP/1.1 or HTTP/2\nServer sends a response with a text/event-stream MIME type\nClient uses built-in EventSource API to open the connection, listen to messages, and handle events."
+  },
+  {
+    "objectID": "s/gerege/slides.html#sse-data-format",
+    "href": "s/gerege/slides.html#sse-data-format",
+    "title": "Architecting for Generative AI",
+    "section": "SSE Data Format",
+    "text": "SSE Data Format\ndata: {\"choices\":[{\"delta\":{\"content\":\"Hello\"}}]}\n\ndata: {\"choices\":[{\"delta\":{\"content\":\" world\"}}]}\n  \ndata: [DONE]\nData sent as chunks, prefixed with data: and separated by double newlines"
+  },
+  {
+    "objectID": "s/gerege/slides.html#implementing-token-streaming",
+    "href": "s/gerege/slides.html#implementing-token-streaming",
+    "title": "Architecting for Generative AI",
+    "section": "Implementing Token Streaming",
+    "text": "Implementing Token Streaming\n\n\nMODEL = 'openai/gpt-5.2-chat' #@param [\"openai/gpt-5.2-chat\", \"anthropic/claude-sonnet-4.5\", \"google/gemini-2.5-pro\"]\n\nresponse = client.chat.completions.create(\n    model=MODEL,\n    messages=[\n        {\"role\": \"system\", \"content\": \"You help travelers make plans for their trips.\"},\n        {\"role\": \"user\", \"content\": \"Hello\"},\n        {\"role\": \"assistant\", \"content\": \"Hi there!\"},\n        {\"role\": \"user\", \"content\": \"What should I do on my upcoming trip to Paris?\"},\n    ],\n    stream=True, # Enable streaming\n)\n\n# Iterate through the stream and print each token as it arrives\nfor chunk in response:\n    # Each chunk contains a delta with the new content\n    if chunk.choices[0].delta.content is not None:\n        token = chunk.choices[0].delta.content\n        print(token, end='', flush=True)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#structured-output",
+    "href": "s/gerege/slides.html#structured-output",
+    "title": "Architecting for Generative AI",
+    "section": "Structured Output",
+    "text": "Structured Output\n\nBy design, LLMs generate non-structured output (i.e., free-form text)\nSometimes, paragraph. Sometimes, numbered list.\n“What are the GPS coordinates for Paris?”\n\n“48.8566, 2.3522”\n“You can find Paris at lat: 48.8566 long: 2.3522”\n“The GPS coordinates of Paris are 48.8566 and 2.3522”\n\nBut often, you need structure - e.g., a JSON object"
+  },
+  {
+    "objectID": "s/gerege/slides.html#structured-output-1",
+    "href": "s/gerege/slides.html#structured-output-1",
+    "title": "Architecting for Generative AI",
+    "section": "Structured Output",
+    "text": "Structured Output\n\nYou can try to use the system prompt…\n\n“Return the result in JSON only”\n\nBut… it doesn’t always work\n\nEarly/small models struggle with correct JSON formatting\nEven larger models make mistakes (e.g., missing closing brace)\n\nSometimes the models just forget!\n\n“RETURN THE RESULT IN JSON ONLY. NO OTHER TEXT!!!”"
+  },
+  {
+    "objectID": "s/gerege/slides.html#structured-outputs-in-openai-api",
+    "href": "s/gerege/slides.html#structured-outputs-in-openai-api",
+    "title": "Architecting for Generative AI",
+    "section": "Structured Outputs in OpenAI API",
+    "text": "Structured Outputs in OpenAI API\n\nNov 2023: OpenAI added JSON mode\n\nresponse_format: {\"type\": \"json_object\"}\nGuaranteed valid JSON, but didn’t enforce schema\nSometimes mixed up/missed fields\n\nAug 2024: Structured Outputs launched\n\nresponse_format: {\"type\": \"json_object\", ...}\n100% reliability that output matches the your schema"
+  },
+  {
+    "objectID": "s/gerege/slides.html#how-structured-outputs-work",
+    "href": "s/gerege/slides.html#how-structured-outputs-work",
+    "title": "Architecting for Generative AI",
+    "section": "How Structured Outputs Work",
+    "text": "How Structured Outputs Work\n\nConstrained Decoding\n\nWhen generating responses, the model normally samples from all possible next tokens\nWith constrained decoding, the next token is dynamically filtered to only allow tokens that keep the output schema valid\n\ne.g., if schema requires an integer, string tokens are masked out from the probability distribution"
+  },
+  {
+    "objectID": "s/gerege/slides.html#how-structured-outputs-work-1",
+    "href": "s/gerege/slides.html#how-structured-outputs-work-1",
+    "title": "Architecting for Generative AI",
+    "section": "How Structured Outputs Work",
+    "text": "How Structured Outputs Work\n\nRuns on server (or in library) - not fine-tuning approach\nSlightly slower token generation due to computational overhead\nTechnically, it’s mathematically impossible to generate invalid output\n\n(Real world: I see ~1:7000 error rates with GPT-5.1 chat)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#implementing-structured-outputs",
+    "href": "s/gerege/slides.html#implementing-structured-outputs",
+    "title": "Architecting for Generative AI",
+    "section": "Implementing Structured Outputs",
+    "text": "Implementing Structured Outputs\n\n\nfrom pydantic import BaseModel\n\n# Define the model for a geographic location\nclass Location(BaseModel):\n  name: str\n  country: str\n  latitude: float\n  longitude: float"
+  },
+  {
+    "objectID": "s/gerege/slides.html#implementing-structured-outputs-1",
+    "href": "s/gerege/slides.html#implementing-structured-outputs-1",
+    "title": "Architecting for Generative AI",
+    "section": "Implementing Structured Outputs",
+    "text": "Implementing Structured Outputs\n\n\nMODEL = 'openai/gpt-5.2-chat' #@param [\"openai/gpt-5.2-chat\", \"anthropic/claude-sonnet-4.5\", \"google/gemini-2.5-pro\"]\n\nresponse = client.chat.completions.parse(\n    model=MODEL,\n    messages=[\n        {\"role\": \"user\", \"content\": \"What are the GPS coordinates for Paris?\"},\n    ],\n    response_format=Location\n)\n\ncompletion = response.choices[0].message\nprint(completion)\n\nParsedChatCompletionMessage[Location](content='{\"name\":\"Paris\",\"country\":\"France\",\"latitude\":48.8566,\"longitude\":2.3522}', refusal=None, role='assistant', annotations=None, audio=None, function_call=None, tool_calls=None, parsed=Location(name='Paris', country='France', latitude=48.8566, longitude=2.3522), reasoning=None)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#implementing-structured-outputs-2",
+    "href": "s/gerege/slides.html#implementing-structured-outputs-2",
+    "title": "Architecting for Generative AI",
+    "section": "Implementing Structured Outputs",
+    "text": "Implementing Structured Outputs\n\n\n# Display the JSON repesentation\nprint(completion.content)\n\n# Display the parsed type\nprint(completion.parsed)\n\n# Pretty-print\nif completion.parsed:\n  location: Location = completion.parsed\n  print(f\"{location.name}, {location.country} has GPS coordinates of {location.latitude}, {location.longitude}\")\n\n{\"name\":\"Paris\",\"country\":\"France\",\"latitude\":48.8566,\"longitude\":2.3522}\nname='Paris' country='France' latitude=48.8566 longitude=2.3522\nParis, France has GPS coordinates of 48.8566, 2.3522"
+  },
+  {
+    "objectID": "s/gerege/slides.html#why-local-ai",
+    "href": "s/gerege/slides.html#why-local-ai",
+    "title": "Architecting for Generative AI",
+    "section": "Why Local AI?",
+    "text": "Why Local AI?\n\nPrivacy\n\nEvery call to ChatGPT or Claude may get logged and/or be used for training purposes\nMany organizations don’t want their customer/financial data logged with an AI vendor\nThere may also be legal regulations/restrictions"
+  },
+  {
+    "objectID": "s/gerege/slides.html#why-local-ai-1",
+    "href": "s/gerege/slides.html#why-local-ai-1",
+    "title": "Architecting for Generative AI",
+    "section": "Why Local AI?",
+    "text": "Why Local AI?\n\nOffline\n\nEvery call you make to ChatGPT or Claude needs an Internet connection\nThat’s not always guaranteed!\ne..g, a remote school in India and/or when phone is in airplane mode"
+  },
+  {
+    "objectID": "s/gerege/slides.html#why-local-ai-2",
+    "href": "s/gerege/slides.html#why-local-ai-2",
+    "title": "Architecting for Generative AI",
+    "section": "Why Local AI?",
+    "text": "Why Local AI?\n\nLatency\n\nEven with a network connection, calls can suffer from increased latency\nEspecially if your application needs frequent, quick responses\ne.g., using a VLM on a video stream for a user with vision impairments"
+  },
+  {
+    "objectID": "s/gerege/slides.html#why-local-ai-3",
+    "href": "s/gerege/slides.html#why-local-ai-3",
+    "title": "Architecting for Generative AI",
+    "section": "Why Local AI?",
+    "text": "Why Local AI?\n\nCost\n\nWhile per-API costs are fractions of a cent, these can grow out of control with exponential growth\nMore pronounced for long conversation threads\nOr agents with verbose tool call requests/responses"
+  },
+  {
+    "objectID": "s/gerege/slides.html#closed-vs.-open-source-models",
+    "href": "s/gerege/slides.html#closed-vs.-open-source-models",
+    "title": "Architecting for Generative AI",
+    "section": "Closed vs. Open-Source Models",
+    "text": "Closed vs. Open-Source Models\n\nClosed Source:\n\nOpenAI GPT-5, Claude Sonnet/Opus, Google’s Gemini\nVery large models; often referred to as foundational models or frontier models\nHosted by the vendors\nNo ability to download the models\nNo ability to inspect the weights of the models"
+  },
+  {
+    "objectID": "s/gerege/slides.html#closed-vs.-open-source-models-1",
+    "href": "s/gerege/slides.html#closed-vs.-open-source-models-1",
+    "title": "Architecting for Generative AI",
+    "section": "Closed vs. Open-Source Models",
+    "text": "Closed vs. Open-Source Models\n\nOpen Weight:\n\nMeta’s Llama, Google’s Gemma, Alibaba’s Qwen, OpenAI gpt-oss-120b\nRange from small to medium in size (1Gb - 500Gb+)\nDownloadable model files\nModel files are pre-trained weights, but no training data\nNo training data == No ability to recreate the model from scratch"
+  },
+  {
+    "objectID": "s/gerege/slides.html#closed-vs.-open-source-models-2",
+    "href": "s/gerege/slides.html#closed-vs.-open-source-models-2",
+    "title": "Architecting for Generative AI",
+    "section": "Closed vs. Open-Source Models",
+    "text": "Closed vs. Open-Source Models\n\nOpen Source:\n\nYou can download the model files with pre-trained weights and the training data used to train it\ni.e., you could create the model from scratch\nExamples: AI2’s OLMo, NVIDIA Nemotron"
+  },
+  {
+    "objectID": "s/gerege/slides.html#introducing-quantization",
+    "href": "s/gerege/slides.html#introducing-quantization",
+    "title": "Architecting for Generative AI",
+    "section": "Introducing Quantization",
+    "text": "Introducing Quantization\n\nRoughly speaking, the size of the model file dictates how much VRAM (or unified memory) you need\n\n55Gb model ~= 55Gb of VRAM\n\nWhat if we don’t have that much?"
+  },
+  {
+    "objectID": "s/gerege/slides.html#introducing-quantization-1",
+    "href": "s/gerege/slides.html#introducing-quantization-1",
+    "title": "Architecting for Generative AI",
+    "section": "Introducing Quantization",
+    "text": "Introducing Quantization\n\nTwo ways to shrink a model:\n\nReduce the number of weights\nReduce the precision of the weights (quantization)\n\nNumber of weights matters more than precision\n\nA 70B model at 4-bit will often beat a 13B model at 32-bit\nThe model’s knowledge remains largely intact"
+  },
+  {
+    "objectID": "s/gerege/slides.html#lets-visualize-this",
+    "href": "s/gerege/slides.html#lets-visualize-this",
+    "title": "Architecting for Generative AI",
+    "section": "Let’s Visualize This!",
+    "text": "Let’s Visualize This!\n\nSimulating 35B parameters at FP32 (9.38Mb)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#lets-visualize-this-1",
+    "href": "s/gerege/slides.html#lets-visualize-this-1",
+    "title": "Architecting for Generative AI",
+    "section": "Let’s Visualize This!",
+    "text": "Let’s Visualize This!\n\nSimulating 27B parameters at FP32 (5.70Mb)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#lets-visualize-this-2",
+    "href": "s/gerege/slides.html#lets-visualize-this-2",
+    "title": "Architecting for Generative AI",
+    "section": "Let’s Visualize This!",
+    "text": "Let’s Visualize This!\n\nSimulating 9B parameters at FP32 (1.90Mb)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#lets-visualize-this-3",
+    "href": "s/gerege/slides.html#lets-visualize-this-3",
+    "title": "Architecting for Generative AI",
+    "section": "Let’s Visualize This!",
+    "text": "Let’s Visualize This!\n\nSimulating 4B parameters at FP32 (0.84Mb)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#lets-visualize-this-4",
+    "href": "s/gerege/slides.html#lets-visualize-this-4",
+    "title": "Architecting for Generative AI",
+    "section": "Let’s Visualize This!",
+    "text": "Let’s Visualize This!\n\nSimulating 2B parameters at FP32 (0.41Mb)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#lets-visualize-this-5",
+    "href": "s/gerege/slides.html#lets-visualize-this-5",
+    "title": "Architecting for Generative AI",
+    "section": "Let’s Visualize This!",
+    "text": "Let’s Visualize This!\n\nSimulating 0.8B parameters at FP32 (0.16Mb)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#lets-visualize-this-6",
+    "href": "s/gerege/slides.html#lets-visualize-this-6",
+    "title": "Architecting for Generative AI",
+    "section": "Let’s Visualize This!",
+    "text": "Let’s Visualize This!\n\nSimulating 35B parameters at FP32 (9.38Mb)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#lets-visualize-this-7",
+    "href": "s/gerege/slides.html#lets-visualize-this-7",
+    "title": "Architecting for Generative AI",
+    "section": "Let’s Visualize This!",
+    "text": "Let’s Visualize This!\n\nSimulating 35B parameters using Q8_0 (8-bit) Quantization (2.49Mb)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#lets-visualize-this-8",
+    "href": "s/gerege/slides.html#lets-visualize-this-8",
+    "title": "Architecting for Generative AI",
+    "section": "Let’s Visualize This!",
+    "text": "Let’s Visualize This!\n\nSimulating 35B parameters using Q4_0 (4-bit) Quantization (1.32Mb)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#lets-visualize-this-9",
+    "href": "s/gerege/slides.html#lets-visualize-this-9",
+    "title": "Architecting for Generative AI",
+    "section": "Let’s Visualize This!",
+    "text": "Let’s Visualize This!\n\nSimulating 35B parameters using Q2 (2-bit) Quantization (0.73Mb)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#quantization-formats",
+    "href": "s/gerege/slides.html#quantization-formats",
+    "title": "Architecting for Generative AI",
+    "section": "Quantization Formats",
+    "text": "Quantization Formats\n\nGGUF (GPT-Generated Unified Format):\n\nRuns on all platforms (NVIDIA, AMD, Apple)\nunsloth community on HF hosts quantized versions of popular models\nMultiple quantization schemes (Q4_K_M, Q5_K_S, Q6_K, etc.)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#quantization-formats-1",
+    "href": "s/gerege/slides.html#quantization-formats-1",
+    "title": "Architecting for Generative AI",
+    "section": "Quantization Formats",
+    "text": "Quantization Formats\n\nMLX:\n\nApple-only\nOffers better performance on Mac (compared to GGUF)\nmlx-community on HF hosts MLX-quantized versions of popular models\n4bit and 8bit support"
+  },
+  {
+    "objectID": "s/gerege/slides.html#why-agents",
+    "href": "s/gerege/slides.html#why-agents",
+    "title": "Architecting for Generative AI",
+    "section": "Why Agents?",
+    "text": "Why Agents?\n\nLimitations of chatbots\n\nNeeds constant human input every turn; No ability to plan beyond a single interaction\nSingle model with single context (conversation)\nNo ability to interact with external systems"
+  },
+  {
+    "objectID": "s/gerege/slides.html#five-characteristics-of-agents",
+    "href": "s/gerege/slides.html#five-characteristics-of-agents",
+    "title": "Architecting for Generative AI",
+    "section": "Five Characteristics of Agents",
+    "text": "Five Characteristics of Agents\n\nAgents are Planners\n\n\nAgents are driven by goals\nAnd they can put together a plan for the steps to complete that goal.\n\n“First, I will discover where course information is located”\n“Then I will search for any courses that reference FLM201”\n“Then I summarize all of the key points for the student”"
+  },
+  {
+    "objectID": "s/gerege/slides.html#five-characteristics-of-agents-1",
+    "href": "s/gerege/slides.html#five-characteristics-of-agents-1",
+    "title": "Architecting for Generative AI",
+    "section": "Five Characteristics of Agents",
+    "text": "Five Characteristics of Agents\n\nAgents are Autonomous\n\n\nAgents can then go off and execute the plan, independent of human input\nThe concept of “human in the loop” still applies for confirmation\n\ne.g. “Do you really want to place this order?”"
+  },
+  {
+    "objectID": "s/gerege/slides.html#five-characteristics-of-agents-2",
+    "href": "s/gerege/slides.html#five-characteristics-of-agents-2",
+    "title": "Architecting for Generative AI",
+    "section": "Five Characteristics of Agents",
+    "text": "Five Characteristics of Agents\n\nAgents are Reactive\n\n\nAgents can change mid-course depending on what they find and/or the environment.\n\ne.g. “I couldn’t find any course information on FLM201. I’m going to check if there are other 200-level FLM courses before responding to the student.”"
+  },
+  {
+    "objectID": "s/gerege/slides.html#five-characteristics-of-agents-3",
+    "href": "s/gerege/slides.html#five-characteristics-of-agents-3",
+    "title": "Architecting for Generative AI",
+    "section": "Five Characteristics of Agents",
+    "text": "Five Characteristics of Agents\n\nAgents have Persistence\n\n\nAgents often have memory systems beyond the current conversation\nBroadly classified as short and long-term memory\n\nShort-term memory could be your order request at the Bytes cafe\nLong-term memory could be your food preferences"
+  },
+  {
+    "objectID": "s/gerege/slides.html#five-characteristics-of-agents-4",
+    "href": "s/gerege/slides.html#five-characteristics-of-agents-4",
+    "title": "Architecting for Generative AI",
+    "section": "Five Characteristics of Agents",
+    "text": "Five Characteristics of Agents\n\nAgents can Interact with external systems\n\n\nAgents can delegate to other agents for complex tasks\n\n(Or for tasks where other agents are better suited for.)\ne.g., Campus Agent -&gt; delegating to a Course Agent\n\nAgents can also be given access to external tools\n\ne.g., File search, Web search, access to the Bytes Cafe API"
+  },
+  {
+    "objectID": "s/gerege/slides.html#openai-agents-sdk",
+    "href": "s/gerege/slides.html#openai-agents-sdk",
+    "title": "Architecting for Generative AI",
+    "section": "OpenAI Agents SDK",
+    "text": "OpenAI Agents SDK\n\nAnnounced in Mar 2025\n\nTogether with web search, file search, and computer use\nAnd a new Responses API (formerly Assistants API)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#openai-agents-sdk-1",
+    "href": "s/gerege/slides.html#openai-agents-sdk-1",
+    "title": "Architecting for Generative AI",
+    "section": "OpenAI Agents SDK",
+    "text": "OpenAI Agents SDK\n\nCreated to address the gap between chat completions (what we were using last week) and multi-step systems\n\nvs. building your own, which a lot of developers were doing at the time\n\nIntegrates function calling, handoffs, and session management in the same package\nSupports Python and TypeScript; MIT licensed"
+  },
+  {
+    "objectID": "s/gerege/slides.html#not-the-only-agent-sdk-in-town",
+    "href": "s/gerege/slides.html#not-the-only-agent-sdk-in-town",
+    "title": "Architecting for Generative AI",
+    "section": "Not the only Agent SDK in town!",
+    "text": "Not the only Agent SDK in town!\n\nSource: https://e2b.dev"
+  },
+  {
+    "objectID": "s/gerege/slides.html#langgraph",
+    "href": "s/gerege/slides.html#langgraph",
+    "title": "Architecting for Generative AI",
+    "section": "LangGraph",
+    "text": "LangGraph\n\nhttps://langchain-ai.github.io/langgraph/\nPython only\nMIT License\nOne of the first agent frameworks, building on LangChain\n\nIMO, too abstract/complex/bloated"
+  },
+  {
+    "objectID": "s/gerege/slides.html#crew.ai",
+    "href": "s/gerege/slides.html#crew.ai",
+    "title": "Architecting for Generative AI",
+    "section": "Crew.ai",
+    "text": "Crew.ai\n\nhttps://github.com/crewaiinc/crewai\nPython only\nOne of the more popular commercial offerings\n\n(Although they do have an MIT License/freemium model)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#microsoft",
+    "href": "s/gerege/slides.html#microsoft",
+    "title": "Architecting for Generative AI",
+    "section": "Microsoft",
+    "text": "Microsoft\n\nAutoGen\n\nhttps://microsoft.github.io/autogen/stable/\nPython (.NET coming soon)\nMIT License\n\nMicrosoft Semantic Kernel\n\nhttps://github.com/microsoft/semantic-kernel\nPython, .NET, Java\nMIT License"
+  },
+  {
+    "objectID": "s/gerege/slides.html#hermes",
+    "href": "s/gerege/slides.html#hermes",
+    "title": "Architecting for Generative AI",
+    "section": "Hermes",
+    "text": "Hermes\n\nOpen-source, self-hosted AI agent framework by Nous Research (Feb 2026)\nRuns on your own infrastructure and connects to any LLM\nClosed learning loop: after completing a task, writes a reusable skill. i.e., gets smarter over time\nLong-term semantic memory + episodic logs enable genuine recall across sessions\n64K+ GitHub stars; supports Telegram, Discord, Slack, WhatsApp, Signal, CLI via a single gateway"
+  },
+  {
+    "objectID": "s/gerege/slides.html#pi.dev",
+    "href": "s/gerege/slides.html#pi.dev",
+    "title": "Architecting for Generative AI",
+    "section": "pi.dev",
+    "text": "pi.dev\n\nMinimal, open-source terminal-based coding agent harness by Mario Zechner (Aug 2025, MIT License)\nCore engine powering OpenClaw, which hit 145K+ GitHub stars in its first week\nShips with a deliberately lean toolset: Read, Bash, Edit, Write, Find, LS — extend with your own skills\nAny app can create an AgentSession, configure tools and context, and run agent conversations"
+  },
+  {
+    "objectID": "s/gerege/slides.html#why-do-agents-need-tools",
+    "href": "s/gerege/slides.html#why-do-agents-need-tools",
+    "title": "Architecting for Generative AI",
+    "section": "Why Do Agents Need Tools?",
+    "text": "Why Do Agents Need Tools?\n\nThe scope of the agent’s ability is contained within the model\nTools enable the agent to reach out to systems beyond the model\nExamples\n\nRead a file from disk or search the web (built in)\nCalculator (because LLMs aren’t great at math)\nCode interpreter (running code on the fly)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#openai-tool-calling",
+    "href": "s/gerege/slides.html#openai-tool-calling",
+    "title": "Architecting for Generative AI",
+    "section": "OpenAI Tool Calling",
+    "text": "OpenAI Tool Calling\n\nIntroduced by OpenAI in June 2023\nOriginally called Function Calling\nModels are fine-tuned to return a structured function_call JSON object, specifying which function to call and with what arguments.\nTools are provided as functions\nOption for the LLM to decide when to call the tool (always, never, auto)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#beyond-tool-calling",
+    "href": "s/gerege/slides.html#beyond-tool-calling",
+    "title": "Architecting for Generative AI",
+    "section": "Beyond Tool Calling",
+    "text": "Beyond Tool Calling\n\nTool calling is super useful, but…\n\nYou need to write the function(s) yourself\nAnd then expose them to OpenAI using the @function_tool method\n\nWhat if there was a way to standardize this?"
+  },
+  {
+    "objectID": "s/gerege/slides.html#mcp-model-context-protocol",
+    "href": "s/gerege/slides.html#mcp-model-context-protocol",
+    "title": "Architecting for Generative AI",
+    "section": "MCP (Model Context Protocol)",
+    "text": "MCP (Model Context Protocol)\n\nReleased by Anthropic in Nov 2024\nProvides a standard interface for tools - akin to a USB standard for peripherals\nImplementations are known as “MCP servers”\n\nA server exposes one or more tools (functions)\nUses JSON-RPC 2.0 as underlying RPC protocol\nServers can run remotely over HTTP (supports SSE)\nOr can be hosted locally and accessed via stdio\nMany servers hosted using Node.js"
+  },
+  {
+    "objectID": "s/gerege/slides.html#mcp-model-context-protocol-1",
+    "href": "s/gerege/slides.html#mcp-model-context-protocol-1",
+    "title": "Architecting for Generative AI",
+    "section": "MCP (Model Context Protocol)",
+    "text": "MCP (Model Context Protocol)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#mcp-model-context-protocol-2",
+    "href": "s/gerege/slides.html#mcp-model-context-protocol-2",
+    "title": "Architecting for Generative AI",
+    "section": "MCP (Model Context Protocol)",
+    "text": "MCP (Model Context Protocol)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#mcp-model-context-protocol-3",
+    "href": "s/gerege/slides.html#mcp-model-context-protocol-3",
+    "title": "Architecting for Generative AI",
+    "section": "MCP (Model Context Protocol)",
+    "text": "MCP (Model Context Protocol)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#a-brief-history",
+    "href": "s/gerege/slides.html#a-brief-history",
+    "title": "Architecting for Generative AI",
+    "section": "A Brief History",
+    "text": "A Brief History\n\nInitial “coding agents” (i.e., first version of GitHub Copilot - mid-2022) were basic:\n\nGlorified auto-complete\nVery limited agent interactions\nMany context limit challenges - i.e., trying to understand the whole of the repo in window"
+  },
+  {
+    "objectID": "s/gerege/slides.html#a-brief-history-1",
+    "href": "s/gerege/slides.html#a-brief-history-1",
+    "title": "Architecting for Generative AI",
+    "section": "A Brief History",
+    "text": "A Brief History\n\nThe harness changed everything (2023–present)\n\nCursor, Aider, Devin: agents that could read files, make edits, and run tests\nContext windows grew from 4k → 128k → 1M+ tokens — agents can now see entire codebases\nClaude Code, GitHub Copilot Agent Mode: multi-step reasoning, not just one-shot suggestions\n\nLess about the model, more about the underlying harness"
+  },
+  {
+    "objectID": "s/gerege/slides.html#scaffolding-new-repos",
+    "href": "s/gerege/slides.html#scaffolding-new-repos",
+    "title": "Architecting for Generative AI",
+    "section": "Scaffolding New Repos",
+    "text": "Scaffolding New Repos\n\nTwo camps: Hands-Off (Vibe-coding) vs. Hands-On (Powertool)\nHands-Off approach can be tempting:\n\nCreate an issue in GitHub, send an agent to work on it, direct from your mobile phone\nBut, IMO you lose control of the architecture\nAnalogy to the Winchester Mystery House"
+  },
+  {
+    "objectID": "s/gerege/slides.html#scaffolding-new-repos-1",
+    "href": "s/gerege/slides.html#scaffolding-new-repos-1",
+    "title": "Architecting for Generative AI",
+    "section": "Scaffolding New Repos",
+    "text": "Scaffolding New Repos"
+  },
+  {
+    "objectID": "s/gerege/slides.html#scaffolding-new-repos-2",
+    "href": "s/gerege/slides.html#scaffolding-new-repos-2",
+    "title": "Architecting for Generative AI",
+    "section": "Scaffolding New Repos",
+    "text": "Scaffolding New Repos\n\nI prefer “Powertool” approach (what I recommend to my students)\n\nHand-build the architecture / frame out the house\nThen use AI to fill in the details"
+  },
+  {
+    "objectID": "s/gerege/slides.html#scaffolding-new-repos-3",
+    "href": "s/gerege/slides.html#scaffolding-new-repos-3",
+    "title": "Architecting for Generative AI",
+    "section": "Scaffolding New Repos",
+    "text": "Scaffolding New Repos"
+  },
+  {
+    "objectID": "s/gerege/slides.html#scaffolding-new-repos-4",
+    "href": "s/gerege/slides.html#scaffolding-new-repos-4",
+    "title": "Architecting for Generative AI",
+    "section": "Scaffolding New Repos",
+    "text": "Scaffolding New Repos\n\nMapping this to Claude Code\n\nCLAUDE.md should describe the architecture of the system (analogy: house frame)\nSKILL.md should describe each area that Claude can contribute to (analogy: working on each room)"
+  },
+  {
+    "objectID": "s/gerege/slides.html#coding-agent-lifecycle",
+    "href": "s/gerege/slides.html#coding-agent-lifecycle",
+    "title": "Architecting for Generative AI",
+    "section": "Coding Agent Lifecycle",
+    "text": "Coding Agent Lifecycle\n\nLifecycle: Plan, Act, Test,(Abort), Commit, Clear"
+  },
+  {
+    "objectID": "s/gerege/slides.html#coding-agent-lifecycle-1",
+    "href": "s/gerege/slides.html#coding-agent-lifecycle-1",
+    "title": "Architecting for Generative AI",
+    "section": "Coding Agent Lifecycle",
+    "text": "Coding Agent Lifecycle\n\nPlan\n\nWrite the specification for the feature\nBe descriptive, bullet points help\nAsk the agent to validate/question the approach\n“What questions and/or clarifications do you have?”\nPush back on things that seem incorrect"
+  },
+  {
+    "objectID": "s/gerege/slides.html#coding-agent-lifecycle-2",
+    "href": "s/gerege/slides.html#coding-agent-lifecycle-2",
+    "title": "Architecting for Generative AI",
+    "section": "Coding Agent Lifecycle",
+    "text": "Coding Agent Lifecycle\n\nAct\n\nOnce happy with the specification, implement\nWatch carefully for file changes/updates\nCorrect approach mid-stream\n“I think there’s a 3rd party library for that…”"
+  },
+  {
+    "objectID": "s/gerege/slides.html#coding-agent-lifecycle-3",
+    "href": "s/gerege/slides.html#coding-agent-lifecycle-3",
+    "title": "Architecting for Generative AI",
+    "section": "Coding Agent Lifecycle",
+    "text": "Coding Agent Lifecycle\n\nTest\n\nTest the feature locally / manually\nBuild a complete test suite\n(Agents are really good at writing tests)\nHave the agent run it’s own tests after the feature"
+  },
+  {
+    "objectID": "s/gerege/slides.html#coding-agent-lifecycle-4",
+    "href": "s/gerege/slides.html#coding-agent-lifecycle-4",
+    "title": "Architecting for Generative AI",
+    "section": "Coding Agent Lifecycle",
+    "text": "Coding Agent Lifecycle\n\nAbort\n\nSometimes, things don’t work as expected!\nIt can be challenging to fix before exhausting the context window\nAnd many coding agents will “spin out of control”\ngit stash, clear context (new session), update the feature spec, and restart"
+  },
+  {
+    "objectID": "s/gerege/slides.html#coding-agent-lifecycle-5",
+    "href": "s/gerege/slides.html#coding-agent-lifecycle-5",
+    "title": "Architecting for Generative AI",
+    "section": "Coding Agent Lifecycle",
+    "text": "Coding Agent Lifecycle\n\nCommit\n\nBefore committing to source control, have Claude self-update CLAUDE.md and create skills (if major new functionality)\nReview CLAUDE.md file often\nAuto-compact if approaching ~40K"
+  },
+  {
+    "objectID": "s/gerege/slides.html#coding-agent-lifecycle-6",
+    "href": "s/gerege/slides.html#coding-agent-lifecycle-6",
+    "title": "Architecting for Generative AI",
+    "section": "Coding Agent Lifecycle",
+    "text": "Coding Agent Lifecycle\n\nClear\n\nOnce CLAUDE.md and feature is committed, clear context (/new in Claude Code)\nAnalogy: 50 First Dates movie"
+  },
+  {
+    "objectID": "s/gerege/slides.html#future-local-coding-models",
+    "href": "s/gerege/slides.html#future-local-coding-models",
+    "title": "Architecting for Generative AI",
+    "section": "Future: Local Coding Models?",
+    "text": "Future: Local Coding Models?\n\nOpenCode is an open-source, terminal-based AI coding agent\n\nRuns entirely locally using any OpenAI-compatible API server (e.g., LM Studio)\nReads and edits files, runs shell commands, and iterates on code\n\nModel-agnostic Swap in any local model (Qwen, DeepSeek, Llama, etc.) via a config file"
+  },
+  {
+    "objectID": "s/gerege/slides.html#qwen3.5-vs-frontier-models",
+    "href": "s/gerege/slides.html#qwen3.5-vs-frontier-models",
+    "title": "Architecting for Generative AI",
+    "section": "Qwen3.5 vs Frontier Models",
+    "text": "Qwen3.5 vs Frontier Models\n\n\n\nBenchmark\nQwen3.5-27B\nGPT-5-mini\nGPT-OSS-120B\n\n\n\n\nMMLU-Pro\n86.1%\n83.7%\n80.8%\n\n\nGPQA Diamond\n85.5%\n82.8%\n80.1%\n\n\nSWE-bench Verified\n72.4%\n72.0%\n62.0%\n\n\nLiveCodeBench v6\n80.7%\n80.5%\n82.7%"
+  },
+  {
+    "objectID": "s/gerege/slides.html#gemma-4-vs-frontier-models",
+    "href": "s/gerege/slides.html#gemma-4-vs-frontier-models",
+    "title": "Architecting for Generative AI",
+    "section": "Gemma 4 vs Frontier Models",
+    "text": "Gemma 4 vs Frontier Models\n\n\n\nBenchmark\nGemma 4 31B\nGemini 2.5 Pro\nClaude 4 Opus\n\n\n\n\nMMLU-Pro\n85.2%\n—\n—\n\n\nGPQA Diamond\n84.3%\n86.4%\n79.6%\n\n\nLiveCodeBench v6\n80.0%\n72.5%\n48.9%\n\n\nAIME 2026\n89.2%\n—\n—"
+  },
+  {
+    "objectID": "s/gerege/slides.html#qwen3-coding-vs-sota-swe-bench",
+    "href": "s/gerege/slides.html#qwen3-coding-vs-sota-swe-bench",
+    "title": "Architecting for Generative AI",
+    "section": "Qwen3 Coding vs SOTA (SWE-bench)",
+    "text": "Qwen3 Coding vs SOTA (SWE-bench)\n\n\n\nModel\nSWE-bench Verified\nOpen?\n\n\n\n\nClaude Opus 4.5\n77.8%\nNo\n\n\nQwen3.5-27B\n72.4%\nYes\n\n\nClaude Sonnet 4\n70.4%\nNo\n\n\nQwen3-Coder (480B)\n69.6%\nYes\n\n\nGPT-OSS-120B\n62.0%\nPartially"
+  },
+  {
     "objectID": "s/gerege/notebooks/chat-completion-openai.html#or-grab-the-openai-api-key-if-running-locally",
     "href": "s/gerege/notebooks/chat-completion-openai.html#or-grab-the-openai-api-key-if-running-locally",
     "title": "Chat Completion API (via OpenAI)",
@@ -1292,6 +1866,6 @@
     "href": "presentations.html",
     "title": "Presentations",
     "section": "",
-    "text": "CS-394/594: 生成AIの仕組み\n\n\n\nAI\n\nGenerative AI\n\nJapan\n\n\n\nDigiPenのCS-394/594の概要を横浜美術大学に向けて発表\n\n\n\nSimon Guest\n\n\nJun 23, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nWill I Do Well on My Test?\n\n\n\nAI\n\nNeural Networks\n\nMiddle School\n\nHigh School\n\n\n\nA HTML-based interactive component demonstrating how neural networks work.\n\n\n\n\n\n\nJun 12, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nKnowledge Bytes | Local AI Models\n\n\n\nAI\n\nLocal Models\n\n\n\nThe case for running AI models locally, hardware requirements, discovering and running models, and benchmarks.\n\n\n\nSimon Guest\n\n\nApr 17, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nICSEC 勉強会：生成AIの仕組み\n\n\n\nAI\n\n\n\nDigiPenにおけるCS-394の概要と、K-12カリキュラムへの応用\n\n\n\nSimon Guest\n\n\nApr 1, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nICSEC Study Session: How Generative AI Works\n\n\n\nAI\n\n\n\nAn overview of CS-394 at DigiPen and the applications for K-12 curriculum.\n\n\n\nSimon Guest\n\n\nApr 1, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "Architecting for Generative AI\n\n\n\nAI\n\nGenerative AI\n\nProfessional Development\n\n\n\nA workshop on architecting systems to use generative models and using generative AI coding agents.\n\n\n\nSimon Guest\n\n\nJul 1, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nCS-394/594: 生成AIの仕組み\n\n\n\nAI\n\nGenerative AI\n\nJapan\n\n\n\nDigiPenのCS-394/594の概要を横浜美術大学に向けて発表\n\n\n\nSimon Guest\n\n\nJun 23, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nWill I Do Well on My Test?\n\n\n\nAI\n\nNeural Networks\n\nMiddle School\n\nHigh School\n\n\n\nA HTML-based interactive component demonstrating how neural networks work.\n\n\n\n\n\n\nJun 12, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nKnowledge Bytes | Local AI Models\n\n\n\nAI\n\nLocal Models\n\n\n\nThe case for running AI models locally, hardware requirements, discovering and running models, and benchmarks.\n\n\n\nSimon Guest\n\n\nApr 17, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nICSEC 勉強会：生成AIの仕組み\n\n\n\nAI\n\n\n\nDigiPenにおけるCS-394の概要と、K-12カリキュラムへの応用\n\n\n\nSimon Guest\n\n\nApr 1, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nICSEC Study Session: How Generative AI Works\n\n\n\nAI\n\n\n\nAn overview of CS-394 at DigiPen and the applications for K-12 curriculum.\n\n\n\nSimon Guest\n\n\nApr 1, 2026\n\n\n\n\n\n\nNo matching items"
   }
 ]

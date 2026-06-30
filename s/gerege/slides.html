@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Simon Guest">
-  <title>Simon Says – Architecting for (and with) Generative AI</title>
+  <title>Simon Says – Architecting for Generative AI</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -193,7 +193,7 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="Architecting for (and with) Generative AI – Simon Says">
+<meta property="og:title" content="Architecting for Generative AI – Simon Says">
 <meta property="og:description" content="A workshop on architecting systems to use generative models and using generative AI coding agents.">
 <meta property="og:image" content="https://simonguest.com/s/gerege/images/logo.png">
 <meta property="og:site_name" content="Simon Says">
@@ -205,7 +205,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Architecting for (and with) Generative AI</h1>
+  <h1 class="title">Architecting for Generative AI</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -221,9 +221,12 @@ Simon Guest
 <ul>
 <li class="fragment">Simon Guest</li>
 <li class="fragment">CS and AI Educator</li>
-<li class="fragment">Adjunct Professor of AI at DigiPen</li>
+<li class="fragment">Adjunct Professor of AI at DigiPen Institute of Technology</li>
 <li class="fragment">Technical Advisor and Former CTO at Code.org</li>
-<li class="fragment">25+ Years Shipping Software for Microsoft, Amazon, SAP, IBM, and others</li>
+<li class="fragment">25+ Years Shipping Software
+<ul>
+<li class="fragment">Microsoft, Amazon, SAP, IBM, and others</li>
+</ul></li>
 </ul>
 </section>
 <section id="agenda" class="slide level2">
@@ -245,11 +248,6 @@ Simon Guest
 </section>
 <section id="discussion-encouraged" class="title-slide slide level1 center">
 <h1>Discussion Encouraged!</h1>
-
-</section>
-
-<section id="architecting-for-generative-ai" class="title-slide slide level1 center">
-<h1>Architecting for Generative AI</h1>
 
 </section>
 
@@ -277,7 +275,7 @@ Simon Guest
 <section id="openai-chat-completions-api-1" class="slide level2">
 <h2>OpenAI Chat Completions API</h2>
 <ul>
-<li class="fragment">Who uses the OpenAI Chat Completions API format?
+<li class="fragment">Widely used:
 <ul>
 <li class="fragment">Anthropic (Claude API is very similar, with minor differences)</li>
 <li class="fragment">OpenRouter, an inference provider for many models</li>
@@ -506,7 +504,7 @@ data: [DONE]</code></pre>
 <ul>
 <li class="fragment">By design, LLMs generate non-structured output (i.e., free-form text)</li>
 <li class="fragment">Sometimes, paragraph. Sometimes, numbered list.</li>
-<li class="fragment"><em>“What are the GPS coordinates for Paris”</em>
+<li class="fragment"><em>“What are the GPS coordinates for Paris?”</em>
 <ul>
 <li class="fragment"><em>“48.8566, 2.3522”</em></li>
 <li class="fragment"><em>“You can find Paris at lat: 48.8566 long: 2.3522”</em></li>
@@ -518,7 +516,7 @@ data: [DONE]</code></pre>
 <section id="structured-output-1" class="slide level2">
 <h2>Structured Output</h2>
 <ul>
-<li class="fragment">You can try to use the system prompt
+<li class="fragment">You can try to use the system prompt…
 <ul>
 <li class="fragment">“Return the result in JSON only”</li>
 </ul></li>
@@ -638,8 +636,8 @@ Paris, France has GPS coordinates of 48.8566, 2.3522</code></pre>
 </section>
 
 <section>
-<section id="hosted-closed-models-vs.-local-open-source-models" class="title-slide slide level1 center">
-<h1>Hosted, Closed Models vs.&nbsp;Local, Open-Source Models</h1>
+<section id="hosted-models-vs.-local-models" class="title-slide slide level1 center">
+<h1>Hosted Models vs.&nbsp;Local Models</h1>
 
 </section>
 <section id="why-local-ai" class="slide level2">
@@ -660,7 +658,7 @@ Paris, France has GPS coordinates of 48.8566, 2.3522</code></pre>
 <ul>
 <li class="fragment">Every call you make to ChatGPT or Claude needs an Internet connection</li>
 <li class="fragment">That’s not always guaranteed!</li>
-<li class="fragment">e..g, a remote school in India and/or on a plane with no WiFi</li>
+<li class="fragment">e..g, a remote school in India and/or when phone is in airplane mode</li>
 </ul></li>
 </ul>
 </section>
@@ -748,6 +746,46 @@ Paris, France has GPS coordinates of 48.8566, 2.3522</code></pre>
 </ul></li>
 </ul>
 </section>
+<section id="lets-visualize-this" class="slide level2">
+<h2>Let’s Visualize This!</h2>
+
+<img data-src="notebooks/slide_images/source_fp32.png" width="900" class="r-stretch quarto-figure-center"><p class="caption">Simulating 35B parameters at FP32 (9.38Mb)</p></section>
+<section id="lets-visualize-this-1" class="slide level2">
+<h2>Let’s Visualize This!</h2>
+
+<img data-src="notebooks/slide_images/downscale_27B.png" width="900" class="r-stretch quarto-figure-center"><p class="caption">Simulating 27B parameters at FP32 (5.70Mb)</p></section>
+<section id="lets-visualize-this-2" class="slide level2">
+<h2>Let’s Visualize This!</h2>
+
+<img data-src="notebooks/slide_images/downscale_9B.png" width="900" class="r-stretch quarto-figure-center"><p class="caption">Simulating 9B parameters at FP32 (1.90Mb)</p></section>
+<section id="lets-visualize-this-3" class="slide level2">
+<h2>Let’s Visualize This!</h2>
+
+<img data-src="notebooks/slide_images/downscale_4B.png" width="900" class="r-stretch quarto-figure-center"><p class="caption">Simulating 4B parameters at FP32 (0.84Mb)</p></section>
+<section id="lets-visualize-this-4" class="slide level2">
+<h2>Let’s Visualize This!</h2>
+
+<img data-src="notebooks/slide_images/downscale_2B.png" width="900" class="r-stretch quarto-figure-center"><p class="caption">Simulating 2B parameters at FP32 (0.41Mb)</p></section>
+<section id="lets-visualize-this-5" class="slide level2">
+<h2>Let’s Visualize This!</h2>
+
+<img data-src="notebooks/slide_images/downscale_0.8B.png" width="900" class="r-stretch quarto-figure-center"><p class="caption">Simulating 0.8B parameters at FP32 (0.16Mb)</p></section>
+<section id="lets-visualize-this-6" class="slide level2">
+<h2>Let’s Visualize This!</h2>
+
+<img data-src="notebooks/slide_images/source_fp32.png" width="900" class="r-stretch quarto-figure-center"><p class="caption">Simulating 35B parameters at FP32 (9.38Mb)</p></section>
+<section id="lets-visualize-this-7" class="slide level2">
+<h2>Let’s Visualize This!</h2>
+
+<img data-src="notebooks/slide_images/quant_Q8_0__8-bit.png" width="900" class="r-stretch quarto-figure-center"><p class="caption">Simulating 35B parameters using Q8_0 (8-bit) Quantization (2.49Mb)</p></section>
+<section id="lets-visualize-this-8" class="slide level2">
+<h2>Let’s Visualize This!</h2>
+
+<img data-src="notebooks/slide_images/quant_Q4_0__4-bit.png" width="900" class="r-stretch quarto-figure-center"><p class="caption">Simulating 35B parameters using Q4_0 (4-bit) Quantization (1.32Mb)</p></section>
+<section id="lets-visualize-this-9" class="slide level2">
+<h2>Let’s Visualize This!</h2>
+
+<img data-src="notebooks/slide_images/quant_Q2____2-bit.png" width="900" class="r-stretch quarto-figure-center"><p class="caption">Simulating 35B parameters using Q2 (2-bit) Quantization (0.73Mb)</p></section>
 <section id="quantization-formats" class="slide level2">
 <h2>Quantization Formats</h2>
 <ul>
@@ -936,14 +974,20 @@ Paris, France has GPS coordinates of 48.8566, 2.3522</code></pre>
 <section id="hermes" class="slide level2">
 <h2>Hermes</h2>
 <ul>
-<li class="fragment">TBD</li>
+<li class="fragment">Open-source, self-hosted AI agent framework by <a href="https://nousresearch.com/" class="external" target="_blank">Nous Research</a> (Feb 2026)</li>
+<li class="fragment">Runs on your own infrastructure and connects to any LLM</li>
+<li class="fragment"><strong>Closed learning loop</strong>: after completing a task, writes a reusable skill. i.e., gets smarter over time</li>
+<li class="fragment">Long-term semantic memory + episodic logs enable genuine recall across sessions</li>
+<li class="fragment">64K+ GitHub stars; supports Telegram, Discord, Slack, WhatsApp, Signal, CLI via a single gateway</li>
 </ul>
 </section>
 <section id="pi.dev" class="slide level2">
 <h2>pi.dev</h2>
 <ul>
-<li class="fragment">TBD</li>
-<li class="fragment">Core engine of OpenClaw</li>
+<li class="fragment">Minimal, open-source terminal-based coding agent harness by Mario Zechner (Aug 2025, MIT License)</li>
+<li class="fragment">Core engine powering <a href="https://openclaw.ai" class="external" target="_blank">OpenClaw</a>, which hit 145K+ GitHub stars in its first week</li>
+<li class="fragment">Ships with a deliberately lean toolset: Read, Bash, Edit, Write, Find, LS — extend with your own skills</li>
+<li class="fragment">Any app can create an <code>AgentSession</code>, configure tools and context, and run agent conversations</li>
 </ul>
 </section>
 <section id="why-do-agents-need-tools" class="slide level2">
@@ -1020,39 +1064,74 @@ Paris, France has GPS coordinates of 48.8566, 2.3522</code></pre>
 <section id="a-brief-history" class="slide level2">
 <h2>A Brief History</h2>
 <ul>
-<li class="fragment">TBD: History / just autocomplete</li>
-<li class="fragment">TBD: Early agents / Context limit problem</li>
-<li class="fragment">TBD: Then more complex agents (harnesses): Copilot, Cursor,</li>
-<li class="fragment">TBD: Now, less about the model and more about the harness</li>
+<li class="fragment">Initial “coding agents” (i.e., first version of GitHub Copilot - mid-2022) were basic:
+<ul>
+<li class="fragment">Glorified auto-complete</li>
+<li class="fragment">Very limited agent interactions</li>
+<li class="fragment">Many context limit challenges - i.e., trying to understand the whole of the repo in window</li>
+</ul></li>
+</ul>
+</section>
+<section id="a-brief-history-1" class="slide level2">
+<h2>A Brief History</h2>
+<ul>
+<li class="fragment">The <strong>harness</strong> changed everything (2023–present)
+<ul>
+<li class="fragment">Cursor, Aider, Devin: agents that could read files, make edits, and run tests</li>
+<li class="fragment">Context windows grew from 4k → 128k → 1M+ tokens — agents can now see entire codebases</li>
+<li class="fragment">Claude Code, GitHub Copilot Agent Mode: multi-step reasoning, not just one-shot suggestions</li>
+</ul></li>
+<li class="fragment">Less about the model, more about the underlying harness</li>
 </ul>
 </section>
 <section id="scaffolding-new-repos" class="slide level2">
 <h2>Scaffolding New Repos</h2>
 <ul>
-<li class="fragment">TBD: Two camps: “Hands-Off / Vibe-coding” vs.&nbsp;“Hands-On / Powertool”</li>
-<li class="fragment">TBD: Hands off can be tempting
+<li class="fragment">Two camps: <strong>Hands-Off (Vibe-coding)</strong> vs.&nbsp;<strong>Hands-On (Powertool)</strong></li>
+<li class="fragment">Hands-Off approach can be tempting:
 <ul>
 <li class="fragment">Create an issue in GitHub, send an agent to work on it, direct from your mobile phone</li>
-<li class="fragment">But, IMO lose control of the architecture</li>
+<li class="fragment">But, IMO you lose control of the architecture</li>
 <li class="fragment">Analogy to the Winchester Mystery House</li>
 </ul></li>
-<li class="fragment">TBD: Prefer Powertool approach (what I recommend to my students)
+</ul>
+</section>
+<section id="scaffolding-new-repos-1" class="slide level2">
+<h2>Scaffolding New Repos</h2>
+<p><a href="./images/winchester.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="./images/winchester.png"></a></p>
+</section>
+<section id="scaffolding-new-repos-2" class="slide level2">
+<h2>Scaffolding New Repos</h2>
+<ul>
+<li class="fragment">I prefer “Powertool” approach (what I recommend to my students)
 <ul>
 <li class="fragment">Hand-build the architecture / frame out the house</li>
 <li class="fragment">Then use AI to fill in the details</li>
 </ul></li>
-<li class="fragment">TBD: CLAUDE.md should describe the architecture of the system (house frame)</li>
-<li class="fragment">TBD: SKILL.md should describe each area (room)</li>
 </ul>
 </section>
-<section id="coding-agent-best-practices" class="slide level2">
-<h2>Coding Agent Best Practices</h2>
+<section id="scaffolding-new-repos-3" class="slide level2">
+<h2>Scaffolding New Repos</h2>
+<p><a href="./images/house_frame.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="./images/house_frame.png"></a></p>
+</section>
+<section id="scaffolding-new-repos-4" class="slide level2">
+<h2>Scaffolding New Repos</h2>
 <ul>
-<li class="fragment">TBD: Plan, Act, Test,(Abort), Commit, Clear</li>
+<li class="fragment">Mapping this to Claude Code
+<ul>
+<li class="fragment"><strong>CLAUDE.md</strong> should describe the architecture of the system (analogy: house frame)</li>
+<li class="fragment"><strong>SKILL.md</strong> should describe each area that Claude can contribute to (analogy: working on each room)</li>
+</ul></li>
 </ul>
 </section>
-<section id="coding-agent-best-practices-1" class="slide level2">
-<h2>Coding Agent Best Practices</h2>
+<section id="coding-agent-lifecycle" class="slide level2">
+<h2>Coding Agent Lifecycle</h2>
+<ul>
+<li class="fragment">Lifecycle: Plan, Act, Test,(Abort), Commit, Clear</li>
+</ul>
+</section>
+<section id="coding-agent-lifecycle-1" class="slide level2">
+<h2>Coding Agent Lifecycle</h2>
 <ul>
 <li class="fragment"><strong>Plan</strong>
 <ul>
@@ -1064,8 +1143,8 @@ Paris, France has GPS coordinates of 48.8566, 2.3522</code></pre>
 </ul></li>
 </ul>
 </section>
-<section id="coding-agent-best-practices-2" class="slide level2">
-<h2>Coding Agent Best Practices</h2>
+<section id="coding-agent-lifecycle-2" class="slide level2">
+<h2>Coding Agent Lifecycle</h2>
 <ul>
 <li class="fragment"><strong>Act</strong>
 <ul>
@@ -1076,8 +1155,8 @@ Paris, France has GPS coordinates of 48.8566, 2.3522</code></pre>
 </ul></li>
 </ul>
 </section>
-<section id="coding-agent-best-practices-3" class="slide level2">
-<h2>Coding Agent Best Practices</h2>
+<section id="coding-agent-lifecycle-3" class="slide level2">
+<h2>Coding Agent Lifecycle</h2>
 <ul>
 <li class="fragment"><strong>Test</strong>
 <ul>
@@ -1088,20 +1167,20 @@ Paris, France has GPS coordinates of 48.8566, 2.3522</code></pre>
 </ul></li>
 </ul>
 </section>
-<section id="coding-agent-best-practices-4" class="slide level2">
-<h2>Coding Agent Best Practices</h2>
+<section id="coding-agent-lifecycle-4" class="slide level2">
+<h2>Coding Agent Lifecycle</h2>
 <ul>
 <li class="fragment"><strong>Abort</strong>
 <ul>
 <li class="fragment">Sometimes, things don’t work as expected!</li>
 <li class="fragment">It can be challenging to fix before exhausting the context window</li>
-<li class="fragment">And Claude Code will “spin out of control”</li>
+<li class="fragment">And many coding agents will “spin out of control”</li>
 <li class="fragment"><code>git stash</code>, clear context (new session), update the feature spec, and restart</li>
 </ul></li>
 </ul>
 </section>
-<section id="coding-agent-best-practices-5" class="slide level2">
-<h2>Coding Agent Best Practices</h2>
+<section id="coding-agent-lifecycle-5" class="slide level2">
+<h2>Coding Agent Lifecycle</h2>
 <ul>
 <li class="fragment"><strong>Commit</strong>
 <ul>
@@ -1111,8 +1190,8 @@ Paris, France has GPS coordinates of 48.8566, 2.3522</code></pre>
 </ul></li>
 </ul>
 </section>
-<section id="coding-agent-best-practices-6" class="slide level2">
-<h2>Coding Agent Best Practices</h2>
+<section id="coding-agent-lifecycle-6" class="slide level2">
+<h2>Coding Agent Lifecycle</h2>
 <ul>
 <li class="fragment"><strong>Clear</strong>
 <ul>
