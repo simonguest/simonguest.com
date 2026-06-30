@@ -1,5 +1,5 @@
 ---
-title: "Architecting for (and with) Generative AI"
+title: "Architecting for Generative AI"
 description: "A workshop on architecting systems to use generative models and using generative AI coding agents."
 author: "Simon Guest"
 format:
@@ -13,7 +13,7 @@ date-format: " "
 categories: ["AI", "Generative AI", "Professional Development"]
 image: "images/logo.png"
 logo: "images/logo.png"
-draft: true
+draft: false
 
 ---
 
@@ -21,9 +21,10 @@ draft: true
 
 - Simon Guest
 - CS and AI Educator
-- Adjunct Professor of AI at DigiPen
+- Adjunct Professor of AI at DigiPen Institute of Technology
 - Technical Advisor and Former CTO at Code.org
-- 25+ Years Shipping Software for Microsoft, Amazon, SAP, IBM, and others
+- 25+ Years Shipping Software
+  - Microsoft, Amazon, SAP, IBM, and others
 
 ## Agenda
 
@@ -37,8 +38,6 @@ draft: true
   - Future: Local coding models
 
 # Discussion Encouraged!
-
-# Architecting for Generative AI
 
 # Best Practices for LLM APIs
 
@@ -54,7 +53,7 @@ draft: true
 
 ## OpenAI Chat Completions API
 
-- Who uses the OpenAI Chat Completions API format?
+- Widely used:
   - Anthropic (Claude API is very similar, with minor differences)
   - OpenRouter, an inference provider for many models
   - Open source tools: LiteLLM, LangChain
@@ -135,7 +134,7 @@ Data sent as chunks, prefixed with `data:` and separated by double newlines
 
 - By design, LLMs generate non-structured output (i.e., free-form text)
 - Sometimes, paragraph. Sometimes, numbered list.
-- *"What are the GPS coordinates for Paris"*
+- *"What are the GPS coordinates for Paris?"*
   - *"48.8566, 2.3522"*
   - *"You can find Paris at lat: 48.8566 long: 2.3522"*
   - *"The GPS coordinates of Paris are 48.8566 and 2.3522"*
@@ -143,7 +142,7 @@ Data sent as chunks, prefixed with `data:` and separated by double newlines
 
 ## Structured Output
 
-- You can try to use the system prompt
+- You can try to use the system prompt...
   - "Return the result in JSON only"
 - But... it doesn't always work
   - Early/small models struggle with correct JSON formatting
@@ -189,7 +188,7 @@ Data sent as chunks, prefixed with `data:` and separated by double newlines
 
 # Q&A
 
-# Hosted, Closed Models vs. Local, Open-Source Models
+# Hosted Models vs. Local Models
 
 ## Why Local AI?
 
@@ -203,7 +202,7 @@ Data sent as chunks, prefixed with `data:` and separated by double newlines
 - **Offline**
   - Every call you make to ChatGPT or Claude needs an Internet connection
   - That's not always guaranteed!
-  - e..g, a remote school in India and/or on a plane with no WiFi
+  - e..g, a remote school in India and/or when phone is in airplane mode
 
 ## Why Local AI?
 
@@ -258,6 +257,46 @@ Data sent as chunks, prefixed with `data:` and separated by double newlines
 - Number of weights matters more than precision
   - A 70B model at 4-bit will often beat a 13B model at 32-bit
   - The model's knowledge remains largely intact
+
+## Let's Visualize This!
+
+![Simulating 35B parameters at FP32 (9.38Mb)](notebooks/slide_images/source_fp32.png){fig-align="center" width="900px"}
+
+## Let's Visualize This!
+
+![Simulating 27B parameters at FP32 (5.70Mb)](notebooks/slide_images/downscale_27B.png){fig-align="center" width="900px"}
+
+## Let's Visualize This!
+
+![Simulating 9B parameters at FP32 (1.90Mb)](notebooks/slide_images/downscale_9B.png){fig-align="center" width="900px"}
+
+## Let's Visualize This!
+
+![Simulating 4B parameters at FP32 (0.84Mb)](notebooks/slide_images/downscale_4B.png){fig-align="center" width="900px"}
+
+## Let's Visualize This!
+
+![Simulating 2B parameters at FP32 (0.41Mb)](notebooks/slide_images/downscale_2B.png){fig-align="center" width="900px"}
+
+## Let's Visualize This!
+
+![Simulating 0.8B parameters at FP32 (0.16Mb)](notebooks/slide_images/downscale_0.8B.png){fig-align="center" width="900px"}
+
+## Let's Visualize This!
+
+![Simulating 35B parameters at FP32 (9.38Mb)](notebooks/slide_images/source_fp32.png){fig-align="center" width="900px"}
+
+## Let's Visualize This!
+
+![Simulating 35B parameters using Q8_0 (8-bit) Quantization (2.49Mb)](notebooks/slide_images/quant_Q8_0__8-bit.png){fig-align="center" width="900px"}
+
+## Let's Visualize This!
+
+![Simulating 35B parameters using Q4_0 (4-bit) Quantization (1.32Mb)](notebooks/slide_images/quant_Q4_0__4-bit.png){fig-align="center" width="900px"}
+
+## Let's Visualize This!
+
+![Simulating 35B parameters using Q2 (2-bit) Quantization (0.73Mb)](notebooks/slide_images/quant_Q2____2-bit.png){fig-align="center" width="900px"}
 
 ## Quantization Formats
 
@@ -377,12 +416,18 @@ LM Studio running google/gemma-3-27b
 
 ## Hermes
 
-- TBD
+- Open-source, self-hosted AI agent framework by [Nous Research](https://nousresearch.com/){.external target="_blank"} (Feb 2026)
+- Runs on your own infrastructure and connects to any LLM
+- **Closed learning loop**: after completing a task, writes a reusable skill. i.e., gets smarter over time
+- Long-term semantic memory + episodic logs enable genuine recall across sessions
+- 64K+ GitHub stars; supports Telegram, Discord, Slack, WhatsApp, Signal, CLI via a single gateway
 
 ## pi.dev
 
-- TBD
-- Core engine of OpenClaw
+- Minimal, open-source terminal-based coding agent harness by Mario Zechner (Aug 2025, MIT License)
+- Core engine powering [OpenClaw](https://openclaw.ai){.external target="_blank"}, which hit 145K+ GitHub stars in its first week
+- Ships with a deliberately lean toolset: Read, Bash, Edit, Write, Find, LS — extend with your own skills
+- Any app can create an `AgentSession`, configure tools and context, and run agent conversations
 
 ## Why Do Agents Need Tools?
 
@@ -437,29 +482,52 @@ LM Studio running google/gemma-3-27b
 
 ## A Brief History
 
-- TBD: History / just autocomplete
-- TBD: Early agents / Context limit problem
-- TBD: Then more complex agents (harnesses): Copilot, Cursor,
-- TBD: Now, less about the model and more about the harness
+- Initial "coding agents" (i.e., first version of GitHub Copilot - mid-2022) were basic:
+  - Glorified auto-complete
+  - Very limited agent interactions
+  - Many context limit challenges - i.e., trying to understand the whole of the repo in window
+
+## A Brief History
+
+- The **harness** changed everything (2023–present)
+  - Cursor, Aider, Devin: agents that could read files, make edits, and run tests
+  - Context windows grew from 4k → 128k → 1M+ tokens — agents can now see entire codebases
+  - Claude Code, GitHub Copilot Agent Mode: multi-step reasoning, not just one-shot suggestions
+- Less about the model, more about the underlying harness
 
 ## Scaffolding New Repos
 
-- TBD: Two camps: "Hands-Off / Vibe-coding" vs. "Hands-On / Powertool"
-- TBD: Hands off can be tempting
+- Two camps: **Hands-Off (Vibe-coding)** vs. **Hands-On (Powertool)**
+- Hands-Off approach can be tempting:
   - Create an issue in GitHub, send an agent to work on it, direct from your mobile phone
-  - But, IMO lose control of the architecture
+  - But, IMO you lose control of the architecture
   - Analogy to the Winchester Mystery House
-- TBD: Prefer Powertool approach (what I recommend to my students)
+
+## Scaffolding New Repos
+
+![](./images/winchester.png){.lightbox}
+
+## Scaffolding New Repos
+
+- I prefer "Powertool" approach (what I recommend to my students)
   - Hand-build the architecture / frame out the house
   - Then use AI to fill in the details
-- TBD: CLAUDE.md should describe the architecture of the system (house frame)
-- TBD: SKILL.md should describe each area (room)
 
-## Coding Agent Best Practices
+## Scaffolding New Repos
 
-- TBD: Plan, Act, Test,(Abort), Commit, Clear
+![](./images/house_frame.png){.lightbox}
 
-## Coding Agent Best Practices
+## Scaffolding New Repos
+
+- Mapping this to Claude Code
+  - **CLAUDE.md** should describe the architecture of the system (analogy: house frame)
+  - **SKILL.md** should describe each area that Claude can contribute to (analogy: working on each room)
+
+## Coding Agent Lifecycle
+
+- Lifecycle: Plan, Act, Test,(Abort), Commit, Clear
+
+## Coding Agent Lifecycle
 
 - **Plan**
   - Write the specification for the feature
@@ -468,7 +536,7 @@ LM Studio running google/gemma-3-27b
   - *"What questions and/or clarifications do you have?"*
   - Push back on things that seem incorrect
 
-## Coding Agent Best Practices
+## Coding Agent Lifecycle
 
 - **Act**
   - Once happy with the specification, implement
@@ -476,7 +544,7 @@ LM Studio running google/gemma-3-27b
   - Correct approach mid-stream
   - *"I think there's a 3rd party library for that..."*
 
-## Coding Agent Best Practices
+## Coding Agent Lifecycle
 
 - **Test**
   - Test the feature locally / manually
@@ -484,22 +552,22 @@ LM Studio running google/gemma-3-27b
   - (Agents are really good at writing tests)
   - Have the agent run it's own tests after the feature
 
-## Coding Agent Best Practices
+## Coding Agent Lifecycle
 
 - **Abort**
   - Sometimes, things don't work as expected!
   - It can be challenging to fix before exhausting the context window
-  - And Claude Code will "spin out of control"
+  - And many coding agents will "spin out of control"
   - `git stash`, clear context (new session), update the feature spec, and restart
 
-## Coding Agent Best Practices
+## Coding Agent Lifecycle
 
 - **Commit**
   - Before committing to source control, have Claude self-update CLAUDE.md and create skills (if major new functionality)
   - Review CLAUDE.md file often
   - Auto-compact if approaching ~40K
 
-## Coding Agent Best Practices
+## Coding Agent Lifecycle
 
 - **Clear**
   - Once CLAUDE.md and feature is committed, clear context (`/new` in Claude Code)
