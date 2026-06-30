@@ -1,0 +1,330 @@
+---
+title: "Architecting for (and with) Generative AI"
+description: "A workshop on architecting systems to use generative models and using generative AI coding agents."
+author: "Simon Guest"
+format:
+  revealjs:
+    slide-number: true
+    incremental: true
+    center-title-slide: true
+    theme: [default]
+date: "2026-07-01"
+date-format: " "
+categories: ["AI"]
+image: "images/logo.png"
+logo: "images/logo.png"
+draft: true
+
+---
+
+## Introduction
+
+- Simon Guest
+- CS and AI Educator
+- Adjunct Professor of AI at DigiPen
+- Technical Advisor and Former CTO at Code.org
+- 25+ Years Shipping Software for Microsoft, Amazon, SAP, IBM, and others
+
+# My Perspectives and Experience on Architecting for AI
+
+## Agenda
+
+- **Architecting for Generative AI**
+  - Best practices for LLM APIs
+  - Hosted, closed models vs. local, open-source models
+  - Agents: SDKs and tools
+- **AI Coding Best Practices**
+  - Scaffolding new repos for coding agents
+  - Coding agent best practices
+  - Future: Local coding models
+
+# Discussion Encouraged!
+
+# Architecting for Generative AI
+
+# Best Practices for LLM APIs
+
+## OpenAI Chat Completions API
+
+- 2020: OpenAI launched GPT-3 API with a `/completions` endpoint.
+  - First major LLM API
+- 2022: ChatGPT launch; massive adoption
+- 2023 `/chat/completions` endpoint released, becomes the dominant interface
+- 2023-2024: Other providers use the same API format for their own models vs. inventing their own
+  - Build on the OpenAI developer ecosystem
+  - "OpenAI-compatible" became a selling point
+
+## OpenAI Chat Completions API
+
+- Who uses the OpenAI Chat Completions API format?
+  - Anthropic (Claude API is very similar, with minor differences)
+  - OpenRouter, an inference provider for many models
+  - Open source tools: LiteLLM, LangChain
+  - Local serving: Ollama, vLLM, llama.cpp are all "OpenAI-compatible"
+
+## Using the Chat Completions API
+
+{{< embed notebooks/chat-completion-openai.ipynb#init echo=true >}}
+
+## Using the Chat Completions API
+
+{{< embed notebooks/chat-completion-openai.ipynb#request echo=true >}}
+
+## Using the Chat Completions API
+
+{{< embed notebooks/chat-completion-openai.ipynb#response echo=true >}}
+
+## Chat History Management
+
+- Key Considerations
+  - Models don't hold any state
+  - API sends **full** conversation on every request and the model reads through the full conversation on every call
+  - The size of the conversation is known as the context
+  - The maximum size the model can process is referred to as the **context window**
+
+## Chat History Management
+
+- Context window sizes
+  - GPT-2 = 2048 tokens
+  - Today's nano models ~= 32k tokens
+  - Today's small models ~= 120k tokens
+  - Today's frontier models ~= 1M tokens
+- Large conversations can cause challenges
+  - They are expensive (you pay per token for whole conversation every time)
+  - Small models often forget early details in long conversation histories
+
+## Chat History Management
+
+- Mitigation Strategies
+  - Remove older messages from the history
+  - Implement sliding window across the conversation history
+  - Summarize older messages and rewrite the history (compacting)
+
+## Token Streaming
+
+- When calling hosted models, responses can take a few seconds to be returned
+  - Not the best user experience, especially for consumer products
+- Need a way to support streaming of tokens as they are generated (a.k.a. "typewriter effect")
+  - Streaming added to Chat Completions API in early 2023
+  - Supported by other major vendors (Anthropic, Cohere, etc.)
+  - Now expected as a baseline feature
+
+## How Does Token Streaming Work?
+
+- Uses SSE (Server-Sent Events)
+  - Unidirectional (server to client)
+  - Uses standard HTTP/1.1 or HTTP/2
+  - Server sends a response with a `text/event-stream` MIME type
+  - Client uses built-in `EventSource` API to open the connection, listen to messages, and handle events.
+
+## SSE Data Format
+
+```
+data: {"choices":[{"delta":{"content":"Hello"}}]}
+
+data: {"choices":[{"delta":{"content":" world"}}]}
+  
+data: [DONE]
+```
+
+Data sent as chunks, prefixed with `data:` and separated by double newlines
+
+## Implementing Token Streaming
+
+{{< embed notebooks/token-streaming.ipynb#request echo=true outputs=false >}}
+
+## Structured Output
+
+- By design, LLMs generate non-structured output (i.e., free-form text)
+- Sometimes, paragraph. Sometimes, numbered list.
+- *"What are the GPS coordinates for Paris"*
+  - *"48.8566, 2.3522"*
+  - *"You can find Paris at lat: 48.8566 long: 2.3522"*
+  - *"The GPS coordinates of Paris are 48.8566 and 2.3522"*
+- But often, you need structure - e.g., a JSON object
+
+## Structured Output
+
+- You can try to use the system prompt
+  - "Return the result in JSON only"
+- But... it doesn't always work
+  - Early/small models struggle with correct JSON formatting
+  - Even larger models make mistakes (e.g., missing closing brace)
+- Sometimes the models just forget!
+  - "RETURN THE RESULT IN JSON ONLY. NO OTHER TEXT!!!"
+
+## Structured Outputs in OpenAI API
+
+- Nov 2023: OpenAI added JSON mode
+  - `response_format: {"type": "json_object"}`
+  - Guaranteed valid JSON, but didn't enforce schema
+  - Sometimes mixed up/missed fields
+- Aug 2024: **Structured Outputs** launched
+  - `response_format: {"type": "json_object", ...}`
+  - 100% reliability that output matches the your schema
+
+## How Structured Outputs Work
+
+- Constrained Decoding
+  - When generating responses, the model normally samples from all possible next tokens
+  - With **constrained decoding**, the next token is **dynamically filtered** to only allow tokens that keep the output schema valid
+    - e.g., if schema requires an integer, string tokens are masked out from the probability distribution
+
+## How Structured Outputs Work
+
+- Runs on server (or in library) - not fine-tuning approach
+- Slightly slower token generation due to computational overhead
+- Technically, it's mathematically impossible to generate invalid output
+  - (Real world: I see ~1:7000 error rates with GPT-5.1 chat)
+
+## Implementing Structured Outputs
+
+{{< embed notebooks/structured-outputs.ipynb#model echo=true >}}
+
+## Implementing Structured Outputs
+
+{{< embed notebooks/structured-outputs.ipynb#request echo=true >}}
+
+## Implementing Structured Outputs
+
+{{< embed notebooks/structured-outputs.ipynb#display echo=true >}}
+
+# Hosted, Closed Models vs. Local, Open-Source Models
+
+## Why Local AI?
+
+- **Privacy**
+  - Every call to ChatGPT or Claude may get logged and/or be used for training purposes
+  - Many organizations don't want their customer/financial data logged with an AI vendor
+  - There may also be legal regulations/restrictions
+
+## Why Local AI?
+
+- **Offline**
+  - Every call you make to ChatGPT or Claude needs an Internet connection
+  - That's not always guaranteed!
+  - e..g, a remote school in India and/or on a plane with no WiFi
+
+## Why Local AI?
+
+- **Latency**
+  - Even with a network connection, calls can suffer from increased latency
+  - Especially if your application needs frequent, quick responses
+  - e.g., using a VLM on a video stream for a user with vision impairments
+
+## Why Local AI?
+
+- **Cost**
+  - While per-API costs are fractions of a cent, these can grow out of control with exponential growth
+  - More pronounced for long conversation threads
+  - Or agents with verbose tool call requests/responses
+
+## Closed vs. Open-Source Models
+
+- **Closed Source:** 
+  - OpenAI GPT-5, Claude Sonnet/Opus, Google's Gemini
+  - Very large models; often referred to as **foundational** models or **frontier** models
+  - Hosted by the vendors
+  - No ability to download the models
+  - No ability to inspect the weights of the models
+
+## Closed vs. Open-Source Models
+
+- **Open Weight:** 
+  - Meta's Llama, Google's Gemma, Alibaba's Qwen, OpenAI gpt-oss-120b 
+  - Range from small to medium in size (1Gb - 500Gb+)
+  - Downloadable model files
+  - Model files are pre-trained weights, but no training data
+  - No training data == No ability to recreate the model from scratch
+
+## Closed vs. Open-Source Models
+
+- **Open Source:** 
+  - You can download the model files with pre-trained weights **and** the training data used to train it
+  - i.e., you could create the model from scratch
+  - Examples: AI2's OLMo, NVIDIA Nemotron
+
+## Introducing Quantization
+
+- Roughly speaking, the size of the model file dictates how much VRAM (or unified memory) you need
+  - 55Gb model ~= 55Gb of VRAM
+- What if we don't have that much?
+
+## Introducing Quantization
+
+- Two ways to shrink a model:
+  - Reduce the number of weights
+  - Reduce the precision of the weights (quantization)
+- Number of weights matters more than precision
+  - A 70B model at 4-bit will often beat a 13B model at 32-bit
+  - The model's knowledge remains largely intact
+
+## Quantization Formats
+
+- GGUF (GPT-Generated Unified Format):
+  - Runs on all platforms (NVIDIA, AMD, Apple)
+  - unsloth community on HF hosts quantized versions of popular models
+  - Multiple quantization schemes (Q4_K_M, Q5_K_S, Q6_K, etc.)
+
+## Quantization Formats
+
+- MLX:
+  - Apple-only
+  - Offers better performance on Mac (compared to GGUF)
+  - mlx-community on HF hosts MLX-quantized versions of popular models
+  - 4bit and 8bit support
+
+# Demo
+
+LM Studio running google/gemma-3-27b
+
+## Agents: SDKs and Tools
+
+- TBD
+
+# AI Coding Best Practices
+
+## Scaffolding New Repos
+
+- TBD
+
+## Coding Agent Best Practices
+
+- TBD
+
+## Future: Local Coding Models
+
+- TBD
+
+
+
+# Thank you!
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+.slide {
+  font-size: 0.8em;
+}
+.reveal, .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Inter', sans-serif;
+}
+.reveal .slide-logo {
+  height: 6% !important;
+  max-width: unset !important;
+  max-height: unset !important;
+}
+.reveal, .reveal h1 {
+  color: #3070F5
+}
+.reveal, .reveal h2 {
+  color: #3070F5
+}
+.reveal, .reveal h2 > li {
+  color: black
+}
+.quarto-title-author-name {
+  color: #282828
+}
+</style>

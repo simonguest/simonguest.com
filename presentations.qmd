@@ -1,7 +1,7 @@
 ---
 title: "Presentations"
 listing:
-  contents: s
+  contents: "s/**/*.qmd"
   sort: "date desc"
   type: grid
   categories: true
