@@ -928,7 +928,14 @@
     "href": "s/gerege/slides.html#introduction",
     "title": "Architecting for Generative AI",
     "section": "Introduction",
-    "text": "Introduction\n\nSimon Guest\n25+ Years Shipping Software, including:\n\n10 Years at Microsoft (Developer Division)\n4 Years at Amazon (AWS and Transportation)\n4 Years at SAP Concur (Travel and Expense)\n3 Years at Neudesic/IBM (Mobile App Development)\n\nFormer Chief Technology Officer at Code.org\nAdjunct Professor of AI at DigiPen Institute of Technology"
+    "text": "Introduction\n\nSimon Guest\n25+ Years Shipping Software, including:\n\n10 Years at Microsoft (Developer Division)\n4 Years at Amazon (AWS and Transportation)\n4 Years at SAP Concur (Travel and Expense)\n3 Years at Neudesic/IBM (Mobile App Development)\n\nAdvisor to Tola Capital (VC Firm in Seattle)\nFormer Chief Technology Officer at Code.org\nAdjunct Professor of AI at DigiPen Institute of Technology"
+  },
+  {
+    "objectID": "s/gerege/slides.html#generative-ai-in-the-us-current-trends",
+    "href": "s/gerege/slides.html#generative-ai-in-the-us-current-trends",
+    "title": "Architecting for Generative AI",
+    "section": "Generative AI in the US: Current Trends",
+    "text": "Generative AI in the US: Current Trends\n\nMajority of VC Investment\n\nIPOs on the horizon: OpenAI, Anthropic, Perplexity\n\nThree Trends:\n\n“Token maxxing” and cost\n“Moat protection” for startups\nRobotics\n\nBackdrop of Layoffs\n\nAI vs. Over-hiring/ZIR"
   },
   {
     "objectID": "s/gerege/slides.html#agenda",
