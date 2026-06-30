@@ -19,12 +19,14 @@ draft: false
 
 ## Introduction
 
-- Simon Guest
-- CS and AI Educator
+- **Simon Guest**
+- 25+ Years Shipping Software, including:
+  - 10 Years at Microsoft (Developer Division)
+  - 4 Years at Amazon (AWS and Transportation)
+  - 4 Years at SAP Concur (Travel and Expense)
+  - 3 Years at Neudesic/IBM (Mobile App Development)
+- Former Chief Technology Officer at Code.org
 - Adjunct Professor of AI at DigiPen Institute of Technology
-- Technical Advisor and Former CTO at Code.org
-- 25+ Years Shipping Software
-  - Microsoft, Amazon, SAP, IBM, and others
 
 ## Agenda
 
