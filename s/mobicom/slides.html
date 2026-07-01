@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
+
+  <meta name="author" content="Simon Guest">
+  <title>Simon Says – Building an AI-Native Organization</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+<meta property="og:title" content="Building an AI-Native Organization – Simon Says">
+<meta property="og:description" content="TBD">
+<meta property="og:image" content="https://simonguest.com/s/mobicom/images/logo.png">
+<meta property="og:site_name" content="Simon Says">
+<meta property="og:image:height" content="767">
+<meta property="og:image:width" content="1379">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Building an AI-Native Organization</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Simon Guest 
+</div>
+</div>
+</div>
+
+</section>
+<section id="introduction" class="slide level2">
+<h2>Introduction</h2>
+<ul>
+<li class="fragment"><strong>Simon Guest</strong></li>
+<li class="fragment">25+ Years Shipping Software, including:
+<ul>
+<li class="fragment">10 Years at Microsoft (Developer Division)</li>
+<li class="fragment">4 Years at Amazon (AWS and Transportation)</li>
+<li class="fragment">4 Years at SAP Concur (Travel and Expense)</li>
+<li class="fragment">3 Years at Neudesic/IBM (Mobile App Development)</li>
+</ul></li>
+<li class="fragment">Advisor to Tola Capital (VC Firm in Seattle)</li>
+<li class="fragment">Former Chief Technology Officer at Code.org</li>
+<li class="fragment">Adjunct Professor of AI at DigiPen Institute of Technology</li>
+</ul>
+</section>
+<section id="generative-ai-in-the-us-current-trends" class="slide level2">
+<h2>Generative AI in the US: Current Trends</h2>
+<ul>
+<li class="fragment">Majority of VC Investment
+<ul>
+<li class="fragment">IPOs on the horizon: OpenAI, Anthropic, Perplexity</li>
+</ul></li>
+<li class="fragment">Three Trends:
+<ul>
+<li class="fragment">Measuring Productivity of AI Tools</li>
+<li class="fragment">“Token maxxing” and cost</li>
+<li class="fragment">“Moat protection” for startups</li>
+</ul></li>
+<li class="fragment">Backdrop of Layoffs
+<ul>
+<li class="fragment">AI vs.&nbsp;Over-hiring/ZIR</li>
+</ul></li>
+</ul>
+</section>
+<section id="agenda" class="slide level2">
+<h2>Agenda</h2>
+<ul>
+<li class="fragment"><strong>Lessons from Microsoft, Amazon, SAP, and IBM</strong>
+<ul>
+<li class="fragment">Team and Organization Design
+<ul>
+<li class="fragment"><em>“What roles might change?”</em></li>
+<li class="fragment"><em>“How do we overcome organizational resistance to AI?”</em></li>
+</ul></li>
+<li class="fragment">Shipping Features
+<ul>
+<li class="fragment"><em>“Can we ship quicker with AI?”</em></li>
+<li class="fragment"><em>“Should we all be vibe coding now?”</em></li>
+</ul></li>
+<li class="fragment">Dealing With Technical Debt
+<ul>
+<li class="fragment"><em>“Can AI help us reduce this?”</em></li>
+<li class="fragment"><em>“How do we avoid creating more with AI?”</em></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="discussion-encouraged" class="title-slide slide level1 center">
+<h1>Discussion Encouraged!</h1>
+
+</section>
+
+<section>
+<section id="team-and-organization-design" class="title-slide slide level1 center">
+<h1>Team and Organization Design</h1>
+
+</section>
+<section id="shape-of-your-engineering-team" class="slide level2">
+<h2>Shape of Your Engineering Team</h2>
+<ul>
+<li class="fragment">Every team has a “shape”</li>
+<li class="fragment">Ratio of engineers at each level
+<ul>
+<li class="fragment">Junior SDE-1 through Senior SDE-5</li>
+</ul></li>
+<li class="fragment"><strong>Five shapes:</strong> Triangle, Inverted Triangle, Diamond, Rectangle, and Hourglass</li>
+</ul>
+</section>
+<section id="triangle" class="slide level2">
+<h2>Triangle</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Common in product teams at large organizations (Microsoft, Amazon) who run internship programs</li>
+<li class="fragment">Well suited for established products with operational load</li>
+<li class="fragment">Good for mentoring opportunities</li>
+<li class="fragment"><strong>Watch out for</strong> burnout at SDE-5</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./images/triangle.webp" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="inverted-triangle" class="slide level2">
+<h2>Inverted Triangle</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Less common, but effective for early-stage startups and new product development</li>
+<li class="fragment">Used this model for building hardware device at Amazon</li>
+<li class="fragment">Strong team with senior and principal level engineers</li>
+<li class="fragment"><strong>Watch out for</strong> gaining consensus given the team’s seniority</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./images/inverted-triangle.webp" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="diamond" class="slide level2">
+<h2>Diamond</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Sometimes found in organizations who did college hiring/interships in the past</li>
+<li class="fragment">I inherited several “diamond-shaped” teams when I started at Code.org</li>
+<li class="fragment">Can still be effective for well-established products</li>
+<li class="fragment"><strong>Watch out for</strong> the width of the diamond - i.e., too many mid-level engineers looking for large projects/promotions</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./images/diamond.webp" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="rectangle" class="slide level2">
+<h2>Rectangle</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Often found in small to medium sized organizations</li>
+<li class="fragment">Good balance of feature development for engineers at all levels</li>
+<li class="fragment">Steady mentoring opportunities and growth</li>
+<li class="fragment"><strong>Watch out for</strong> bringing on too many interns / moving to triangle</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./images/rectangle.webp" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="hourglass" class="slide level2">
+<h2>Hourglass</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Seniors and Juniors, but few mid-level engineers - sometimes “air-gapped”</li>
+<li class="fragment">Rare. I’ve only come across one or two in my career.</li>
+<li class="fragment">Form when inverted triangle team’s move on to v2 of a product and bring on interns for support</li>
+<li class="fragment"><strong>Watch out for</strong> disconnects between senior and junior levels in the team</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./images/hourglass.webp" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="with-ai-do-we-need-junior-engineers" class="slide level2">
+<h2>“With AI, Do We Need Junior Engineers?”</h2>
+<ul>
+<li class="fragment">With AI (and layoffs) many organizations have cut back on internships/hiring junior engineers
+<ul>
+<li class="fragment">Team “shapes” thin out at the bottom, becoming inverted triangles</li>
+<li class="fragment">What used to be handled by an intern, now required of a SDE-3 = potential job dissat</li>
+</ul></li>
+</ul>
+</section>
+<section id="with-ai-do-we-need-junior-engineers-1" class="slide level2">
+<h2>“With AI, Do We Need Junior Engineers?”</h2>
+<ul>
+<li class="fragment">Yes, we still need junior engineers</li>
+<li class="fragment">But, their function changes - e.g., no longer doing basic website changes</li>
+<li class="fragment">And, the expectation of their qualifications increases</li>
+<li class="fragment">Examples from recent DigiPen graduates</li>
+</ul>
+</section>
+<section id="should-we-create-a-dedicated-ai-team" class="slide level2">
+<h2>“Should We Create a Dedicated AI Team?”</h2>
+<ul>
+<li class="fragment">Historically, AI (Data Science) has often been a separate team or division</li>
+<li class="fragment">At Concur, completely separate organizational structure</li>
+<li class="fragment">“This ship has sailed”</li>
+<li class="fragment">AI has to be an integral part of each team now</li>
+<li class="fragment">Training and education of the team is critical to this</li>
+</ul>
+</section>
+<section id="overcoming-resistance-to-ai" class="slide level2">
+<h2>Overcoming Resistance to AI</h2>
+<ul>
+<li class="fragment">AI becoming an integral part of the team will often meet resistance
+<ul>
+<li class="fragment">“I’m concerned about my job security”</li>
+<li class="fragment">“The quality of Claude Code is not high enough for me”</li>
+<li class="fragment">“I’m against AI because of safety/environmental/anti big-tech”</li>
+</ul></li>
+<li class="fragment">Forcing the issue can be challenging, especially for valued employees with long tenure</li>
+<li class="fragment">Moving to non-AI projects is only a temporary solution</li>
+</ul>
+</section>
+<section id="overcoming-resistance-to-ai-1" class="slide level2">
+<h2>Overcoming Resistance to AI</h2>
+<ul>
+<li class="fragment">Support engineers with free tools/credits/GPUs - remove the barrier for trying out AI tools
+<ul>
+<li class="fragment">A monthly stipend can work well</li>
+</ul></li>
+<li class="fragment">Identify the champions in the organization
+<ul>
+<li class="fragment">Often resistance breaks down easier from peers vs.&nbsp;managers</li>
+</ul></li>
+<li class="fragment">Create group-based education opportunities
+<ul>
+<li class="fragment">Internal AI Hackathons can works wonders</li>
+</ul></li>
+</ul>
+</section></section>
+<section id="qa" class="title-slide slide level1 center">
+<h1>Q&amp;A</h1>
+
+</section>
+
+<section>
+<section id="shipping-the-right-features" class="title-slide slide level1 center">
+<h1>Shipping The Right Features</h1>
+
+</section>
+<section id="document-driven-culture" class="slide level2">
+<h2>Document-Driven Culture</h2>
+<ul>
+<li class="fragment">Amazon has a unique culture (they call it “peculiar”!)</li>
+<li class="fragment">One of the traits of the culture is a ban on PowerPoint slides</li>
+<li class="fragment">Instead, they have a document-driven culture</li>
+<li class="fragment">Decisions are made with 2 or 6-page documents, printed on paper, and reviewed in silence in meetings</li>
+</ul>
+</section>
+<section id="document-driven-culture-1" class="slide level2">
+<h2>Document-Driven Culture</h2>
+<ul>
+<li class="fragment">A document-driven culture can be very effective:
+<ul>
+<li class="fragment">Deeper thinking ahead of proposing an idea</li>
+<li class="fragment">Increased employee engagement through reading vs.&nbsp;listening</li>
+<li class="fragment">Get input from everyone in the room</li>
+<li class="fragment">Resolute decision making</li>
+<li class="fragment">Historical knowledge of decisions</li>
+</ul></li>
+</ul>
+</section>
+<section id="document-driven-culture-2" class="slide level2">
+<h2>Document-Driven Culture</h2>
+<ul>
+<li class="fragment">Used for everything: 2/6-pagers, PRFAQ, OP1/OP2, Promotion Justifications</li>
+<li class="fragment">Opinionated vs.&nbsp;seeking consensus</li>
+<li class="fragment">Writing style is incredibly important</li>
+<li class="fragment">Explicit reading rituals. No pre-reads. 90-120 mins for 6-pager.</li>
+<li class="fragment">But, quick decision making vs.&nbsp;follow up meetings.</li>
+</ul>
+</section>
+<section id="document-driven-culture-3" class="slide level2">
+<h2>Document-Driven Culture</h2>
+<ul>
+<li class="fragment">But does this still hold true with AI?…</li>
+</ul>
+</section>
+<section id="prototype-driven-culture" class="slide level2">
+<h2>Prototype-Driven Culture</h2>
+<ul>
+<li class="fragment">Slow-shift towards “prototype-driven culture”</li>
+<li class="fragment">Instead of a document, a usable product is created/tested</li>
+<li class="fragment">Also has benefit of immediate customer feedback (play-testing)</li>
+<li class="fragment">IMO, a combination of both can be very powerful</li>
+<li class="fragment">A document still holds weight for financial projections, GTM strategy, input from others</li>
+</ul>
+</section>
+<section id="so-managers-should-code-now" class="slide level2">
+<h2>So Managers Should Code Now? :)</h2>
+<ul>
+<li class="fragment">Polarizing question, especially at the CTO level</li>
+<li class="fragment">I’ve struggled with personally for many years</li>
+<li class="fragment"><em>How can I keep up to date technically by writing code, but not dis-empower my team?</em></li>
+</ul>
+</section>
+<section id="so-managers-should-code-now-1" class="slide level2">
+<h2>So Managers Should Code Now? :)</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">At Microsoft/Amazon, I solved this via an action logic framework</li>
+<li class="fragment">HBR research from a multi-year survey on leadership styles</li>
+<li class="fragment">Seven layers of action logic: How leaders interpret their surroundings and react when their power of safety is challenged</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./images/framework.webp" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="so-managers-should-code-now-2" class="slide level2">
+<h2>So Managers Should Code Now? :)</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Many managers write code as the <strong>expert</strong></li>
+<li class="fragment">This is their comfort zone, especially if they are newly promoted</li>
+<li class="fragment">But this always backfires</li>
+<li class="fragment">Introduces an awkward power dynamic (my manager wrote this, but it’s not very good)</li>
+<li class="fragment">Often takes away opportunities from engineers</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./images/framework.webp" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="so-managers-should-code-now-3" class="slide level2">
+<h2>So Managers Should Code Now? :)</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Don’t be the expert!</li>
+<li class="fragment">The right level to write code at is the <strong>strategist</strong></li>
+<li class="fragment">Use your code to set a vision or direction</li>
+<li class="fragment"><em>I had an idea how we can solve X. I’ve put together a quick prototype that shows the potential. What do you think?</em></li>
+<li class="fragment">If you are successful, the team will adopt the idea</li>
+<li class="fragment">But probably not use your prototype code - which is fine!</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./images/framework.webp" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+</figure>
+</div>
+</div></div>
+</section></section>
+<section id="qa-1" class="title-slide slide level1 center">
+<h1>Q&amp;A</h1>
+
+</section>
+
+<section>
+<section id="dealing-with-technical-debt" class="title-slide slide level1 center">
+<h1>Dealing With Technical Debt</h1>
+
+</section>
+<section id="the-curse-of-technical-debt" class="slide level2">
+<h2>The Curse of Technical Debt</h2>
+<ul>
+<li class="fragment">Everyone has technical debt!</li>
+<li class="fragment">Can creep in from day 1
+<ul>
+<li class="fragment">I inherited a team in AWS with a ton of technical debt - and they were only 6 months old!</li>
+</ul></li>
+<li class="fragment">What causes it? Seven things</li>
+</ul>
+</section>
+<section id="moving-too-quickly" class="slide level2">
+<h2>1. Moving Too Quickly</h2>
+<ul>
+<li class="fragment">Valuing speed-to-market beyond anything else</li>
+<li class="fragment">Shortcuts are taken in the codebase…</li>
+<li class="fragment">…with a promise to fix them</li>
+<li class="fragment">…but that never happens</li>
+<li class="fragment">Often large entanglement in the codebase that makes it difficult to maintain</li>
+</ul>
+</section>
+<section id="customer-pivots" class="slide level2">
+<h2>2. Customer Pivots</h2>
+<ul>
+<li class="fragment">Organizations pivot finding their true customer</li>
+<li class="fragment">e.g., product designed for doctors actually lands better with young parents</li>
+<li class="fragment">Product undergoes a pivot to cater for the new audience…</li>
+<li class="fragment">…but the codebase still has a ton of doctor/healthcare logic in it</li>
+<li class="fragment">Simple feature requests can come to a crawl: <em>“Can we add a new phone number type for all customers?”</em></li>
+</ul>
+</section>
+<section id="departing-engineers" class="slide level2">
+<h2>3. Departing Engineers</h2>
+<ul>
+<li class="fragment">Engineers Leave. And they take with them the knowledge of the system</li>
+<li class="fragment">We ask for handover documentation, but it’s never enough</li>
+<li class="fragment">Result is a lack of system understanding across the team, leading to slower velocity</li>
+<li class="fragment">New engineers can be “afraid to touch the code” in case they break it</li>
+</ul>
+</section>
+<section id="new-engineers-with-differing-experience" class="slide level2">
+<h2>4. New Engineers (With Differing Experience)</h2>
+<ul>
+<li class="fragment">New engineers join. Congratulations!</li>
+<li class="fragment">But they have a background/knowledge of a different stack (e.g., Rust/Go vs.&nbsp;Java)</li>
+<li class="fragment">That’s OK - they’ll pick it up</li>
+<li class="fragment">Sometimes they do, and it’s great</li>
+<li class="fragment">But sometimes they don’t - leading to a lack of respect and/or wanting to rewrite in a different tech/language</li>
+</ul>
+</section>
+<section id="lack-of-documented-technical-direction" class="slide level2">
+<h2>5. Lack of Documented Technical Direction</h2>
+<ul>
+<li class="fragment">Engineers learn by looking through the code repo/working with others</li>
+<li class="fragment">And sometimes by reading documentation</li>
+<li class="fragment">But this is often not enough and/or out of date</li>
+<li class="fragment">Without this documentation (and direction from it) inconsistencies can creep in</li>
+<li class="fragment">Different styles, tools, patterns, etc.</li>
+</ul>
+</section>
+<section id="technical-decay" class="slide level2">
+<h2>6. Technical Decay</h2>
+<ul>
+<li class="fragment">Classic bit rot: Operating systems/frameworks/libraries out of date and never upgraded</li>
+<li class="fragment">I’ve also seen many forks of open source libraries not kept up to date</li>
+<li class="fragment">Many can be EOL; no longer supported or patched</li>
+<li class="fragment">Complex dependency chains</li>
+<li class="fragment">Engineer attrition (as they want to be working on the latest frameworks, but can’t)</li>
+</ul>
+</section>
+<section id="fragile-development-environment" class="slide level2">
+<h2>7. Fragile Development Environment</h2>
+<ul>
+<li class="fragment">Few years ago, IDE setups were simple - Windows/IDE/small code base</li>
+<li class="fragment">Plethora of OS combinations (Mac, Windows, Linux) architectures (x86, ARM), different IDEs (VS Code, Zed)</li>
+<li class="fragment">Engineers spend valuable time when their environment breaks - and/or helping others</li>
+<li class="fragment">Can also amplify technical decay as engineers are hesitant to change their own development environment</li>
+</ul>
+</section>
+<section id="can-ai-help-reduce-technical-debt" class="slide level2">
+<h2>Can AI Help Reduce Technical Debt?</h2>
+<ul>
+<li class="fragment">Yes!</li>
+<li class="fragment">Especially with the new models/harness advancements over the past 6-12 months.</li>
+<li class="fragment">It can be very effective in addressing many of the previous points</li>
+<li class="fragment">How do we start?</li>
+</ul>
+</section>
+<section id="instrumenting-repos-for-ai" class="slide level2">
+<h2>Instrumenting Repos for AI</h2>
+<ul>
+<li class="fragment">Create CLAUDE.md file at the root of your repo
+<ul>
+<li class="fragment">Describe the repo, folder structure, conventions, and tools (e.g., how to run/test the code)</li>
+<li class="fragment">Claude Code can help you create this!</li>
+</ul></li>
+<li class="fragment">Review, and then add all of the anomalies
+<ul>
+<li class="fragment"><em>“If you are in this part of the code base do this”</em></li>
+</ul></li>
+<li class="fragment">Add “architectural tenets” into the CLAUDE.md file
+<ul>
+<li class="fragment">Guardrails for ensuring that coding agents never go off track at the architectural level</li>
+</ul></li>
+</ul>
+</section>
+<section id="instrumenting-repos-for-ai-1" class="slide level2">
+<h2>Instrumenting Repos for AI</h2>
+<ul>
+<li class="fragment">For large repos, create skills
+<ul>
+<li class="fragment">SKILL.md file and associated templates</li>
+<li class="fragment"><em>“Create a new webpage on our marketing site”</em></li>
+<li class="fragment"><em>“Create a new customer type in the database”</em></li>
+</ul></li>
+<li class="fragment">Common, complex operations that need precise instructions</li>
+</ul>
+</section>
+<section id="using-coding-agent-to-increase-test-coverage" class="slide level2">
+<h2>Using Coding Agent to Increase Test Coverage</h2>
+<ul>
+<li class="fragment">With CLAUDE.md in place, expand tests and test coverage</li>
+<li class="fragment">(Coding models are really good at writing tests)</li>
+<li class="fragment">Create separate skill for running a test</li>
+<li class="fragment">With expanded tests in place, consider upgrading test framework (Playwright)</li>
+</ul>
+</section>
+<section id="carve-away-at-the-debt" class="slide level2">
+<h2>Carve Away at the Debt</h2>
+<ul>
+<li class="fragment"><em>“What would it take to upgrade React to v18?”</em></li>
+<li class="fragment"><em>“Can you convert the older Radium components to React?”</em></li>
+<li class="fragment"><em>“How many components in our customer portal fail to have a11y tags?”</em></li>
+</ul>
+</section>
+<section id="coding-agent-lifecycle" class="slide level2">
+<h2>Coding Agent Lifecycle</h2>
+<ul>
+<li class="fragment">Lifecycle: Plan, Act, Test,(Abort), Commit, Clear</li>
+</ul>
+</section>
+<section id="coding-agent-lifecycle-1" class="slide level2">
+<h2>Coding Agent Lifecycle</h2>
+<ul>
+<li class="fragment"><strong>Plan</strong>
+<ul>
+<li class="fragment">Write the specification for the feature</li>
+<li class="fragment">Be descriptive, bullet points help</li>
+<li class="fragment">Ask the agent to validate/question the approach</li>
+<li class="fragment"><em>“What questions and/or clarifications do you have?”</em></li>
+<li class="fragment">Push back on things that seem incorrect</li>
+</ul></li>
+</ul>
+</section>
+<section id="coding-agent-lifecycle-2" class="slide level2">
+<h2>Coding Agent Lifecycle</h2>
+<ul>
+<li class="fragment"><strong>Act</strong>
+<ul>
+<li class="fragment">Once happy with the specification, implement</li>
+<li class="fragment">Watch carefully for file changes/updates</li>
+<li class="fragment">Correct approach mid-stream</li>
+<li class="fragment"><em>“I think there’s a 3rd party library for that…”</em></li>
+</ul></li>
+</ul>
+</section>
+<section id="coding-agent-lifecycle-3" class="slide level2">
+<h2>Coding Agent Lifecycle</h2>
+<ul>
+<li class="fragment"><strong>Test</strong>
+<ul>
+<li class="fragment">Test the feature locally / manually</li>
+<li class="fragment">Build a complete test suite</li>
+<li class="fragment">(Agents are really good at writing tests)</li>
+<li class="fragment">Have the agent run it’s own tests after the feature</li>
+</ul></li>
+</ul>
+</section>
+<section id="coding-agent-lifecycle-4" class="slide level2">
+<h2>Coding Agent Lifecycle</h2>
+<ul>
+<li class="fragment"><strong>Abort</strong>
+<ul>
+<li class="fragment">Sometimes, things don’t work as expected!</li>
+<li class="fragment">It can be challenging to fix before exhausting the context window</li>
+<li class="fragment">And many coding agents will “spin out of control”</li>
+<li class="fragment"><code>git stash</code>, clear context (new session), update the feature spec, and restart</li>
+</ul></li>
+</ul>
+</section>
+<section id="coding-agent-lifecycle-5" class="slide level2">
+<h2>Coding Agent Lifecycle</h2>
+<ul>
+<li class="fragment"><strong>Commit</strong>
+<ul>
+<li class="fragment">Before committing to source control, have Claude self-update CLAUDE.md and create skills (if major new functionality)</li>
+<li class="fragment">Review CLAUDE.md file often</li>
+<li class="fragment">Auto-compact if approaching ~40K</li>
+</ul></li>
+</ul>
+</section>
+<section id="coding-agent-lifecycle-6" class="slide level2">
+<h2>Coding Agent Lifecycle</h2>
+<ul>
+<li class="fragment"><strong>Clear</strong>
+<ul>
+<li class="fragment">Once CLAUDE.md and feature is committed, clear context (<code>/new</code> in Claude Code)</li>
+<li class="fragment">Analogy: 50 First Dates movie</li>
+</ul></li>
+</ul>
+</section></section>
+<section id="qa-2" class="title-slide slide level1 center">
+<h1>Q&amp;A</h1>
+
+</section>
+
+<section id="thank-you" class="title-slide slide level1 center">
+<h1>Thank you!</h1>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+
+.slide {
+  font-size: 0.8em;
+}
+.reveal, .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: 'Inter', sans-serif;
+}
+.reveal .slide-logo {
+  height: 6% !important;
+  max-width: unset !important;
+  max-height: unset !important;
+}
+.reveal, .reveal h1 {
+  color: #DF3329
+}
+.reveal, .reveal h2 {
+  color: #DF3329
+}
+.reveal, .reveal h2 > li {
+  color: black
+}
+.quarto-title-author-name {
+  color: #282828
+}
+</style>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="images/logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/simonguest\.com");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

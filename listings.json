@@ -19,6 +19,7 @@
   {
     "listing": "/presentations.html",
     "items": [
+      "/s/mobicom/slides.html",
       "/s/gerege/slides.html",
       "/s/yokohama-art/slides_ja.html",
       "/s/neural_network_demo/slides.html",
