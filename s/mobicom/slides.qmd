@@ -1,6 +1,6 @@
 ---
 title: "Building an AI-Native Organization"
-description: "TBD"
+description: "Lessons building AI-native organizations, covering team design, shipping features faster with AI, and reducing technical debt."
 author: "Simon Guest"
 format:
   revealjs:
